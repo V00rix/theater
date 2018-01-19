@@ -12,8 +12,8 @@ import {ConfirmationComponent} from './pages/confirmation/confirmation.component
 import {SuccessComponent} from './pages/success/success.component';
 import {LandingComponent} from './landing/landing.component';
 import {BackgroundTestComponent} from './dev/background-test/background-test.component';
-import {DataServiceComponent} from './services/data-service/data-service.component';
 import {AppRoutingModule} from './app-routing.module';
+import {DataManagementService} from './services/data-management.service';
 
 
 @NgModule({
@@ -29,13 +29,12 @@ import {AppRoutingModule} from './app-routing.module';
         SuccessComponent,
         LandingComponent,
         BackgroundTestComponent,
-        DataServiceComponent
     ],
     imports: [
         BrowserModule,
         AppRoutingModule
     ],
-    providers: [],
+    providers: [DataManagementService],
     bootstrap: [AppComponent]
 })
 export class AppModule {
