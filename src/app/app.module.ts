@@ -13,6 +13,7 @@ import {SuccessComponent} from './pages/success/success.component';
 import {LandingComponent} from './landing/landing.component';
 import {AppRoutingModule} from './app-routing.module';
 import {DataManagementService} from './services/data-management.service';
+import { BgTestComponent } from './dev/bg-test/bg-test.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import {DataManagementService} from './services/data-management.service';
         PersonalInfoComponent,
         ConfirmationComponent,
         SuccessComponent,
-        LandingComponent
+        LandingComponent,
+        BgTestComponent
     ],
     imports: [
         BrowserModule,

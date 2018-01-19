@@ -1,0 +1,13 @@
+@import '~styles.scss';
+
+.background {
+  background-color: $primary-color-1;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  text-align: center;
+  line-height: 100vh;
+  font-size: 10vw;
+  z-index: -100;
+  color: rgba(0, 0, 0, 0.13);
+}

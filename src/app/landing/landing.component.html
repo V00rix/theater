@@ -1,3 +1,17 @@
-<p>
-  landing works!
-</p>
+<!-- Landing page -->
+
+<!-- Background for testing -->
+<app-bg-test></app-bg-test>
+<div class="landing-container">
+  <h1 class="logo">
+    <!--Todo: replace later with fancy animation! -->
+    <span class="">Outer Edges</span>
+  </h1>
+  <p class="loading">
+    Loading
+  </p>
+</div>
+
+<!-- Caching images -->
+<img *ngFor="let performance of dms.performances" src="{{performance.backgroundUrl}}"
+     alt="'{{performance.title}}' - backgroundImage" (load)="imageLoaded()" hidden>
