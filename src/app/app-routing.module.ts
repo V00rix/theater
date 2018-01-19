@@ -12,7 +12,7 @@ import {SuccessComponent} from './pages/success/success.component';
 import {ErrorComponent} from './pages/error/error.component';
 
 const appRoutes: Routes = [
-    {path: '', component: LandingComponent},
+    {path: 'home', component: LandingComponent},
     {path: 'performances', component: PerformancesComponent},
     {path: 'performances/:performanceName', component: PerformanceDetailComponent},
     {path: 'performances/:performanceName/:sessionId', component: SceneComponent},
