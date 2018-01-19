@@ -11,7 +11,6 @@ import {PersonalInfoComponent} from './pages/personal-info/personal-info.compone
 import {ConfirmationComponent} from './pages/confirmation/confirmation.component';
 import {SuccessComponent} from './pages/success/success.component';
 import {LandingComponent} from './landing/landing.component';
-import {BackgroundTestComponent} from './dev/background-test/background-test.component';
 import {AppRoutingModule} from './app-routing.module';
 import {DataManagementService} from './services/data-management.service';
 
@@ -27,8 +26,7 @@ import {DataManagementService} from './services/data-management.service';
         PersonalInfoComponent,
         ConfirmationComponent,
         SuccessComponent,
-        LandingComponent,
-        BackgroundTestComponent,
+        LandingComponent
     ],
     imports: [
         BrowserModule,
