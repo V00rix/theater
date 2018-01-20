@@ -14,15 +14,21 @@ export class PerformanceDetailComponent implements OnInit, OnDestroy {
 
   constructor(private dms: DataManagementService,
               private route: ActivatedRoute,
-              private http: HttpClient) { }
+              private http: HttpClient) {
+  }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.performance = this.dms.performances[+params['performanceId']];
+      const performanceId = +params['performanceId'];
+      this.performance = this.dms.performances[performanceId];
       console.warn('Seems like I got some performance data from params!', this.performance);
       console.log('Trying to make an http request...');
-      this.http.get('../src/php/test.php').subscribe(data => {
-        console.warn('Seems like I got some performance data from Http Request!', data);
+
+      // Lazy loading performance details
+      this.http.get('http://localhost:80/theater/src/php/getPerformanceData.php?performanceId=${performanceId}').subscribe(data => {
+        console.warn('Seems like I got some performance data from http request!', data);
+      }, error => {
+        console.error('Http request failed!', error);
       });
     });
   }

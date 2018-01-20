@@ -1,5 +1,15 @@
-<div class="" *ngIf="performance$ | async as performance; else loading">
-  <h1>
-    {{performance.title | uppercase }}
-  </h1>
-</div>
+<!-- Title image -->
+<img class="th-title-image" src="{{performance.imageUrl}}" alt="{{performance.title}} background" height="1080" width="1920">
+
+<!-- Title-->
+<h1 class="th-title-text">{{performance.title}}</h1>
+
+<!-- Description-->
+<section class="th-description">
+  <p>{{performance.description}}</p>
+</section>
+
+<!-- Session selection -->
+<table>
+
+</table>

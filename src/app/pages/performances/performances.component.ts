@@ -16,11 +16,7 @@ export class PerformancesComponent implements OnInit {
   ngOnInit() {
   }
 
-  addPerformance() {
-    this.dms.performances.push(this.dms.performances[this.dms.performances.length - 1]);
-  }
-
   displayPerformanceDetail(id: number) {
-  this.router.navigate(['./performances/' + id]);
+    this.router.navigate(['./performances/' + id]);
   }
 }

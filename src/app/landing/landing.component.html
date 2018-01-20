@@ -16,5 +16,7 @@
 </div>
 
 <!-- Caching images -->
-<img *ngFor="let performance of dms.performances" src="{{performance.backgroundUrl}}"
-     alt="'{{performance.title}}' - backgroundImage" (load)="imageLoaded()" hidden>
+<div *ngIf="imagesToLoad >= 0">
+  <img *ngFor="let performance of dms.performances" src="{{performance.imageUrl}}"
+       alt="'{{performance.title}}' - backgroundImage" (load)="imageLoaded()" hidden>
+</div>

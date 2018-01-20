@@ -1,24 +1,29 @@
 import {Injectable} from '@angular/core';
 import {Performance} from '../models/performance';
-import {Subject} from 'rxjs/Subject';
-
+import {HttpClient} from '@angular/common/http';
+import 'rxjs/add/operator/map'
 
 @Injectable()
 export class DataManagementService {
   public performances: Performance[];
 
-  constructor() {
-    // async http
-    this.performances = [];
-    this.performances.push(
-      new Performance('SomeWord', null, null, 'https://wallpapercave.com/wp/nsu3cSp.jpg'),
-      new Performance('Short title', null, null,
-        'https://hdwallsource.com/img/2014/8/green-background-pictures-17225-17781-hd-wallpapers.jpg'),
-      new Performance('Title with some words', null, null,
-        'http://www.creativehdwallpapers.com/uploads/large/background/landscape-nature-background-image.jpg'),
-      new Performance('And thus we fall', null, null, 'http://hdwarena.com/wp-content/uploads/2016/12/Color-Codes-Background.jpg')
-    );
+  constructor(private http: HttpClient) {
     console.log('DMS Loaded!');
   }
 
+  /**
+   * Gets performances titles and background images locators
+   * @returns Promise
+   */
+  getBasicData() {
+    console.log('Getting basic data!');
+    return this.http.get('http://localhost:80/theater/src/php/getBasicData.php').map(
+      data => {
+        this.performances = <Performance[]>data;
+        console.log(this.performances);
+      }, error => {
+        console.error(error);
+      }
+    );
+  }
 }
