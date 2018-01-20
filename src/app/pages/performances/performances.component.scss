@@ -1,0 +1,25 @@
+.th-container {
+  width: 80vw;
+  left: 10vw;
+  position: relative;
+  text-align: center;
+  padding: 10vh 0 5vh;
+}
+
+.th-performance-image {
+  width: 70%;
+  height: 0%;
+  margin: 5vh 0 10vh;
+  border: 10px solid black;
+  box-shadow: 0 0 30px -5px;
+  cursor: pointer;
+}
+
+.th-performance-title {
+  font-size: 12vh;
+  position: relative;
+  top: -30vh;
+  color: white;
+  text-shadow: 0 0 20px black;
+  cursor: pointer;
+}

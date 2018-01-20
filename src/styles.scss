@@ -5,8 +5,42 @@
 html {
   height: 100%;
 }
+
 body {
   margin: 0;
   padding: 0;
   min-height: 100%;
+  overflow-x: hidden;
+}
+
+/* Alignment */
+.th-align-left {
+  float: left;
+  margin-left: 10px;
+}
+
+.th-align-right {
+  float: right;
+  margin-right: 10px;
+}
+
+/* Button style */
+.th-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  &:hover {
+    background-color: $color-dark;
+    color: white;
+    a > img {
+      filter: invert(100%);
+    }
+  }
+}
+
+/* Style for links with image and description */
+.th-image-description-link {
+  position: relative;
+  padding: 15px;
+  line-height: 50px;
 }

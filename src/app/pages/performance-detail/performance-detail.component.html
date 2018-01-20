@@ -1,3 +1,5 @@
-<p>
-  performance-detail works!
-</p>
+<div class="" *ngIf="performance$ | async as performance; else loading">
+  <h1>
+    {{performance.title | uppercase }}
+  </h1>
+</div>

@@ -13,29 +13,31 @@ import {SuccessComponent} from './pages/success/success.component';
 import {LandingComponent} from './landing/landing.component';
 import {AppRoutingModule} from './app-routing.module';
 import {DataManagementService} from './services/data-management.service';
-import { BgTestComponent } from './dev/bg-test/bg-test.component';
+import {BgTestComponent} from './dev/bg-test/bg-test.component';
+import {HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        NotFoundComponent,
-        ErrorComponent,
-        PerformancesComponent,
-        PerformanceDetailComponent,
-        SceneComponent,
-        PersonalInfoComponent,
-        ConfirmationComponent,
-        SuccessComponent,
-        LandingComponent,
-        BgTestComponent
-    ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule
-    ],
-    providers: [DataManagementService],
-    bootstrap: [AppComponent]
+  declarations: [
+    AppComponent,
+    NotFoundComponent,
+    ErrorComponent,
+    PerformancesComponent,
+    PerformanceDetailComponent,
+    SceneComponent,
+    PersonalInfoComponent,
+    ConfirmationComponent,
+    SuccessComponent,
+    LandingComponent,
+    BgTestComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule
+  ],
+  providers: [DataManagementService],
+  bootstrap: [AppComponent]
 })
 export class AppModule {
 }

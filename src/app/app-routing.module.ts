@@ -5,17 +5,17 @@ import {SceneComponent} from './pages/scene/scene.component';
 import {NotFoundComponent} from './pages/not-found/not-found.component';
 import {PerformancesComponent} from './pages/performances/performances.component';
 import {PerformanceDetailComponent} from './pages/performance-detail/performance-detail.component';
-import {LandingComponent} from './landing/landing.component';
 import {PersonalInfoComponent} from './pages/personal-info/personal-info.component';
 import {ConfirmationComponent} from './pages/confirmation/confirmation.component';
 import {SuccessComponent} from './pages/success/success.component';
 import {ErrorComponent} from './pages/error/error.component';
 
 const appRoutes: Routes = [
-    {path: '', component: LandingComponent},
+    {path: '', component: PerformancesComponent},
     {path: 'performances', component: PerformancesComponent},
-    {path: 'performances/:performanceName', component: PerformanceDetailComponent},
-    {path: 'performances/:performanceName/:sessionId', component: SceneComponent},
+    {path: 'home', component: PerformancesComponent},
+    {path: 'performances/:performanceId', component: PerformanceDetailComponent},
+    {path: 'performances/:performanceId/:sessionId', component: SceneComponent},
     {path: 'personal-info', component: PersonalInfoComponent},
     {path: 'personal-info/confirmation', component: ConfirmationComponent},
     {path: 'success', component: SuccessComponent},
