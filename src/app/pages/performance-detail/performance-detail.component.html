@@ -1,15 +1,34 @@
-<!-- Title image -->
-<img class="th-title-image" src="{{performance.imageUrl}}" alt="{{performance.title}} background" height="1080" width="1920">
-
-<!-- Title-->
-<h1 class="th-title-text">{{performance.title}}</h1>
-
-<!-- Description-->
-<section class="th-description">
-  <p>{{performance.description}}</p>
-</section>
-
-<!-- Session selection -->
-<table>
-
-</table>
+<div *ngIf="performance">
+    <!-- Title image -->
+    <img class="th-title-image" src="{{performance.imageUrl}}" alt="{{performance.title}} background" height="1080"
+         width="1920">
+    <!-- Title-->
+    <h1 class="th-title-text">{{performance.title | uppercase}}</h1>
+    <!-- Content -->
+    <section class="th-content">
+        <!-- Description-->
+        <section class="th-description">
+            <p>{{performance.description}}</p>
+        </section>
+        <!--Sessions-->
+        <section class="th-sessions">
+            <h2 class="th-sessions-title">{{'Sessions' | uppercase}}</h2>
+            <!-- Session selection -->
+            <div class="th-table" *ngIf="sessionsSorted">
+                <div class="th-table-content">
+                    <div class="th-table-column" *ngFor="let session of groupedSessions">
+                        <h3 class="th-table-header">
+                            {{session.date | date:['d. MMMM']}}<br/>{{session.date | date:['EEEE']}}
+                        </h3>
+                        <div class="th-table-times">
+                            <!-- Session times -->
+                            <a (click)="onSessionSelected(session.date.getTime())"
+                               [routerLink]="['./' + session.date.getTime()]"
+                               class="th-time" *ngFor="let time of session.times">{{time | date:['HH:mm']}}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+</div>

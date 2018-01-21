@@ -1,3 +1,15 @@
-<p>
-  confirmation works!
-</p>
+<div class="th-confirmation">
+    <div *ngFor="let data of confirmationData">
+        <div class="th-seat">{{data.seat.row + " " + data.seat.seat}}</div>
+        <div class="th-viewer">
+            <span>{{data.userData.name}}</span>
+            <span>{{data.userData.phone}}</span>
+            <span>{{data.userData.email}}</span>
+            <span *ngIf="data.userData.vk">{{data.userData.vk}}</span>
+            <span *ngIf="data.userData.whatsApp">{{data.userData.whatsApp}}</span>
+            <span *ngIf="data.userData.viber">{{data.userData.viber}}</span>
+            <span *ngIf="data.userData.telegram">{{data.userData.telegram}}</span>
+        </div>
+    </div>
+    <button type="button" (click)="onConfirmed()" [routerLink]="['/success']">Confirm</button>
+</div>

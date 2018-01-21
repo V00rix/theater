@@ -1,3 +1,11 @@
-<p>
-  scene works!
-</p>
+<div *ngIf="sessionData">
+    <h1>{{sessionData.performanceTitle}}</h1>
+    <h3>{{sessionData.sessionDateTime | date:['d. MMMM, EEEE, HH:mm']}}</h3>
+    <div *ngFor="let r of sessionData.seats; let row = index">
+        <span class="th-seat" *ngFor="let s of r; let seat = index" (click)="onSeatSelected($event, row, seat)"
+              [ngClass]="getClass(row, seat)" #seatEl>
+            {{seat}}
+        </span>
+    </div>
+    <button type="button" (click)="onConfirm()" [routerLink]="['/personal-info']" [disabled]="!selectedSeats.length">Confirm</button>
+</div>

@@ -15,7 +15,7 @@ const appRoutes: Routes = [
     {path: 'performances', component: PerformancesComponent},
     {path: 'home', component: PerformancesComponent},
     {path: 'performances/:performanceId', component: PerformanceDetailComponent},
-    {path: 'performances/:performanceId/:sessionId', component: SceneComponent},
+    {path: 'performances/:performanceId/:sessionTime', component: SceneComponent},
     {path: 'personal-info', component: PersonalInfoComponent},
     {path: 'personal-info/confirmation', component: ConfirmationComponent},
     {path: 'success', component: SuccessComponent},

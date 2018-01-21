@@ -15,29 +15,33 @@ import {AppRoutingModule} from './app-routing.module';
 import {DataManagementService} from './services/data-management.service';
 import {BgTestComponent} from './dev/bg-test/bg-test.component';
 import {HttpClientModule} from '@angular/common/http';
+import {PropertiesPipe} from './pipes/properties.pipe';
+import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NotFoundComponent,
-    ErrorComponent,
-    PerformancesComponent,
-    PerformanceDetailComponent,
-    SceneComponent,
-    PersonalInfoComponent,
-    ConfirmationComponent,
-    SuccessComponent,
-    LandingComponent,
-    BgTestComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule
-  ],
-  providers: [DataManagementService],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        NotFoundComponent,
+        ErrorComponent,
+        PerformancesComponent,
+        PerformanceDetailComponent,
+        SceneComponent,
+        PersonalInfoComponent,
+        ConfirmationComponent,
+        SuccessComponent,
+        LandingComponent,
+        BgTestComponent,
+        PropertiesPipe
+    ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        AppRoutingModule,
+        HttpClientModule
+    ],
+    providers: [DataManagementService],
+    bootstrap: [AppComponent]
 })
 export class AppModule {
 }
