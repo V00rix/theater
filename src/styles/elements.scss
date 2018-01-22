@@ -1,0 +1,63 @@
+/* Style specific element */
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+/* Buttons */
+.th-button {
+  width: 200px;
+  height: 40px;
+  background-color: black;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  -webkit-box-shadow: 0 5px 10px -3px black;
+  box-shadow: 0 5px 10px -3px black;
+  cursor: pointer;
+}
+/* Links */
+.th-link {
+
+}
+// Style for links with image and description
+.th-image-description-link {
+  position: relative;
+  padding: 15px;
+  line-height: 50px;
+}
+// Table with vertical panels scrolling horizontally
+.th-horizontal-table {
+
+}
+// Page header
+.th-header {
+  position: sticky;
+  width: 100%;
+  z-index: 10;
+  box-shadow: 0px -5px 20px 10px;
+  background-color: $color-header;
+  * {
+    height: $header-height;
+  }
+}
+// Page-footer
+.th-footer {
+  bottom: 0;
+  height: $footer-height;
+  width: 100%;
+  background-color: $color-dark;
+  position: absolute;
+  box-shadow: 0 10px 30px 10px;
+}
+// Main content
+.th-content {
+  position: absolute;
+  top: 50px;
+  width: 100%;
+  min-height: calc(100% - #{$header-height});
+}

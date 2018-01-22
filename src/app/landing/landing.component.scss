@@ -1,23 +1,16 @@
-.landing-container {
-  position: absolute;
-  width: 80vw;
-  height: 40vh;
-  left: 10vw;
-  top: 30vh;
-}
-
-.logo {
-  font-size: 12.5vw;
-  text-align: center;
-}
-
-.loading {
-  font-size: 6vw;
-  text-align: center;
-  position: relative;
-  bottom: -90px;
-}
-
+@import "~styles.scss";
+//.logo {
+//  font-size: 12.5vw;
+//  text-align: center;
+//}
+//
+//.loading {
+//  font-size: 6vw;
+//  text-align: center;
+//  position: relative;
+//  bottom: -90px;
+//}
+//
 .overlay {
   position: fixed;
   z-index: 100;

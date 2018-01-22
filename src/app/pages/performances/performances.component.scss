@@ -1,12 +1,6 @@
-.th-container {
-  width: 80vw;
-  left: 10vw;
-  position: relative;
-  text-align: center;
-  padding: 10vh 0 5vh;
-}
+@import "~styles.scss";
 
-.th-performance-image {
+.performance-image {
   width: 70%;
   height: 0%;
   margin: 5vh 0 10vh;
@@ -15,11 +9,8 @@
   cursor: pointer;
 }
 
-.th-performance-title {
-  font-size: 12vw;
+.performance-title {
   position: relative;
   top: -30vw;
-  color: white;
-  text-shadow: 0 0 20px black;
   cursor: pointer;
 }

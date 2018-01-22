@@ -11,6 +11,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class AppComponent implements OnInit {
     public sectionsShown = false;
+    public loggedIn = false;
 
     constructor(private dms: DataManagementService,
                 private router: Router, private location: Location) {

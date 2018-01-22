@@ -4,32 +4,31 @@
 <!-- Header -->
 <header *ngIf="sectionsShown" class="th-header">
   <!-- Navigate back button -->
-  <span *ngIf="displayReturn()" class="th-align-left th-header-button">
-    <a class="th-image-description-link th-header-button" (click)="navigateBack()">
+  <span *ngIf="displayReturn()" class="th-align-left th-button">
+    <a class="th-image-description-link" (click)="navigateBack()">
       <img src="../assets/arrowBack.svg" height="30" width="30" alt="goBack"/>
       <span class="hidden-sm">Back</span>
     </a>
   </span>
   <!-- Brand -->
-  <span class="th-brand" [routerLink]="['/performances']">Outer Edges</span>
+  <span class="th-font-brand" [routerLink]="['/performances']">Outer Edges</span>
   <!-- Login/Register -->
   <span *ngIf="!loggedIn" class="th-align-right">
-    <button type="button" class="th-header-button">Login</button>
-    <button type="button" class="th-header-button">Register</button>
+    <button type="button" class="th-button">Login</button>
+    <button type="button" class="th-button">Register</button>
   </span>
   <!-- Logout -->
   <span *ngIf="loggedIn" class="th-align-right">
     <span>Username</span>
-    <button>Logout</button>
+    <button type="button" class="th-button">Logout</button>
   </span>
 </header>
 <!-- Main Content -->
-<section id="main-content">
+<section class="th-content">
   <!-- Background -->
   <app-bg-test></app-bg-test>
   <!-- Main content -->
   <router-outlet></router-outlet>
-
-  <!-- Footer -->
-  <footer *ngIf="sectionsShown" class="th-footer"></footer>
 </section>
+<!-- Footer -->
+<footer *ngIf="sectionsShown" class="th-footer"></footer>

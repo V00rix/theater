@@ -8,7 +8,7 @@ import {Seat} from '../models/seat';
 
 @Injectable()
 export class DataManagementService {
-    private baseUrl = 'http://elumixor.com/test/dist/php/';
+    private baseUrl = 'http://localhost/theater/src/php/';
 
     public performances: Performance[];
     public dataStatus = DataStatus.NotFetched;
