@@ -1,11 +1,20 @@
 <div *ngIf="sessionData">
     <h1>{{sessionData.performanceTitle}}</h1>
     <h3>{{sessionData.sessionDateTime | date:['d. MMMM, EEEE, HH:mm']}}</h3>
-    <div *ngFor="let r of sessionData.seats; let row = index">
-        <span class="th-seat" *ngFor="let s of r; let seat = index" (click)="onSeatSelected($event, row, seat)"
-              [ngClass]="getClass(row, seat)" #seatEl>
-            {{seat}}
-        </span>
+    <div class="anotherContainer">
+        <div class="cont" [style.width]="((34*getLongestRow())+75)+'px'">
+            <div class="rowT" *ngFor="let row of sessionData.seats; let i = index"
+                 [style.width]="(34*getLongestRow()+75)+'px'">
+                <hr class="invisible">
+                <div class="rowInfo">{{ sessionData.seats.length-i }}. ряд</div>
+                <div class="seat" *ngFor="let seat of row; let j = index"
+                     [ngClass]="getClass(i, j)" (click)="onSeatSelected($event, i, j)">{{j + 1}}
+                </div>
+            </div>
+        </div>
     </div>
-    <button type="button" (click)="onConfirm()" [routerLink]="['/personal-info']" [disabled]="!selectedSeats.length">Confirm</button>
+    <button class="th-button" type="button" (click)="onConfirm()" [routerLink]="['/personal-info']"
+            [disabled]="!selectedSeats.length">
+        Confirm
+    </button>
 </div>

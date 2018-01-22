@@ -8,7 +8,7 @@ import {DatePipe} from '@angular/common';
     styleUrls: ['./landing.component.scss']
 })
 export class LandingComponent implements OnInit, AfterViewInit {
-    private imagesToLoad: number;
+    public imagesToLoad: number;
     private loadingStartedTime: number;
     private datePipe = new DatePipe('En');
     @Output() dataLoaded = new EventEmitter<void>();

@@ -76,6 +76,16 @@ export class SceneComponent implements OnInit {
         }
     }
 
+    public getLongestRow(): number {
+        let highestCount = 0;
+        for (const row of this.sessionData.seats) {
+            if (row.length > highestCount) {
+                highestCount = row.length;
+            }
+        }
+        return highestCount;
+    }
+
     public onConfirm() {
         this.dms.saveSeats(this.seats);
     }

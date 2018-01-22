@@ -58,27 +58,23 @@
 
 .th-table-header {
   background-color: #2b2b2b;
-  font-size: 1.7rem;
   padding: 20px;
   color: #eaeaea;
-}
-
-.th-submit {
-  position: fixed;
-  z-index: 10;
-  width: 200px;
-  height: 40px;
-  left: calc(50% - 100px);
-  bottom: 30px;
-  background-color: black;
-  border: none;
-  border-radius: 5px;
-  color: white;
-  box-shadow: 0 5px 10px -3px black;
-  cursor: pointer;
+  height: 10vh;
+  margin: 0;
 }
 
 .th-table-times {
+  height: calc(90vh - 120px);
+  position: relative;
+  padding: 0 30px 65px;
+  overflow-y: scroll;
+}
+
+.th-use-data {
+  width: calc(100% + 60px);
+  border-radius: 0;
+  margin: 0 -30px 10px;
 }
 
 .th-time {

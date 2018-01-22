@@ -9,7 +9,7 @@ import {Router} from '@angular/router';
 })
 export class PerformancesComponent implements OnInit {
 
-    constructor(private dms: DataManagementService,
+    constructor(public dms: DataManagementService,
                 private router: Router) {
     }
 

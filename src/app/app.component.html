@@ -4,18 +4,18 @@
 <!-- Header -->
 <header *ngIf="sectionsShown" class="th-header">
   <!-- Navigate back button -->
-  <span class="th-align-left th-button">
-    <a class="th-image-description-link th-button" (click)="navigateBack()">
-      <img src="../assets/arrowBack.svg" height="40" width="40" alt="goBack"/>
-      <span>Back</span>
+  <span *ngIf="displayReturn()" class="th-align-left th-header-button">
+    <a class="th-image-description-link th-header-button" (click)="navigateBack()">
+      <img src="../assets/arrowBack.svg" height="30" width="30" alt="goBack"/>
+      <span class="hidden-sm">Back</span>
     </a>
   </span>
   <!-- Brand -->
   <span class="th-brand" [routerLink]="['/performances']">Outer Edges</span>
   <!-- Login/Register -->
   <span *ngIf="!loggedIn" class="th-align-right">
-    <button type="button" class="th-button">Login</button>
-    <button type="button" class="th-button">Register</button>
+    <button type="button" class="th-header-button">Login</button>
+    <button type="button" class="th-header-button">Register</button>
   </span>
   <!-- Logout -->
   <span *ngIf="loggedIn" class="th-align-right">

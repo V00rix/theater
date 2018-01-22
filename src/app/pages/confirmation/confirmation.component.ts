@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {DataManagementService} from '../../services/data-management.service';
+import {Location} from '@angular/common';
 
 @Component({
     selector: 'app-confirmation',
@@ -7,7 +8,7 @@ import {DataManagementService} from '../../services/data-management.service';
     styleUrls: ['./confirmation.component.scss']
 })
 export class ConfirmationComponent implements OnInit {
-    private confirmationData: {
+    public confirmationData: {
         seat: { row: number, seat: number },
         userData: {
             name: string,
@@ -20,7 +21,7 @@ export class ConfirmationComponent implements OnInit {
         }
     }[];
 
-    constructor(private dms: DataManagementService) {
+    constructor(private dms: DataManagementService, private location: Location) {
     }
 
     ngOnInit() {
@@ -54,5 +55,9 @@ export class ConfirmationComponent implements OnInit {
 
     onConfirmed() {
 
+    }
+
+    navigateBack() {
+        this.location.back();
     }
 }

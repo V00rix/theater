@@ -1,15 +1,17 @@
 <div class="th-confirmation">
-    <div *ngFor="let data of confirmationData">
-        <div class="th-seat">{{data.seat.row + " " + data.seat.seat}}</div>
+    <h1 class="th-confirmation-title">Confirmation</h1>
+    <div class="th-confirmation-data" *ngFor="let data of confirmationData">
+        <div class="th-seat">{{'Row: ' + data.seat.row}}<br>{{' Seat: ' + data.seat.seat}}</div>
         <div class="th-viewer">
-            <span>{{data.userData.name}}</span>
-            <span>{{data.userData.phone}}</span>
-            <span>{{data.userData.email}}</span>
-            <span *ngIf="data.userData.vk">{{data.userData.vk}}</span>
-            <span *ngIf="data.userData.whatsApp">{{data.userData.whatsApp}}</span>
-            <span *ngIf="data.userData.viber">{{data.userData.viber}}</span>
-            <span *ngIf="data.userData.telegram">{{data.userData.telegram}}</span>
+            <p>Name: {{data.userData.name}}</p>
+            <p>Phone: {{data.userData.phone}}</p>
+            <p>Email: {{data.userData.email}}</p>
+            <p *ngIf="data.userData.vk">VK: {{data.userData.vk}}</p>
+            <p *ngIf="data.userData.whatsApp">WhatsApp: {{data.userData.whatsApp}}</p>
+            <p *ngIf="data.userData.viber">Viber: {{data.userData.viber}}</p>
+            <p *ngIf="data.userData.telegram">Telegram: {{data.userData.telegram}}</p>
         </div>
     </div>
-    <button type="button" (click)="onConfirmed()" [routerLink]="['/success']">Confirm</button>
+    <button class="th-button" type="button" (click)="onConfirmed()" [routerLink]="['/success']">Confirm</button>
+    <button class="th-button" type="button" (click)="navigateBack()">Back</button>
 </div>

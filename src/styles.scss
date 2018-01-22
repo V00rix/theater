@@ -25,7 +25,7 @@ body {
 }
 
 /* Button style */
-.th-button {
+.th-header-button {
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -38,9 +38,35 @@ body {
   }
 }
 
-/* Style for links with image and description */
+.th-button {
+  width: 200px;
+  height: 40px;
+  background-color: black;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  -webkit-box-shadow: 0 5px 10px -3px black;
+  box-shadow: 0 5px 10px -3px black;
+  cursor: pointer;
+}
+
+.th-button-float-bottom {
+  left: calc(50% - 100px);
+  bottom: 30px;
+  position: fixed;
+  z-index: 10;
+
+}
+
+  /* Style for links with image and description */
 .th-image-description-link {
   position: relative;
   padding: 15px;
   line-height: 50px;
+}
+
+@media only screen and (max-width: 480px) {
+  .hidden-sm {
+    display: none;
+  }
 }
