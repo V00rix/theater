@@ -1,5 +1,5 @@
 import {Component, ElementRef, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {DataManagementService, DataStatus} from '../../services/data-management.service';
 import {Availability, Seat} from '../../models/seat';
 import {Viewer} from '../../models/viewer';
@@ -18,10 +18,18 @@ export class SceneComponent implements OnInit {
 
     public seats: { row: number, seat: number }[] = []; // seats data (row, seat)
     public selectedSeats = []; // as DOM Elements
+    public bottomPanelButtons = [
+        {
+            type: 'button', text: 'Confirm', callback: () => {
+                this.dms.saveSeats(this.seats);
+                this.router.navigate(['/personal-info']);
+            }
+        }
+    ];
 
     private dataStatus = 0; // 0 - nothing has yet been loaded, 1 - only basic or only performance data, 2- - both
 
-    constructor(private dms: DataManagementService, private route: ActivatedRoute) {
+    constructor(private dms: DataManagementService, private router: Router, private route: ActivatedRoute) {
     }
 
     ngOnInit() {
@@ -84,9 +92,5 @@ export class SceneComponent implements OnInit {
             }
         }
         return highestCount;
-    }
-
-    public onConfirm() {
-        this.dms.saveSeats(this.seats);
     }
 }

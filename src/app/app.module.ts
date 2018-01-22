@@ -17,6 +17,7 @@ import {BgTestComponent} from './dev/bg-test/bg-test.component';
 import {HttpClientModule} from '@angular/common/http';
 import {PropertiesPipe} from './pipes/properties.pipe';
 import {FormsModule} from '@angular/forms';
+import { BottomPanelComponent } from './bottom-panel/bottom-panel.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import {FormsModule} from '@angular/forms';
         SuccessComponent,
         LandingComponent,
         BgTestComponent,
-        PropertiesPipe
+        PropertiesPipe,
+        BottomPanelComponent
     ],
     imports: [
         BrowserModule,

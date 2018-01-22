@@ -18,9 +18,7 @@ export class PerformanceDetailComponent implements OnInit, OnDestroy {
     private performanceId: number;
 
     constructor(private dms: DataManagementService,
-                private route: ActivatedRoute,
-                private router: Router) {
-
+                private route: ActivatedRoute) {
     }
 
     ngOnInit() {

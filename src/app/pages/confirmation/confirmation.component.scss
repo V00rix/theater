@@ -21,3 +21,14 @@
   background-color: black;
   color: grey;
 }
+
+.th-table {
+  width: 100%;
+  max-height: calc(100vh - 130px);
+  overflow-y: scroll;
+}
+
+table, th, td {
+  border: none;
+  padding: 0;
+}

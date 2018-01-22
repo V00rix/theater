@@ -1,5 +1,5 @@
-<div *ngIf="sessionData">
-    <h1>{{sessionData.performanceTitle}}</h1>
+<div class="th-scene" *ngIf="sessionData">
+    <h1 class="th-scene-header">{{sessionData.performanceTitle}}</h1>
     <h3>{{sessionData.sessionDateTime | date:['d. MMMM, EEEE, HH:mm']}}</h3>
     <div class="anotherContainer">
         <div class="cont" [style.width]="((34*getLongestRow())+75)+'px'">
@@ -13,8 +13,5 @@
             </div>
         </div>
     </div>
-    <button class="th-button" type="button" (click)="onConfirm()" [routerLink]="['/personal-info']"
-            [disabled]="!selectedSeats.length">
-        Confirm
-    </button>
+    <app-bottom-panel [buttons]="bottomPanelButtons" [panelPosition]="'absolute'"></app-bottom-panel>
 </div>

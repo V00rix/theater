@@ -18,25 +18,15 @@ div
   }
   &.seat
   {
-    // size
     width: 30px;
     height: 30px;
-    // margin, padding
-    margin: 0px;
-    padding: 0px;
-    margin-left: 2px;
-    margin-right: 2px;
-    padding-left: 2px;
-    padding-right: 2px;
-    // border
+    margin: 0 2px;
+    padding: 0 2px;
     border: 1px solid grey;
     border-radius: 5px;
-    // inner align
     text-align: center;
-    //other
     display: inline-block;
     &.available {
-      // available seat
       cursor: pointer;
       &:hover {
         background-color: #9ffcd5;
@@ -59,15 +49,16 @@ div
   }
   &.rowInfo
   {
-    // size
     height: 30px;
-    // margin, padding
     margin: 0;
-    // border
-    // other
     display: inline-block;
     text-align: center;
   }
+}
+
+.th-scene {
+  text-align: center;
+  padding-bottom: 80px;
 }
 
 hr.invisible {
@@ -77,6 +68,11 @@ hr.invisible {
 }
 
 .anotherContainer {
+  margin-top: 3vh;
   overflow-x: scroll;
   text-align: center;
+}
+
+.th-scene-header {
+  margin-top: 2vh;
 }

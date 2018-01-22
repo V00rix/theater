@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {DataManagementService} from '../../services/data-management.service';
 import {Location} from '@angular/common';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
     selector: 'app-confirmation',
@@ -20,8 +21,21 @@ export class ConfirmationComponent implements OnInit {
             telegram: string
         }
     }[];
+    public bottomPanelButtons = [
+        {
+            type: 'button', text: 'Confirm', callback: () => {
+                this.router.navigate(['/success']);
+            }
+        },
+        {
+            type: 'button', text: 'Back', callback: () => {
+                this.location.back();
+            }
+        }
+    ];
 
-    constructor(private dms: DataManagementService, private location: Location) {
+    constructor(private dms: DataManagementService,
+                private location: Location, private router: Router) {
     }
 
     ngOnInit() {
@@ -51,13 +65,5 @@ export class ConfirmationComponent implements OnInit {
                 }
             }
         ];
-    }
-
-    onConfirmed() {
-
-    }
-
-    navigateBack() {
-        this.location.back();
     }
 }

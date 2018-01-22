@@ -20,6 +20,11 @@ export class PersonalInfoComponent implements OnInit {
             telegram: string
         }
     }[];
+    public bottomPanelButtons = [
+        {
+            type: 'submit', text: 'Confirm', callback: () => {}
+        }
+    ];
 
     constructor(private dms: DataManagementService, private router: Router, private activatedRoute: ActivatedRoute) {
     }

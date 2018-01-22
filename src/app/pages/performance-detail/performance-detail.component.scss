@@ -12,10 +12,10 @@
 .th-title-text {
   text-align: center;
   width: 100%;
-  font-size: 7rem;
+  font-size: 10vw;
   padding: 0 5vw;
   position: absolute;
-  margin-top: calc(-85vh + 20vw);
+  margin-top: calc(-70vh + 10vw);
   color: #fc1e1e;
   text-shadow: 0 0 16px rgba(0, 0, 0, 0.45);
 }
@@ -52,6 +52,7 @@
   box-shadow: 1px 0 5px -2px black;
   min-width: 15vw;
   max-width: 30vw;
+  height: calc(90vh - 80px);
 }
 
 .th-table-header {
@@ -74,10 +75,15 @@
   background-color: black;
   margin: 5vh -15vw 0;
   padding: 0;
+  height: calc(100vh - 70px);
 }
 
 .th-sessions-title {
-  font-size: 5rem;
+  font-size: calc(2vw + 5vh);
   text-align: center;
   color: #2b2b2b;
+  padding: 20px;
+  height: 10vh;
+  line-height: 6vh;
+  margin-bottom: 10px;
 }
