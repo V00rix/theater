@@ -1,6 +1,6 @@
 <div class="th-scene" *ngIf="sessionData">
-    <h1 class="th-scene-header">{{sessionData.performanceTitle}}</h1>
-    <h3>{{sessionData.sessionDateTime | date:['d. MMMM, EEEE, HH:mm']}}</h3>
+    <h1 class="th-font-large">{{sessionData.performanceTitle}}</h1>
+    <h3 class="th-font-big">{{sessionData.sessionDateTime | date:['d. MMMM, EEEE, HH:mm']}}</h3>
     <div class="anotherContainer">
         <div class="cont" [style.width]="((34*getLongestRow())+75)+'px'">
             <div class="rowT" *ngFor="let row of sessionData.seats; let i = index"

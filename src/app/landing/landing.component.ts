@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
 import {DataManagementService, DataStatus} from '../services/data-management.service';
 import {DatePipe} from '@angular/common';
 
@@ -7,12 +7,11 @@ import {DatePipe} from '@angular/common';
     templateUrl: './landing.component.html',
     styleUrls: ['./landing.component.scss']
 })
-export class LandingComponent implements OnInit, AfterViewInit {
+export class LandingComponent implements OnInit, AfterViewInit, OnDestroy {
+    @Output() dataLoaded = new EventEmitter<void>();
     public imagesToLoad: number;
     private loadingStartedTime: number;
     private datePipe = new DatePipe('En');
-    @Output() dataLoaded = new EventEmitter<void>();
-
 
     constructor(private dms: DataManagementService) {
         this.imagesToLoad = -1;
@@ -56,5 +55,8 @@ export class LandingComponent implements OnInit, AfterViewInit {
             // After the loading has finished we emit an event
             this.dataLoaded.emit();
         }
+    }
+
+    ngOnDestroy() {
     }
 }

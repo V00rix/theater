@@ -1,11 +1,9 @@
-<form class="th-information-container" (ngSubmit)="onSubmit()" #personalDataForm="ngForm">
-    <h2 class="th-information-title">Enter personal information</h2>
+<form class="information-container" (ngSubmit)="onSubmit()" #personalDataForm="ngForm">
+    <h2 class="th-font-section">Enter personal information</h2>
     <!-- Session selection -->
     <div class="th-horizontal-table" *ngIf="seats">
         <div *ngFor="let seat of seats">
-            <h3>
-                {{'Row: ' + seat.row + ' Seat: ' + seat.seat}}
-            </h3>
+            <h3 class="th-font-big">{{'Row: ' + seat.row + ' Seat: ' + seat.seat}}</h3>
             <div class="text-left">
                 <button class="th-button" type="button">Use my user data</button>
                 <div class="form-group">

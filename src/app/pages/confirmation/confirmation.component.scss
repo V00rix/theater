@@ -1,34 +1,9 @@
-.th-confirmation-data {
-  border-top: 3px solid;
-}
-
-.th-seat {
-  display: table-cell;
+.seat {
   background-color: rgba(102, 102, 102, 0.43);
   padding: 3px 5px;
 }
 
-.th-viewer {
-  display: table-cell;
+.viewer {
   padding: 3px 10px;
   overflow-x: scroll;
-}
-
-.th-confirmation-title {
-  margin-bottom: 0;
-  padding: 10px;
-  text-align: center;
-  background-color: black;
-  color: grey;
-}
-
-.th-table {
-  width: 100%;
-  max-height: calc(100vh - 130px);
-  overflow-y: scroll;
-}
-
-table, th, td {
-  border: none;
-  padding: 0;
 }

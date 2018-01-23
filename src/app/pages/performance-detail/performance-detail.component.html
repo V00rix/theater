@@ -21,9 +21,11 @@
                 <!-- Times container -->
                 <div>
                     <!-- Time -->
-                    <a (click)="onSessionSelected(session.date.getTime())"
-                       [routerLink]="['./' + session.date.getTime()]"
-                       *ngFor="let time of session.times">{{time | date:['HH:mm']}}</a>
+                    <a *ngFor="let time of session.times"
+                       class="th-link"
+                       (click)="onSessionSelected(session.date.getTime())"
+                       [routerLink]="['./' + session.date.getTime()]">
+                        {{time | date:['HH:mm']}}</a>
                 </div>
             </div>
         </div>

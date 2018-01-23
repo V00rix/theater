@@ -1,22 +1,18 @@
-<div class="th-confirmation">
-    <table class="th-table">
-        <tr>
-            <th colspan="2"><h1 class="th-confirmation-title">Confirmation</h1></th>
-        </tr>
-        <tr class="th-confirmation-data" *ngFor="let data of confirmationData">
-            <td class="th-seat">
-                <span>{{'Row: ' + data.seat.row}}<br>{{' Seat: ' + data.seat.seat}}</span>
-            </td>
-            <td class="th-viewer">
-                <p>Name: {{data.userData.name}}</p>
-                <p>Phone: {{data.userData.phone}}</p>
-                <p>Email: {{data.userData.email}}</p>
-                <p *ngIf="data.userData.vk">VK: {{data.userData.vk}}</p>
-                <p *ngIf="data.userData.whatsApp">WhatsApp: {{data.userData.whatsApp}}</p>
-                <p *ngIf="data.userData.viber">Viber: {{data.userData.viber}}</p>
-                <p *ngIf="data.userData.telegram">Telegram: {{data.userData.telegram}}</p>
-            </td>
-        </tr>
-    </table>
-    <app-bottom-panel [buttons]="bottomPanelButtons"></app-bottom-panel>
-</div>
+<h1 class="th-font-large">Confirmation</h1>
+<table class="th-table">
+    <tr *ngFor="let data of confirmationData">
+        <td class="seat">
+            <span>{{'Row: ' + data.seat.row}}<br>{{' Seat: ' + data.seat.seat}}</span>
+        </td>
+        <td class="viewer">
+            <p>Name: {{data.userData.name}}</p>
+            <p>Phone: {{data.userData.phone}}</p>
+            <p>Email: {{data.userData.email}}</p>
+            <p *ngIf="data.userData.vk">VK: {{data.userData.vk}}</p>
+            <p *ngIf="data.userData.whatsApp">WhatsApp: {{data.userData.whatsApp}}</p>
+            <p *ngIf="data.userData.viber">Viber: {{data.userData.viber}}</p>
+            <p *ngIf="data.userData.telegram">Telegram: {{data.userData.telegram}}</p>
+        </td>
+    </tr>
+</table>
+<app-bottom-panel [buttons]="bottomPanelButtons"></app-bottom-panel>
