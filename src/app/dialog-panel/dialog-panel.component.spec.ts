@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BottomPanelComponent } from './bottom-panel.component';
+import { DialogPanelComponent } from './dialog-panel.component';
 
 describe('BottomPanelComponent', () => {
-  let component: BottomPanelComponent;
-  let fixture: ComponentFixture<BottomPanelComponent>;
+  let component: DialogPanelComponent;
+  let fixture: ComponentFixture<DialogPanelComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BottomPanelComponent ]
+      declarations: [ DialogPanelComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BottomPanelComponent);
+    fixture = TestBed.createComponent(DialogPanelComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

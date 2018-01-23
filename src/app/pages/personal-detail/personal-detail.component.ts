@@ -3,9 +3,9 @@ import {DataManagementService} from '../../services/data-management.service';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
-    selector: 'app-personal-info',
-    templateUrl: './personal-info.component.html',
-    styleUrls: ['./personal-info.component.scss']
+    selector: 'app-personal-detail',
+    templateUrl: './personal-detail.component.html',
+    styleUrls: ['./personal-detail.component.scss']
 })
 export class PersonalInfoComponent implements OnInit {
     public seats: {
@@ -52,5 +52,4 @@ export class PersonalInfoComponent implements OnInit {
             this.router.navigate(['./confirmation'], {relativeTo: this.activatedRoute});
         }
     }
-
 }

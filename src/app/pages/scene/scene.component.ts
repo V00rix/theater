@@ -22,7 +22,7 @@ export class SceneComponent implements OnInit {
         {
             type: 'button', text: 'Confirm', callback: () => {
                 this.dms.saveSeats(this.seats);
-                this.router.navigate(['/personal-info']);
+                this.router.navigate(['/personal-detail']);
             }
         }
     ];

@@ -1,5 +1,3 @@
-$footer-height: 20px;
-$header-height: 50px;
 /* Style specific element */
 html {
   height: 100%;
@@ -9,63 +7,98 @@ body {
   margin: 0;
   padding: 0;
   min-height: 100%;
+  overflow: hidden;
 }
+
 /* Buttons */
 .th-button {
-  width: 200px;
-  height: 40px;
-  background-color: black;
+  padding: 0.3rem 1rem;
   border: none;
-  border-radius: 5px;
   color: white;
-  -webkit-box-shadow: 0 5px 10px -3px black;
-  box-shadow: 0 5px 10px -3px black;
   cursor: pointer;
+  background-color: transparent;
+  -webkit-transition: background-color $transition-time, color $transition-time;
+  -moz-transition: background-color $transition-time, color $transition-time;
+  -ms-transition: background-color $transition-time, color $transition-time;
+  -o-transition: background-color $transition-time, color $transition-time;
+  transition: background-color $transition-time, color $transition-time;
+  &:hover {
+    background-color: $button-color;
+  }
+  &:focus {
+    outline: none;
+    -webkit-box-shadow: inset 0 0 15px -1px #929292;
+    -moz-box-shadow: inset 0 0 15px -1px #929292;
+    box-shadow: inset 0 0 15px -1px #929292;
+  }
 }
+
 /* Links */
 .th-link {
 
 }
+
 // Style for links with image and description
 .th-image-description-link {
-  position: relative;
-  padding: 15px;
-  line-height: 50px;
+  //position: relative;
+  //padding: 15px;
+  //line-height: 50px;
 }
+
 // Table with vertical panels scrolling horizontally
 .th-horizontal-table {
-
+  background-color: #aaaaaa;
+  color: white;
+  height: calc(100vh - #{$header-height + $section-title-height});
+  margin: 0 -#{$container-horizontal-padding} -#{$container-vertical-padding};
+  overflow-x: scroll;
+  white-space: nowrap;
+  div {
+    vertical-align: top;
+    display: inline-table;
+    width: 100%;
+    max-width: 150px;
+    height: 100%;
+    h3 {
+      background-color: #2b2b2b;
+      font-size: 1.7rem;
+      padding: 20px;
+      color: #eaeaea;
+    }
+    div {
+      a {
+        display: block;
+        position: relative;
+      }
+    }
+  }
 }
+
 // Page header
 .th-header {
   position: sticky;
-  width: 100%;
+  top: 0;
   z-index: 10;
-  box-shadow: 0px -5px 20px 10px;
-  background-color: $color-header;
-  * {
-    height: $header-height;
+  width: 100vw;
+  background-color: $header-color;
+  height: $header-height;
+  span {
+    margin: 0;
   }
 }
-// Page-footer
-.th-footer {
-  bottom: 0;
-  height: $footer-height;
-  width: 100%;
-  background-color: $color-dark;
-  position: absolute;
-  box-shadow: 0 10px 30px 10px;
-}
+
 // Main content
 .th-content {
-  position: absolute;
-  top: 50px;
-  width: 100%;
-  min-height: calc(100% - #{$header-height});
+  position: fixed;
+  width: 100vw;
+  height: calc(100vh - #{$header-height});
+  top: $header-height;
+  overflow-y: scroll;
 }
+
 // Table (confirmation)
 .th-table {
-  width: 100%;
-  max-height: calc(100vh - 130px);
-  overflow-y: scroll;
+  //width: 100%;
+  //max-height: calc(100vh - 130px);
+  //overflow-y: scroll;
 }

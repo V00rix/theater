@@ -1,0 +1,32 @@
+@import '~styles.scss';
+
+/* Panel basic style */
+.dialog-panel {
+  bottom: 20px;
+  height: 60px;
+  background-color: #e3e3e3;
+  width: 100%;
+  box-shadow: 0 0 10px black;
+  button {
+    color: black;
+    &:hover {
+      color: white;
+    }
+  }
+}
+
+/* Panel position */
+.dialog-panel-fixed {
+  position: fixed;
+}
+.dialog-panel-absolute {
+  position: absolute;
+}
+
+/* Panel align */
+.dialog-panel-top {
+  top: $header-height;
+}
+.dialog-panel-bottom {
+  bottom: 0;
+}

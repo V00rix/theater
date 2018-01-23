@@ -1,5 +1,0 @@
-<div class="th-fixed-bottom-container" [ngStyle]="{'position': panelPosition}">
-    <button *ngFor="let button of buttons" class="th-button th-fixed-bottom-bottom th-button-type-{{button.type}}"
-            type="{{button.type}}" (click)="button.callback()" [ngStyle]="{'width': 100 / buttons.length + '%'}">{{button.text}}
-    </button>
-</div>

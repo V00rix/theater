@@ -1,0 +1,7 @@
+<div class="dialog-panel th-content-fit-height {{displayClass}}">
+    <button *ngFor="let button of buttons" class="th-button th-button-{{button.type}}"
+            type="{{button.type}}" (click)="button.callback()"
+            [ngStyle]="{'width': 100 / buttons.length + '%'}">
+        {{button.text}}
+    </button>
+</div>

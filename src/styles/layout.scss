@@ -9,21 +9,46 @@
 
 // Content container
 .th-container {
-  width: 80vw;
-  left: 10vw;
+  width: 100%;
   position: relative;
   text-align: center;
-  padding: 10vh 0 5vh;
+  padding: $container-vertical-padding $container-horizontal-padding;
+  .dialog-panel {
+    margin-left: -10vw;
+  }
 }
 
 /* Alignment */
 .th-align-left {
   float: left;
   margin-left: 10px;
+  &:hover {
+    .th-image-description-link {
+      filter: invert(100%);
+    }
+  }
 }
+
 .th-align-right {
   float: right;
   margin-right: 10px;
+}
+
+/* Margin, Padding */
+.zero-margin-top {
+  margin-top: 0;
+}
+
+.zero-padding-top {
+  padding-top: 0;
+}
+
+/* Stretching, Fitting */
+.th-content-fit-height {
+  * {
+    display: inline-block;
+    height: 100%;
+  }
 }
 
 /* Visibility */
