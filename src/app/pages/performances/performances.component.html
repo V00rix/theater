@@ -1,5 +1,5 @@
 <div class="th-container">
-    <div *ngFor="let performance of dms.performances; let id = index">
+    <div *ngFor="let performance of performances; let id = index">
         <img src="{{performance.imageUrl}}" alt="'{{performance.title}}' background" class="performance-image"
              height="270" width="480" (click)="displayPerformanceDetail(id)"/>
         <h1 class="th-font-xl performance-title" (click)="displayPerformanceDetail(id)">{{performance.title |

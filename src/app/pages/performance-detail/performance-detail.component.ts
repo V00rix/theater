@@ -12,10 +12,8 @@ import {forEach} from '@angular/router/src/utils/collection';
     styleUrls: ['./performance-detail.component.scss']
 })
 export class PerformanceDetailComponent implements OnInit, OnDestroy {
-    public performance: Performance;
-    public sessionsSorted = false;
+    public performance: { title: string, imageUrl: string, description: string, sessions: Date[] }
     public groupedSessions: { date: Date, times: Date[] }[] = [];
-    private performanceId: number;
 
     constructor(private dms: DataManagementService,
                 private route: ActivatedRoute) {
@@ -24,18 +22,24 @@ export class PerformanceDetailComponent implements OnInit, OnDestroy {
     ngOnInit() {
         /* Get performance id */
         this.route.params.subscribe(params => {
-            this.performanceId = +params['performanceId'];
-            /* Check if basic data is loaded */
-            if (this.dms.dataStatus < DataStatus.PerformanceFetchCompleted) {
-                this.dms.performanceDataLoaded.subscribe(() => {
-                    this.onPerformancesLoaded(this.performanceId);
-                });
-                if (this.dms.dataStatus as DataStatus !== DataStatus.PerformanceFetchStarted) {
-                    this.dms.getPerformanceData(this.performanceId);
+            const performanceId = +params['performanceId'];
+            this.dms.getPerformanceDetail(performanceId).subscribe(
+                (performance: { title: string, imageUrl: string, description: string, sessions: Date[] }) => {
+                    this.performance = performance;
+                    this.groupedSessions = this.groupSessions(performance.sessions);
                 }
-            } else {
-                this.onPerformancesLoaded(this.performanceId);
-            }
+            );
+            // /* Check if basic data is loaded */
+            // if (this.dms.dataStatus < DataStatus.PerformanceFetchCompleted) {
+            //     this.dms.performanceDataLoaded.subscribe(() => {
+            //         this.onPerformancesLoaded(this.performanceId);
+            //     });
+            //     if (this.dms.dataStatus as DataStatus !== DataStatus.PerformanceFetchStarted) {
+            //
+            //     }
+            // } else {
+            //     this.onPerformancesLoaded(this.performanceId);
+            // }
         });
     }
 
@@ -43,8 +47,7 @@ export class PerformanceDetailComponent implements OnInit, OnDestroy {
      * After performances were loaded in DMS
      * @param {number} performanceId
      */
-    private onPerformancesLoaded(performanceId: number) {
-        this.performance = this.dms.performances[performanceId];
+    private groupSessions(sessions: Date[]) {
         // Sorting (redundant?)
         this.performance.sessions.sort((a, b) => a.date < b.date ? -1 : 1);
         /*
@@ -54,7 +57,8 @@ export class PerformanceDetailComponent implements OnInit, OnDestroy {
         let nextDayMargin = this.performance.sessions[0].date.getTime() -
             (this.performance.sessions[0].date.getTime() % 86400000) + 86400000; // 24 * 60 * 60 * 1000
 
-        this.groupedSessions.push({
+        const groupedSessions = [];
+        groupedSessions.push({
             date: this.performance.sessions[0].date,
             times: []
         });

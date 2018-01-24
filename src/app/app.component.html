@@ -1,17 +1,14 @@
-<!-- Landing -->
-<app-landing *ngIf="!sectionsShown" (dataLoaded)="onDataLoaded()"></app-landing>
-
 <!-- Header -->
 <header *ngIf="sectionsShown" class="th-header th-content-fit-height">
     <!-- Navigate back button -->
-    <span *ngIf="displayReturn()" class="th-align-left th-button">
-        <a class="th-image-description-link" (click)="navigateBack()">
-          <img src="../assets/arrowBack.svg" height="30" width="30" alt="goBack"/>
-        </a>
-    </span>
+    <!--<span *ngIf="displayReturn()" class="th-align-left th-button">-->
+        <!--<a class="th-image-description-link" (click)="navigateBack()">-->
+          <!--<img src="../assets/arrowBack.svg" height="30" width="30" alt="goBack"/>-->
+        <!--</a>-->
+    <!--</span>-->
 
     <!-- Brand -->
-    <button class="th-button th-font-brand hidden-sm" [routerLink]="['/performances']">Outer Edges</button>
+    <button class="th-button th-font-brand" [routerLink]="['/performances']">Outer Edges</button>
 
     <!-- Login/Register -->
     <span *ngIf="!loggedIn" class="th-align-right">
@@ -24,6 +21,7 @@
         <button type="button" class="th-button">Logout</button>
     </span>
 </header>
+
 <!-- Main Content -->
 <section class="th-content">
     <!-- Background -->
@@ -31,3 +29,6 @@
     <!-- Main content -->
     <router-outlet></router-outlet>
 </section>
+
+<!-- Landing -->
+<app-landing *ngIf="!sectionsShown" (dataLoaded)="onDataLoaded($event)"></app-landing>
