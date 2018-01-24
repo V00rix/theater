@@ -21,11 +21,15 @@
 }
 .dialog-panel-absolute {
   position: absolute;
+  margin-bottom: -60px;
+}
+.dialog-panel-sticky {
+  position: sticky;
 }
 
 /* Panel align */
 .dialog-panel-top {
-  top: $header-height;
+  top: 0;
 }
 .dialog-panel-bottom {
   bottom: 0;

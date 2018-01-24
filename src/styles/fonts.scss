@@ -5,7 +5,10 @@
 }
 // Page title
 .th-font-page-title {
-
+  margin: 2vh auto 3vh;
+  font-size: 3rem;
+  letter-spacing: 0.4em;
+  font-weight: 700;
 }
 // Description subtitles, scene, loading subtitle (details on page content)
 // Also used on Row Seats data
@@ -18,14 +21,16 @@
   text-shadow: 0 0 13px rgba(0, 0, 0, 0.62);
   color: #000000;
   font-weight: 900;
-  margin: 0;
+  margin: 10vh 0 $section-title-margin;
   line-height: 5vh;
   font-size: 1rem;
   letter-spacing: 0.5em;
 }
 // Performance description text, success contact data
 .th-font-main {
-
+  font-size: 1.2rem;
+  color: black;
+  font-weight: 500;
 }
 // Days and times on session select
 .th-font-date {

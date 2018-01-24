@@ -1,7 +1,7 @@
 <div class="scene" *ngIf="sessionData">
     <!-- Page title -->
-    <h1 class="th-font-page-title">{{sessionData.performanceTitle}}</h1>
-    <h3 class="th-font-big">{{sessionData.sessionDateTime | date:['d. MMMM, EEEE, HH:mm']}}</h3>
+    <h1 class="th-font-page-title">{{sessionData.performanceTitle | uppercase}}</h1>
+    <h3 class="th-font-big">{{sessionData.sessionDateTime | date:['d. MMMM, EEEE, HH:mm'] | uppercase}}</h3>
     <div class="anotherContainer">
         <div class="cont" [style.width]="((34*getLongestRow())+75)+'px'">
             <div class="rowT" *ngFor="let row of sessionData.seats; let i = index"
@@ -14,5 +14,5 @@
             </div>
         </div>
     </div>
-    <app-dialog-panel [buttons]="bottomPanelButtons" [position]="'absolute'"></app-dialog-panel>
+    <app-dialog-panel [buttons]="bottomPanelButtons" [position]="'fixed'"></app-dialog-panel>
 </div>

@@ -35,7 +35,16 @@ body {
 
 /* Links */
 .th-link {
-
+  font-size: 1.4rem;
+  text-decoration-line: blink;
+  padding: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 0.2rem;
+  &:hover {
+    text-decoration: none;
+    background-color: #007bff;
+    color: white;
+  }
 }
 
 // Style for links with image and description
@@ -49,7 +58,7 @@ body {
 .th-horizontal-table {
   background-color: #aaaaaa;
   color: white;
-  height: calc(100vh - #{$header-height + $section-title-height});
+  height: calc(100vh - #{$header-height} + #{$section-title-height} + 2 * #{$section-title-margin});
   margin: 0 -#{$container-horizontal-padding} -#{$container-vertical-padding};
   overflow-x: scroll;
   white-space: nowrap;
@@ -57,18 +66,35 @@ body {
     vertical-align: top;
     display: inline-table;
     width: 100%;
-    max-width: 150px;
+    max-width: 160px;
     height: 100%;
+    background-color: #9d9d9d;
+    &.wider {
+      max-width: 350px;
+      div {
+        max-width: 330px;
+      }
+    }
     h3 {
-      background-color: #2b2b2b;
-      font-size: 1.7rem;
+      background-color: #414141;
+      box-shadow: 0 15px 30px -15px white;
+      font-size: 1.4rem;
       padding: 20px;
       color: #eaeaea;
     }
     div {
+      background-color: transparent;
       a {
         display: block;
         position: relative;
+      }
+      div {
+        display: block;
+        position: relative;
+      }
+      .th-button {
+        width: calc(100% + 20px);
+        margin: -5px -10px 5px;
       }
     }
   }
@@ -98,7 +124,20 @@ body {
 
 // Table (confirmation)
 .th-table {
-  //width: 100%;
+  width: 100%;
   //max-height: calc(100vh - 130px);
   //overflow-y: scroll;
+  tbody {
+    tr {
+      .seat {
+        background-color: #646464;
+      }
+      .viewer {
+        background-color: rgb(153, 153, 153);
+      }
+      td p {
+        text-align: left;
+      }
+    }
+  }
 }

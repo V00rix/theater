@@ -66,4 +66,12 @@ export class ConfirmationComponent implements OnInit {
             }
         ];
     }
+
+    onConfirm() {
+        this.router.navigate(['/success']);
+    }
+
+    onGoBack() {
+        this.location.back();
+    }
 }

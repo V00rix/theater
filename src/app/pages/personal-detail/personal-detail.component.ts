@@ -25,6 +25,8 @@ export class PersonalInfoComponent implements OnInit {
             type: 'submit', text: 'Confirm', callback: () => {}
         }
     ];
+    public testModel = '';
+    public displaySome = false;
 
     constructor(private dms: DataManagementService, private router: Router, private activatedRoute: ActivatedRoute) {
     }
@@ -41,9 +43,33 @@ export class PersonalInfoComponent implements OnInit {
         //     }
         // );
         this.seats = [
-            {row: 3, seat: 5, userData: null},
-            {row: 3, seat: 6, userData: null},
-            {row: 2, seat: 10, userData: null}
+            {row: 3, seat: 5, userData: {
+                    name: null,
+                    phone: null,
+                    email: null,
+                    vk: null,
+                    whatsApp: null,
+                    viber: null,
+                    telegram: null
+                }},
+            {row: 3, seat: 6, userData: {
+                    name: null,
+                    phone: null,
+                    email: null,
+                    vk: null,
+                    whatsApp: null,
+                    viber: null,
+                    telegram: null
+                }},
+            {row: 2, seat: 10, userData: {
+                    name: null,
+                    phone: null,
+                    email: null,
+                    vk: null,
+                    whatsApp: null,
+                    viber: null,
+                    telegram: null
+                }}
         ];
     }
 
@@ -51,5 +77,10 @@ export class PersonalInfoComponent implements OnInit {
         if (true) {
             this.router.navigate(['./confirmation'], {relativeTo: this.activatedRoute});
         }
+    }
+
+    onInput(data) {
+        console.log(data);
+        this.displaySome = true;
     }
 }
