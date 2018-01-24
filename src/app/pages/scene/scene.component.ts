@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {DataManagementService, DataStatus} from '../../services/data-management.service';
 import {Availability, Seat} from '../../models/seat';
 import {Viewer} from '../../models/viewer';
+import {PerformanceDetailComponent} from '../performance-detail/performance-detail.component';
 
 @Component({
     selector: 'app-scene',
@@ -33,26 +34,26 @@ export class SceneComponent implements OnInit {
     }
 
     ngOnInit() {
-        /* Get session time from router params */
-        const dataStatus = this.dms.dataStatus;
         this.route.params.subscribe(params => {
-            const sessionTime = +params['sessionTime'];
             const performanceId = +params['performanceId'];
-            if (this.dms.dataStatus as DataStatus !== DataStatus.SessionFetchCompleted) {
-                this.dms.sessionDataLoaded.subscribe(() => {
-                    this.dms.dataStatus = dataStatus;
-                    this.sessionData = this.dms.sessionData;
-                });
-                if (this.dms.dataStatus as DataStatus !== DataStatus.SessionFetchStarted) {
-                    this.dms.getSessionData(performanceId, sessionTime);
+            const sessionTime = +params['sessionTime'];
+            this.dms.getScene(performanceId, sessionTime).subscribe(
+                (sessionData: { performanceTitle: String, sessionDateTime: number, seats: Seat[][] }) => {
+                    console.log(sessionData);
+                    this.sessionData = sessionData;
                 }
-            } else {
-                this.dms.dataStatus = dataStatus;
-                this.sessionData = this.dms.sessionData;
-            }
+            );
         });
     }
 
+    /* Helpers */
+
+    /**
+     * Set seat class based on it's status
+     * @param {number} row
+     * @param {number} seat
+     * @returns {any}
+     */
     public getClass(row: number, seat: number) {
         switch (this.sessionData.seats[row][seat].availability) {
             case Availability.Hidden:
@@ -66,6 +67,12 @@ export class SceneComponent implements OnInit {
         }
     }
 
+    /**
+     * Seat selection handler
+     * @param {Event} event
+     * @param {number} row
+     * @param {number} seat
+     */
     public onSeatSelected(event: Event, row: number, seat: number): void {
         if (event.srcElement.classList.contains('booked') ||
             event.srcElement.classList.contains('pending') ||
@@ -84,6 +91,10 @@ export class SceneComponent implements OnInit {
         }
     }
 
+    /**
+     * Define the longest row for correct positioning
+     * @returns {number}
+     */
     public getLongestRow(): number {
         let highestCount = 0;
         for (const row of this.sessionData.seats) {

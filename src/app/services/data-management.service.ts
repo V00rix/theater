@@ -6,6 +6,7 @@ import {Session} from '../models/session';
 import {Subject} from 'rxjs/Subject';
 import {Seat} from '../models/seat';
 import {Observable} from 'rxjs/Observable';
+import {forEach} from '@angular/router/src/utils/collection';
 
 @Injectable()
 export class DataManagementService {
@@ -84,68 +85,53 @@ export class DataManagementService {
      * @param {number} performanceId
      * @returns {Observable<{title: string; imageUrl: string; description: string; sessions: Date[]}>}
      */
-    public getPerformanceDetail(performanceId: number): Observable<{ title: string, imageUrl: string, description: string, sessions: Date[] }> {
+    public getPerformanceDetail(performanceId: number): Observable<{
+        title: string, imageUrl: string, description: string, sessions: Date[]
+    }> {
         console.log(`Getting ${performanceId}.\'s performance data!`);
-        this.dataStatus = DataStatus.PerformanceFetchStarted;
-        return this.http.get(`${this.baseUrl}/getPerformanceData.php?performanceId=${performanceId}`).subscribe(
-            (data: { description: String, sessions: Session[] }) => {
-                this.performances[performanceId].description = data.description;
-                this.performances[performanceId].sessions = data.sessions
-                    .map(session => new Session(new Date(session.date), session.seats));
-                this.dataStatus = DataStatus.PerformanceFetchCompleted;
-                this.performanceDataLoaded.next();
+        return this.http.get(`${this.baseUrl}/requests/pages/performanceDetail/getPerformanceDetail.php?performanceId=${performanceId}`)
+            .map((performanceDetail: { title: string, imageUrl: string, description: string, sessions: string[] }) => {
+                return {
+                    title: performanceDetail.title,
+                    imageUrl: performanceDetail.imageUrl,
+                    description: performanceDetail.description,
+                    sessions: performanceDetail.sessions.map(s => new Date(parseInt(s)))
+                };
             }, error => {
                 console.error('Http request failed!', error);
+                return error;
             });
     }
 
-
     /**
-     * Gets performances titles and background images locators
-     */
-    getBasicData() {
-        console.log('Getting basic data!');
-        this.dataStatus = DataStatus.BasicFetchStarted;
-        this.http.get(`${this.baseUrl}/getBasicData.php`).subscribe(
-            data => {
-                this.performances = <Performance[]>data;
-                console.log('Basic data fetched!');
-                this.dataStatus = DataStatus.BasicFetchCompleted;
-                this.basicDataLoaded.next();
-            }, error => {
-                console.error(error);
-            }
-        );
-    }
-
-    /**
-     * Gets session data (seats)
-     * @param performanceId
+     * Get scene info (seats, time, title)
+     * @param {number} performanceId
      * @param {number} sessionTime
+     * @returns {Observable<{performanceTitle: String; sessionDateTime: number; seats: Seat[][]}>}
      */
-    getSessionData(performanceId: number, sessionTime: number) {
-        console.log(`Getting session ${sessionTime} data of performance ${performanceId}!`);
-        this.dataStatus = DataStatus.SessionFetchStarted;
-        this.http.get(`${this.baseUrl}/getSessionData.php?performanceId=${performanceId}&sessionTime=${sessionTime}`)
-            .subscribe(
-                (data: {
-                    performanceTitle: String,
-                    sessionDateTime: number,
-                    seats: Seat[][]
-                }) => {
-                    this.sessionData = data;
-                    this.dataStatus = DataStatus.SessionFetchCompleted;
-                    this.sessionDataLoaded.next();
-                }, error => {
-                    console.error('Http request failed!', error);
-                });
+    public getScene(performanceId: number, sessionTime: number): Observable<{
+        performanceTitle: String, sessionDateTime: number, seats: Seat[][]
+    }> {
+        console.log('Getting scene data');
+        return this.http.get(`${this.baseUrl}/requests/pages/scene/getScene.php?performanceId=${performanceId}&sessionTime=${sessionTime}`)
+            .map((scene: { performanceTitle: String, sessionDateTime: number, seats: Seat[][] }) => {
+                    return scene;
+                },
+                error => {
+                    console.warn(error);
+                    return error;
+                }
+            );
     }
 
-
-    saveSeats(seats: { row: number; seat: number }[]) {
+    /**
+     * Save current selection
+     * @param seats
+     */
+    public saveSeats(seats: { row: number; seat: number }[]) {
         this.selectedSeats = seats;
         console.log('saving seats!');
-        this.http.post(`${this.baseUrl}/saveSeats.php`, seats).subscribe(
+        this.http.post(`${this.baseUrl}/requests/pages/scene/saveTemporarySeats.php`, seats).subscribe(
             success => {
                 console.log(success);
             },

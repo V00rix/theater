@@ -20,8 +20,8 @@ export class PerformancesComponent implements OnInit {
         });
     }
 
-    displayPerformanceDetail(id: number) {
-        this.dms.getPerformanceDetail(id);
+    onPerformanceSelected(id: number) {
+        // this.dms.getPerformanceDetail(id);
         this.router.navigate([`./performances/${id}`]);
     }
 }

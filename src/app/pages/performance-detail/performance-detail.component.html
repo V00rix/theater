@@ -12,9 +12,9 @@
             <p class="th-font-main">{{performance.description}}</p>
         </section>
         <!--Sessions-->
-        <h2 class="th-font-section-title">{{'Sessions' | uppercase}}</h2>
+        <h2 class="th-font-section-title" (click)="test()">{{'Sessions' | uppercase}}</h2>
         <!-- Session selection -->
-        <div class="th-horizontal-table" style="margin-bottom: -5vh" *ngIf="sessionsSorted">
+        <div class="th-horizontal-table" style="margin-bottom: -5vh">
             <div *ngFor="let session of groupedSessions">
                 <!-- Day -->
                 <h3>{{session.date | date:['d. MMMM']}}<br/>{{session.date | date:['EEEE']}}</h3>

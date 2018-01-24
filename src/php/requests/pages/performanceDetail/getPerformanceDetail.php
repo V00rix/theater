@@ -12,9 +12,12 @@ $dataFilePath = $_SERVER['DOCUMENT_ROOT'] . '/theater/app_data/performances.json
 
 require_once $_SERVER['DOCUMENT_ROOT'] . "/theater/src/php/helpers/transformException.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/theater/src/php/validations/serverMethod.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/theater/src/php/models/Exceptions.php";
 
 /* Get performance title, description imageUrl and sessions */
-class Response {
+
+class Response
+{
     public $title;
     public $imageUrl;
     public $description;
@@ -32,24 +35,18 @@ class Response {
 try {
     methodAllowed('GET');
 
-    var_dump($_GET['performanceId']);
+    if (!isset($_GET['performanceId']))
+        throw new argumentMissingException();
 
-    $performances = json_decode(file_get_contents($dataFilePath));
+    $performance = json_decode(file_get_contents($dataFilePath))[$_GET['performanceId']];
 
-    $response = [];
 
-    foreach ($performances as $performance) {
-        array_push($response, new Response($performance->title, $performance->imageUrl));
-    }
+    $response = new Response($performance->title, $performance->imageUrl, $performance->description,
+        array_map(function ($session) {
+            return $session->date;
+        }, $performance->sessions));
 
     echo json_encode($response);
 } catch (baseException $e) {
     transformException($e);
 }
-
-foreach (glob('models/*.php') as $filename)
-{
-    require $filename;
-}
-
-

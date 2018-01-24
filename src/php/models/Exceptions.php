@@ -30,11 +30,11 @@ class badArgumentException extends baseException {
     }
 }
 // when expected to receive arguments (e.g. as data from Http Request)
-//class argumentMissingException extends badArgumentException {
-//    public function header() {
-//        header("HTTP/1.1 400 Request Parameters Missing");
-//    }
-//}
+class argumentMissingException extends badArgumentException {
+    public function header() {
+        header("HTTP/1.1 400 Request Parameters Missing");
+    }
+}
 /* base for login exceptions */
 class loginFailedException extends baseException {}
 // based on situation this might refer to either not found username, or when one is already taken
