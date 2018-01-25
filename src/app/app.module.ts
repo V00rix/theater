@@ -7,7 +7,6 @@ import {ErrorComponent} from './pages/error/error.component';
 import {PerformancesComponent} from './pages/performances/performances.component';
 import {PerformanceDetailComponent} from './pages/performance-detail/performance-detail.component';
 import {SceneComponent} from './pages/scene/scene.component';
-import {PersonalInfoComponent} from './pages/personal-detail/personal-detail.component';
 import {ConfirmationComponent} from './pages/confirmation/confirmation.component';
 import {SuccessComponent} from './pages/success/success.component';
 import {LandingComponent} from './landing/landing.component';
@@ -18,6 +17,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {PropertiesPipe} from './pipes/properties.pipe';
 import {FormsModule} from '@angular/forms';
 import {DialogPanelComponent} from './dialog-panel/dialog-panel.component';
+import {PersonalDataComponent} from './pages/personal-data/personal-data.component';
 
 
 @NgModule({
@@ -28,7 +28,7 @@ import {DialogPanelComponent} from './dialog-panel/dialog-panel.component';
         PerformancesComponent,
         PerformanceDetailComponent,
         SceneComponent,
-        PersonalInfoComponent,
+        PersonalDataComponent,
         ConfirmationComponent,
         SuccessComponent,
         LandingComponent,

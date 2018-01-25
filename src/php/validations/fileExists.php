@@ -7,7 +7,7 @@
  *
 /* Checks for file existence and then performs related action */
 // includes
-$root = $_SERVER['DOCUMENT_ROOT'] . '/theater/src/php/';
+$root = $_SERVER['DOCUMENT_ROOT'] . '/test/dist/php/';
 // classes
 include_once $root . 'models/exceptions.php';
 // classes

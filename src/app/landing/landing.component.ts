@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
-import {AppState, DataManagementService, DataStatus} from '../services/data-management.service';
+import {AppState, DataManagementService} from '../services/data-management.service';
 import {DatePipe} from '@angular/common';
 import {forkJoin} from 'rxjs/observable/forkJoin';
 import {Observable} from 'rxjs/Observable';

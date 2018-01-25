@@ -8,10 +8,10 @@
 
 header("Access-Control-Allow-Origin: *");
 
-$dataFilePath = $_SERVER['DOCUMENT_ROOT'] . '/theater/app_data/performances.json';
+$dataFilePath = $_SERVER['DOCUMENT_ROOT'] . '/test/dist/app_data/performances.json';
 
-require_once $_SERVER['DOCUMENT_ROOT'] . "/theater/src/php/helpers/transformException.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/theater/src/php/validations/serverMethod.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/test/dist/php/helpers/transformException.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/test/dist/php/validations/serverMethod.php";
 /* Get performances titles and imageUrls */
 class Response {
     public $title;

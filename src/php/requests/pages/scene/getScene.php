@@ -8,13 +8,14 @@
 
 header("Access-Control-Allow-Origin: *");
 
-$dataFilePath = $_SERVER['DOCUMENT_ROOT'] . '/theater/app_data/performances.json';
+$dataFilePath = $_SERVER['DOCUMENT_ROOT'] . '/test/dist/app_data/performances.json';
+$selectedSessionFilePath = $_SERVER['DOCUMENT_ROOT'] . '/test/dist/app_data/selectedSession.json';
 
-require_once $_SERVER['DOCUMENT_ROOT'] . "/theater/src/php/helpers/transformException.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/theater/src/php/validations/serverMethod.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/theater/src/php/models/Exceptions.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/test/dist/php/helpers/transformException.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/test/dist/php/validations/serverMethod.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/test/dist/php/models/Exceptions.php";
 
-/* Get scene seats, title and session time */
+/* Get scene personalData, title and session time */
 
 class Response
 {
@@ -43,6 +44,7 @@ try {
         return $p->date == $_GET['sessionTime'];
     })[0];
 
+    file_put_contents($selectedSessionFilePath, json_encode($_GET['sessionTime']));
 
     $response = new Response($performance->title, $session->date, $session->seats);
 

@@ -7,9 +7,9 @@
  *
 /* Validation for allowed server method */
 // includes
-$root = $_SERVER['DOCUMENT_ROOT'] . '/theater/src/php/';
+$root = $_SERVER['DOCUMENT_ROOT'] . '/test/dist/php/';
 // classes
-include_once $root . 'models/exceptions.php';
+include_once $root . 'models/Exceptions.php';
 // checks if method is allowed
 // throws a methodNotAllowedException if not
 function methodAllowed($method) {

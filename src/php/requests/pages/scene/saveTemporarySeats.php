@@ -9,13 +9,14 @@
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
 
-$dataFilePath = $_SERVER['DOCUMENT_ROOT'] . '/theater/app_data/performances.json';
+$dataFilePath = $_SERVER['DOCUMENT_ROOT'] . '/test/dist/app_data/performances.json';
+$seatsFilePath = $_SERVER['DOCUMENT_ROOT'] . '/test/dist/app_data/personalData.json';
 
-require_once $_SERVER['DOCUMENT_ROOT'] . "/theater/src/php/helpers/transformException.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/theater/src/php/validations/serverMethod.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/theater/src/php/models/Exceptions.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/test/dist/php/helpers/transformException.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/test/dist/php/validations/serverMethod.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/test/dist/php/models/Exceptions.php";
 
-/* Saves selected seats, title and session time */
+/* Saves selected personalData, title and session time */
 
 try {
 //    methodAllowed('POST'); todo?????
@@ -26,10 +27,12 @@ try {
 
     session_start();
 
-    $_SESSION['seats'] = $seats;
+    $_SESSION['personalData'] = $seats;
 
-    echo json_encode($_SESSION['seats']);
-    header("HTTP 1.1 200 OK");
-} catch (baseException $e) {
+    file_put_contents($seatsFilePath, json_encode($seats));
+
+    echo json_encode($_SESSION['personalData']);
+//    header("HTTP 1.1 200 OK");
+} catch (Exception $e) { // )) internal SERVER Error) ))0
     transformException($e);
 }

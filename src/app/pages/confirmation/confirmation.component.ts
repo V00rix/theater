@@ -10,68 +10,75 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class ConfirmationComponent implements OnInit {
     public confirmationData: {
-        seat: { row: number, seat: number },
+        row: number, seat: number,
         userData: {
             name: string,
             phone: string,
             email: string,
-            vk: string,
-            whatsApp: string,
-            viber: string,
-            telegram: string
+            vk?: string,
+            whatsApp?: string,
+            viber?: string,
+            telegram?: string
         }
     }[];
-    public bottomPanelButtons = [
-        {
-            type: 'button', text: 'Confirm', callback: () => {
-                this.router.navigate(['/success']);
-            }
-        },
-        {
-            type: 'button', text: 'Back', callback: () => {
-                this.location.back();
-            }
-        }
-    ];
 
     constructor(private dms: DataManagementService,
                 private location: Location, private router: Router) {
     }
 
     ngOnInit() {
-        this.confirmationData = [
-            {
-                seat: {row: 6, seat: 7},
-                userData: {
-                    name: 'Name',
-                    phone: '+420777666555',
-                    email: 'vladogim@gmail.com',
-                    vk: 'vk.com/myVk',
-                    whatsApp: null,
-                    viber: null,
-                    telegram: null
-                }
-            },
-            {
-                seat: {row: 6, seat: 7},
-                userData: {
-                    name: 'Name SdssdA DSdsa aD ASDas',
-                    phone: '+420777666555',
-                    email: 'vladogim312@gmail.com',
-                    vk: 'vk.com/dsadasdas_dsdasdsdsaDSAD',
-                    whatsApp: 'dasdasdsdadasd',
-                    viber: '_SdsadasdasdAS',
-                    telegram: 'dsadasdasdasdasdsa'
-                }
-            }
-        ];
+        if (!this.dms.personalDataSaved) {
+            this.dms.personalDataSavedCompleted.subscribe(() => {
+                this.getConfirmationData();
+            });
+        } else {
+            this.getConfirmationData();
+        }
     }
 
-    onConfirm() {
+    public onConfirm() {
+        this.dms.postReservationRequest();
         this.router.navigate(['/success']);
     }
 
-    onGoBack() {
+    private getConfirmationData(): void {
+        this.dms.getConfirmationData().subscribe(
+            (confirmationData: {
+                row: number, seat: number,
+                userData?: {
+                    name?: string,
+                    phone?: string,
+                    email?: string,
+                    vk?: string,
+                    whatsApp?: string,
+                    viber?: string,
+                    telegram?: string
+                }
+            }[]) => {
+                console.log(confirmationData);
+                this.confirmationData = confirmationData.map(cd => {
+                    return {
+                        row: cd.row,
+                        seat: cd.seat,
+                        userData: {
+                            name: cd.userData.name || 'Name is missing! Something has gone wrong!',
+                            phone: cd.userData.phone || 'Phone is missing! Something has gone wrong!',
+                            email: cd.userData.email || 'Email is missing! Something has gone wrong!',
+                            vk: cd.userData.vk,
+                            whatsApp: cd.userData.whatsApp,
+                            viber: cd.userData.viber,
+                            telegram: cd.userData.telegram
+                        }
+                    };
+                });
+            },
+            error => {
+                console.log(error);
+            }
+        );
+    }
+
+    public onGoBack() {
         this.location.back();
     }
 }

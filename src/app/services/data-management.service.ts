@@ -10,19 +10,13 @@ import {forEach} from '@angular/router/src/utils/collection';
 
 @Injectable()
 export class DataManagementService {
-    private baseUrl = 'http://localhost/theater/src/php';
+    private baseUrl = './php';
 
     public performances: Performance[];
-    public dataStatus = DataStatus.NotFetched;
-    public basicDataLoaded = new Subject<void>();
-    public performanceDataLoaded = new Subject<void>();
-    public sessionDataLoaded = new Subject<void>();
-    public sessionData: {
-        performanceTitle: String,
-        sessionDateTime: number,
-        seats: Seat[][]
-    } = null;
-    selectedSeats: { row: number, seat: number }[];
+    public seatsSaved = true;
+    public seatsSavedCompleted = new Subject<void>();
+    public personalDataSaved = true;
+    public personalDataSavedCompleted = new Subject<void>();
 
     constructor(private http: HttpClient) {
         console.log('DMS Loaded!');
@@ -62,7 +56,8 @@ export class DataManagementService {
         );
     }
 
-    // Pages requests
+    /* Pages requests */
+
     /**
      * Get performances' images and titles
      * @returns {Observable<{title: string; imageUrl: string}[]>}
@@ -104,10 +99,10 @@ export class DataManagementService {
     }
 
     /**
-     * Get scene info (seats, time, title)
+     * Get scene info (personalData, time, title)
      * @param {number} performanceId
      * @param {number} sessionTime
-     * @returns {Observable<{performanceTitle: String; sessionDateTime: number; seats: Seat[][]}>}
+     * @returns {Observable<{performanceTitle: String; sessionDateTime: number; personalData: Seat[][]}>}
      */
     public getScene(performanceId: number, sessionTime: number): Observable<{
         performanceTitle: String, sessionDateTime: number, seats: Seat[][]
@@ -128,12 +123,14 @@ export class DataManagementService {
      * Save current selection
      * @param seats
      */
-    public saveSeats(seats: { row: number; seat: number }[]) {
-        this.selectedSeats = seats;
-        console.log('saving seats!');
+    public saveSeats(seats: { row: number; seat: number }[]): void {
+        this.seatsSaved = false;
+        console.log('saving personalData!');
         this.http.post(`${this.baseUrl}/requests/pages/scene/saveTemporarySeats.php`, seats).subscribe(
             success => {
                 console.log(success);
+                this.seatsSaved = true;
+                this.seatsSavedCompleted.next();
             },
             error => {
                 console.log(error);
@@ -141,9 +138,96 @@ export class DataManagementService {
         );
     }
 
-    getSeats(): Promise<any> {
-        console.log('fetching seats!');
-        this.http.get(`${this.baseUrl}/getSeats.php`).subscribe(
+    /**
+     * Get selected personal data
+     * @returns {Observable<{row: number; seat: number}[]>}
+     */
+    public getSeats(): Observable<{ row: number, seat: number }[]> {
+        console.log('fetching personal data!');
+        return this.http.get(`${this.baseUrl}/requests/pages/getTemporarySeats.php`).map(
+            (success: { row: number, seat: number }[]) => {
+                return success;
+            },
+            error => {
+                console.log(error);
+            }
+        );
+    }
+
+    /**
+     * Save user personal information
+     * @param {SeatWithUserData[]} pData
+     */
+    public savePersonalData(pData: {
+        row: number, seat: number,
+        userData?: {
+            name?: string,
+            phone?: string,
+            email?: string,
+            vk?: string,
+            whatsApp?: string,
+            viber?: string,
+            telegram?: string
+        }
+    }[]) {
+        this.personalDataSaved = false;
+        console.log('Saving personal data!', pData);
+        this.http.post(`${this.baseUrl}/requests/pages/personalData/savePersonalData.php`, pData).subscribe(
+            success => {
+                console.log(success);
+                this.personalDataSaved = true;
+                this.personalDataSavedCompleted.next();
+            },
+            error => {
+                console.log(error);
+            }
+        );
+    }
+
+    /**
+     * Get confirmation data (personal info per personalData)
+     * @returns {Observable<{row: number; seat: number}[]>}
+     */
+    public getConfirmationData(): Observable<{
+        row: number, seat: number,
+        userData?: {
+            name?: string,
+            phone?: string,
+            email?: string,
+            vk?: string,
+            whatsApp?: string,
+            viber?: string,
+            telegram?: string
+        }
+    }[]> {
+        console.log('Getting confirmation data!');
+        return this.http.get(`${this.baseUrl}/requests/pages/confirmation/getConfirmation.php`).map(
+            (success: {
+                row: number, seat: number,
+                userData?: {
+                    name?: string,
+                    phone?: string,
+                    email?: string,
+                    vk?: string,
+                    whatsApp?: string,
+                    viber?: string,
+                    telegram?: string
+                }
+            }[]) => {
+                return success;
+            },
+            error => {
+                console.log(error);
+            }
+        );
+    }
+
+    /**
+     * Post final request on reservation confirmation
+     */
+    public postReservationRequest(): void {
+        console.log('Getting confirmation data!');
+        this.http.get(`${this.baseUrl}/requests/pages/confirmation/postReservation.php`).subscribe(
             success => {
                 console.log(success);
             },
@@ -151,36 +235,7 @@ export class DataManagementService {
                 console.log(error);
             }
         );
-        return new Promise<any>((resolve, reject) => {
-            console.log(this.selectedSeats);
-            if (!this.selectedSeats || this.selectedSeats === undefined) {
-                this.http.get(`${this.baseUrl}/getSeats.php`).toPromise().then(
-                    success => {
-                        console.log(success);
-                        resolve(success);
-                    },
-                    error => {
-                        console.log(error);
-                        reject(error);
-                    }
-                );
-            } else {
-                resolve(this.selectedSeats);
-            }
-        });
     }
-
-
-}
-
-export enum DataStatus {
-    NotFetched = 0,
-    BasicFetchStarted = 1,
-    BasicFetchCompleted = 2,
-    PerformanceFetchStarted = 3,
-    PerformanceFetchCompleted = 4,
-    SessionFetchStarted = 5,
-    SessionFetchCompleted = 6
 }
 
 export enum AppState {

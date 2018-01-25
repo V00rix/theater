@@ -8,7 +8,7 @@
 
 /* Transform exception to http responses */
 /* includes */
-$root = $_SERVER['DOCUMENT_ROOT'] . '/theater/src/php/';
+$root = $_SERVER['DOCUMENT_ROOT'] . '/test/dist/php/';
 // exceptions
 include_once $root . 'models/Exceptions.php';
 // Transform errors to http responses

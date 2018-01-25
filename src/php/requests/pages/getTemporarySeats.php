@@ -10,7 +10,7 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
 
 $dataFilePath = $_SERVER['DOCUMENT_ROOT'] . '/test/dist/app_data/performances.json';
-$seatsFilePath = $_SERVER['DOCUMENT_ROOT'] . '/test/dist/app_data/seats.json';
+$seatsFilePath = $_SERVER['DOCUMENT_ROOT'] . '/test/dist/app_data/personalData.json';
 
 require_once $_SERVER['DOCUMENT_ROOT'] . "/test/dist/php/helpers/transformException.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/test/dist/php/validations/serverMethod.php";

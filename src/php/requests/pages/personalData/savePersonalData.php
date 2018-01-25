@@ -12,23 +12,42 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 $dataFilePath = $_SERVER['DOCUMENT_ROOT'] . '/test/dist/app_data/performances.json';
 $personalDataFilePath = $_SERVER['DOCUMENT_ROOT'] . '/test/dist/app_data/personalData.json';
 
-$dataFilePath = $_SERVER['DOCUMENT_ROOT'] . '/test/dist/app_data/performances.json';
 
 require_once $_SERVER['DOCUMENT_ROOT'] . "/test/dist/php/helpers/transformException.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/test/dist/php/validations/serverMethod.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/test/dist/php/models/Exceptions.php";
 
-/* Get selected personalData */
+/* Saves selected personalData */
 
 try {
-    methodAllowed('GET'); // todo?????
+//    methodAllowed('POST'); todo?????
+
+    $personalData = json_decode(file_get_contents('php://input'));
+
+    // TODO...
 
     session_start();
 
-//    $personalData = $_SESSION['personalData']; // todo ????
-    $seats = json_decode(file_get_contents($personalDataFilePath));
+    /* as
+     {
+        row: number, seat: number,
+        userData?: {
+            name?: string,
+            phone?: string,
+            email?: string,
+            vk?: string,
+            whatsApp?: string,
+            viber?: string,
+            telegram?: string
+        }
+    }[]
+     */
+    $_SESSION['personalData'] = $personalData;
 
-    echo json_encode($seats);
-} catch (baseException $e) {
+    file_put_contents($personalDataFilePath, json_encode($personalData));
+
+//    header("HTTP 1.1 200 OK");
+    echo json_encode($_SESSION['personalData']);
+} catch (Exception $e) {
     transformException($e);
 }

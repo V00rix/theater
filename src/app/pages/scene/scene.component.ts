@@ -1,9 +1,7 @@
-import {Component, ElementRef, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {DataManagementService, DataStatus} from '../../services/data-management.service';
+import {DataManagementService} from '../../services/data-management.service';
 import {Availability, Seat} from '../../models/seat';
-import {Viewer} from '../../models/viewer';
-import {PerformanceDetailComponent} from '../performance-detail/performance-detail.component';
 
 @Component({
     selector: 'app-scene',
@@ -17,13 +15,13 @@ export class SceneComponent implements OnInit {
         seats: Seat[][]
     } = null;
 
-    public seats: { row: number, seat: number }[] = []; // seats data (row, seat)
+    public seats: { row: number, seat: number }[] = []; // personalData data (row, dataField)
     public selectedSeats = []; // as DOM Elements
     public bottomPanelButtons = [
         {
             type: 'button', text: 'Confirm', callback: () => {
                 this.dms.saveSeats(this.seats);
-                this.router.navigate(['/personal-detail']);
+                this.router.navigate(['/personal-data']);
             }
         }
     ];
@@ -49,7 +47,7 @@ export class SceneComponent implements OnInit {
     /* Helpers */
 
     /**
-     * Set seat class based on it's status
+     * Set dataField class based on it's status
      * @param {number} row
      * @param {number} seat
      * @returns {any}

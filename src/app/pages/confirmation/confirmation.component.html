@@ -3,7 +3,7 @@
     <table class="th-table">
         <tr *ngFor="let data of confirmationData">
             <td class="seat">
-                <span>{{'Row: ' + data.seat.row}}<br>{{' Seat: ' + data.seat.seat}}</span>
+                <span>{{'Row: ' + data.row}}<br>{{' Seat: ' + data.seat}}</span>
             </td>
             <td class="viewer">
                 <p>Name: {{data.userData.name}}</p>
@@ -17,8 +17,6 @@
         </tr>
     </table>
     <div>
-        <button class="th-button" (click)="onConfirm()">Confirm</button>
-        <button class="th-button" (click)="onGoBack()">Back</button>
+        <button class="th-button" (click)="onConfirm()">Confirm</button><button class="th-button" (click)="onGoBack()">Back</button>
     </div>
 </div>
-<!--<app-dialog-panel [buttons]="bottomPanelButtons" [position]="'absolute'"></app-dialog-panel>-->

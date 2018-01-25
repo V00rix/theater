@@ -8,11 +8,12 @@
 
 header("Access-Control-Allow-Origin: *");
 
-$dataFilePath = $_SERVER['DOCUMENT_ROOT'] . '/theater/app_data/performances.json';
+$dataFilePath = $_SERVER['DOCUMENT_ROOT'] . '/test/dist/app_data/performances.json';
+$selectedPerformanceFilePath = $_SERVER['DOCUMENT_ROOT'] . '/test/dist/app_data/selectedPerformance.json';
 
-require_once $_SERVER['DOCUMENT_ROOT'] . "/theater/src/php/helpers/transformException.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/theater/src/php/validations/serverMethod.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/theater/src/php/models/Exceptions.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/test/dist/php/helpers/transformException.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/test/dist/php/validations/serverMethod.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/test/dist/php/models/Exceptions.php";
 
 /* Get performance title, description imageUrl and sessions */
 
@@ -37,6 +38,8 @@ try {
 
     if (!isset($_GET['performanceId']))
         throw new argumentMissingException();
+
+    file_put_contents($selectedPerformanceFilePath, json_encode($_GET['performanceId']));
 
     $performance = json_decode(file_get_contents($dataFilePath))[$_GET['performanceId']];
 

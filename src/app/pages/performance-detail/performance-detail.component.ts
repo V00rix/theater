@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {DataManagementService, DataStatus} from '../../services/data-management.service';
+import {DataManagementService} from '../../services/data-management.service';
 import {Performance} from '../../models/performance';
 import {HttpClient} from '@angular/common/http';
 import {Session} from '../../models/session';

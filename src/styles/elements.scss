@@ -58,7 +58,7 @@ body {
 .th-horizontal-table {
   background-color: #aaaaaa;
   color: white;
-  margin: 0 -#{$container-horizontal-padding} -#{$container-vertical-padding};
+  margin: 0 -#{$container-horizontal-padding} 20px;
   overflow-x: scroll;
   white-space: nowrap;
   div {
