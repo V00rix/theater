@@ -10,7 +10,7 @@ import {forEach} from '@angular/router/src/utils/collection';
 
 @Injectable()
 export class DataManagementService {
-    private baseUrl = './php';
+    private baseUrl = 'http://elumixor.com/theater/php';
 
     public performances: Performance[];
     public seatsSaved = true;

@@ -6,6 +6,15 @@ import {Component, OnInit} from '@angular/core';
     styleUrls: ['./success.component.scss']
 })
 export class SuccessComponent implements OnInit {
+    public contact = {
+        name: 'Чайка Александра',
+        email: 'grani.theatre.tickets@gmail.com',
+        phone: '+420-608-841-487',
+        vk: 'vk.com/die136148122',
+        whatsApp: '773-689-106',
+        viber: '773-689-106',
+        telegram: '773-689-106'
+    };
 
     constructor() {
     }
@@ -14,6 +23,6 @@ export class SuccessComponent implements OnInit {
     }
 
     onGoHome() {
-    // go Rome
+        // go Rome
     }
 }

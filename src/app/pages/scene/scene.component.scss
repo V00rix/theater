@@ -1,3 +1,5 @@
+@import "~styles.scss";
+
 div
 {
   line-height: 30px;
@@ -20,29 +22,33 @@ div
     height: 30px;
     margin: 0 2px;
     padding: 0 2px;
-    border: 1px solid grey;
+    border: 1px solid black;
     border-radius: 5px;
     text-align: center;
     display: inline-block;
+    background-color: black;
+    color: $color-font-section-title;
     &.available {
       cursor: pointer;
       &:hover {
-        background-color: #9ffcd5;
+        background-color: $color-seat-hovered;
       }
     }
     &.booked {
-      background-color: grey;
+      background-color: $color-seat-booked;
       opacity: .3;
+      color: black;
     }
     &.pending {
-      background-color: green;
+      background-color: $color-seat-pending;
       opacity: .3;
+      color: black;
     }
     &.inactive {
       opacity: 0;
     }
     &.selected {
-      background-color: #5a98fc;
+      background-color: $color-seat-selected;
     }
   }
   &.rowInfo
@@ -65,10 +71,10 @@ hr.invisible {
 }
 
 .anotherContainer {
-  margin-top: 3vh;
   overflow-x: scroll;
   text-align: center;
-  margin-bottom: 80px;
+  margin: 3vh 0 80px;
+  padding: 0 30px;
 }
 
 .th-scene-header {

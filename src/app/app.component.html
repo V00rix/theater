@@ -2,23 +2,25 @@
 <header *ngIf="sectionsShown" class="th-header th-content-fit-height">
     <!-- Navigate back button -->
     <!--<span *ngIf="displayReturn()" class="th-align-left th-button">-->
-        <!--<a class="th-image-description-link" (click)="navigateBack()">-->
-          <!--<img src="../assets/arrowBack.svg" height="30" width="30" alt="goBack"/>-->
-        <!--</a>-->
+    <!--<a class="th-image-description-link" (click)="navigateBack()">-->
+    <!--<img src="../assets/arrowBack.svg" height="30" width="30" alt="goBack"/>-->
+    <!--</a>-->
     <!--</span>-->
 
     <!-- Brand -->
-    <button class="th-button th-font-brand" [routerLink]="['/performances']">Outer Edges</button>
+    <button class="th-button th-font-brand" [routerLink]="['/performances']">{{ 'app.brand' | translate }}</button>
 
     <!-- Login/Register -->
     <span *ngIf="!loggedIn" class="th-align-right">
-    <button type="button" class="th-button">Login</button><button type="button" class="th-button">Register</button>
+    <button type="button" class="th-button"
+    >{{ 'app.login' | translate }}</button><button type="button" class="th-button"
+    >{{ 'app.register' | translate }}</button>
     </span>
 
     <!-- Logout -->
     <span *ngIf="loggedIn" class="th-align-right">
-        <span>Username</span>
-        <button type="button" class="th-button">Logout</button>
+        <span>{{ 'app.username' | translate }}</span>
+        <button type="button" class="th-button">{{ 'app.logout' | translate }}</button>
     </span>
 </header>
 

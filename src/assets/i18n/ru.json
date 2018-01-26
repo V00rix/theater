@@ -1,0 +1,52 @@
+{
+  "app": {
+    "login": "Войти",
+    "register": "Зарегистрироваться",
+    "username": "Ты не пользователь!!11",
+    "logout": "Выйти",
+    "brand": "Грани",
+    "loading": "Загрузка..."
+  },
+  "pDetail": {
+    "sessions": "Сеансы",
+    "description": "О представлении"
+  },
+  "dialog": {
+    "confirm": "Далее",
+    "back": "Назад"
+  },
+  "pData": {
+    "header": "Контактные данные",
+    "useMyData": "Использовать данные аккаунта",
+    "name": "Имя",
+    "phone": "Телефон",
+    "email": "Email",
+    "vk": "ВКонтакте",
+    "whatsApp": "WhatsApp",
+    "viber": "Viber",
+    "telegram": "Telegram",
+    "optional": "Необезательно",
+    "errors": {
+      "required": {
+        "name": "Введите Ваше имя",
+        "phone": "Введите номер Вашего телефона",
+        "email": "Введите Ваш Email"
+      },
+      "pattern": {
+        "name": "Имя содержит недопустимые знаки",
+        "phone": "Ввведите телефон в формате\n777-777-777",
+        "email": "Ввведите Email в формате\nexample@mail.com"
+      }
+    }
+  },
+  "confirmation": {
+    "title": "Подтверждение"
+  },
+  "success": {
+    "title": "Успех!",
+    "contactedBy": "Для подтверждения с вам свяжется",
+    "goBack": "Вернуться на начальную страницу"
+  },
+  "row": "Ряд",
+  "seat": "Место"
+}

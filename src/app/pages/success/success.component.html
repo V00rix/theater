@@ -1,5 +1,16 @@
 <div class="th-screen-centered text-center">
-    <h1 class="th-font-page-title">Success</h1>
-    <p>Great, you will be contacted by: <span class="th-font-main">Yo momma</span></p>
-    <a class="th-link" [routerLink]="['/performances']" (click)="onGoHome()">Click to return back</a>
+    <h1 class="th-font-page-title">{{'success.title' | translate}}</h1>
+    <p>{{'success.contactedBy' | translate}}<br/>
+        <span class="th-font-main">
+            {{contact.name}}<br/>
+        </span>
+        {{'pData.phone' | translate}}: {{contact.phone}}<br/>
+        {{'pData.email' | translate}}: <a href="mailto:{{contact.email}}">{{contact.email}}</a><br/>
+        {{'pData.vk' | translate}}: <a href="{{contact.vk}}"><img
+                src="https://image.flaticon.com/icons/png/512/25/25684.png" height="25" width="25" alt="vkIcon"></a><br/>
+        {{'pData.whatsApp' | translate}}: {{contact.whatsApp}}<br/>
+        {{'pData.viber' | translate}}: {{contact.viber}}<br/>
+        {{'pData.telegram' | translate}}: {{contact.telegram}}<br/>
+    </p>
+    <a class="th-link" [routerLink]="['/performances']" (click)="onGoHome()">{{'success.goBack' | translate}}</a>
 </div>

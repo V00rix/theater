@@ -2,9 +2,8 @@
 .th-screen-centered {
   position: fixed;
   width: 80vw;
-  height: 40vh;
   left: 10vw;
-  top: 30vh;
+  top: 10vh;
 }
 
 // Content container
@@ -12,6 +11,10 @@
   width: 100%;
   position: relative;
   text-align: center;
+  background: transparent;
+  &.with-background {
+    background: $section-gradient;
+  }
   padding: $container-vertical-padding $container-horizontal-padding;
   .dialog-panel {
     margin-left: -10vw;

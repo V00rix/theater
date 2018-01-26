@@ -1,7 +1,23 @@
 /* Fonts */
+@font-face {
+  font-family: stylishFont;
+  src: url('/theater/assets/fonts/11370.ttf');
+}
+@font-face {
+  font-family: mainFont;
+  src: url('/theater/assets/fonts/11143.ttf');
+}
+@font-face {
+  font-family: headerFont;
+  src: url('/theater/assets/fonts/11453.otf');
+}
+
 // Performance title on image
 .th-font-xl {
-
+  font-size: calc(3rem + 7vw);
+  color: $color-font-xl;
+  font-family: headerFont;
+  text-shadow: 0 0 13px $color-font-xl-shadow;
 }
 // Page title
 .th-font-page-title {
@@ -17,19 +33,20 @@
 }
 // Defines section header in page
 .th-font-section-title {
-  height: $section-title-height;
-  text-shadow: 0 0 13px rgba(0, 0, 0, 0.62);
-  color: #000000;
+  font-family: stylishFont;
+  font-size: 2rem;
+  min-height: 5vh;
+  text-shadow: 0 0 16px black;
+  color: $color-font-section-title;
   font-weight: 900;
-  margin: 10vh 0 $section-title-margin;
+  margin: 10vh 0 1vh;
   line-height: 5vh;
-  font-size: 1rem;
-  letter-spacing: 0.5em;
+  letter-spacing: 0.3em;
 }
 // Performance description text, success contact data
 .th-font-main {
   font-size: 1.2rem;
-  color: black;
+  color: $color-font-main;
   font-weight: 500;
 }
 // Days and times on session select
@@ -44,7 +61,7 @@
 // font for header brand title
 .th-font-brand {
   font-weight: 900;
-  color: #505050;
+  color: $color-brand;
   background-color: transparent;
   &:hover {
     background-color: transparent;

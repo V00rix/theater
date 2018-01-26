@@ -1,15 +1,25 @@
 .performance-image {
-  width: 70%;
-  height: 0%;
-  margin: 5vh 0 10vh;
+  width: 75vw;
+  max-width: 800px;
+  max-height: 550px;
+  margin: 10vh 0 -15vh;
   border: 10px solid black;
+  -webkit-box-shadow: 0 0 30px -5px;
   box-shadow: 0 0 30px -5px;
   cursor: pointer;
   filter: grayscale(100%);
+  object-fit: cover;
+  height: 50vw;
 }
 
 .performance-title {
   position: relative;
-  top: -30vw;
+  top: -15vw;
   cursor: pointer;
+}
+
+@media only screen and (max-width: 480px) {
+  .performance-title {
+    top: 0;
+  }
 }

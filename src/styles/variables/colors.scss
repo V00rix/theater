@@ -1,7 +1,20 @@
 $color-primary-first: black;
-
-$header-color: #747474;
-$background-color: #c0c0c0;
+$color-font-xl: #ffb01e;
+$color-font-xl-shadow: #FFA704;
+$color-font-section-title: #ffca66;
+$color-font-main: #ffb01e;
+$color-header: #041028;
+$section-gradient: linear-gradient(transparent 0%, black 50%);
+$background-gradient: linear-gradient(141deg, $color-font-xl-shadow 0%, #1B6C6C);
+$table-gradient: linear-gradient(#041F1F 00%, #041028 100%);
+$color-dialog-panel: $color-header;
 $button-color: black;
 
+$color-seat-selected: #1B6C6C;
+$color-seat-hovered: #239595;
+$color-seat-booked: #212121;
+$color-seat-pending: #04cfcf;
+
+$color-brand: #04CFCF;
+$color-link: #0051a7;
 $font-color: #151515;

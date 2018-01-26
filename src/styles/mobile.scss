@@ -2,11 +2,20 @@
 @media only screen and (max-width: 480px) {
   body {
     overflow-y: scroll;
+    font-size: 15px;
+  }
+
+  .th-font-section-title {
+    font-size: 1.2rem;
+  }
+
+  .th-button {
+    padding: 0.1rem 0.3rem;
   }
 
   .th-font-page-title {
     margin: 1vh auto 3vh;
-    font-size: 1.7rem;
+    font-size: 1.3rem;
   }
 
   // Page header

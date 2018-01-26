@@ -8,6 +8,27 @@ body {
   padding: 0;
   min-height: 100%;
   overflow: hidden;
+
+  font-family: mainFont;
+  font-size: 20px;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: black;
+  border-radius: 10px;
 }
 
 /* Buttons */
@@ -35,6 +56,7 @@ body {
 
 /* Links */
 .th-link {
+  color: $color-link;
   font-size: 1.4rem;
   text-decoration-line: blink;
   padding: 1.3rem;
@@ -54,9 +76,29 @@ body {
   //line-height: 50px;
 }
 
+// Validation messages
+.th-error * {
+  color: #ab3838;
+  font-weight: 600;
+  padding: 5px 5px 0;
+  margin: 0;
+  text-align: center;
+}
+
+// Valid statuses
+input.ng-valid.ng-touched {
+  background-color: rgb(187, 255, 195);
+  border: 1px solid rgba(8, 106, 8, 0.33);
+}
+
+input.ng-invalid.ng-touched {
+  background-color: rgb(183, 132, 128);
+  border: 1px solid rgba(168, 38, 28, 0.6);
+}
+
 // Table with vertical panels scrolling horizontally
 .th-horizontal-table {
-  background-color: #aaaaaa;
+  background: $table-gradient;
   color: white;
   margin: 0 -#{$container-horizontal-padding} 20px;
   overflow-x: scroll;
@@ -67,7 +109,7 @@ body {
     width: 100%;
     max-width: 160px;
     height: 100%;
-    background-color: #9d9d9d;
+    background-color: #0d161a;
     &.wider {
       max-width: 350px;
       div {
@@ -75,8 +117,8 @@ body {
       }
     }
     h3 {
-      background-color: #414141;
-      box-shadow: 0 15px 30px -15px white;
+      background-color: $color-header;
+      box-shadow: 0 15px 30px -15px rgba(255, 255, 255, 0.12);
       font-size: 1.4rem;
       padding: 20px;
       color: #eaeaea;
@@ -105,8 +147,9 @@ body {
   top: 0;
   z-index: 10;
   width: 100vw;
-  background-color: $header-color;
+  background-color: $color-header;
   height: $header-height;
+  border-bottom: 2px solid;
   span {
     margin: 0;
   }

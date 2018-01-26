@@ -12,10 +12,11 @@ export class PersonalDataComponent implements OnInit {
     public personalData: SeatWithUserData[];
     public bottomPanelButtons = [
         {
-            type: 'submit', text: 'Confirm', callback: () => {
+            type: 'submit', text: 'confirm', callback: () => {
             }
         }
     ];
+    public formsValid = false;
 
     constructor(private dms: DataManagementService, private router: Router, private activatedRoute: ActivatedRoute) {
     }

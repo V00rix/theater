@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import {LOCALE_ID, NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
 import {NotFoundComponent} from './pages/not-found/not-found.component';
@@ -13,12 +13,22 @@ import {LandingComponent} from './landing/landing.component';
 import {AppRoutingModule} from './app-routing.module';
 import {DataManagementService} from './services/data-management.service';
 import {BgTestComponent} from './dev/bg-test/bg-test.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {PropertiesPipe} from './pipes/properties.pipe';
 import {FormsModule} from '@angular/forms';
 import {DialogPanelComponent} from './dialog-panel/dialog-panel.component';
 import {PersonalDataComponent} from './pages/personal-data/personal-data.component';
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {registerLocaleData} from '@angular/common';
+import localeRu from '@angular/common/locales/ru';
 
+// AoT requires an exported function for factories
+export function createTranslateLoader(http: HttpClient) {
+    return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
+
+registerLocaleData(localeRu, 'ru');
 
 @NgModule({
     declarations: [
@@ -34,15 +44,23 @@ import {PersonalDataComponent} from './pages/personal-data/personal-data.compone
         LandingComponent,
         BgTestComponent,
         PropertiesPipe,
-        DialogPanelComponent
+        DialogPanelComponent,
     ],
     imports: [
         BrowserModule,
         FormsModule,
         AppRoutingModule,
-        HttpClientModule
+        HttpClientModule,
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: (createTranslateLoader),
+                deps: [HttpClient]
+            }
+        })
     ],
-    providers: [DataManagementService],
+    providers: [DataManagementService,
+        { provide: LOCALE_ID, useValue: 'ru' }],
     bootstrap: [AppComponent]
 })
 export class AppModule {

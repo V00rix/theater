@@ -5,14 +5,14 @@
     <!-- Title-->
     <h1 class="th-font-xl title-text">{{performance.title | uppercase}}</h1>
     <!-- Content -->
-    <div class="th-container">
+    <div class="th-container with-background">
         <!-- Description-->
-        <h2 class="th-font-section-title">{{'Description' | uppercase}}</h2>
+        <h2 class="th-font-section-title">{{'pDetail.description' | translate | uppercase}}</h2>
         <section>
-            <p class="th-font-main">{{performance.description}}</p>
+            <pre class="th-font-main">{{performance.description}}</pre>
         </section>
         <!--Sessions-->
-        <h2 class="th-font-section-title" (click)="test()">{{'Sessions' | uppercase}}</h2>
+        <h2 class="th-font-section-title" (click)="test()">{{'pDetail.sessions' | translate | uppercase}}</h2>
         <!-- Session selection -->
         <div class="th-horizontal-table" style="margin-bottom: -5vh">
             <div *ngFor="let session of groupedSessions">

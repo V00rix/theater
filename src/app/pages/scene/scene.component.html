@@ -5,7 +5,7 @@
     <div class="anotherContainer">
         <div class="cont" [style.width]="((34*getLongestRow())+75)+'px'">
             <div class="rowT" *ngFor="let row of sessionData.seats; let i = index"
-                 [style.width]="(34*getLongestRow()+75)+'px'">
+                 [style.width]="(35*getLongestRow()+75)+'px'">
                 <hr class="invisible">
                 <div class="rowInfo">{{ sessionData.seats.length-i }}. ряд</div>
                 <div class="seat" *ngFor="let seat of row; let j = index"
@@ -14,5 +14,5 @@
             </div>
         </div>
     </div>
-    <app-dialog-panel [buttons]="bottomPanelButtons" [position]="'fixed'"></app-dialog-panel>
+    <app-dialog-panel *ngIf="selectedSeats.length" [buttons]="bottomPanelButtons" [position]="'fixed'"></app-dialog-panel>
 </div>

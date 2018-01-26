@@ -4,12 +4,13 @@
 .dialog-panel {
   bottom: 20px;
   height: 60px;
-  background-color: #e3e3e3;
+  background-color: $color-dialog-panel;
   width: 100%;
   box-shadow: 0 0 10px black;
   button {
-    color: black;
+    color: $color-brand;
     &:hover {
+      background-color: $color-font-main;
       color: white;
     }
   }

@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {AppState, DataManagementService} from './services/data-management.service';
-import {Subscription} from 'rxjs/Subscription';
 import {Location} from '@angular/common';
 import {ActivatedRoute, Router} from '@angular/router';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
     selector: 'app-root',
@@ -16,7 +16,12 @@ export class AppComponent implements OnInit {
     constructor(private dms: DataManagementService,
                 private router: Router,
                 private route: ActivatedRoute,
-                private location: Location) {
+                private location: Location, translate: TranslateService) {
+        // this language will be used as a fallback when a translation isn't found in the current language
+        translate.setDefaultLang('en');
+
+        // the lang to use, if the lang isn't available, it will use the current loader to get them
+        translate.use('ru');
     }
 
     ngOnInit() {
@@ -25,30 +30,6 @@ export class AppComponent implements OnInit {
 
     onDataLoaded(appState: AppState) {
         console.log(`Ok, basic loading complete, your previous state was '${AppState[appState]}' (${appState})`);
-
-        // switch (appState) {
-        //     case AppState.Performances:
-        //         // Get performance data. then()
-        //         //  -> {
-        //         //  redirect to page
-        //         //  hide loading overlay
-        //         // }
-        //         this.router.navigate(['/performances']);
-        //         break;
-        //     case AppState.PerformanceDetail:
-        //         this.router.navigate(['/performances/' + this.dms.performanceId]);
-        //         break;
-        //     case AppState.Scene:
-        //         break;
-        //     case AppState.PersonalData:
-        //         break;
-        //     case AppState.Confirmation:
-        //         break;
-        //     case AppState.Success:
-        //         break;
-        //     default:
-        //         break;
-        // }
         this.sectionsShown = true;
     }
 
