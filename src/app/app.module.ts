@@ -14,7 +14,6 @@ import {AppRoutingModule} from './app-routing.module';
 import {DataManagementService} from './services/data-management.service';
 import {BgTestComponent} from './dev/bg-test/bg-test.component';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
-import {PropertiesPipe} from './pipes/properties.pipe';
 import {FormsModule} from '@angular/forms';
 import {DialogPanelComponent} from './dialog-panel/dialog-panel.component';
 import {PersonalDataComponent} from './pages/personal-data/personal-data.component';
@@ -22,6 +21,7 @@ import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {registerLocaleData} from '@angular/common';
 import localeRu from '@angular/common/locales/ru';
+import { DateTransformPipe } from './pipes/date-transform.pipe';
 
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
@@ -43,8 +43,8 @@ registerLocaleData(localeRu, 'ru');
         SuccessComponent,
         LandingComponent,
         BgTestComponent,
-        PropertiesPipe,
         DialogPanelComponent,
+        DateTransformPipe,
     ],
     imports: [
         BrowserModule,

@@ -78,8 +78,4 @@ export class PerformanceDetailComponent implements OnInit, OnDestroy {
 
     ngOnDestroy() {
     }
-
-    test() {
-        console.log(this.groupedSessions);
-    }
 }

@@ -11,7 +11,7 @@ import {Availability, Seat} from '../../models/seat';
 export class SceneComponent implements OnInit {
     public sessionData: {
         performanceTitle: String,
-        sessionDateTime: number,
+        sessionDateTime: Date,
         seats: Seat[][]
     } = null;
 
@@ -36,7 +36,7 @@ export class SceneComponent implements OnInit {
             const performanceId = +params['performanceId'];
             const sessionTime = +params['sessionTime'];
             this.dms.getScene(performanceId, sessionTime).subscribe(
-                (sessionData: { performanceTitle: String, sessionDateTime: number, seats: Seat[][] }) => {
+                (sessionData: { performanceTitle: String, sessionDateTime: Date, seats: Seat[][] }) => {
                     console.log(sessionData);
                     this.sessionData = sessionData;
                 }

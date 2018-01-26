@@ -105,12 +105,16 @@ export class DataManagementService {
      * @returns {Observable<{performanceTitle: String; sessionDateTime: number; personalData: Seat[][]}>}
      */
     public getScene(performanceId: number, sessionTime: number): Observable<{
-        performanceTitle: String, sessionDateTime: number, seats: Seat[][]
+        performanceTitle: String, sessionDateTime: Date, seats: Seat[][]
     }> {
         console.log('Getting scene data');
         return this.http.get(`${this.baseUrl}/requests/pages/scene/getScene.php?performanceId=${performanceId}&sessionTime=${sessionTime}`)
-            .map((scene: { performanceTitle: String, sessionDateTime: number, seats: Seat[][] }) => {
-                    return scene;
+            .map((scene: { performanceTitle: String, sessionDateTime: string, seats: Seat[][] }) => {
+                    return {
+                        performanceTitle: scene.performanceTitle,
+                        sessionDateTime: new Date(parseInt(scene.sessionDateTime)),
+                        seats: scene.seats
+                    };
                 },
                 error => {
                     console.warn(error);

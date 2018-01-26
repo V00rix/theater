@@ -17,7 +17,7 @@
         <div class="th-horizontal-table" style="margin-bottom: -5vh">
             <div *ngFor="let session of groupedSessions">
                 <!-- Day -->
-                <h3>{{session.date | date:['d. MMMM']}}<br/>{{session.date | date:['EEEE']}}</h3>
+                <h3>{{session.date | date:['d. MMMM']}}<br/>{{session.date| dateTransform | date:['EEEE']}}</h3>
                 <!-- Times container -->
                 <div>
                     <!-- Time -->
@@ -25,7 +25,7 @@
                        class="th-link"
                        (click)="onSessionSelected(session.date.getTime())"
                        [routerLink]="['./' + session.date.getTime()]">
-                        {{time | date:['HH:mm']}}</a>
+                        {{time | dateTransform | date:['HH:mm']}}</a>
                 </div>
             </div>
         </div>
