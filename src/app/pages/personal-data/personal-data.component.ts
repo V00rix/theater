@@ -10,6 +10,7 @@ import {forEach} from '@angular/router/src/utils/collection';
 })
 export class PersonalDataComponent implements OnInit {
     public personalData: SeatWithUserData[];
+    public maxRows: number;
     public bottomPanelButtons = [
         {
             type: 'submit', text: 'confirm', callback: () => {
@@ -33,16 +34,17 @@ export class PersonalDataComponent implements OnInit {
 
     public onSubmit(form) {
         if (form.valid) {
-            this.dms.savePersonalData(this.personalData);
+            this.dms.savePersonalData(this.personalData, this.maxRows);
             this.router.navigate(['./confirmation'], {relativeTo: this.activatedRoute});
         }
     }
 
     private getSeats(): void {
         this.dms.getSeats().subscribe(
-            (seats: { row: number, seat: number }[]) => {
+            (seats: {pData: { row: number, seat: number }[], maxRows: number}) => {
                 console.log(seats);
-                this.personalData = seats.map(seat => new SeatWithUserData(seat.row, seat.seat)) || null;
+                this.personalData = seats.pData.map(seat => new SeatWithUserData(seat.row, seat.seat)) || null;
+                this.maxRows = seats.maxRows || 0;
             },
             error => {
                 console.log(error);

@@ -21,6 +21,7 @@ export class ConfirmationComponent implements OnInit {
             telegram?: string
         }
     }[];
+    public maxRows: number;
 
     constructor(private dms: DataManagementService,
                 private location: Location, private router: Router) {
@@ -44,19 +45,22 @@ export class ConfirmationComponent implements OnInit {
     private getConfirmationData(): void {
         this.dms.getConfirmationData().subscribe(
             (confirmationData: {
-                row: number, seat: number,
-                userData?: {
-                    name?: string,
-                    phone?: string,
-                    email?: string,
-                    vk?: string,
-                    whatsApp?: string,
-                    viber?: string,
-                    telegram?: string
-                }
-            }[]) => {
+                pData: {
+                    row: number, seat: number,
+                    maxRow: number,
+                    userData?: {
+                        name?: string,
+                        phone?: string,
+                        email?: string,
+                        vk?: string,
+                        whatsApp?: string,
+                        viber?: string,
+                        telegram?: string
+                    }
+                }[], maxRows: number
+            }) => {
                 console.log(confirmationData);
-                this.confirmationData = confirmationData.map(cd => {
+                this.confirmationData = confirmationData.pData.map(cd => {
                     return {
                         row: cd.row,
                         seat: cd.seat,
@@ -71,6 +75,7 @@ export class ConfirmationComponent implements OnInit {
                         }
                     };
                 });
+                this.maxRows = confirmationData.maxRows || 0;
             },
             error => {
                 console.log(error);

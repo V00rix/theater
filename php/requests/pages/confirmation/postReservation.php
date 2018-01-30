@@ -24,21 +24,24 @@ try {
     session_start();
     /* as
          {
-            row: number, seat: number,
-            userData?: {
-                name?: string,
-                phone?: string,
-                email?: string,
-                vk?: string,
-                whatsApp?: string,
-                viber?: string,
-                telegram?: string
-            }
-        }[]
-         */
+            pData: {
+                row: number, seat: number,
+                userData?: {
+                    name?: string,
+                    phone?: string,
+                    email?: string,
+                    vk?: string,
+                    whatsApp?: string,
+                    viber?: string,
+                    telegram?: string
+                }
+            }[],
+            maxRows: number
+        }
+    */
 //    $personalData = $_SESSION['personalData']; // TODO...
 
-    $personalData = json_decode(file_get_contents($personalDataFilePath));
+    $personalData = json_decode(file_get_contents($personalDataFilePath))->pData;
 
 //    $selectedPerformance = $_SESSION['selectedPerformance']; // TODO..
 //    $selectedSession = $_SESSION['selectedSession']; // TODO..

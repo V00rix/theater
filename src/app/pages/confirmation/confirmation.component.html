@@ -3,7 +3,7 @@
     <table class="th-table">
         <tr *ngFor="let data of confirmationData">
             <td class="seat">
-                <span>{{'row' | translate}}: {{data.row}}<br>{{'seat' | translate}}: {{data.seat}}</span>
+                <span>{{'row' | translate}}: {{maxRows - data.row}}<br>{{'seat' | translate}}: {{data.seat + 1}}</span>
             </td>
             <td class="viewer">
                 <p>{{'pData.name' | translate}}: {{data.userData.name}}</p>

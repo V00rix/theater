@@ -20,7 +20,8 @@ export class SceneComponent implements OnInit {
     public bottomPanelButtons = [
         {
             type: 'button', text: 'confirm', callback: () => {
-                this.dms.saveSeats(this.seats);
+                console.log(this.seats);
+                this.dms.saveSeats(this.seats, this.sessionData.seats.length);
                 this.router.navigate(['/personal-data']);
             }
         }

@@ -3,7 +3,7 @@
     <!-- Session selection -->
     <div class="th-horizontal-table" *ngIf="personalData !== undefined && personalData.length" >
         <div *ngFor="let dataField of personalData; let id = index" class="wider" ngModelGroup="{{id}}">
-            <h3 class="th-font-big">{{'row' | translate}}: {{dataField.row}} {{'seat' | translate}}: {{dataField.seat}}</h3>
+            <h3 class="th-font-big">{{'row' | translate}}: {{maxRows - dataField.row}} {{'seat' | translate}}: {{dataField.seat + 1}}</h3>
             <div class="text-left">
                 <button class="th-button" type="button" disabled>{{'pData.useMyData' | translate}}</button>
                 <div class="form-group">

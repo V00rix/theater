@@ -125,12 +125,14 @@ export class DataManagementService {
 
     /**
      * Save current selection
-     * @param seats
+     * @param pData
+     * @param maxRows
      */
-    public saveSeats(seats: { row: number; seat: number }[]): void {
+    public saveSeats(pData: { row: number; seat: number }[], maxRows: number): void {
+        console.log(maxRows);
         this.seatsSaved = false;
         console.log('saving personalData!');
-        this.http.post(`${this.baseUrl}/requests/pages/scene/saveTemporarySeats.php`, seats).subscribe(
+        this.http.post(`${this.baseUrl}/requests/pages/scene/saveTemporarySeats.php`, {pData: pData, maxRows: maxRows}).subscribe(
             success => {
                 console.log(success);
                 this.seatsSaved = true;
@@ -146,10 +148,11 @@ export class DataManagementService {
      * Get selected personal data
      * @returns {Observable<{row: number; seat: number}[]>}
      */
-    public getSeats(): Observable<{ row: number, seat: number }[]> {
+    public getSeats(): Observable<{ pData: { row: number, seat: number }[], maxRows: number }> {
         console.log('fetching personal data!');
         return this.http.get(`${this.baseUrl}/requests/pages/getTemporarySeats.php`).map(
-            (success: { row: number, seat: number }[]) => {
+            (success: { pData: { row: number, seat: number }[], maxRows: number }) => {
+                console.log(success);
                 return success;
             },
             error => {
@@ -161,6 +164,7 @@ export class DataManagementService {
     /**
      * Save user personal information
      * @param {SeatWithUserData[]} pData
+     * @param maxRows
      */
     public savePersonalData(pData: {
         row: number, seat: number,
@@ -173,10 +177,10 @@ export class DataManagementService {
             viber?: string,
             telegram?: string
         }
-    }[]) {
+    }[], maxRows: number): void {
         this.personalDataSaved = false;
         console.log('Saving personal data!', pData);
-        this.http.post(`${this.baseUrl}/requests/pages/personalData/savePersonalData.php`, pData).subscribe(
+        this.http.post(`${this.baseUrl}/requests/pages/personalData/savePersonalData.php`, {pData: pData, maxRows: maxRows}).subscribe(
             success => {
                 console.log(success);
                 this.personalDataSaved = true;
@@ -193,31 +197,36 @@ export class DataManagementService {
      * @returns {Observable<{row: number; seat: number}[]>}
      */
     public getConfirmationData(): Observable<{
-        row: number, seat: number,
-        userData?: {
-            name?: string,
-            phone?: string,
-            email?: string,
-            vk?: string,
-            whatsApp?: string,
-            viber?: string,
-            telegram?: string
-        }
-    }[]> {
+        pData: {
+            row: number, seat: number,
+            userData?: {
+                name?: string,
+                phone?: string,
+                email?: string,
+                vk?: string,
+                whatsApp?: string,
+                viber?: string,
+                telegram?: string
+            }
+        }[], maxRows: number
+    }> {
         console.log('Getting confirmation data!');
         return this.http.get(`${this.baseUrl}/requests/pages/confirmation/getConfirmation.php`).map(
             (success: {
-                row: number, seat: number,
-                userData?: {
-                    name?: string,
-                    phone?: string,
-                    email?: string,
-                    vk?: string,
-                    whatsApp?: string,
-                    viber?: string,
-                    telegram?: string
-                }
-            }[]) => {
+                pData: {
+                    row: number, seat: number,
+                    maxRow: number,
+                    userData?: {
+                        name?: string,
+                        phone?: string,
+                        email?: string,
+                        vk?: string,
+                        whatsApp?: string,
+                        viber?: string,
+                        telegram?: string
+                    }
+                }[], maxRows: number
+            }) => {
                 return success;
             },
             error => {
@@ -230,7 +239,7 @@ export class DataManagementService {
      * Post final request on reservation confirmation
      */
     public postReservationRequest(): void {
-        console.log('Getting confirmation data!');
+        console.log('Posting reservation request!');
         this.http.get(`${this.baseUrl}/requests/pages/confirmation/postReservation.php`).subscribe(
             success => {
                 console.log(success);

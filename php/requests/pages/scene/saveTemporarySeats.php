@@ -23,6 +23,13 @@ try {
 
     $seats = json_decode(file_get_contents('php://input'));
 
+    // object is this:
+    /*
+        {
+            seats: { row: number, seat: number }[]
+            maxRows: number
+        }
+    */
     // TODO...
 
     session_start();
