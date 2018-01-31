@@ -39,10 +39,26 @@ try {
 
 
     $performance = json_decode(file_get_contents($dataFilePath))[$_GET['performanceId']];
+//    print_r($performance->sessions[0]->date);
+//    print_r($performance->sessions[1]->date);
+//    $iterator = 0x01;
+//    $session = array_filter($performance->sessions, function ($p) use ($iterator) {
+////        print_r($iterator);
+////        $iterator += 1;
+//        return $p->date == $_GET['sessionTime'];
+//    });
+    $session = null;
+    foreach ($performance->sessions as $sess) {
+        if ($sess->date == $_GET['sessionTime']) {
+//            echo 'hello';
+            $session = $sess;
+            break;
+        }
+    }
 
-    $session = array_filter($performance->sessions, function ($p) {
-        return $p->date == $_GET['sessionTime'];
-    })[0];
+//    print_r($session->date);
+
+//    echo json_encode($session->date);
 
     file_put_contents($selectedSessionFilePath, json_encode($_GET['sessionTime']));
 

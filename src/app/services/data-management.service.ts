@@ -110,6 +110,7 @@ export class DataManagementService {
         console.log('Getting scene data');
         return this.http.get(`${this.baseUrl}/requests/pages/scene/getScene.php?performanceId=${performanceId}&sessionTime=${sessionTime}`)
             .map((scene: { performanceTitle: String, sessionDateTime: string, seats: Seat[][] }) => {
+                console.log(scene);
                     return {
                         performanceTitle: scene.performanceTitle,
                         sessionDateTime: new Date(parseInt(scene.sessionDateTime)),
