@@ -6,10 +6,10 @@
  * Time: 2:25 AM
  */
 
-header("Access-Control-Allow-Origin: *");
+//header("Access-Control-Allow-Origin: *");
 
 $dataFilePath = $_SERVER['DOCUMENT_ROOT'] . '/theater/app_data/performances.json';
-$selectedSessionFilePath = $_SERVER['DOCUMENT_ROOT'] . '/theater/app_data/selectedSession.json';
+//$selectedSessionFilePath = $_SERVER['DOCUMENT_ROOT'] . '/theater/app_data/selectedSession.json';
 
 require_once $_SERVER['DOCUMENT_ROOT'] . "/theater/php/helpers/transformException.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/theater/php/validations/serverMethod.php";
@@ -34,37 +34,48 @@ class Response
 try {
     methodAllowed('GET');
 
+//    echo $_SERVER['QUERY_STRING'];
+
     if (!isset($_GET['performanceId']) || !isset($_GET['sessionTime']))
-        throw new argumentMissingException();
+        throw new argumentMissingException("Missing 'performanceId' and/or 'sessionTime'");
 
 
     $performance = json_decode(file_get_contents($dataFilePath))[$_GET['performanceId']];
-//    print_r($performance->sessions[0]->date);
-//    print_r($performance->sessions[1]->date);
-//    $iterator = 0x01;
-//    $session = array_filter($performance->sessions, function ($p) use ($iterator) {
-////        print_r($iterator);
-////        $iterator += 1;
-//        return $p->date == $_GET['sessionTime'];
-//    });
-    $session = null;
-    foreach ($performance->sessions as $sess) {
-        if ($sess->date == $_GET['sessionTime']) {
-//            echo 'hello';
-            $session = $sess;
+
+    $scene = null;
+    $sessionId = 0;
+    foreach ($performance->sessions as $s) {
+        if ($s->date == $_GET['sessionTime']) {
+            $scene = $s;
             break;
         }
+        $sessionId += 1;
     }
 
-//    print_r($session->date);
+    session_start();
+    $_SESSION['selectedSessionId'] = $sessionId;
+    $_SESSION['scene'] = $scene;
 
-//    echo json_encode($session->date);
+    // TODO: erase
+//    $rowIterator = 0;
+//    foreach ($scene->seats as $row) {
+//        $seatIterator = 0;
+////        print_r($rowIterator);
+//        foreach ($row as $seat) {
+////            print_r($seatIterator);
+//            if ($seat->availability != 3) {
+//                echo $rowIterator, ' ', $seatIterator, ' A -> ', $seat->availability, "\n";
+//            }
+//            $seatIterator += 1;
+//        }
+//        $rowIterator += 1;
+//    }
 
-    file_put_contents($selectedSessionFilePath, json_encode($_GET['sessionTime']));
+    $_SESSION['maxRows'] = count($scene->seats);
 
-    $response = new Response($performance->title, $session->date, $session->seats);
+    $response = new Response($performance->title, $scene->date, $scene->seats);
 
     echo json_encode($response);
-} catch (baseException $e) {
+} catch (BaseException $e) {
     transformException($e);
 }
