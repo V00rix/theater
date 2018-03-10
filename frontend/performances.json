@@ -294,17 +294,6 @@
             },
             {
               "availability": 3,
-              "fromLeft": 11,
-              "fromScreen": 13,
-              "viewer": {
-                "Email": "your@mail.com",
-                "Name": "\u0418\u043c\u044f",
-                "Phone": "777-777-777",
-                "Telegram": "\u041d\u043e\u043c\u0435\u0440 Telegram",
-                "VK": "vk.com\/your_vk",
-                "Viber": "\u041d\u043e\u043c\u0435\u0440 Viber",
-                "WhatsApp": "\u041d\u043e\u043c\u0435\u0440 WhatsApp"
-              }
             },
             {
               "availability": 3
