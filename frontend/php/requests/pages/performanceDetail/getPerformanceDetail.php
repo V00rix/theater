@@ -6,10 +6,10 @@
  * Time: 2:25 AM
  */
 
-//header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Origin: *");
 
 $dataFilePath = $_SERVER['DOCUMENT_ROOT'] . '/theater/app_data/performances.json';
-//$selectedPerformanceFilePath = $_SERVER['DOCUMENT_ROOT'] . '/theater/app_data/selectedPerformance.json';
+$selectedPerformanceFilePath = $_SERVER['DOCUMENT_ROOT'] . '/theater/app_data/selectedPerformance.json';
 
 require_once $_SERVER['DOCUMENT_ROOT'] . "/theater/php/helpers/transformException.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/theater/php/validations/serverMethod.php";
@@ -37,15 +37,12 @@ try {
     methodAllowed('GET');
 
     if (!isset($_GET['performanceId']))
-        throw new argumentMissingException("Missing 'performanceId'");
+        throw new argumentMissingException();
 
-    // validate boundaries
-//    if ()
-
-    session_start();
-    $_SESSION['selectedPerformanceId'] = $_GET['performanceId'];
+    file_put_contents($selectedPerformanceFilePath, json_encode($_GET['performanceId']));
 
     $performance = json_decode(file_get_contents($dataFilePath))[$_GET['performanceId']];
+
 
     $response = new Response($performance->title, $performance->imageUrl, $performance->description,
         array_map(function ($session) {
@@ -53,6 +50,6 @@ try {
         }, $performance->sessions));
 
     echo json_encode($response);
-} catch (BaseException $e) {
+} catch (baseException $e) {
     transformException($e);
 }

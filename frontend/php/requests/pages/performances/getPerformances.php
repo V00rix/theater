@@ -6,7 +6,7 @@
  * Time: 2:25 AM
  */
 
-//header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Origin: *");
 
 $dataFilePath = $_SERVER['DOCUMENT_ROOT'] . '/theater/app_data/performances.json';
 
@@ -36,7 +36,7 @@ try {
     }
 
     echo json_encode($response);
-} catch (BaseException $e) {
+} catch (baseException $e) {
     transformException($e);
 }
 

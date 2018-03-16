@@ -8,7 +8,10 @@
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "webpack": "npx webpack",
+    "watch": "npx webpack -w",
+    "clean": "rm -r ./dist/"
   },
   "private": true,
   "dependencies": {
@@ -26,10 +29,11 @@
     "bootstrap": "^4.0.0-beta.3",
     "core-js": "^2.4.1",
     "rxjs": "^5.5.6",
+    "webpack": "^3.11.0",
     "zone.js": "^0.8.19"
   },
   "devDependencies": {
-    "@angular/cli": "^1.6.6",
+    "@angular/cli": "^1.7.3",
     "@angular/compiler-cli": "^5.1.0",
     "@angular/language-service": "^5.1.0",
     "@types/jasmine": "~2.8.3",

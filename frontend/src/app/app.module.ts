@@ -21,6 +21,7 @@ import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {registerLocaleData} from '@angular/common';
 import localeRu from '@angular/common/locales/ru';
+import localeEn from '@angular/common/locales/en';
 import { DateTransformPipe } from './pipes/date-transform.pipe';
 
 // AoT requires an exported function for factories
@@ -29,6 +30,7 @@ export function createTranslateLoader(http: HttpClient) {
 }
 
 registerLocaleData(localeRu, 'ru');
+registerLocaleData(localeEn, 'en');
 
 @NgModule({
     declarations: [
@@ -60,7 +62,7 @@ registerLocaleData(localeRu, 'ru');
         })
     ],
     providers: [DataManagementService,
-        { provide: LOCALE_ID, useValue: 'ru' }],
+        { provide: LOCALE_ID, useValue: 'en' }],
     bootstrap: [AppComponent]
 })
 export class AppModule {
