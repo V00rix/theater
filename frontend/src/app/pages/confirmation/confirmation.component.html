@@ -1,22 +1,3 @@
-<div class="th-container">
-    <h1 class="th-font-page-title">{{'confirmation.title' | translate}}</h1>
-    <table class="th-table">
-        <tr *ngFor="let data of confirmationData">
-            <td class="seat">
-                <span>{{'row' | translate}}: {{maxRows - data.row}}<br>{{'seat' | translate}}: {{data.seat + 1}}</span>
-            </td>
-            <td class="viewer">
-                <p>{{'pData.name' | translate}}: {{data.userData.name}}</p>
-                <p>{{'pData.phone' | translate}}: {{data.userData.phone}}</p>
-                <p>{{'pData.email' | translate}}: {{data.userData.email}}</p>
-                <p *ngIf="data.userData.vk">{{'pData.vk' | translate}}: {{data.userData.vk}}</p>
-                <p *ngIf="data.userData.whatsApp">{{'pData.whatsApp' | translate}}: {{data.userData.whatsApp}}</p>
-                <p *ngIf="data.userData.viber">{{'pData.viber' | translate}}: {{data.userData.viber}}</p>
-                <p *ngIf="data.userData.telegram">{{'pData.telegram' | translate}}: {{data.userData.telegram}}</p>
-            </td>
-        </tr>
-    </table>
-    <div>
-        <button class="th-button" (click)="onConfirm()">{{'dialog.confirm' | translate}}</button><button class="th-button" (click)="onGoBack()">{{'dialog.back' | translate}}</button>
-    </div>
-</div>
+<p>
+  confirmation works!
+</p>
