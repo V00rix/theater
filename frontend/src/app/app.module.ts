@@ -20,14 +20,16 @@ import {ConfirmationComponent} from './pages/confirmation/confirmation.component
 import {SuccessComponent} from './pages/success/success.component';
 
 /* Components */
-import {NavigationComponent} from './business/components/dev/navigation/navigation.component';
+import {NavigationComponent} from './business/components/navigation/navigation.component';
 
 /* i18n */
 import {registerLocaleData} from '@angular/common';
 import localeRu from '@angular/common/locales/ru';
 import localeEn from '@angular/common/locales/en';
-import {PagesService} from './business/services/pages.service';
+import {DataService} from './business/services/data.service';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { SlidePanelComponent } from './business/components/slide-panel/slide-panel.component';
+import { SlidePanelContentComponent } from './business/components/slide-panel/slidePanelContent/slide-panel-content.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -50,6 +52,8 @@ registerLocaleData(localeEn, 'en');
     ViewerComponent,
     NavigationComponent,
     NotFoundComponent,
+    SlidePanelComponent,
+    SlidePanelContentComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,7 +68,7 @@ registerLocaleData(localeEn, 'en');
       }
     })
   ],
-  providers: [PagesService,
+  providers: [DataService,
     {provide: LOCALE_ID, useValue: 'en'}],
   bootstrap: [AppComponent]
 })

@@ -1,3 +1,17 @@
 {
-  "login": "ЗалогиниТЬСЯ"
+  "pages": {
+    "home": {
+      "hints": {
+        "clickForTicket": "Click to get a ticket",
+        "hoverForMenu": "Hover to show menu",
+        "scrollForPerformances": "Scroll down for more performances"
+      }
+    },
+    "performance": {
+      "title": "Sessions",
+      "hints": {
+        "scrollForDescription": "Scroll for performance details"
+      }
+    }
+  }
 }

@@ -1,0 +1,49 @@
+/* TODO: Layout: distances, positions, paddings, margins, borders, shadows etc. */
+
+// TODO: add max height/widths in percentage for pixel-based heights/widths
+.layout-header-1 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 150px;
+  height: 150px;
+}
+
+.layout-center-6 {
+  position: fixed;
+  top: 150px;
+  right: 0;
+  width: 150px;
+  height: calc(100% - 300px);
+}
+
+.layout-footer-center {
+  position: fixed;
+  bottom: 0;
+  right: 25%;
+  width: 50%;
+  height: 150px;
+}
+
+.layout-top-center {
+  position: fixed;
+  top: 0;
+  right: 25%;
+  width: 50%;
+  height: 300px;
+}
+
+.layout-center-center {
+  position: fixed;
+  top: 300px;
+  right: 25%;
+  width: 50%;
+  bottom: 300px;
+}
+.layout-bottom-t-center {
+  position: fixed;
+  bottom: 150px;
+  right: 25%;
+  width: 50%;
+  height: 150px;
+}

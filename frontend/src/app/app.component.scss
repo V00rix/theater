@@ -1,1 +1,7 @@
-@import '~styles.scss';
+@import '~styles/mixins/fullscreen.scss';
+
+.background {
+  @include fullscreen;
+  object-fit: cover;
+}
+

@@ -1,0 +1,28 @@
+@function solid-lighten($color, $percentage) {
+  @return lighten($color, (1-$percentage)*5%);
+}
+@function solid-darken($color, $percentage) {
+  @return darken($color, (1-$percentage)*5%);
+}
+@mixin rgba($type, $color, $percentage, $shade: ligthen) {
+  @if $shade == lighten {
+    @if $type == color {
+      color: solid-lighten($color, $percentage);
+      color: rgba($color, $percentage);
+    }
+    @if $type == bg {
+      background-color: solid-lighten($color, $percentage);
+      background-color: rgba($color, $percentage);
+    }
+  }
+  @else {
+    @if $type == color {
+      color: solid-darken($color, $percentage);
+      color: rgba($color, $percentage);
+    }
+    @if $type == bg {
+      background-color: solid-darken($color, $percentage);
+      background-color: rgba($color, $percentage);
+    }
+  }
+}

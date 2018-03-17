@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {DataService} from '../../business/services/data.service';
+import {Performance} from '../../business/domain/performance';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +9,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(public data: DataService) {
+  }
 
   ngOnInit() {
   }

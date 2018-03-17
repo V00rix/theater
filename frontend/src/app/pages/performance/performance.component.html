@@ -1,3 +1,29 @@
-<p>
-  performance works!
-</p>
+<div class="shadow"></div>
+<div class="z-main">
+  <div class="fader-top"></div>
+  <div class="layout-footer-center">
+    <div class="font-hint centered">
+      {{'pages.performance.hints.scrollForDescription' | translate}}
+    </div>
+  </div>
+  <div class="fader-bottom"></div>
+
+  <div class="layout-top-center">
+    <h2 class="centered text-center">{{'pages.performance.title' | translate}}</h2>
+  </div>
+
+  <div class="layout-center-center text-center">
+
+    <!-- TODO: center sessions using javascript -->
+    <div *ngFor="let session of this.data.currentPerformance.sessions" class="session action">
+      <div class="session-time">{{session.date | date:'HH:mm':'+0100'}}</div>
+      <hr>
+      <div class="session-day">{{session.date | date:'dd/MM':'+0100'}}</div>
+    </div>
+  </div>
+
+  <div class="layout-bottom-t-center text-center">
+    <h3 class="centered text-center">{{data.currentPerformance.title | uppercase}}</h3>
+  </div>
+</div>
+
