@@ -12,6 +12,22 @@
       "hints": {
         "scrollForDescription": "Scroll for performance details"
       }
+    },
+    "viewer": {
+      "title": "Your information",
+      "useAccountData": "Use account data",
+      "loginForAccountData": "Login to use account data",
+      "row": "Row",
+      "seat": "Seat"
+    }
+  },
+  "forms": {
+    "labels": {
+      "name": "Name",
+      "email-phone": "Email or Phone number"
+    },
+    "divider": {
+      "or": "or"
     }
   }
 }

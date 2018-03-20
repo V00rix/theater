@@ -8,6 +8,8 @@ export class DataService {
 
   public performances: Performance[] = [];
   public currentPerformance: Performance;
+  public selectedSeats: { rowIndex: number, seatIndex: number }[];
+  public loggedIn: boolean;
 
   // TODO: test data - erase later
   private static generatePerformances() {
@@ -22,6 +24,7 @@ export class DataService {
     }
     return performances;
   }
+
   private static generateSessions() {
     const sessions = [];
     for (let i = 0; i < 3; i++) {
@@ -40,6 +43,12 @@ export class DataService {
   constructor() {
     this.performances = DataService.generatePerformances();
     this.currentPerformance = this.performances[0];
+    this.selectedSeats = [
+      {rowIndex: 3, seatIndex: 5},
+      {rowIndex: 3, seatIndex: 5},
+      {rowIndex: 4, seatIndex: 5},
+      {rowIndex: 7, seatIndex: 11}];
+    this.loggedIn = false;
   }
 
 }

@@ -41,7 +41,7 @@
     </g>
 </svg>
 </div>
-<div *ngIf="showOverlay !== false && showPanel" class="overlay z-overlay" (click)="this.showPanel = false">overlay</div>
+<div *ngIf="showOverlay !== false && showPanel" class="overlay z-overlay" (click)="this.showPanel = false"></div>
 <div *ngIf="showPanel" class="slide-panel z-menu" (mouseleave)="this.showPanel = showOverlay !== false">
   <ng-content></ng-content>
 </div>

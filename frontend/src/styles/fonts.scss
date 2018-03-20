@@ -9,6 +9,7 @@
 
 body {
   font-family: "Source Sans Pro", serif;
+  color: rgba(255, 255, 255, .95);
 }
 
 h1 {
@@ -39,7 +40,10 @@ h3 {
 }
 
 label {
-
+  display: block;
+  font-size: 30px;
+  font-family: "Source Sans Pro", serif;
+  text-shadow: 0 3px 6px rgba(0,0,0, .57);
 }
 
 p {
@@ -47,7 +51,8 @@ p {
 }
 
 em {
-
+  color: $color-accent;
+  font-style: normal;
 }
 
 .font-hint {
