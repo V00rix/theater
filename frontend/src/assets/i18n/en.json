@@ -24,7 +24,7 @@
   "forms": {
     "labels": {
       "name": "Name",
-      "email-phone": "Email or Phone number"
+      "emailPhone": "Email or Phone number"
     },
     "divider": {
       "or": "or"

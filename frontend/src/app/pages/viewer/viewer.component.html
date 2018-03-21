@@ -35,12 +35,8 @@
   <div class="layout-center-center">
     <div class="centered">
       <form>
-        <label for="name">{{'forms.labels.name' | translate}}</label>
-        <input type="text" id="name"/>
-        <br>
-        <label for="email-phone">{{'forms.labels.email-phone' | translate}}</label>
-        <input type="text" id="email-phone"/>
-        <br>
+        <app-input [name]="'forms.labels.name' | translate"></app-input>
+        <app-input [name]="'forms.labels.emailPhone' | translate"></app-input>
       </form>
     </div>
   </div>
