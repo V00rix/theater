@@ -5,7 +5,7 @@
         <div *ngFor="let dataField of personalData; let id = index" class="wider" ngModelGroup="{{id}}">
             <h3 class="th-font-big">{{'row' | translate}}: {{maxRows - dataField.row}} {{'seat' | translate}}: {{dataField.seat + 1}}</h3>
             <div class="text-left">
-                <button class="th-button" type="button" disabled>{{'pData.useMyData' | translate}}</button>
+                <!--<button class="th-button" type="button" disabled>{{'pData.useMyData' | translate}}</button>-->
                 <div class="form-group">
                     <label for="name">{{'pData.name' | translate}}</label>
                     <input class="form-control" type="text" placeholder="{{'pData.name' | translate}}" name="name" id="name" required
@@ -39,33 +39,33 @@
                         <pre *ngIf="email.errors.pattern">{{'pData.errors.pattern.email' | translate}}</pre>
                     </div>
                 </div>
-                <p class="text-center">{{'pData.optional' | translate}}</p>
-                <div class="form-group">
-                    <label for="vk">{{'pData.vk' | translate}}</label>
-                    <input class="form-control" type="text" placeholder="{{'pData.vk' | translate}}" name="vk" id="vk"
-                           [(ngModel)]="dataField.userData.vk" #vk="ngModel"/>
-                </div>
-                <div class="form-group">
-                    <label for="whatsApp">{{'pData.whatsApp' | translate}}</label>
-                    <input class="form-control" type="text" placeholder="{{'pData.whatsApp' | translate}}" name="whatsApp" id="whatsApp"
-                           [(ngModel)]="dataField.userData.whatsApp" #whatsApp="ngModel"/>
-                </div>
-                <div class="form-group">
-                    <label for="viber">{{'pData.viber' | translate}}</label>
-                    <input class="form-control" type="text" placeholder="{{'pData.viber' | translate}}" name="viber" id="viber"
-                           [(ngModel)]="dataField.userData.viber" #viber="ngModel"/>
-                </div>
-                <div class="form-group">
-                    <label for="telegram">{{'pData.telegram' | translate}}</label>
-                    <input class="form-control" type="text" placeholder="{{'pData.telegram' | translate}}" name="telegram" id="telegram"
-                           [(ngModel)]="dataField.userData.telegram" #telegram="ngModel"/>
-                </div>
+                <!--<p class="text-center">{{'pData.optional' | translate}}</p>-->
+                <!--<div class="form-group">-->
+                    <!--<label for="vk">{{'pData.vk' | translate}}</label>-->
+                    <!--<input class="form-control" type="text" placeholder="{{'pData.vk' | translate}}" name="vk" id="vk"-->
+                           <!--[(ngModel)]="dataField.userData.vk" #vk="ngModel"/>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<label for="whatsApp">{{'pData.whatsApp' | translate}}</label>-->
+                    <!--<input class="form-control" type="text" placeholder="{{'pData.whatsApp' | translate}}" name="whatsApp" id="whatsApp"-->
+                           <!--[(ngModel)]="dataField.userData.whatsApp" #whatsApp="ngModel"/>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<label for="viber">{{'pData.viber' | translate}}</label>-->
+                    <!--<input class="form-control" type="text" placeholder="{{'pData.viber' | translate}}" name="viber" id="viber"-->
+                           <!--[(ngModel)]="dataField.userData.viber" #viber="ngModel"/>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<label for="telegram">{{'pData.telegram' | translate}}</label>-->
+                    <!--<input class="form-control" type="text" placeholder="{{'pData.telegram' | translate}}" name="telegram" id="telegram"-->
+                           <!--[(ngModel)]="dataField.userData.telegram" #telegram="ngModel"/>-->
+                <!--</div>-->
             </div>
         </div>
     </div>
     <!--<button class="th-button" type="submit">Confirm</button>-->
     <app-dialog-panel *ngIf="personalDataForm.valid" [buttons]="bottomPanelButtons"
-                      [position]="'absolute'"></app-dialog-panel>
+                      [position]="'fixed'"></app-dialog-panel>
 </form>
 
 
