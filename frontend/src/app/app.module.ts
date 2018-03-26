@@ -31,6 +31,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { SlidePanelComponent } from './business/components/slide-panel/slide-panel.component';
 import { SlidePanelContentComponent } from './business/components/slide-panel/slidePanelContent/slide-panel-content.component';
 import { InputComponent } from './business/components/input/input.component';
+import { CheckoutComponent } from './pages/checkout/checkout.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -56,6 +57,7 @@ registerLocaleData(localeEn, 'en');
     SlidePanelComponent,
     SlidePanelContentComponent,
     InputComponent,
+    CheckoutComponent,
   ],
   imports: [
     BrowserModule,

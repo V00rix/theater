@@ -24,6 +24,6 @@ export class AppComponent implements OnInit {
     }
 
     ngOnInit() {
-      this.bg = this.data.currentPerformance.bg;
+      this.bg = this.data.selectedPerformance.bg;
     }
 }

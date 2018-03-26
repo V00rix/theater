@@ -10,12 +10,12 @@
 
   <div class="fader-bottom"></div>
 
-  <h1 class="centered text-center">{{data.currentPerformance.title | uppercase}}</h1>
+  <h1 class="centered text-center">{{data.selectedPerformance.title | uppercase}}</h1>
 
   <div class="layout-center-6">
     <div class="sequence">
       <div *ngFor="let p of data.performances; let id = index" (click)="data.currentPerformance = data.performances[id]"
-           class="sequence-сircle {{data.currentPerformance === data.performances[id] ? 'selected' : ''}}"></div>
+           class="sequence-сircle {{data.selectedPerformance === data.performances[id] ? 'selected' : ''}}"></div>
     </div>
   </div>
 </div>

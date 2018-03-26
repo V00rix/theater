@@ -15,7 +15,7 @@
   <div class="layout-center-center text-center">
 
     <!-- TODO: center sessions using javascript -->
-    <div *ngFor="let session of this.data.currentPerformance.sessions" class="session action">
+    <div *ngFor="let session of this.data.selectedPerformance.sessions" class="session action">
       <div class="session-time">{{session.date | date:'HH:mm':'+0100'}}</div>
       <hr>
       <div class="session-day">{{session.date | date:'dd/MM':'+0100'}}</div>
@@ -23,7 +23,7 @@
   </div>
 
   <div class="layout-bottom-t-center text-center">
-    <h3 class="centered text-center">{{data.currentPerformance.title | uppercase}}</h3>
+    <h3 class="centered text-center">{{data.selectedPerformance.title | uppercase}}</h3>
   </div>
 </div>
 

@@ -1,4 +1,10 @@
 {
+  "global": {
+    "back": "Back",
+    "next": "Next",
+    "confirm": "Confirm",
+    "home": "Return home"
+  },
   "pages": {
     "home": {
       "hints": {
@@ -17,8 +23,37 @@
       "title": "Your information",
       "useAccountData": "Use account data",
       "loginForAccountData": "Login to use account data",
-      "row": "Row",
-      "seat": "Seat"
+      "row": "R",
+      "seat": "S"
+    },
+    "checkout": {
+      "title": "Checkout method",
+      "options": {
+        "delivery": {
+          "title": "Delivery",
+          "description": "We deliver a ticket to you for 100 czk"
+        },
+        "self": {
+          "title": "Self-checkout",
+          "description": "Na Zátorce 1048/16 Praha 6-Bubeneč every Tuesday or Thursday from 18:00 to 19:30"
+        },
+        "payBefore": {
+          "title": "Pay before performance",
+          "description": "At longest 30 minutes before start"
+        }
+      }
+    },
+    "confirmation": {
+      "title": "Confirmation"
+    },
+    "success": {
+      "success": "Success!",
+      "bookingCode": "Your booking code is: ",
+      "saveIt": "Save it to get a ticket",
+      "hints": {
+        "codeSent": "Code has also been sent to your email",
+        "contactedSoon": "We will contact you for confirmation soon"
+      }
     }
   },
   "forms": {

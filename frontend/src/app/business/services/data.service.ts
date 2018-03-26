@@ -1,15 +1,23 @@
 import {Injectable} from '@angular/core';
 import {Performance} from '../domain/performance';
+import {Session} from '../domain/session';
 
 @Injectable()
 export class DataService {
   // todo: move to correct location
-  public pages = ['home', 'confirmation', 'contacts', 'performance', 'performances', 'session', 'sessions', 'success', 'viewer'];
+  public pages = ['home', 'confirmation', 'contacts', 'performance', 'performances', 'session', 'sessions', 'success', 'checkout', 'viewer'];
 
   public performances: Performance[] = [];
-  public currentPerformance: Performance;
+  public selectedPerformance: Performance;
+  public selectedSession: Session;
   public selectedSeats: { rowIndex: number, seatIndex: number }[];
+  public bookingCode: string;
   public loggedIn: boolean;
+
+  public checkoutOptions = ['delivery', 'self', 'payBefore'];
+  public selectedCheckout = this.checkoutOptions[0];
+
+  public user: {name: string, contact: string};
 
   // TODO: test data - erase later
   private static generatePerformances() {
@@ -42,13 +50,16 @@ export class DataService {
 
   constructor() {
     this.performances = DataService.generatePerformances();
-    this.currentPerformance = this.performances[0];
+    this.selectedPerformance = this.performances[0];
+    this.selectedSession = this.selectedPerformance.sessions[0];
     this.selectedSeats = [
       {rowIndex: 3, seatIndex: 5},
       {rowIndex: 3, seatIndex: 5},
       {rowIndex: 4, seatIndex: 5},
       {rowIndex: 7, seatIndex: 11}];
     this.loggedIn = false;
+    this.user = {name: 'Vladyslav Yazykov', contact: 'vladogim97@gmail.com'};
+    this.bookingCode = 'F74';
   }
 
 }
