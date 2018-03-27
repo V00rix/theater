@@ -1,3 +1,29 @@
-<p>
-  session works!
-</p>
+<div class="shadow"></div>
+<div class="z-main">
+  <div class="fader-top"></div>
+  <div class="fader-bottom"></div>
+
+
+  <div class="layout-top-center">
+    <h2 class="centered text-center">{{'pages.session.title' | translate}}</h2>
+  </div>
+
+  <div class="layout-footer-center">
+    <div class="font-hint centered">
+      {{'pages.session.scene' | translate}}
+    </div>
+  </div>
+
+  <!-- Page title -->
+  <div class="session-container centered text-center">
+    <div *ngFor="let row of data.selectedSession.seats; let rowId = index">
+      <span class="session-row">
+        {{'global.row' | translate}}<em>{{data.selectedSession.seats.length - rowId}}</em>
+      </span>
+        <span *ngFor="let seat of row; let seatId = index" class="seat {{seat.status}}" (click)="switchSeatSelection(seat)">{{seatId + 1}}</span>
+    </div>
+  </div>
+
+  <app-button-back></app-button-back>
+  <label class="action button-next" (click)="onConfirm()">{{'global.confirm' | translate}}</label>
+</div>

@@ -2,7 +2,7 @@
 <div class="z-main">
   <div class="fader-top"></div>
   <div class="layout-footer-center">
-    <div class="font-hint centered">
+    <div *ngIf="data.selectedPerformance.description" class="font-hint centered">
       {{'pages.performance.hints.scrollForDescription' | translate}}
     </div>
   </div>
@@ -13,12 +13,13 @@
   </div>
 
   <div class="layout-center-center text-center">
-
-    <!-- TODO: center sessions using javascript -->
-    <div *ngFor="let session of this.data.selectedPerformance.sessions" class="session action">
-      <div class="session-time">{{session.date | date:'HH:mm':'+0100'}}</div>
-      <hr>
-      <div class="session-day">{{session.date | date:'dd/MM':'+0100'}}</div>
+    <div class="centered">
+      <div *ngFor="let session of this.data.selectedPerformance.sessions; let id = index" class="session action"
+           (click)="showSession(id)">
+        <div class="session-time">{{session.date | date:'HH:mm':'+0100'}}</div>
+        <hr>
+        <div class="session-day">{{session.date | date:'dd/MM':'+0100'}}</div>
+      </div>
     </div>
   </div>
 

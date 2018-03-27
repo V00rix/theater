@@ -83,3 +83,9 @@
   width: 200px;
   left: calc(50% - 100px);
 }
+
+.element-hidden {
+  opacity: 0;
+  left: -100%;
+  position: absolute;
+}

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {DataService} from '../../business/services/data.service';
 import {Performance} from '../../business/domain/performance';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -9,10 +10,13 @@ import {Performance} from '../../business/domain/performance';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(public data: DataService) {
+  constructor(public data: DataService, private router: Router) {
   }
 
   ngOnInit() {
   }
 
+  showPerformance() {
+    this.router.navigate(['/performance']);
+  }
 }

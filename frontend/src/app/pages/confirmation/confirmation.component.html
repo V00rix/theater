@@ -57,8 +57,8 @@
         </svg>
         <label>
             <span *ngFor="let seat of data.selectedSeats">
-              {{'pages.viewer.row' | translate}}<em>{{seat.rowIndex}}</em>
-              {{'pages.viewer.seat' | translate}}<em>{{seat.seatIndex}}</em>
+              {{'global.row' | translate}}<em>{{seat.row}}</em>
+              {{'global.seat' | translate}}<em>{{seat.seat}}</em>
               &nbsp;&nbsp;
             </span>
         </label>
@@ -86,6 +86,6 @@
     </div>
   </div>
 
-  <label class="action button-back" (click)="alert()">{{'global.back' | translate}}</label>
-  <label class="action button-next" (click)="alert()">{{'global.confirm' | translate}}</label>
+  <app-button-back></app-button-back>
+  <label class="action button-next" (click)="onConfirm()">{{'global.confirm' | translate}}</label>
 </div>

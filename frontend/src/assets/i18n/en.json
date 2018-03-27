@@ -3,7 +3,9 @@
     "back": "Back",
     "next": "Next",
     "confirm": "Confirm",
-    "home": "Return home"
+    "home": "Return home",
+    "row": "R",
+    "seat": "S"
   },
   "pages": {
     "home": {
@@ -22,9 +24,7 @@
     "viewer": {
       "title": "Your information",
       "useAccountData": "Use account data",
-      "loginForAccountData": "Login to use account data",
-      "row": "R",
-      "seat": "S"
+      "loginForAccountData": "Login to use account data"
     },
     "checkout": {
       "title": "Checkout method",
@@ -54,6 +54,10 @@
         "codeSent": "Code has also been sent to your email",
         "contactedSoon": "We will contact you for confirmation soon"
       }
+    },
+    "session": {
+      "title": "Select seats",
+      "scene": "Scene"
     }
   },
   "forms": {

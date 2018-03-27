@@ -18,20 +18,23 @@ import {SessionsComponent} from './pages/sessions/sessions.component';
 import {ViewerComponent} from './pages/viewer/viewer.component';
 import {ConfirmationComponent} from './pages/confirmation/confirmation.component';
 import {SuccessComponent} from './pages/success/success.component';
+import { CheckoutComponent } from './pages/checkout/checkout.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 /* Components */
 import {NavigationComponent} from './business/components/navigation/navigation.component';
+import { SlidePanelContentComponent } from './business/components/slide-panel/slidePanelContent/slide-panel-content.component';
+import { InputComponent } from './business/components/input/input.component';
+import { SlidePanelComponent } from './business/components/slide-panel/slide-panel.component';
+
+/* Services */
+import {DataService} from './business/services/data.service';
 
 /* i18n */
 import {registerLocaleData} from '@angular/common';
 import localeRu from '@angular/common/locales/ru';
 import localeEn from '@angular/common/locales/en';
-import {DataService} from './business/services/data.service';
-import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { SlidePanelComponent } from './business/components/slide-panel/slide-panel.component';
-import { SlidePanelContentComponent } from './business/components/slide-panel/slidePanelContent/slide-panel-content.component';
-import { InputComponent } from './business/components/input/input.component';
-import { CheckoutComponent } from './pages/checkout/checkout.component';
+import { ButtonBackComponent } from './business/components/button-back/button-back.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -58,6 +61,7 @@ registerLocaleData(localeEn, 'en');
     SlidePanelContentComponent,
     InputComponent,
     CheckoutComponent,
+    ButtonBackComponent
   ],
   imports: [
     BrowserModule,

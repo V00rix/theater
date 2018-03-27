@@ -1,5 +1,5 @@
-import {Availability} from './availability.enum';
+import {SeatStatus} from './seatStatus.enum';
 
 export class Session {
-  constructor(public date: Date, public seats: Availability[][]) {}
+  constructor(public date: Date, public seats: {status: SeatStatus}[][]) {}
 }

@@ -2,19 +2,19 @@
 
   <div class="fader-top"></div>
 
+
+  <div class="fader-bottom"></div>
   <div class="layout-footer-center">
-    <div class="font-hint centered">
+    <div class="font-hint centered" (click)="showPerformance()">
       {{'pages.home.hints.clickForTicket' | translate}}
     </div>
   </div>
 
-  <div class="fader-bottom"></div>
+  <h1 class="centered text-center" (click)="showPerformance()">{{data.selectedPerformance.title | uppercase}}</h1>
 
-  <h1 class="centered text-center">{{data.selectedPerformance.title | uppercase}}</h1>
-
-  <div class="layout-center-6">
+  <div *ngIf="data.performances.length" class="layout-center-6">
     <div class="sequence">
-      <div *ngFor="let p of data.performances; let id = index" (click)="data.currentPerformance = data.performances[id]"
+      <div *ngFor="let p of data.performances; let id = index" (click)="data.selectedPerformance = data.performances[id]"
            class="sequence-сircle {{data.selectedPerformance === data.performances[id] ? 'selected' : ''}}"></div>
     </div>
   </div>
