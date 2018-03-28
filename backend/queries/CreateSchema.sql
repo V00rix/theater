@@ -46,7 +46,7 @@ CREATE TABLE T_Performance (
 );
 
 CREATE TABLE T_Timestamp (
-  date DATETIME PRIMARY KEY
+  date TIMESTAMP PRIMARY KEY
 );
 
 CREATE TABLE T_Registered_User (
@@ -71,24 +71,28 @@ CREATE TABLE T_Theater (
   address INT                       NOT NULL UNIQUE,
   name    VARCHAR(255)              NOT NULL UNIQUE,
   PRIMARY KEY (address, name),
-  FOREIGN KEY (address) REFERENCES T_Address (id) ON DELETE CASCADE
+  FOREIGN KEY (address) REFERENCES T_Address (id)
+    ON DELETE CASCADE
 );
 
 CREATE TABLE T_Hall (
+  id      INT AUTO_INCREMENT UNIQUE NOT NULL,
   name    VARCHAR(255),
   theater INT,
-  FOREIGN KEY (theater) REFERENCES T_Theater (id) ON DELETE CASCADE,
+  FOREIGN KEY (theater) REFERENCES T_Theater (id)
+    ON DELETE CASCADE,
   PRIMARY KEY (name, theater)
 );
 
+
 CREATE TABLE T_Chair (
-  id           INT AUTO_INCREMENT UNIQUE NOT NULL,
-  row          INT,
-  number       INT,
-  hall_name    VARCHAR(255),
-  hall_theater INT,
+  id     INT AUTO_INCREMENT UNIQUE NOT NULL,
+  row    INT,
+  number INT,
+  hall   INT,
   PRIMARY KEY (row, number),
-  FOREIGN KEY (hall_name, hall_theater) REFERENCES T_Hall (name, theater) ON DELETE CASCADE
+  FOREIGN KEY (hall) REFERENCES T_Hall (id)
+    ON DELETE CASCADE
 );
 
 CREATE TABLE T_Session (
@@ -98,7 +102,8 @@ CREATE TABLE T_Session (
   hall_theater INT,
   performance  INT,
   PRIMARY KEY (date, hall_name, hall_theater, performance),
-  FOREIGN KEY (hall_name, hall_theater) REFERENCES T_Hall (name, theater) ON DELETE CASCADE ,
+  FOREIGN KEY (hall_name, hall_theater) REFERENCES T_Hall (name, theater)
+    ON DELETE CASCADE,
   FOREIGN KEY (performance) REFERENCES T_Performance (id),
   FOREIGN KEY (date) REFERENCES T_Timestamp (date)
 );
@@ -107,8 +112,10 @@ CREATE TABLE T_Seat (
   chair   INT,
   session INT,
   PRIMARY KEY (chair, session),
-  FOREIGN KEY (chair) REFERENCES T_Chair (id) ON DELETE CASCADE ,
-  FOREIGN KEY (session) REFERENCES T_Session (id) ON DELETE CASCADE
+  FOREIGN KEY (chair) REFERENCES T_Chair (id)
+    ON DELETE CASCADE,
+  FOREIGN KEY (session) REFERENCES T_Session (id)
+    ON DELETE CASCADE
 );
 
 CREATE TABLE T_Order (
@@ -130,7 +137,8 @@ CREATE TABLE T_Ticket (
   chair   INT,
   session INT,
   PRIMARY KEY (chair, session),
-  FOREIGN KEY (chair, session) REFERENCES T_Seat (chair, session) ON DELETE CASCADE,
+  FOREIGN KEY (chair, session) REFERENCES T_Seat (chair, session)
+    ON DELETE CASCADE,
   FOREIGN KEY (`order`) REFERENCES T_Order (id)
 );
 
