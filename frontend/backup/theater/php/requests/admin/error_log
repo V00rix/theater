@@ -1,0 +1,5 @@
+[25-Jan-2018 20:46:19 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined function methodAllowed() in /home2/elumixor/public_html/theater/php/requests/admin/getPerformances.php:13
+Stack trace:
+#0 {main}
+  thrown in /home2/elumixor/public_html/theater/php/requests/admin/getPerformances.php on line 13
+[25-Jan-2018 21:39:53 America/Chicago] PHP Warning:  file_put_contents(): Filename cannot be empty in /home2/elumixor/public_html/theater/php/requests/admin/savePerformances.php on line 21

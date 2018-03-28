@@ -1,0 +1,2043 @@
+[
+  {
+    "title": "ИГРОКИ",
+    "description": "Театр \"Грани\" представляет: \nСпектакль по произведению Николая Васильевича Гоголя \"Игроки\"\nПремьера: \n10 февраля в 17:00\nСледующий показ состоится 16 февраля в 19:00\nБИЛЕТЫ БУДУТ ДОСТУПНЫ К ВЫКУПУ В ФОЙЕ РЦНК ЗА ЧАС ДО НАЧАЛА СПЕКТАКЛЯ!\nРежиссер:\nИрма Новичкова",
+    "imageUrl": "https://pp.userapi.com/c824500/v824500437/67c6f/4U3V1buXXPw.jpg",
+    "sessions": [
+      {
+        "date": 1518807600000,
+        "seats": [
+          [
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3,
+              "viewer": null
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            }
+          ],
+          [
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            }
+          ],
+          [
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            }
+          ],
+          [
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            }
+          ],
+          [
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3,
+              "viewer": null
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            }
+          ],
+          [
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            }
+          ],
+          [
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            }
+          ],
+          [
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Ирина",
+                "phone": "777182738",
+                "email": "ireengalygina@gmail.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Валентин",
+                "phone": "777182738",
+                "email": "ireengalygina@gmail.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            }
+          ],
+          [
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Алена ",
+                "phone": "773645736",
+                "email": "adrozdova777@gmail.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Алена",
+                "phone": "773645736",
+                "email": "adrozdova777@gmail.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Алена",
+                "phone": "773645736",
+                "email": "adrozdova777@gmail.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Алена",
+                "phone": "773645736",
+                "email": "adrozdova777@gmail.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Анастасия",
+                "phone": "777769974",
+                "email": "ananstasia.starling10@gmail.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Анастасия",
+                "phone": "777769974",
+                "email": "ananstasia.starling10@gmail.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "С премьеры",
+                "phone": "000 000 000",
+                "email": "@ber.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "С премьеры",
+                "phone": "000 000 000",
+                "email": "@ber.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "С премьеры",
+                "phone": "000 000 000",
+                "email": "@ber.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            }
+          ],
+          [
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Венеамин",
+                "phone": "730511140",
+                "email": "qotnice@gmail.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Петров",
+                "phone": "000 000 000",
+                "email": "kotovaanya201@gmail.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Петров",
+                "phone": "000 000 000",
+                "email": "kotovaanya201@gmail.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Екатерина Шипко",
+                "phone": "608331884",
+                "email": "katena.shipko@mail.ru",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Юрий Яковлев",
+                "phone": "608331884",
+                "email": "katena.shipko@mail.ru",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Katerina",
+                "phone": "776532251",
+                "email": "malenkaya152@yandex.ru",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Jacob",
+                "phone": "774209316",
+                "email": "edmund2006@yandex.ru",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "sofia revutskaya",
+                "phone": "773892964",
+                "email": "sofirev@mail.ru",
+                "vk": null,
+                "whatsApp": "773892964",
+                "viber": "+420773892964",
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "sofia revutskaya",
+                "phone": "773892964",
+                "email": "sofirev@mail.ru",
+                "vk": null,
+                "whatsApp": "773892964",
+                "viber": "+420773892964",
+                "telegram": null
+              }
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            }
+          ],
+          [
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "ANNA AGAFONOVA",
+                "phone": "915093896",
+                "email": "kotovaanya201@gmail.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "ANNA AGAFONOVA",
+                "phone": "915093896",
+                "email": "kotovaanya201@gmail.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Илья ШЕйко",
+                "phone": "774894410",
+                "email": "ilionesso@gmail.com",
+                "vk": "vk.com/ilionesso",
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Ivan Karpov",
+                "phone": "777351637",
+                "email": "ivankarp13@gmail.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Женя башкова",
+                "phone": "775045752",
+                "email": "bashkova1998@bk.ru",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Женя башкова ",
+                "phone": "775045752",
+                "email": "Bashkova1998@bk.ru",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Женя башкова",
+                "phone": "775045752",
+                "email": "Bashkova1998@bk.ru",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Женя башкова",
+                "phone": "775045752",
+                "email": "Bashkova1998@bk.ru",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Ольга",
+                "phone": "+420777525435",
+                "email": "Oshatkova@seznam.cz",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Ольга",
+                "phone": "+420777525435",
+                "email": "Oshatkova@seznam.cz",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            }
+          ],
+          [
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Лиза",
+                "phone": "774297111",
+                "email": "apakaska@gmail.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Лиза",
+                "phone": "774297111",
+                "email": "apakaska@gmail.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Лиза",
+                "phone": "774297111",
+                "email": "apakaska@gmail.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "ОТ Никиты",
+                "phone": "000 000 000",
+                "email": "bebw@bes.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "ОТ Никиты",
+                "phone": "000 000 000",
+                "email": "bebw@bes.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "ОТ Никиты",
+                "phone": "000 000 000",
+                "email": "bebw@bes.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "ОТ Никиты",
+                "phone": "000 000 000",
+                "email": "bebw@bes.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "ОТ Никиты",
+                "phone": "000 000 000",
+                "email": "bebw@bes.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "ОТ Никиты",
+                "phone": "000 000 000",
+                "email": "bebw@bes.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "ОТ Никиты",
+                "phone": "000 000 000",
+                "email": "bebw@bes.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "ОТ Никиты",
+                "phone": "000 000 000",
+                "email": "bebw@bes.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Никита",
+                "phone": "000 000 000",
+                "email": "ms.annkotova@mail.ru",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Никита",
+                "phone": "000 000 000",
+                "email": "kotovaanya201@gmail.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Никита",
+                "phone": "000 000 000",
+                "email": "kotovaanya201@gmail.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Никита",
+                "phone": "000 000 000",
+                "email": "kotovaanya201@gmail.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            }
+          ],
+          [
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 1,
+              "viewer": {
+                "name": "Юлия якубенкова",
+                "phone": "773568301",
+                "email": "yakubenkova96@gmail.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Maria Travnitskaya",
+                "phone": "776738928",
+                "email": "marietravnicka@gmail.com",
+                "vk": "vk.com/maria.travnitskaya",
+                "whatsApp": "+420776738928",
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Березин",
+                "phone": "774 865 269",
+                "email": "erthh@nrt.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Березин",
+                "phone": "774 865 269",
+                "email": "erthh@nrt.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Максим дерцаф",
+                "phone": "608839526",
+                "email": "Der.max7@gmail.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Евгения Николаева ",
+                "phone": "773614336",
+                "email": "nik.evgenya@gmail.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Anastasia Lebedeva",
+                "phone": "774-289-747",
+                "email": "lebedana21@gmail.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Anastasia Lebedeva",
+                "phone": "774-289-747",
+                "email": "lebedana21@gmail.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 3,
+              "viewer": null
+            },
+            {
+              "availability": 3,
+              "viewer": null
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Александр Казанцев",
+                "phone": "776244109",
+                "email": "redhotchili92@hotmail.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Александр Казанцев",
+                "phone": "776244109",
+                "email": "redhotchili92@hotmail.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 1,
+              "viewer": {
+                "name": "Андерсон",
+                "phone": "000 000 000",
+                "email": "kotovaanya201@gmail.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 1,
+              "viewer": {
+                "name": "Андерсон",
+                "phone": "000 000 000",
+                "email": "kotovaanya201@gmail.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            }
+          ],
+          [
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Светлана",
+                "phone": "773-210-959",
+                "email": "s.titova@seznam.cz",
+                "vk": "Svitlana titova",
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Dmitry ",
+                "phone": "777777777",
+                "email": "lug76@seznam.cz",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Милалика",
+                "phone": "532535252",
+                "email": "behe@bsbe.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Милалика",
+                "phone": "253552525",
+                "email": "behe@bsbe.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Милалика",
+                "phone": "523532544",
+                "email": "behe@bsbe.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "АРина",
+                "phone": "774 945 829",
+                "email": "netn@nrn.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "АРина",
+                "phone": "774 945 829",
+                "email": "netn@nrn.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "АРина",
+                "phone": "774 945 829",
+                "email": "netn@nrn.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Андерсон",
+                "phone": "774 960 251",
+                "email": "@dh.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Андерсон",
+                "phone": "774 960 251",
+                "email": "@dh.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Андерсон",
+                "phone": "774 960 251",
+                "email": "@dh.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Андерсон",
+                "phone": "774 960 251",
+                "email": "@dh.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            }
+          ],
+          [
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Овчинникова",
+                "phone": "775 241 182",
+                "email": "kotovaanya201@gmail.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Бондрачек",
+                "phone": "606 765 547",
+                "email": "kotovaanya201@gmail.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Цамуоталиова",
+                "phone": "606 453 754",
+                "email": "kotovaanya201@gmail.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Цамуоталиова",
+                "phone": "606 453 754",
+                "email": "kotovaanya201@gmail.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Гриневич",
+                "phone": "774 150 195",
+                "email": "kotovaanya201@gmail.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Гриневич",
+                "phone": "774 150 195",
+                "email": "kotovaanya201@gmail.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Гриневич",
+                "phone": "774 150 195",
+                "email": "kotovaanya201@gmail.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Гриневич",
+                "phone": "774 150 195",
+                "email": "kotovaanya201@gmail.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            }
+          ]
+        ]
+      }
+    ]
+  }
+]

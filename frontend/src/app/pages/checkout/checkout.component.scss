@@ -1,0 +1,12 @@
+label.radio-inline {
+  display: inline;
+}
+
+.checkout-option {
+  width: calc(33% - 15px);
+  max-width: 300px;
+  min-width: 150px;
+  display: inline-grid;
+  text-align: left;
+  margin: 0 25px;
+}

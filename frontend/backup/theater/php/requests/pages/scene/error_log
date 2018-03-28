@@ -1,0 +1,8 @@
+[31-Jan-2018 08:55:21 America/Chicago] PHP Fatal error:  Uncaught Error: Cannot use object of type stdClass as array in /home2/elumixor/public_html/theater/php/requests/pages/scene/getScene.php:61
+Stack trace:
+#0 {main}
+  thrown in /home2/elumixor/public_html/theater/php/requests/pages/scene/getScene.php on line 61
+[31-Jan-2018 08:55:25 America/Chicago] PHP Fatal error:  Uncaught Error: Cannot use object of type stdClass as array in /home2/elumixor/public_html/theater/php/requests/pages/scene/getScene.php:61
+Stack trace:
+#0 {main}
+  thrown in /home2/elumixor/public_html/theater/php/requests/pages/scene/getScene.php on line 61

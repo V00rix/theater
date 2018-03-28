@@ -1,0 +1,1346 @@
+[
+  {
+    "title": "Предложение. Медведь",
+    "description": null,
+    "imageUrl": "http://elumixor.com/theater/assets/images/bgPredlojenieMedved.jpg",
+    "sessions": [
+      {
+        "date": 1523646026715,
+        "seats": [
+          [
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            }
+          ],
+          [
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            }
+          ],
+          [
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            }
+          ],
+          [
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            }
+          ],
+          [
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            }
+          ],
+          [
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            }
+          ],
+          [
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            }
+          ],
+          [
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            }
+          ],
+          [
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            }
+          ],
+          [
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            }
+          ],
+          [
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            }
+          ],
+          [
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            }
+          ],
+          [
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            }
+          ],
+          [
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            }
+          ],
+          [
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            }
+          ]
+        ]
+      }
+    ]
+  }
+]

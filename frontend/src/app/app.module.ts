@@ -26,6 +26,7 @@ import {NavigationComponent} from './business/components/navigation/navigation.c
 import { SlidePanelContentComponent } from './business/components/slide-panel/slidePanelContent/slide-panel-content.component';
 import { InputComponent } from './business/components/input/input.component';
 import { SlidePanelComponent } from './business/components/slide-panel/slide-panel.component';
+import { ButtonBackComponent } from './business/components/button-back/button-back.component';
 
 /* Services */
 import {DataService} from './business/services/data.service';
@@ -34,7 +35,6 @@ import {DataService} from './business/services/data.service';
 import {registerLocaleData} from '@angular/common';
 import localeRu from '@angular/common/locales/ru';
 import localeEn from '@angular/common/locales/en';
-import { ButtonBackComponent } from './business/components/button-back/button-back.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
