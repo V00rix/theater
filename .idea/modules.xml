@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/theater.iml" filepath="$PROJECT_DIR$/.idea/theater.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backend/theater-backend.iml" filepath="$PROJECT_DIR$/backend/theater-backend.iml" />
     </modules>
   </component>
 </project>
