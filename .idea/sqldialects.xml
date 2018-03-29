@@ -2,9 +2,9 @@
 <project version="4">
   <component name="SqlDialectMappings">
     <file url="file://$PROJECT_DIR$/backend/queries/CreateSchema.sql" dialect="MySQL" />
-    <file url="file://$PROJECT_DIR$/backend/queries/InsertTest.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/backend/queries/InsertTestData.sql" dialect="MySQL" />
   </component>
   <component name="SqlResolveMappings">
-    <file url="file://$PROJECT_DIR$/backend/queries/InsertTest.sql" scope="{&quot;node&quot;:{  &quot;@negative&quot;:&quot;1&quot;,  &quot;group&quot;:{   &quot;@kind&quot;:&quot;data-source&quot;,   &quot;node&quot;:{    &quot;name&quot;:{     &quot;@name&quot;:&quot;b623a776-9d7d-4368-bfac-c5ec4e8d28ab&quot;,     &quot;@quoted&quot;:&quot;1&quot;    },    &quot;group&quot;:{     &quot;@kind&quot;:&quot;schema&quot;,     &quot;node&quot;:{      &quot;name&quot;:{       &quot;@name&quot;:&quot;information_schema&quot;,       &quot;@quoted&quot;:&quot;1&quot;      },      &quot;name&quot;:{       &quot;@name&quot;:&quot;mysql&quot;,       &quot;@quoted&quot;:&quot;1&quot;      },      &quot;name&quot;:{       &quot;@name&quot;:&quot;sys&quot;,       &quot;@quoted&quot;:&quot;1&quot;      },      &quot;name&quot;:{       &quot;@name&quot;:&quot;theater&quot;,       &quot;@quoted&quot;:&quot;1&quot;      }     }    }   }  } }}" />
+    <file url="file://$PROJECT_DIR$/backend/queries/InsertTestData.sql" scope="{&quot;node&quot;:{  &quot;@negative&quot;:&quot;1&quot;,  &quot;group&quot;:{   &quot;@kind&quot;:&quot;data-source&quot;,   &quot;node&quot;:{    &quot;name&quot;:{     &quot;@name&quot;:&quot;a5cd5b3c-3841-4be1-83cf-38331d229a13&quot;,     &quot;@quoted&quot;:&quot;1&quot;    },    &quot;group&quot;:{     &quot;@kind&quot;:&quot;schema&quot;,     &quot;node&quot;:{      &quot;name&quot;:{       &quot;@name&quot;:&quot;theater&quot;,       &quot;@quoted&quot;:&quot;1&quot;      }     }    }   }  } }}" />
   </component>
 </project>

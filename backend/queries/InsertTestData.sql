@@ -64,18 +64,6 @@ DELIMITER ;
 CALL createRows();
 # INSERT INTO T_Chair...
 
-SELECT
-  tsp.date,
-  h.name,
-  t.id,
-  p.id
-FROM theater.t_theater t
-  JOIN t_address a ON t.name = 'TEST_THEATER' AND a.id = t.address
-  JOIN t_hall h ON t.id = h.theater
-  STRAIGHT_JOIN t_timestamp tsp
-  STRAIGHT_JOIN t_performance p
-ORDER BY tsp.date;
-
 
 DELETE FROM t_session;
 INSERT INTO t_session (date, hall_name, hall_theater, performance) SELECT
@@ -90,8 +78,14 @@ INSERT INTO t_session (date, hall_name, hall_theater, performance) SELECT
                                                                      STRAIGHT_JOIN t_timestamp tsp
                                                                      STRAIGHT_JOIN t_performance p
                                                                    ORDER BY tsp.date;
-
-SELECT * FROM t_session;
+DELETE FROM t_seat;
+INSERT INTO t_seat (chair, session) SELECT
+                                      c.id,
+                                      s.id
+                                    FROM t_session s
+                                      STRAIGHT_JOIN t_chair c
+                                    ORDER BY s.id;
+SELECT * FROM t_seat;
 
 #
 # SELECT *

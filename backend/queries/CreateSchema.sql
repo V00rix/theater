@@ -111,6 +111,7 @@ CREATE TABLE T_Session (
 CREATE TABLE T_Seat (
   chair   INT,
   session INT,
+  availabillity ENUM('FREE', 'BOOKED', 'HIDDEN'),
   PRIMARY KEY (chair, session),
   FOREIGN KEY (chair) REFERENCES T_Chair (id)
     ON DELETE CASCADE,
