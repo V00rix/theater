@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {DataService} from '../../business/services/data.service';
 import {Router} from '@angular/router';
-import {Checkout} from '../../business/domain/enumeration/checkout';
+import {Checkout} from '../../../../../shared/business/domain/enumeration/checkout';
+import {DataService} from '../../../../../shared/business/services/data.service';
 
 @Component({
   selector: 'app-checkout',

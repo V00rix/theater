@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {DataService} from '../../business/services/data.service';
-import {Performance} from '../../business/domain/performance';
+import {Performance} from '../../../../../shared/business/domain/performance';
+import {DataService} from '../../../../../shared/business/services/data.service';
 import {Router} from '@angular/router';
 
 @Component({

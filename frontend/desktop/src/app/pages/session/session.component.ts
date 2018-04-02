@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {DataService} from '../../business/services/data.service';
-import {SeatStatus} from '../../business/domain/enumeration/seatStatus.enum';
+import {SeatStatus} from '../../../../../shared/business/domain/enumeration/seatStatus.enum';
+import {DataService} from '../../../../../shared/business/services/data.service';
 import {Router} from '@angular/router';
 
 @Component({

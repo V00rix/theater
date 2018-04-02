@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import {LOCALE_ID, NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
 import {FormsModule} from '@angular/forms';
@@ -50,13 +50,16 @@ registerLocaleData(localeEn, 'en');
             }
         })
     ],
-    providers: [DataService],
+    providers: [DataService,
+        {provide: LOCALE_ID, useValue: 'en'}],
     exports: [
         NavigationComponent,
         SlidePanelComponent,
         SlidePanelContentComponent,
         InputComponent,
-        ButtonBackComponent
+        ButtonBackComponent,
+        TranslateModule,
+        FormsModule
     ]
 })
 export class SharedModule {

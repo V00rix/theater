@@ -6,7 +6,12 @@
  * Time: 8:31 PM
  */
 
-header("Access-Control-Allow-Origin: http://localhost:4200");
-header("Access-Control-Allow-Origin: http://localhost:4201");
+$http_origin = $_SERVER['HTTP_ORIGIN'];
+
+if ($http_origin == "http://localhost:4200" || $http_origin == "http://localhost:4201")
+{
+    header("Access-Control-Allow-Origin: $http_origin");
+}
+
 header("Access-Control-Allow-Credentials: true");
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
