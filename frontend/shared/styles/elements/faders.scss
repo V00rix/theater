@@ -1,0 +1,23 @@
+@mixin fader($position) {
+  position: fixed;
+  width: 100vw;
+  height: 150px;
+
+  @if $position == bottom {
+    bottom: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,.59));
+
+  }
+  @else {
+    top: 0;
+    background: linear-gradient(rgba(0,0,0,.59), transparent);
+  }
+}
+
+.fader-top {
+  @include fader(top)
+}
+
+.fader-bottom {
+  @include fader(bottom)
+}

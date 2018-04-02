@@ -1,0 +1,91 @@
+/* TODO: Layout: distances, positions, paddings, margins, borders, shadows etc. */
+
+// TODO: add max height/widths in percentage for pixel-based heights/widths
+.layout-header-1 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 150px;
+  height: 150px;
+}
+
+.layout-center-6 {
+  position: fixed;
+  top: 150px;
+  right: 0;
+  width: 150px;
+  height: calc(100% - 300px);
+}
+
+.layout-footer-center {
+  position: fixed;
+  bottom: 0;
+  right: 25%;
+  width: 50%;
+  height: 150px;
+}
+
+.layout-top-center {
+  position: fixed;
+  top: 0;
+  right: 25%;
+  width: 50%;
+  height: 300px;
+}
+
+.layout-center-center {
+  position: fixed;
+  top: 300px;
+  right: 25%;
+  width: 50%;
+  bottom: 300px;
+}
+
+.layout-bottom-t-center {
+  position: fixed;
+  bottom: 150px;
+  right: 25%;
+  width: 50%;
+  height: 150px;
+}
+
+.layout-center-2 {
+  position: fixed;
+  top: 150px;
+  left: 150px;
+  bottom: 150px;
+  width: calc(25% - 150px);
+}
+
+.layout-center-5 {
+  position: fixed;
+  top: 150px;
+  right: 150px;
+  bottom: 150px;
+  width: calc(25% - 150px);
+}
+
+.button-back {
+  position: fixed;
+  bottom: 50px;
+  left: 150px;
+}
+
+.button-next {
+  position: fixed;
+  bottom: 50px;
+  right: 150px;
+}
+
+.button-center {
+  position: fixed;
+  bottom: 50px;
+  width: 200px;
+  left: calc(50% - 100px);
+}
+
+.element-hidden {
+  opacity: 0;
+  left: -100%;
+  position: absolute;
+}

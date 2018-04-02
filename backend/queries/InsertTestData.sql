@@ -3,54 +3,52 @@ USE Theater;
 DELETE FROM t_address;
 INSERT INTO t_address (id, country, city, street, house, post_code, city_part) VALUES
   (10, 'Ukraine', 'Kiev', 'Amosova st.', '4', '141 00', NULL),
-  (1, 'Czech republic', 'Prague', 'Na Zátorce', '1048/16', '160 00', 'Praha 6 Bubeneč');
+  (1, 'Czech republic', 'Prague', 'Na Zatorce', '1048/16', '160 00', 'Praha 6 Bubenec');
 SELECT *
 FROM t_address;
 
 DELETE FROM t_performance;
-INSERT INTO t_performance (id, author, title) VALUES
-  (1, 'Great Author', 'My spectacular creation');
+INSERT INTO t_performance (id, author, title, image_url, description) VALUES
+  (1, 'Great Author', 'My spectacular creation', 'assets/images/performancesBg/test.png', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam consequat odio id libero bibendum, et pharetra elit tincidunt. Suspendisse at nunc sit amet arcu varius sodales. Morbi convallis turpis maximus libero lobortis, ac efficitur orci aliquam. Donec vulputate mattis ante quis posuere. Nullam elementum ex in felis tempus hendrerit. Vivamus eu gravida ipsum. Sed orci diam, tempor eget scelerisque id, venenatis at libero. In ac auctor odio.');
 SELECT *
 FROM t_performance;
 
 DELETE FROM t_timestamp;
-INSERT INTO t_timestamp (date) VALUES
-  ('2018-04-13 19:00:00'), ('2018-04-13 21:00:00'), ('2018-04-20 19:00:00'),
-  ('2018-03-29 10:00:00'), ('2018-03-29 11:00:00');
+INSERT INTO t_timestamp (id, date) VALUES
+  (1, '2018-04-13 19:00:00'), (2, '2018-04-13 21:00:00'), (3, '2018-04-20 19:00:00');
 SELECT *
 FROM t_timestamp;
 
 DELETE FROM t_website_client;
-INSERT INTO t_website_client (email, name) VALUES
-  ('vladogim97@gmail.com', 'Vladik'),
-  ('pidorpidor@pidor.pidor', 'Pavel Kuznetsov');
+# INSERT INTO t_website_client (email, name) VALUES
+#   ('vladogim97@gmail.com', 'Vladik'),
+#   ('pidorpidor@pidor.pidor', 'Pavel Kuznetsov');
 SELECT *
 FROM t_website_client;
 
 DELETE FROM t_registered_user;
-INSERT INTO t_registered_user (email, login, name, password) SELECT
-                                                               email,
-                                                               'v00rix',
-                                                               name,
-                                                               'password'
-                                                             FROM t_website_client
-                                                             WHERE email = 'vladogim97@gmail.com';
-INSERT INTO t_registered_user (email, login, name, password) VALUES
-  ('my@mail.com', 'JUST_A_FRIEND', 'hello', 'heslo');
+# INSERT INTO t_registered_user (email, login, name, password) SELECT
+#                                                                email,
+#                                                                'v00rix',
+#                                                                name,
+#                                                                'password'
+#                                                              FROM t_website_client
+#                                                              WHERE email = 'vladogim97@gmail.com';
+# INSERT INTO t_registered_user (email, login, name, password) VALUES
+#   ('my@mail.com', 'JUST_A_FRIEND', 'hello', 'heslo');
 SELECT *
 FROM t_registered_user;
 
 DELETE FROM t_phone_client;
-INSERT INTO t_phone_client (phone, name) VALUES
-  ('123123123', 'TEST_PHONE_CLIENT'),
-  ('776558334', 'Vladik');
+# INSERT INTO t_phone_client (phone, name) VALUES
+#   ('123123123', 'TEST_PHONE_CLIENT'),
+#   ('776558334', 'Vlad');
 SELECT *
 FROM t_phone_client;
 
 DELETE FROM t_theater;
-INSERT INTO t_theater (id, address, name) VALUE
-  (1, 1, 'TEST_THEATER'),
-  (10, 10, 'WRONG_THEATER');
+INSERT INTO t_theater (id, address, name, maximum_seats) VALUE
+  (1, 1, 'TEST_THEATER', 5);
 SELECT *
 FROM t_theater;
 
@@ -60,104 +58,136 @@ INSERT INTO t_hall (id, name, theater) VALUES
 SELECT *
 FROM t_hall;
 
-DELETE FROM t_chair;
-DROP PROCEDURE IF EXISTS createSeats;
-DELIMITER #
-CREATE PROCEDURE createSeats(p_row INT)
-  BEGIN
-    DECLARE seats INT UNSIGNED DEFAULT 43;
-    DECLARE seat INT UNSIGNED DEFAULT 1;
-
-    START TRANSACTION;
-    WHILE seat < seats DO
-      INSERT INTO t_chair (row, number, hall) VALUES (p_row, seat, 1);
-      SET seat = seat + 1;
-    END WHILE;
-    COMMIT;
-  END #
-DELIMITER ;
-
-DROP PROCEDURE IF EXISTS createRows;
-DELIMITER #
-CREATE PROCEDURE createRows()
-  BEGIN
-    DECLARE rows INT UNSIGNED DEFAULT 16;
-    DECLARE p_row INT UNSIGNED DEFAULT 1;
-
-    START TRANSACTION;
-    WHILE p_row < rows DO
-      CALL createSeats(p_row);
-      SET p_row = p_row + 1;
-    END WHILE;
-    COMMIT;
-  END #
-DELIMITER ;
-
-CALL createRows();
-# INSERT INTO T_Chair...
+DELETE FROM t_row;
+INSERT INTO t_row (hall, number, seat_number) VALUES
+  (1, 1, 20),
+  (1, 2, 17),
+  (1, 3, 22),
+  (1, 4, 23),
+  (1, 5, 24),
+  (1, 6, 25),
+  (1, 7, 26),
+  (1, 8, 27),
+  (1, 9, 26),
+  (1, 10, 27),
+  (1, 11, 31),
+  (1, 12, 42),
+  (1, 13, 42),
+  (1, 14, 42),
+  (1, 15, 40);
 SELECT *
-FROM t_chair;
+FROM t_row
+ORDER BY hall, number;
 
 DELETE FROM t_session;
-INSERT INTO t_session (date, hall_name, hall_theater, performance) SELECT
-                                                                     tsp.date,
-                                                                     h.name,
-                                                                     t.id,
-                                                                     p.id
-                                                                   FROM theater.t_theater t
-                                                                     JOIN t_address a
-                                                                       ON t.name = 'TEST_THEATER' AND a.id = t.address
-                                                                     JOIN t_hall h ON t.id = h.theater
-                                                                     STRAIGHT_JOIN t_timestamp tsp
-                                                                     STRAIGHT_JOIN t_performance p
-                                                                   ORDER BY tsp.date;
+INSERT INTO t_session (date, hall, performance) VALUES
+  (1, 1, 1),
+  (2, 1, 1),
+  (3, 1, 1);
 SELECT *
 FROM t_session;
 
 DELETE FROM t_seat;
-INSERT INTO t_seat (chair, session) SELECT
-                                      c.id,
-                                      s.id
-                                    FROM t_session s
-                                      STRAIGHT_JOIN t_chair c
-                                    ORDER BY s.id;
+
+INSERT INTO t_seat (number, row, session, availabillity) SELECT
+                                                           4        AS `seat`,
+                                                           r.id     AS row_id,
+                                                           s.id     AS `session_id`,
+                                                           'HIDDEN' AS `availability`
+                                                         FROM t_row r
+                                                           STRAIGHT_JOIN t_session s
+                                                         WHERE r.number = 14 OR r.number = 13 OR r.number = 12;
+INSERT INTO t_seat (number, row, session, availabillity) SELECT
+                                                           5        AS `seat`,
+                                                           r.id     AS row_id,
+                                                           s.id     AS `session_id`,
+                                                           'HIDDEN' AS `availability`
+                                                         FROM t_row r
+                                                           STRAIGHT_JOIN t_session s
+                                                         WHERE r.number = 14 OR r.number = 13 OR r.number = 12;
+INSERT INTO t_seat (number, row, session, availabillity) SELECT
+                                                           6        AS `seat`,
+                                                           r.id     AS row_id,
+                                                           s.id     AS `session_id`,
+                                                           'HIDDEN' AS `availability`
+                                                         FROM t_row r
+                                                           STRAIGHT_JOIN t_session s
+                                                         WHERE r.number = 14 OR r.number = 13 OR r.number = 12;
+INSERT INTO t_seat (number, row, session, availabillity) SELECT
+                                                           7        AS `seat`,
+                                                           r.id     AS row_id,
+                                                           s.id     AS `session_id`,
+                                                           'HIDDEN' AS `availability`
+                                                         FROM t_row r
+                                                           STRAIGHT_JOIN t_session s
+                                                         WHERE r.number = 14 OR r.number = 13 OR r.number = 12;
+INSERT INTO t_seat (number, row, session, availabillity) SELECT
+                                                           34       AS `seat`,
+                                                           r.id     AS row_id,
+                                                           s.id     AS `session_id`,
+                                                           'HIDDEN' AS `availability`
+                                                         FROM t_row r
+                                                           STRAIGHT_JOIN t_session s
+                                                         WHERE r.number = 14 OR r.number = 13 OR r.number = 12;
+INSERT INTO t_seat (number, row, session, availabillity) SELECT
+                                                           35       AS `seat`,
+                                                           r.id     AS row_id,
+                                                           s.id     AS `session_id`,
+                                                           'HIDDEN' AS `availability`
+                                                         FROM t_row r
+                                                           STRAIGHT_JOIN t_session s
+                                                         WHERE r.number = 14 OR r.number = 13 OR r.number = 12;
+INSERT INTO t_seat (number, row, session, availabillity) SELECT
+                                                           36       AS `seat`,
+                                                           r.id     AS row_id,
+                                                           s.id     AS `session_id`,
+                                                           'HIDDEN' AS `availability`
+                                                         FROM t_row r
+                                                           STRAIGHT_JOIN t_session s
+                                                         WHERE r.number = 14 OR r.number = 13 OR r.number = 12;
+INSERT INTO t_seat (number, row, session, availabillity) SELECT
+                                                           37       AS `seat`,
+                                                           r.id     AS row_id,
+                                                           s.id     AS `session_id`,
+                                                           'HIDDEN' AS `availability`
+                                                         FROM t_row r
+                                                           STRAIGHT_JOIN t_session s
+                                                         WHERE r.number = 14 OR r.number = 13 OR r.number = 12;
+# INSERT INTO t_seat (id, number,row, session, availabillity)
+#   SELECT 1101, 12 as `seat`, r.id as `row_id`, s.id `session_id`, 'BOOKED' FROM t_row r STRAIGHT_JOIN t_session s WHERE r.number = 7 AND s.date = 1;
+
 SELECT *
-FROM t_seat;
+FROM t_seat ORDER BY id;
 
 SELECT *
 FROM t_order;
 DELETE FROM t_order;
-INSERT INTO t_order (id, date, registered_email, website_email, type, checkout) VALUE
-  (1, '2018-03-29 10:00:00', 'vladogim97@gmail.com', 'vladogim97@gmail.com', 'RESERVATION', 'SELF_CHECKOUT');
+# INSERT INTO t_order (id, date, registered_email, website_email, is_digital, is_purchase, checkout) VALUE
+#   (1, 4, 'vladogim97@gmail.com', 'vladogim97@gmail.com', TRUE, TRUE, 'SELF_CHECKOUT');
 SELECT *
 FROM t_order;
 
 DELETE FROM t_ticket;
-INSERT INTO t_ticket (`order`, chair, session) SELECT
-                                                 1,
-                                                 c.id,
-                                                 s.id
-                                               FROM t_chair c
-                                                 JOIN t_seat seat ON c.id = seat.chair
-                                                 JOIN t_session s ON seat.session = s.id
-                                               WHERE row = 5 AND number = 14 AND s.date = '2018-04-13 19:00:00';
+# INSERT INTO t_ticket (seat, `order`) SELECT
+#                                        s.id, 1 as `order`
+#                                      FROM t_seat s WHERE s.id = 1101;
 SELECT *
 FROM t_ticket;
 
 DELETE FROM t_profile;
-INSERT INTO t_profile (email, photo, facebook) VALUES
-  ('vladogim97@gmail.com', LOAD_FILE('C:\\Users\\User\\IdeaProjects\\theater\\backend\\queries\\assets\\test.png'), 'https://www.facebook.com/v.yazykov');
+# INSERT INTO t_profile (email, image_url, facebook) VALUES
+#   ('vladogim97@gmail.com', 'assets/images/profileImages/test.png', 'https://www.facebook.com/v.yazykov');
 SELECT *
 FROM t_profile;
 
 DELETE FROM t_friendship;
-INSERT INTO t_friendship (email_1, email_2) VALUES
-  ('my@mail.com', 'vladogim97@gmail.com');
+# INSERT INTO t_friendship (email_1, email_2) VALUES
+#   ('my@mail.com', 'vladogim97@gmail.com');
 SELECT *
 FROM t_friendship;
 
 DELETE FROM t_review;
-INSERT INTO t_review (date, email, performance) VALUES
-  ('2018-03-29 11:00:00', 'vladogim97@gmail.com', 1);
+# INSERT INTO t_review (date, email, performance) VALUES
+#   (5, 'vladogim97@gmail.com', 1);
 SELECT *
 FROM t_review;

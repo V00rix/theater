@@ -1,0 +1,9 @@
+<div *ngIf="data.dataLoaded">
+  <img src="{{data.applicationStatus.selectedPerformance.bg}}" class="background z-ground" alt="Performance background"/>
+  <!--<app-slide-panel>-->
+  <!--<app-navigation></app-navigation>-->
+  <!--</app-slide-panel>-->
+  <router-outlet></router-outlet>
+</div>
+
+<!-- todo: image caching -->

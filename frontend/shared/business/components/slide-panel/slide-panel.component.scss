@@ -1,0 +1,11 @@
+@import '../../../styles/variables/colors.scss';
+@import '../../../styles/mixins/rgba.scss';
+
+.slide-panel {
+  @include rgba(bg, $color-main-dark, .8);
+  position: fixed;
+  left: 0;
+  top: 0;
+  min-width: 25vw;
+  height: 100vh;
+}

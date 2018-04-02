@@ -1,0 +1,15 @@
+.session {
+  margin: 0 50px 25px;
+  display: inline-block;
+  font-size: 47px;
+  letter-spacing: 3px;
+
+  > hr {
+    border: 1px solid;
+    border-radius: 5px;
+    width: calc(100% + 50px);
+    left: -25px;
+    position: relative;
+    margin: 0;
+  }
+}

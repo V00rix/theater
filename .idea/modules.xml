@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/theater.iml" filepath="$PROJECT_DIR$/.idea/theater.iml" />
-      <module fileurl="file://$PROJECT_DIR$/backend/theater-backend.iml" filepath="$PROJECT_DIR$/backend/theater-backend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backend/theater.backend.iml" filepath="$PROJECT_DIR$/backend/theater.backend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/frontend/desktop/frontend.desktop.iml" filepath="$PROJECT_DIR$/frontend/desktop/frontend.desktop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/frontend/mobile/frontend.mobile.iml" filepath="$PROJECT_DIR$/frontend/mobile/frontend.mobile.iml" />
+      <module fileurl="file://$PROJECT_DIR$/frontend/shared/theater.frontend.shared.iml" filepath="$PROJECT_DIR$/frontend/shared/theater.frontend.shared.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../theater.wiki/theater.wiki.iml" filepath="$PROJECT_DIR$/../theater.wiki/theater.wiki.iml" group="theater" />
     </modules>
   </component>
 </project>

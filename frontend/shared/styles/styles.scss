@@ -1,0 +1,21 @@
+/* You can add global styles to this file, and also import other style files */
+@import '../../node_modules/bootstrap/scss/bootstrap';
+@import 'variables/colors';
+@import 'variables/transitions';
+@import 'mixins/rgba';
+@import 'mixins/fullscreen';
+@import 'mixins/z';
+@import 'mixins/centered';
+@import 'fonts';
+@import 'layout';
+@import 'elements/action';
+@import 'elements/faders';
+@import 'elements/sequence';
+@import 'elements/hint';
+@import 'elements/icon';
+@import 'elements/iconAction';
+@import 'elements/iconList';
+@import 'elements/input';
+@import 'elements/overlay';
+@import 'elements/seat';
+@import 'elements/session';
