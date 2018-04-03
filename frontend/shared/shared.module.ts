@@ -23,7 +23,7 @@ import localeRu from '@angular/common/locales/ru';
 import localeEn from '@angular/common/locales/en';
 
 export function createTranslateLoader(http: HttpClient) {
-    return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+    return new TranslateHttpLoader(http, 'http://localhost:80/frontend/shared/assets/i18n/', '.json');
 }
 
 registerLocaleData(localeRu, 'ru');

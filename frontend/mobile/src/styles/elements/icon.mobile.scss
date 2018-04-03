@@ -1,0 +1,26 @@
+.icon-m {
+  width: 50px;
+  height: 50px;
+  &.huge {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+.icon-label {
+  text-align: left;
+  margin: 35px 0 25px;
+  min-height: 50px;
+
+  > label {
+    top: 5px;
+    position: relative;
+  }
+
+  .icon-m {
+    float: left;
+    margin-right: 20px;
+  }
+}
+
+

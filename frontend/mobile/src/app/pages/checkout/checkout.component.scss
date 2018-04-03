@@ -1,0 +1,22 @@
+label.radio-inline {
+  display: inline;
+}
+
+.checkout-option {
+  width: calc(33% - 15px);
+  max-width: 300px;
+  min-width: 150px;
+  display: inline-grid;
+  text-align: left;
+  margin: 0 25px;
+}
+.checkout-option-m {
+  display: -ms-inline-grid;
+  display: inline-grid;
+  text-align: left;
+  margin: 25px 25px 10px;
+
+  > label {
+    margin-bottom: 0;
+  }
+}

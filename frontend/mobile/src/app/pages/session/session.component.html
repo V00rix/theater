@@ -1,0 +1,34 @@
+<div class="shadow"></div>
+<div class="z-main">
+  <div class="fader-top"></div>
+  <div class="fader-bottom"></div>
+
+
+  <div class="layout-top-center-m">
+    <!--icon here-->
+  </div>
+
+  <div class="m-container text-center">
+    <h2>{{'Seats' | translate}}</h2>
+    <h3>{{data.applicationStatus.selectedSession.date | date:'HH:mm':'+0100'}}
+      {{data.applicationStatus.selectedSession.date | date:'dd/MM':'+0100'}}</h3>
+
+    <!-- Page title -->
+    <div class="session-container-m text-center">
+      <div *ngFor="let row of data.applicationStatus.selectedSession.seats; let rowId = index">
+      <span class="session-row">
+        {{'R' | translate}}<em>{{data.applicationStatus.selectedSession.seats.length - rowId}}</em>
+      </span>
+        <span *ngFor="let seat of row; let seatId = index" class="seat {{seat.status}}"
+              (click)="switchSeatSelection(seat)">{{seatId + 1}}</span>
+      </div>
+    </div>
+
+    <div class="font-hint">
+      Touch or pinch to zoom
+    </div>
+
+  </div>
+
+  <label class="action button-next-m" (click)="onConfirm()">{{'Confirm' | translate}}</label>
+</div>

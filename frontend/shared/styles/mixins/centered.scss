@@ -9,3 +9,14 @@
 .centered {
   @include centered;
 }
+
+@mixin centered-h {
+  position: absolute;
+  width: 100%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+}
+
+.centered-h {
+  @include centered-h;
+}

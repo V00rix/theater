@@ -1,0 +1,20 @@
+<div class="z-main">
+
+  <div class="fader-top"></div>
+
+  <div class="fader-bottom"></div>
+  <div class="layout-footer-center">
+    <div class="font-hint centered" (click)="showPerformance()">
+      {{'pages.hints.scrollForDescription' | translate}}
+    </div>
+  </div>
+
+  <h1 class="centered text-center w-80" (click)="showPerformance()">{{data.applicationStatus.selectedPerformance.title | uppercase}}</h1>
+
+  <div *ngIf="data.performances.length &gt; 1" class="layout-center-6">
+    <div class="sequence">
+      <div *ngFor="let p of data.performances; let id = index" (click)="data.applicationStatus.selectedPerformance = data.performances[id]"
+           class="sequence-сircle {{data.applicationStatus.selectedPerformance === data.performances[id] ? 'selected' : ''}}"></div>
+    </div>
+  </div>
+</div>

@@ -1,2 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 @import '../../shared/styles/styles';
+@import './styles/layout.mobile';
+@import './styles/fonts.mobile';
+@import './styles/elements/session.mobile';
+@import './styles/elements/icon.mobile';
+
+.background {
+  position: fixed;
+  height: 100%;
+}
+
+h1 {
+  font-size: 22px;
+  letter-spacing: 10px;
+}

@@ -1,0 +1,35 @@
+/* TODO: Layout: distances, positions, paddings, margins, borders, shadows etc. */
+
+// TODO: add max height/widths in percentage for pixel-based heights/widths
+
+.layout-top-center-m {
+  position: fixed;
+  top: 0;
+  right: 25px;
+  left: 25px;
+  height: 75px;
+}
+
+.layout-top-2-center-m {
+  position: fixed;
+  top: 0;
+  right: 25px;
+  left: 25px;
+  height: 75px;
+}
+
+.m-container {
+  position: absolute;
+  top: 75px;
+  right: 25px;
+  left: 25px;
+}
+
+.button-next-m {
+  position: fixed;
+  text-align: center;
+  bottom: 0;
+  right: 25px;
+  left: 25px;
+  padding: 5px;
+}

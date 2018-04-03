@@ -14,6 +14,7 @@ import {NG_VALUE_ACCESSOR} from '@angular/forms';
 })
 export class InputComponent extends AbstractValueAccessor implements OnInit{
   @Input() public name: String;
+  @Input() public class: String;
   public isSelected: boolean;
 
   constructor() {

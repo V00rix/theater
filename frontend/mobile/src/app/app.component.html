@@ -1,4 +1,9 @@
-<label *ngIf="!data.dataLoaded" class="action">loading</label>
-<label *ngIf="data.dataLoaded" class="action">{{'tss' | translate}}</label>
-<app-button-back></app-button-back>
-<app-input [name]="'dsad'"></app-input>
+<div *ngIf="data.dataLoaded">
+  <img src="{{'http://localhost:80/frontend/shared/' + data.applicationStatus.selectedPerformance.bg}}" class="background z-ground" alt="Performance background"/>
+  <!--<app-slide-panel>-->
+  <!--<app-navigation></app-navigation>-->
+  <!--</app-slide-panel>-->
+  <router-outlet></router-outlet>
+</div>
+
+<!-- todo: image caching -->
