@@ -4,8 +4,7 @@ import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
 import {FormsModule} from '@angular/forms';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
-import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
-import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 /* Components */
 import {NavigationComponent} from './business/components/navigation/navigation.component';
@@ -18,12 +17,14 @@ import {ButtonBackComponent} from './business/components/button-back/button-back
 import {DataService} from './business/services/data.service';
 
 /* i18n */
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {registerLocaleData} from '@angular/common';
 import localeRu from '@angular/common/locales/ru';
 import localeEn from '@angular/common/locales/en';
 
 export function createTranslateLoader(http: HttpClient) {
-    return new TranslateHttpLoader(http, 'http://localhost:80/frontend/shared/assets/i18n/', '.json');
+    return new TranslateHttpLoader(http);
 }
 
 registerLocaleData(localeRu, 'ru');
@@ -40,6 +41,7 @@ registerLocaleData(localeEn, 'en');
     imports: [
         BrowserModule,
         FormsModule,
+        BrowserAnimationsModule,
         RouterModule,
         HttpClientModule,
         TranslateModule.forRoot({
@@ -50,16 +52,16 @@ registerLocaleData(localeEn, 'en');
             }
         })
     ],
-    providers: [DataService,
-        {provide: LOCALE_ID, useValue: 'en'}],
+    providers: [DataService],
     exports: [
         NavigationComponent,
         SlidePanelComponent,
         SlidePanelContentComponent,
         InputComponent,
         ButtonBackComponent,
+        FormsModule,
         TranslateModule,
-        FormsModule
+        BrowserAnimationsModule
     ]
 })
 export class SharedModule {
