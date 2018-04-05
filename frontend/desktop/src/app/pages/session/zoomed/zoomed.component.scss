@@ -1,0 +1,10 @@
+.session-container {
+  overflow: scroll;
+  width: auto;
+  height: 100%;
+  padding: 50px 25px 100px;
+}
+
+.session-container::-webkit-scrollbar {
+  display: none;
+}

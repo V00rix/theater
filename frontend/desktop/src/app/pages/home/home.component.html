@@ -1,20 +1,24 @@
-<div class="z-main">
+<div class="z-main cursor-pointer" [@fadeInLong] [@fadeOut]  (click)="showPerformance()">
 
   <div class="fader-top"></div>
 
 
   <div class="fader-bottom"></div>
   <div class="layout-footer-center">
-    <div class="font-hint centered" (click)="showPerformance()">
-      {{'pages.home.hints.clickForTicket' | translate}}
-    </div>
+    <!--<div class="font-hint centered" (click)="showPerformance()">-->
+    <!--{{'pages.home.hints.clickForTicket' | translate}}-->
+    <!--</div>-->
   </div>
 
-  <h1 class="centered text-center" (click)="showPerformance()">{{data.applicationStatus.selectedPerformance.title | uppercase}}</h1>
+  <div class="content-container">
+    <h1 class="text-center">{{data.applicationStatus.selectedPerformance.title |
+      uppercase}}</h1>
+  </div>
 
   <div *ngIf="data.performances.length &gt; 1" class="layout-center-6">
     <div class="sequence">
-      <div *ngFor="let p of data.performances; let id = index" (click)="data.applicationStatus.selectedPerformance = data.performances[id]"
+      <div *ngFor="let p of data.performances; let id = index"
+           (click)="data.applicationStatus.selectedPerformance = data.performances[id]"
            class="sequence-сircle {{data.applicationStatus.selectedPerformance === data.performances[id] ? 'selected' : ''}}"></div>
     </div>
   </div>

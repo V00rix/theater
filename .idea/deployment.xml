@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" serverName="elumixor">
+  <component name="PublishConfigData" serverName="elumixor.grani.mobile">
     <serverData>
-      <paths name="elumixor">
+      <paths name="elumixor.grani.mobile">
         <serverdata>
           <mappings>
-            <mapping deploy="/public_html/test" local="$PROJECT_DIR$/frontend/dist" web="/" />
+            <mapping deploy="/grani/mobile" local="$PROJECT_DIR$/frontend/mobile/dist" web="/" />
           </mappings>
         </serverdata>
       </paths>

@@ -1,15 +1,13 @@
 <div class="shadow"></div>
-<div class="z-main">
+<div class="z-main" [@fadeIn] [@fadeOut]>
 
   <div class="fader-top"></div>
   <div class="fader-bottom"></div>
 
-  <div class="layout-top-center">
-    <h2 class="centered text-center">{{'pages.checkout.title' | translate}}</h2>
-  </div>
+  <div class="content-container text-center">
+    <h2>{{'pages.checkout.title' | translate}}</h2>
 
-    <div class="centered text-center">
-      <form>
+      <form class="offset text-center">
         <div *ngFor="let option of checkoutOptions"
              class="checkout-option"
              (click)="onCheckoutSelected(option)">
@@ -19,8 +17,10 @@
           <!--<div class="font-hint text-left">{{'pages.checkout.options.' + option + '.description' | translate}}</div>-->
         </div>
       </form>
+    <div class="submenu">
+      <app-button-back [class]="'submenu-item'"></app-button-back>
+    </div>
   </div>
 
-  <app-button-back></app-button-back>
 
 </div>

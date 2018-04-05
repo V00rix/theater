@@ -1,0 +1,66 @@
+{
+  "global": {
+    "back": "Назад",
+    "next": "Далее",
+    "confirm": "Подтвердить",
+    "home": "На начальную страницу",
+    "row": "Р",
+    "seat": "М"
+  },
+  "hints": {
+    "clickForTicket": "Click to get a ticket",
+    "hoverForMenu": "Hover to show menu",
+    "scrollForPerformances": "Scroll down for more performances",
+    "touchOrPinchToZoom": "Нажмите чтобы увеличить",
+    "codeSent": "Код был также отправлен на Ваш Email",
+    "contactedSoon": "Мы скоро свяжемся с Вами для подтверждения",
+    "scrollForDescription": "Scroll for performance details"
+  },
+  "pages": {
+    "home": {
+    },
+    "performance": {
+      "title": "Сеансы"
+    },
+    "viewer": {
+      "title": "Ваши данные",
+      "useAccountData": "Use account data",
+      "loginForAccountData": "Login to use account data"
+    },
+    "checkout": {
+      "title": "Билет",
+      "options": {
+        "delivery": {
+          "title": "Доставка",
+          "description": "Доставка билета по Вашему адресу. Стоимость: 100 Kč"
+        },
+        "self": {
+          "title": "Самовывоз",
+          "description": "Na Zátorce 1048/16 Praha 6 - Bubenec\nкаждый\nвторник, четверг с 18:00 до 19:30"
+        },
+        "payBefore": {
+          "title": "Оплата перед спектаклем",
+          "description": "Не позже 30 минут до начала спектакля"
+        }
+      }
+    },
+    "confirmation": {
+      "title": "Подтверждение"
+    },
+    "success": {
+      "success": "Заказ прошёл успешно!",
+      "bookingCode": "Код вашего заказа: ",
+      "saveIt": "Сохраните его для получения билета"
+    },
+    "session": {
+      "title": "Выбор мест",
+      "scene": "Сцена"
+    }
+  },
+  "forms": {
+    "labels": {
+      "name": "Имя",
+      "contact": "Email или Номер телефона"
+    }
+  }
+}

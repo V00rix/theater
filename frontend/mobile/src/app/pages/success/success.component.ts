@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {DataService} from '../../../../../shared/business/services/data.service';
+import {Animations} from '../../../../../shared/animations/animations';
 
 @Component({
   selector: 'app-success',
   templateUrl: './success.component.html',
-  styleUrls: ['./success.component.scss']
+  styleUrls: ['./success.component.scss'],
+  animations: Animations.animations
 })
 export class SuccessComponent implements OnInit {
 

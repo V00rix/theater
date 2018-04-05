@@ -1,5 +1,4 @@
 {
-  "tss": "rsdadassdsda",
   "global": {
     "back": "Back",
     "next": "Next",
@@ -8,19 +7,20 @@
     "row": "R",
     "seat": "S"
   },
+  "hints": {
+    "clickForTicket": "Click to get a ticket",
+    "hoverForMenu": "Hover to show menu",
+    "scrollForPerformances": "Scroll down for more performances",
+    "touchOrPinchToZoom": "Touch to zoom",
+    "codeSent": "Code has also been sent to your email",
+    "contactedSoon": "We will contact you for confirmation soon",
+    "scrollForDescription": "Scroll for performance details"
+  },
   "pages": {
     "home": {
-      "hints": {
-        "clickForTicket": "Click to get a ticket",
-        "hoverForMenu": "Hover to show menu",
-        "scrollForPerformances": "Scroll down for more performances"
-      }
     },
     "performance": {
-      "title": "Sessions",
-      "hints": {
-        "scrollForDescription": "Scroll for performance details"
-      }
+      "title": "Sessions"
     },
     "viewer": {
       "title": "Your information",
@@ -50,11 +50,7 @@
     "success": {
       "success": "Success!",
       "bookingCode": "Your booking code is: ",
-      "saveIt": "Save it to get a ticket",
-      "hints": {
-        "codeSent": "Code has also been sent to your email",
-        "contactedSoon": "We will contact you for confirmation soon"
-      }
+      "saveIt": "Save it to get a ticket"
     },
     "session": {
       "title": "Select seats",
@@ -64,10 +60,7 @@
   "forms": {
     "labels": {
       "name": "Name",
-      "emailPhone": "Email or Phone number"
-    },
-    "divider": {
-      "or": "or"
+      "contact": "Email or Phone number"
     }
   }
 }

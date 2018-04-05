@@ -1,5 +1,5 @@
 <div class="shadow"></div>
-<div class="z-main">
+<div class="z-main" [@fadeIn] [@fadeOut]>
 
   <div class="fader-top"></div>
   <div class="fader-bottom"></div>
@@ -35,11 +35,11 @@
     <br/>
 
     <div class="font-hint" (click)="updateStatus()">
-      {{'pages.success.hints.codeSent' | translate}}
+      {{'hints.codeSent' | translate}}
       <br/>
-      {{'pages.success.hints.contactedSoon' | translate}}
+      {{'hints.contactedSoon' | translate}}
     </div>
   </div>
 
-  <label class="action button-next-m" [routerLink]="['']">{{'Home' | translate}}</label>
+  <label class="action button-next-m" [routerLink]="['']">{{'global.home' | translate}}</label>
 </div>

@@ -4,8 +4,24 @@
   stroke: $color-accent;
 
   outline: none;
+  cursor: pointer;
+  transition: text-shadow .2s ease-out, color .2s ease-out;
   &.disabled {
+    cursor: default;
+    
+    @include rgba('color', $color-accent, .5);
+    &:hover {
+      @include rgba('color', $color-accent, .5);
+    }
+  }
 
+  &.inactive {
+    cursor: default;
+  }
+
+  &:hover {
+    text-shadow: 0 0 5px;
+    color: white;
   }
 }
 

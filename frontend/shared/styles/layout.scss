@@ -1,6 +1,5 @@
-/* TODO: Layout: distances, positions, paddings, margins, borders, shadows etc. */
+// todo: refactor
 
-// TODO: add max height/widths in percentage for pixel-based heights/widths
 .layout-header-1 {
   position: fixed;
   top: 0;
@@ -75,6 +74,28 @@
   position: fixed;
   bottom: 50px;
   right: 150px;
+  &.p-absolute {
+    position: absolute;
+  }
+}
+
+.submenu {
+  position: relative;
+  margin-top: 50px;
+  > * {
+    display: inline-block;
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+}
+
+.submenu-item {
+  position: relative;
+  bottom: 0;
+  left: 0;
+  display: inline-block;
+  margin-left: 15px;
+  margin-right: 15px;
 }
 
 .button-center {
@@ -92,4 +113,52 @@
 
 .w-80 {
   width: 80%;
+}
+
+.layout-top-center-m {
+  position: fixed;
+  top: 0;
+  right: 25px;
+  left: 25px;
+  height: 75px;
+}
+
+.layout-top-2-center-m {
+  position: fixed;
+  top: 0;
+  right: 25px;
+  left: 25px;
+  height: 75px;
+}
+
+.m-container {
+  position: absolute;
+  top: 75px;
+  right: 25px;
+  left: 25px;
+}
+
+.content-container {
+  @include centered;
+  padding: 50px 25px;
+  > .offset {
+    margin-top: 50px;
+  }
+}
+
+.button-next-m {
+  position: fixed;
+  text-align: center;
+  bottom: 0;
+  right: 25px;
+  left: 25px;
+  padding: 5px;
+}
+
+.cursor-pointer {
+  cursor: pointer !important;
+}
+
+.cursor-default {
+  cursor: default !important;
 }

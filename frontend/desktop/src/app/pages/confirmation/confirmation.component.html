@@ -1,17 +1,17 @@
 <div class="shadow"></div>
-<div class="z-main">
+<div class="z-main" [@fadeIn] [@fadeOut]>
 
   <div class="fader-top"></div>
   <div class="fader-bottom"></div>
 
-  <div class="layout-top-center">
-    <h2 class="centered text-center">{{'pages.confirmation.title' | translate}}</h2>
-  </div>
+  <div class="content-container text-center">
+    <h2>{{'pages.confirmation.title' | translate}}</h2>
 
-  <div class="centered text-center container">
-    <div class="row">
-      <div class="col-xs-12 col-sm-6 icon-label">
-        <svg class="icon action inactive" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+    <div class="offset">
+      <div class="row">
+
+        <div class="col-xs-12 col-sm-6 icon-label">
+          <svg class="icon action inactive" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 938.286 938.286" style="enable-background:new 0 0 938.286 938.286;" xml:space="preserve">
         <g>
           <path d="M152.347,655.675c-1.118,0.092-2.235,0.143-3.346,0.143c-43.768,0-104.985-11.482-149.001-33.549v283.135h223.443
@@ -34,14 +34,14 @@
             c-0.469,0.316-0.986,0.645-1.544,0.985C920.546,538.857,867.249,558.175,806.988,573.273z"></path>
         </g>
         </svg>
-        <label>{{data.applicationStatus.selectedPerformance.title}}</label>
-        <label>
-          {{data.applicationStatus.selectedSession.date | date:'HH:mm':'+0100'}}
-          {{data.applicationStatus.selectedSession.date | date:'dd/MM':'+0100'}}
-        </label>
-      </div>
-      <div class="col-xs-12 col-sm-6 icon-label">
-        <svg class="icon action inactive" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+          <label>{{data.applicationStatus.selectedPerformance.title}}</label>
+          <label>
+            {{data.applicationStatus.selectedSession.date | date:'HH:mm':'+0100'}}
+            {{data.applicationStatus.selectedSession.date | date:'dd/MM':'+0100'}}
+          </label>
+        </div>
+        <div class="col-xs-12 col-sm-6 icon-label">
+          <svg class="icon action inactive" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
          viewBox="0 0 297 297" style="enable-background:new 0 0 297 297;" xml:space="preserve">
             <path d="M93.255,281h110.49l-0.173,1.629c-0.389,3.666,0.797,7.324,3.263,10.065c2.466,2.74,5.979,4.306,9.665,4.306h50
               c6.649,0,12.227-5.017,12.928-11.629l14-132c0.389-3.666-0.797-7.324-3.263-10.065c-2.466-2.74-5.979-4.306-9.665-4.306h-14.478
@@ -55,25 +55,25 @@
               c35.927,0,71.361,14.397,90.274,36.681c7.188,8.469,15.175,22.103,12.398,38.956c-1.092,6.63-7.367,24.18-12.435,37.363H230.5
               C223.851,139,218.273,144.017,217.572,150.629z M254.806,271h-23.854l11.242-106h23.854L254.806,271z"></path>
         </svg>
-        <label>
+          <label>
             <span *ngFor="let seat of data.applicationStatus.selectedSeats">
               {{'global.row' | translate}}<em>{{seat.row}}</em>
               {{'global.seat' | translate}}<em>{{seat.seat}}</em>
               &nbsp;&nbsp;
             </span>
-        </label>
-      </div>
-      <div class="col-xs-12 col-sm-6 icon-label">
-        <svg class="icon action inactive" enable-background="new 0 0 96 96" height="96px" id="Layer_1" version="1.1" viewBox="0 0 96 96" width="96px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          </label>
+        </div>
+        <div class="col-xs-12 col-sm-6 icon-label">
+          <svg class="icon action inactive" enable-background="new 0 0 96 96" height="96px" id="Layer_1" version="1.1" viewBox="0 0 96 96" width="96px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <g>
           <path d="M59.16,34.314c0,6.162-4.996,11.16-11.16,11.16   c-3.322,0-6.307-1.453-8.351-3.757c-1.748-1.97-2.81-4.563-2.81-7.403c0-6.164,4.997-11.161,11.16-11.161   C54.164,23.153,59.16,28.15,59.16,34.314z"  stroke-miterlimit="10" stroke-width="2"></path>
           <path d="M67.07,63.461c-0.077-0.156-0.156-0.312-0.236-0.466C63.281,56.221,56.181,51.597,48,51.597c-11.735,0-21.25,9.515-21.25,21.25   h42.5c0-2.035-0.286-4.006-0.82-5.869" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"></path>
         </g>
       </svg>
-        <label>{{data.applicationStatus.user.name}}</label>
-        <label>{{data.applicationStatus.user.contact}}</label>
-      </div>
-      <div class="col-xs-12 col-sm-6 icon-label">
+          <label>{{data.applicationStatus.user.name}}</label>
+          <label>{{data.applicationStatus.user.contact}}</label>
+        </div>
+        <div class="col-xs-12 col-sm-6 icon-label">
           <svg class="icon action inactive" id="Layer_1" version="1.1" viewBox="0 0 64 64" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
           <g>
             <g id="Icon-Cart" transform="translate(76.000000, 478.000000)">
@@ -82,10 +82,13 @@
           </g>
         </svg>
           <label>{{'pages.checkout.options.' + data.applicationStatus.checkout + '.title' | translate}}</label>
+        </div>
       </div>
     </div>
-  </div>
 
-  <app-button-back></app-button-back>
-  <label class="action button-next" (click)="onConfirm()">{{'global.confirm' | translate}}</label>
+    <div class="submenu">
+      <app-button-back [class]="'submenu-item'"></app-button-back>
+      <label class="action" (click)="onConfirm()">{{'global.confirm' | translate}}</label>
+    </div>
+  </div>
 </div>

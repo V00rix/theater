@@ -1,15 +1,18 @@
 import {Component, OnInit} from '@angular/core';
 import {SeatStatus} from '../../../../../shared/business/domain/enumeration/seatStatus.enum';
 import {DataService} from '../../../../../shared/business/services/data.service';
+import {Animations} from '../../../../../shared/animations/animations';
 import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-session',
   templateUrl: './session.component.html',
-  styleUrls: ['./session.component.scss']
+  styleUrls: ['./session.component.scss'],
+  animations: Animations.animations
 })
 export class SessionComponent implements OnInit {
   private selectedSeatsCount: number;
+  public isZoomed: boolean;
 
   constructor(public data: DataService, private router: Router) {
   }
@@ -21,8 +24,6 @@ export class SessionComponent implements OnInit {
         seat.status = SeatStatus.FREE;
       }
     });
-
-    console.log(this.data.applicationStatus.selectedSeats);
 
     this.selectedSeatsCount = this.data.applicationStatus.selectedSeats.length;
     this.data.applicationStatus.selectedSeats.forEach(s => {
@@ -44,6 +45,7 @@ export class SessionComponent implements OnInit {
   }
 
   onConfirm() {
+    console.log('confirming');
     this.data.applicationStatus.selectedSeats = [];
     this.data.applicationStatus.selectedSession.forSeats((seat, rowIndex, seatIndex) => {
       if (seat.status === SeatStatus.SELECTED) {
@@ -61,5 +63,15 @@ export class SessionComponent implements OnInit {
 
   resetSeats() {
     this.data.updateSelection({seats: this.data.applicationStatus.selectedSeats = []});
+  }
+
+  showZoomed() {
+    console.log('showing');
+    this.isZoomed = true;
+  }
+
+  hideZoomed() {
+    console.log('hiding');
+    this.isZoomed = false;
   }
 }

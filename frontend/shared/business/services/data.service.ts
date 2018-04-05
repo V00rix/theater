@@ -12,9 +12,12 @@ import {User} from '../domain/user';
 import 'rxjs/add/operator/map';
 import {ApplicationStatus} from '../domain/applicationStatus';
 import {Checkout} from '../domain/enumeration/checkout';
+import {Subject} from 'rxjs/Subject';
+import {Square} from '../domain/square';
 
 @Injectable()
 export class DataService {
+    public windowResized = new Subject<Square>();
 
     // todo: move to correct location
     public pages = ['home', 'confirmation', 'contacts', 'performance',
@@ -29,6 +32,7 @@ export class DataService {
     public applicationStatus: ApplicationStatus;
 
     public bookingCode: string;
+    public viewport: Square;
 
     // todo: implement in my next life
     // public loggedIn: boolean;
@@ -39,8 +43,17 @@ export class DataService {
      */
     constructor(private http: HttpClient) {
         this.getPerformanceData();
+        this.onResize();
     }
 
+    public onResize() {
+        this.viewport = new Square(window.innerWidth, window.innerHeight);
+        this.windowResized.next(this.viewport);
+    }
+
+    /**
+     * Http GET
+     */
     public getPerformanceData() {
         this.http.get(`${this.baseUrl}/backend/php/requests/performances.php`).subscribe((response: PerformancesResponse) => {
             this.performances = PerformancesResponse.map(response);

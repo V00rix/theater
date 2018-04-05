@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import {Location} from '@angular/common';
 
 @Component({
@@ -7,6 +7,8 @@ import {Location} from '@angular/common';
     styleUrls: ['./button-back.component.scss']
 })
 export class ButtonBackComponent implements OnInit {
+    @Input() style;
+    @Input() class;
 
     constructor(public location: Location) {
     }

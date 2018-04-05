@@ -2,6 +2,10 @@ label.radio-inline {
   display: inline;
 }
 
+.checkouts {
+  margin-top: 50px;
+}
+
 .checkout-option {
   width: calc(33% - 15px);
   max-width: 300px;
@@ -11,12 +15,11 @@ label.radio-inline {
   margin: 0 25px;
 }
 .checkout-option-m {
-  display: -ms-inline-grid;
-  display: inline-grid;
+  display: block;
   text-align: left;
   margin: 25px 25px 10px;
 
   > label {
-    margin-bottom: 0;
+    margin-bottom: 5px;
   }
 }

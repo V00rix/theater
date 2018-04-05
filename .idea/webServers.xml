@@ -2,8 +2,8 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="9a4d7064-85e6-4210-bbcd-6d532962cb17" name="elumixor" url="http://ftp.elumixor.com">
-        <fileTransfer host="ftp.elumixor.com" port="21">
+      <webServer id="9a4d7064-85e6-4210-bbcd-6d532962cb17" name="elumixor.grani.mobile" url="http://ftp.elumixor.com">
+        <fileTransfer host="ftp.elumixor.com" port="21" rootFolder="/public_html">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />
           </advancedOptions>

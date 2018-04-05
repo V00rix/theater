@@ -1,16 +1,17 @@
 <div class="shadow"></div>
-<div class="z-main">
+<div class="z-main" [@fadeIn] [@fadeOut]>
   <div class="fader-top"></div>
   <div class="layout-footer-center">
   </div>
   <div class="fader-bottom"></div>
 
   <div class="layout-top-center-m">
+    <!--todo-->
     <!--icon here-->
   </div>
 
   <div class="m-container text-center">
-    <h2>{{'Sessions' | translate}}</h2>
+    <h2>{{'pages.performance.title' | translate}}</h2>
     <h3>{{data.applicationStatus.selectedPerformance.title}}</h3>
     <div *ngFor="let session of this.data.applicationStatus.selectedPerformance.sessions; let id = index"
          class="session-m action"

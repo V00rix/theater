@@ -23,6 +23,7 @@ import {ConfirmationComponent} from './pages/confirmation/confirmation.component
 import {SuccessComponent} from './pages/success/success.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import {ZoomedComponent} from './pages/session/zoomed/zoomed.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
     ContactsComponent,
     PerformanceComponent,
     SessionComponent,
+    ZoomedComponent,
     SessionsComponent,
     ViewerComponent,
     NotFoundComponent,

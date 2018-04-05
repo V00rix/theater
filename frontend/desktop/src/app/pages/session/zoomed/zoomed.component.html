@@ -1,0 +1,19 @@
+<div class="shadow" [@fadeIn] [@fadeOut]></div>
+<div class="z-main session-container text-center" [@fadeIn] [@fadeOut]>
+  <div class="centered relative">
+
+    <div *ngFor="let row of data.applicationStatus.selectedSession.seats; let rowId = index"
+         [ngStyle]="{'width':  containerWidth + 'px'}">
+      <span class="session-row">
+        {{'R' | translate}}<em>{{data.applicationStatus.selectedSession.seats.length - rowId}}</em>
+      </span>
+      <span *ngFor="let seat of row; let seatId = index" class="seat {{seat.status}}"
+            (click)="switchSeatSelection(seat)">{{seatId + 1}}</span>
+    </div>
+  </div>
+</div>
+
+<div class="fader-top less" style="pointer-events: none"></div>
+<div class="fader-bottom more">
+</div>
+<label class="action button-next-m" (click)="onHide.emit()">{{'global.confirm' | translate}}</label>

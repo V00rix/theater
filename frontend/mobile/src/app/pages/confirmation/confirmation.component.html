@@ -1,11 +1,11 @@
 <div class="shadow"></div>
-<div class="z-main">
+<div class="z-main" [@fadeIn] [@fadeOut]>
 
   <div class="fader-top"></div>
   <div class="fader-bottom"></div>
 
   <div class="m-container text-center">
-    <h2>{{'Confirmation' | translate}}</h2>
+    <h2>{{'pages.confirmation.title' | translate}}</h2>
 
     <div class="col-xs-12 col-sm-6 icon-label">
       <svg class="icon-m action inactive" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -54,8 +54,8 @@
         </svg>
       <label>
             <span *ngFor="let seat of data.applicationStatus.selectedSeats">
-              {{'R' | translate}}<em>{{seat.row}}</em>
-              {{'S' | translate}}<em>{{seat.seat}}</em>
+              {{'global.row' | translate}}<em>{{seat.row}}</em>
+              {{'global.seat' | translate}}<em>{{seat.seat}}</em>
               &nbsp;&nbsp;
             </span>
       </label>
@@ -78,10 +78,10 @@
             </g>
           </g>
         </svg>
-      <label>{{'Self-checkout' | translate}}</label>
+      <label>{{'pages.checkout.options.' + data.applicationStatus.checkout + '.title' | translate}}</label>
     </div>
 
   </div>
 
-  <label class="action button-next-m" (click)="onConfirm()">{{'Confirm' | translate}}</label>
+  <label class="action button-next-m" (click)="onConfirm()">{{'global.confirm' | translate}}</label>
 </div>

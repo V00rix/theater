@@ -8,6 +8,9 @@
 
 .centered {
   @include centered;
+  &.relative {
+    position: relative;
+  }
 }
 
 @mixin centered-h {

@@ -1,10 +1,10 @@
 <div class="shadow"></div>
-<div class="z-main">
+<div class="z-main" [@fadeIn] [@fadeOut]>
 
   <div class="fader-top"></div>
   <div class="fader-bottom"></div>
 
-  <div class="centered text-center container">
+  <div class="content-container text-center">
     <svg class="icon huge action inactive" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
        viewBox="0 0 490.4 490.4" style="enable-background:new 0 0 490.4 490.4;" xml:space="preserve">
     <g>
@@ -31,11 +31,13 @@
     <br/>
 
     <div class="font-hint" (click)="updateStatus()">
-      {{'pages.success.hints.codeSent' | translate}}
+      {{'hints.codeSent' | translate}}
       <br/>
-      {{'pages.success.hints.contactedSoon' | translate}}
+      {{'hints.contactedSoon' | translate}}
+    </div>
+    <div class="submenu">
+      <label class="action" [routerLink]="['']">{{'global.home' | translate}}</label>
     </div>
   </div>
 
-  <label class="action button-center" [routerLink]="['']">{{'global.home' | translate}}</label>
 </div>
