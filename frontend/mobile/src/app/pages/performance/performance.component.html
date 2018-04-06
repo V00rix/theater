@@ -10,15 +10,18 @@
     <!--icon here-->
   </div>
 
-  <div class="m-container text-center">
+  <div class="content-container text-center">
     <h2>{{'pages.performance.title' | translate}}</h2>
     <h3>{{data.applicationStatus.selectedPerformance.title}}</h3>
-    <div *ngFor="let session of this.data.applicationStatus.selectedPerformance.sessions; let id = index"
-         class="session-m action"
-         (click)="showSession(id)">
-      <div class="session-time">{{session.date | date:'HH:mm':'+0100'}}</div>
-      <hr>
-      <div class="session-day">{{session.date | date:'dd/MM':'+0100'}}</div>
+    <div class="offset">
+
+      <div *ngFor="let session of this.data.applicationStatus.selectedPerformance.sessions; let id = index"
+           class="session-m action"
+           (click)="showSession(id)">
+        <div class="session-time">{{session.date | date:'HH:mm':'+0100'}}</div>
+        <hr>
+        <div class="session-day">{{session.date | date:'dd/MM':'+0100'}}</div>
+      </div>
     </div>
   </div>
 </div>

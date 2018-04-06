@@ -33,7 +33,7 @@ export class Animations {
             transition('selected => rest', animate('0.2s 0.01s ease-in'))
         ]),
         trigger('input-field', [
-            state('empty', style({'top': '-15px', 'font-size': '0'})),
+            state('empty', style({'top': '-10px', 'font-size': '0'})),
             state('filled', style({'top': '0', 'font-size': '2em'})),
             transition('rest => selected', animate('0.2s 0.01s ease-in')),
             transition('selected => rest', animate('0.1s 0.02s ease-in')),

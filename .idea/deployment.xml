@@ -6,6 +6,7 @@
         <serverdata>
           <mappings>
             <mapping deploy="/grani/mobile" local="$PROJECT_DIR$/frontend/mobile/dist" web="/" />
+            <mapping deploy="/grani/desktop" local="$PROJECT_DIR$/frontend/desktop/dist" web="/" />
           </mappings>
         </serverdata>
       </paths>

@@ -18,4 +18,8 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  onResize() {
+    this.data.onResize();
+  }
 }

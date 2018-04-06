@@ -23,8 +23,7 @@ export class ViewerComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.data.applicationStatus.user.name.match(this.nameRegex)
-      && this.data.applicationStatus.user.contact.match(this.contactRegex)) {
+    if (this.checkValidity()) {
       this.data.updateSelection({user: this.data.applicationStatus.user});
       this.router.navigate(['/checkout']);
     }
@@ -36,5 +35,11 @@ export class ViewerComponent implements OnInit {
 
   onContactValidated(value) {
     this.contactValid = value;
+  }
+
+  checkValidity() {
+    return this.data.applicationStatus.user &&
+      this.data.applicationStatus.user.name && this.data.applicationStatus.user.contact
+      &&  this.data.applicationStatus.user.name.match(this.nameRegex) && this.data.applicationStatus.user.contact.match(this.contactRegex);
   }
 }

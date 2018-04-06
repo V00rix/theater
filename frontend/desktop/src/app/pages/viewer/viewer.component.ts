@@ -38,7 +38,8 @@ export class ViewerComponent implements OnInit {
   }
 
   checkValidity() {
-    return this.data.applicationStatus.user.name.match(this.nameRegex)
-      && this.data.applicationStatus.user.contact.match(this.contactRegex);
+    return this.data.applicationStatus.user &&
+      this.data.applicationStatus.user.name && this.data.applicationStatus.user.contact
+      &&  this.data.applicationStatus.user.name.match(this.nameRegex) && this.data.applicationStatus.user.contact.match(this.contactRegex);
   }
 }

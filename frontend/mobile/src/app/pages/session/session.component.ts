@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {SeatStatus} from '../../../../../shared/business/domain/enumeration/seatStatus.enum';
 import {DataService} from '../../../../../shared/business/services/data.service';
+import {Square} from '../../../../../shared/business/domain/square';
 import {Animations} from '../../../../../shared/animations/animations';
 import {Router} from '@angular/router';
 
@@ -13,6 +14,9 @@ import {Router} from '@angular/router';
 export class SessionComponent implements OnInit {
   private selectedSeatsCount: number;
   public isZoomed: boolean;
+  public containerWidth: number;
+  public containerHeight: number;
+  public scaleValue = 1;
 
   constructor(public data: DataService, private router: Router) {
   }
@@ -30,6 +34,38 @@ export class SessionComponent implements OnInit {
       this.data.applicationStatus.selectedSession.seats[this.data.applicationStatus.selectedSession.seats.length - s.row][s.seat - 1].status
         = SeatStatus.SELECTED;
     });
+
+    let seatsNumber = 0;
+    for (const row of this.data.applicationStatus.selectedSession.seats) {
+      seatsNumber = seatsNumber < row.length ? row.length : seatsNumber;
+    }
+    this.containerWidth = seatsNumber * 29 + 50;
+    this.containerHeight = this.data.applicationStatus.selectedSession.seats.length * 29;
+
+    if (this.data.viewport) {
+      this.calculateDisplayParams(this.data.viewport, this.containerWidth, this.containerHeight);
+    }
+    this.data.windowResized.subscribe((vp: Square) => {
+      this.calculateDisplayParams(vp, this.containerWidth, this.containerHeight);
+    });
+  }
+
+  /**
+   * Calculates display values of session container
+   * @param {Square} vp Viewport
+   * @param {number} w Container's width
+   * @param {number} h Container's height
+   */
+  private calculateDisplayParams(vp: Square,
+                                 w: number,
+                                 h: number) {
+    if (vp) {
+
+      const x = (.8 * vp.width) / w;
+      const y = (.5 * vp.height) / h;
+
+      this.scaleValue = x < y ? x : y;
+    }
   }
 
   switchSeatSelection(seat) {

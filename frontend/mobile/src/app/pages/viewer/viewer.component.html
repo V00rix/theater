@@ -1,26 +1,28 @@
 <div class="shadow"></div>
 <div class="z-main" [@fadeIn] [@fadeOut]>
+
   <div class="fader-top"></div>
   <div class="fader-bottom"></div>
-
-
-  <div class="m-container text-center">
+  <div class="content-container text-center">
     <h2>{{'pages.viewer.title' | translate}}</h2>
+    <div class="offset">
+      <form (submit)="onSubmit()">
+        <app-input [ngModelOptions]="{standalone: true}" [name]="'forms.labels.name' | translate"
+                   [(ngModel)]="data.applicationStatus.user.name"
+                   [pattern]="nameRegex"
+                   (validityChanged)="onNameValidated($event)"></app-input>
+        <app-input [ngModelOptions]="{standalone: true}"
+                   [name]="'forms.labels.contact' | translate"
+                   [(ngModel)]="data.applicationStatus.user.contact"
+                   [pattern]="contactRegex"
+                   (validityChanged)="onContactValidated($event)"></app-input>
+        <button type="submit" class="element-hidden"></button>
+      </form>
+    </div>
 
-    <form (submit)="onSubmit()">
-      <app-input [class]="'app-input-container-m'" [ngModelOptions]="{standalone: true}"
-                 [name]="'forms.labels.name' | translate" [(ngModel)]="data.applicationStatus.user.name"
-                 [pattern]="nameRegex"
-                 [style]="{'font-size': '10px'}"
-                 (validityChanged)="onNameValidated($event)"></app-input>
-      <app-input [class]="'app-input-container-m'" [ngModelOptions]="{standalone: true}"
-                 [name]="'forms.labels.contact' | translate"
-                 [(ngModel)]="data.applicationStatus.user.contact"
-                 [pattern]="contactRegex"
-                 (validityChanged)="onContactValidated($event)"></app-input>
-      <button type="submit" class="element-hidden"></button>
-    </form>
-
+    <div class="submenu">
+      <label (click)="onSubmit()" class="action {{checkValidity() ? '' : 'disabled'}}">{{'global.next' | translate}}</label>
+    </div>
   </div>
 
 
@@ -94,8 +96,5 @@
   <!--</svg>-->
   <!--</div>-->
   <!--</div>-->
-
-  <label class="action button-next-m" (click)="onSubmit()">{{'global.next' | translate}}</label>
-
 </div>
 

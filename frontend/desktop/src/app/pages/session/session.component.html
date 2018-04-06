@@ -19,7 +19,7 @@
       <span class="session-row">
         {{'global.row' | translate}}<em>{{data.applicationStatus.selectedSession.seats.length - rowId}}</em>
       </span>
-        <span *ngFor="let seat of row; let seatId = index" class="seat {{seat.status}}" (click)="switchSeatSelection(seat)">{{seatId + 1}}</span>
+      <span *ngFor="let seat of row; let seatId = index" class="seat {{seat.status}}" (click)="switchSeatSelection(seat)">{{seatId + 1}}</span>
       </div>
     </div>
   </div>

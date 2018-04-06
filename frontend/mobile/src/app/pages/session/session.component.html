@@ -8,12 +8,17 @@
     <!--icon here-->
   </div>
 
-  <div class="m-container text-center">
-    <h2>{{'pages.session.title' | translate}}</h2>
-    <h3>{{data.applicationStatus.selectedSession.date | date:'HH:mm':'+0100'}}
-      {{data.applicationStatus.selectedSession.date | date:'dd/MM':'+0100'}}</h3>
+  <div class="layout-top-center">
+    <h2 class="centered text-center">{{'pages.session.title' | translate}}</h2>
+  </div>
 
-    <div class="session-container-m text-center" (click)="showZoomed()">
+  <div class="layout-center-center">
+    <div class="centered session-container-m text-center" (click)="showZoomed()"
+         [ngStyle]="{
+         'width':  containerWidth + 'px',
+         'left': ' calc((50vw - ' + containerWidth + 'px)/2)',
+         'top': ' calc((50vh - ' + containerHeight + 'px)/2)',
+         'transform': 'scale(' + scaleValue + ')'}">
       <div *ngFor="let row of data.applicationStatus.selectedSession.seats; let rowId = index">
       <span class="session-row">
         {{'global.row' | translate}}<em>{{data.applicationStatus.selectedSession.seats.length - rowId}}</em>
@@ -21,11 +26,10 @@
         <span *ngFor="let seat of row; let seatId = index" class="seat {{seat.status}}">{{seatId + 1}}</span>
       </div>
     </div>
+  </div>
 
-    <div class="font-hint">
-      {{'hints.touchOrPinchToZoom' | translate}}
-    </div>
-
+  <div class="layout-footer-center  font-hint">
+    {{'hints.touchOrPinchToZoom' | translate}}
   </div>
 
   <label class="action button-next-m" (click)="onConfirm()">{{'global.confirm' | translate}}</label>
