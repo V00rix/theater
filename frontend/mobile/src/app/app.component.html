@@ -1,6 +1,6 @@
 <div *ngIf="data.dataLoaded" (window:resize)="onResize($event)">
   <!--todo: change url-->
-  <img src="{{'http://localhost:80/frontend/shared/' + data.applicationStatus.selectedPerformance.bg}}" class="background z-ground" alt="Performance background"/>
+  <img src="{{data.applicationStatus.selectedPerformance.bg}}" class="background z-ground" alt="Performance background"/>
   <!--<app-slide-panel>-->
   <!--<app-navigation></app-navigation>-->
   <!--</app-slide-panel>-->

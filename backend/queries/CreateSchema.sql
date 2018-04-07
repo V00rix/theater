@@ -23,12 +23,12 @@ DROP TABLE IF EXISTS t_address;
 /* Create Tables */
 CREATE TABLE t_address (
   id        INT AUTO_INCREMENT UNIQUE NOT NULL,
-  country   VARCHAR(255),
-  city      VARCHAR(255),
-  street    VARCHAR(255),
-  house     VARCHAR(255),
-  post_code VARCHAR(255),
-  city_part VARCHAR(255),
+  country   VARCHAR(205),
+  city      VARCHAR(205),
+  street    VARCHAR(205),
+  house     VARCHAR(205),
+  post_code VARCHAR(205),
+  city_part VARCHAR(205),
   PRIMARY KEY (country, city, street, house)
 );
 

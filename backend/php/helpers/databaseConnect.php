@@ -1,6 +1,6 @@
 <?php
 
-function db_connect($server_name = 'localhost', $username = 'root', $password = '', $db_name = 'theater')
+function db_connect($server_name = 'localhost', $username = 'elumixor_user', $password = '2H^yu#1IqS$l', $db_name = 'elumixor_theater')
 {
     // Create connection
     $mysqli = new mysqli($server_name, $username, $password, $db_name);

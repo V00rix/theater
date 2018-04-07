@@ -23,7 +23,7 @@ export class DataService {
     public pages = ['home', 'confirmation', 'contacts', 'performance',
         'performances', 'session', 'sessions', 'success', 'checkout', 'viewer'];
 
-    private baseUrl = 'http://localhost';
+    private baseUrl = 'http://elumixor.com/grani/backend/requests/';
     public dataLoaded = false;
 
     public performances: Performance[];
@@ -55,7 +55,7 @@ export class DataService {
      * Http GET
      */
     public getPerformanceData() {
-        this.http.get(`${this.baseUrl}/backend/php/requests/performances.php`).subscribe((response: PerformancesResponse) => {
+        this.http.get(`${this.baseUrl}performances.php`).subscribe((response: PerformancesResponse) => {
             this.performances = PerformancesResponse.map(response);
             this.maximumSeats = response.maximum_seats;
 
@@ -70,7 +70,7 @@ export class DataService {
      * Post application status
      */
     public postStatus() {
-        this.http.post(`${this.baseUrl}/backend/php/requests/status.php`, this.applicationStatus.transform(this.performances),
+        this.http.post(`${this.baseUrl}status.php`, this.applicationStatus.transform(this.performances),
             {withCredentials: true}).subscribe();
     }
 
@@ -79,7 +79,7 @@ export class DataService {
      * @returns {Observable<void>}
      */
     public getStatus(): Observable<void> {
-        return this.http.get(`${this.baseUrl}/backend/php/requests/status.php`, {withCredentials: true}).map((response: StatusResponse) => {
+        return this.http.get(`${this.baseUrl}status.php`, {withCredentials: true}).map((response: StatusResponse) => {
             this.applicationStatus = StatusResponse.map(response, this.performances);
         });
     }
@@ -108,7 +108,7 @@ export class DataService {
      * Post booking request
      */
     public postBooking() {
-        this.http.post(`${this.baseUrl}/backend/php/requests/reservation.php`, null, {withCredentials: true}).subscribe((response: string) => {
+        this.http.post(`${this.baseUrl}reservation.php`, null, {withCredentials: true}).subscribe((response: string) => {
             this.bookingCode = response;
             return this.getPerformanceData();
         });
