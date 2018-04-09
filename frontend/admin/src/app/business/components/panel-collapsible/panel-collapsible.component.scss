@@ -1,0 +1,29 @@
+.panel-collapsible {
+}
+
+.pc-drawer {
+  margin: 10px 0;
+
+  svg {
+    position: relative;
+    float: right;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    padding: 5px;
+  }
+  .pc-dr-content {
+    width: calc(100% - 40px);
+    padding: 0 5px;
+    position: relative;
+    display: inline-block;
+  }
+}
+
+.pc-content {
+
+}
+
+.transparent {
+  opacity: .3;
+}

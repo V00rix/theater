@@ -1,12 +1,5 @@
 USE Theater;
 
-DELETE FROM t_address;
-INSERT INTO t_address (id, country, city, street, house, post_code, city_part) VALUES
-  (10, 'Ukraine', 'Kiev', 'Amosova st.', '4', '141 00', NULL),
-  (1, 'Czech republic', 'Prague', 'Na Zatorce', '1048/16', '160 00', 'Praha 6 Bubenec');
-SELECT *
-FROM t_address;
-
 DELETE FROM t_performance;
 INSERT INTO t_performance (id, author, title, image_url, description) VALUES
   (1, 'Great Author', 'My spectacular creation', 'assets/images/performancesBg/test.png', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam consequat odio id libero bibendum, et pharetra elit tincidunt. Suspendisse at nunc sit amet arcu varius sodales. Morbi convallis turpis maximus libero lobortis, ac efficitur orci aliquam. Donec vulputate mattis ante quis posuere. Nullam elementum ex in felis tempus hendrerit. Vivamus eu gravida ipsum. Sed orci diam, tempor eget scelerisque id, venenatis at libero. In ac auctor odio.');
@@ -47,8 +40,8 @@ SELECT *
 FROM t_phone_client;
 
 DELETE FROM t_theater;
-INSERT INTO t_theater (id, address, name, maximum_seats) VALUE
-  (1, 1, 'TEST_THEATER', 5);
+INSERT INTO t_theater (id, country, city, street, house, post_code, city_part, name, maximum_seats) VALUE
+  (1, 'Czech republic', 'Prague', 'Na Zatorce', '1048/16', '160 00', 'Praha 6 Bubenec', 'TEST_THEATER', 5);
 SELECT *
 FROM t_theater;
 
@@ -166,13 +159,6 @@ DELETE FROM t_order;
 #   (1, 4, 'vladogim97@gmail.com', 'vladogim97@gmail.com', TRUE, TRUE, 'SELF_CHECKOUT');
 SELECT *
 FROM t_order;
-
-DELETE FROM t_ticket;
-# INSERT INTO t_ticket (seat, `order`) SELECT
-#                                        s.id, 1 as `order`
-#                                      FROM t_seat s WHERE s.id = 1101;
-SELECT *
-FROM t_ticket;
 
 DELETE FROM t_profile;
 # INSERT INTO t_profile (email, image_url, facebook) VALUES

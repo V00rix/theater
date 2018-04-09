@@ -1,0 +1,14 @@
+.error-container {
+  background: linear-gradient(rgba(65, 2, 2, 1), rgba(0, 0, 0, 0.71));
+  position: fixed;
+}
+
+.error-message {
+  > h5 {
+    margin-bottom: 5px;
+  }
+  > p {
+    margin-bottom: 15px;
+    margin-top: 5px;
+  }
+}

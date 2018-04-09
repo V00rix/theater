@@ -23,7 +23,8 @@ export class DataService {
     public pages = ['home', 'confirmation', 'contacts', 'performance',
         'performances', 'session', 'sessions', 'success', 'checkout', 'viewer'];
 
-    private baseUrl = 'http://elumixor.com/grani/backend/requests/';
+    // private baseUrl = 'http://elumixor.com/grani/backend/requests/';
+    private baseUrl = 'http://localhost/backend/php/requests/';
     public dataLoaded = false;
 
     public performances: Performance[];
@@ -71,7 +72,7 @@ export class DataService {
      */
     public postStatus() {
         this.http.post(`${this.baseUrl}status.php`, this.applicationStatus.transform(this.performances),
-            {withCredentials: true}).subscribe();
+            {withCredentials: true, headers: {'Content-Type': ['text/plain']}}).subscribe();
     }
 
     /**
@@ -79,7 +80,11 @@ export class DataService {
      * @returns {Observable<void>}
      */
     public getStatus(): Observable<void> {
-        return this.http.get(`${this.baseUrl}status.php`, {withCredentials: true}).map((response: StatusResponse) => {
+        return this.http.get(`${this.baseUrl}status.php`, {
+            withCredentials: true,
+            headers: {'Content-Type': ['text/plain']}
+        }).map((response: StatusResponse) => {
+            console.log(response);
             this.applicationStatus = StatusResponse.map(response, this.performances);
         });
     }
@@ -93,7 +98,7 @@ export class DataService {
         session?: Session,
         seats?: SelectedSeat[],
         user?: User,
-        checkout?: Checkout
+        checkout?: Checkout.Code
     }) {
         this.applicationStatus.selectedPerformance = param.performance || this.applicationStatus.selectedPerformance;
         this.applicationStatus.selectedSession = param.session || this.applicationStatus.selectedSession;

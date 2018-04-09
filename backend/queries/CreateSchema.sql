@@ -7,8 +7,8 @@ DROP TABLE IF EXISTS t_review;
 DROP TABLE IF EXISTS t_friendship;
 DROP TABLE IF EXISTS t_profile;
 DROP TABLE IF EXISTS t_ticket;
-DROP TABLE IF EXISTS t_order;
 DROP TABLE IF EXISTS t_seat;
+DROP TABLE IF EXISTS t_order;
 DROP TABLE IF EXISTS t_session;
 DROP TABLE IF EXISTS t_row;
 DROP TABLE IF EXISTS t_hall;
@@ -19,18 +19,6 @@ DROP TABLE IF EXISTS t_registered_user;
 DROP TABLE IF EXISTS t_timestamp;
 DROP TABLE IF EXISTS t_performance;
 DROP TABLE IF EXISTS t_address;
-
-/* Create Tables */
-CREATE TABLE t_address (
-  id        INT AUTO_INCREMENT UNIQUE NOT NULL,
-  country   VARCHAR(205),
-  city      VARCHAR(205),
-  street    VARCHAR(205),
-  house     VARCHAR(205),
-  post_code VARCHAR(205),
-  city_part VARCHAR(205),
-  PRIMARY KEY (country, city, street, house)
-);
 
 CREATE TABLE t_performance (
   id          INT AUTO_INCREMENT UNIQUE NOT NULL,
@@ -65,12 +53,15 @@ CREATE TABLE t_phone_client (
 
 CREATE TABLE t_theater (
   id            INT AUTO_INCREMENT UNIQUE NOT NULL,
-  address       INT,
+  country       VARCHAR(205),
+  city          VARCHAR(205),
+  street        VARCHAR(205),
+  house         VARCHAR(205),
+  post_code     VARCHAR(205),
+  city_part     VARCHAR(205),
   name          VARCHAR(255),
   maximum_seats INT                       NOT NULL,
-  PRIMARY KEY (address, name),
-  FOREIGN KEY (address) REFERENCES t_address (id)
-    ON DELETE CASCADE,
+  PRIMARY KEY (country, city, street, house, name),
   CHECK (maximum_seats > 0)
 );
 
@@ -109,30 +100,17 @@ CREATE TABLE t_session (
     ON DELETE CASCADE
 );
 
-CREATE TABLE t_seat (
-  id            INT AUTO_INCREMENT UNIQUE         NOT NULL,
-  number        INT,
-  row           INT,
-  session       INT,
-  availabillity ENUM ('FREE', 'BOOKED', 'HIDDEN') NOT NULL DEFAULT 'FREE',
-  confirmed     BOOL                              NOT NULL DEFAULT FALSE,
-  PRIMARY KEY (number, row, session),
-  FOREIGN KEY (row) REFERENCES t_row (id)
-    ON DELETE CASCADE,
-  FOREIGN KEY (session) REFERENCES t_session (id)
-    ON DELETE CASCADE,
-  CHECK (number > 0)
-);
 
 CREATE TABLE t_order (
-  id               INT AUTO_INCREMENT UNIQUE                                   NOT NULL,
+  id               INT  AUTO_INCREMENT UNIQUE                                   NOT NULL,
   date             INT PRIMARY KEY,
   registered_email VARCHAR(255),
   website_email    VARCHAR(255),
   phone_number     VARCHAR(255),
-  is_digital       BOOL DEFAULT TRUE                                           NOT NULL,
-  is_purchase      BOOL DEFAULT FALSE                                          NOT NULL,
-  checkout         ENUM ('DELIVERY', 'SELF_CHECKOUT', 'PAY_BEFORE')            NOT NULL,
+  is_digital       BOOL DEFAULT TRUE                                            NOT NULL,
+  is_purchase      BOOL DEFAULT FALSE                                           NOT NULL,
+  checkout         ENUM ('DELIVERY', 'SELF_CHECKOUT', 'PAY_BEFORE')             NOT NULL,
+  confirmed        BOOL DEFAULT NULL,
   FOREIGN KEY (date) REFERENCES t_timestamp (id)
     ON DELETE CASCADE,
   FOREIGN KEY (registered_email) REFERENCES t_registered_user (email)
@@ -144,13 +122,22 @@ CREATE TABLE t_order (
   CHECK (registered_email IS NOT NULL OR website_email IS NOT NULL OR phone_number IS NOT NULL)
 );
 
-CREATE TABLE t_ticket (
-  seat    INT PRIMARY KEY,
-  `order` INT NOT NULL,
-  FOREIGN KEY (seat) REFERENCES t_seat (id)
+
+CREATE TABLE t_seat (
+  id            INT AUTO_INCREMENT UNIQUE         NOT NULL,
+  number        INT,
+  row           INT,
+  `order`       INT,  # seat may be marked as 'HIDDEN', thus not linking to any order
+  session       INT,
+  availabillity ENUM ('FREE', 'BOOKED', 'HIDDEN') NOT NULL DEFAULT 'FREE',
+  PRIMARY KEY (number, row, session),
+  FOREIGN KEY (row) REFERENCES t_row (id)
+    ON DELETE CASCADE,
+  FOREIGN KEY (session) REFERENCES t_session (id)
     ON DELETE CASCADE,
   FOREIGN KEY (`order`) REFERENCES t_order (id)
-    ON DELETE CASCADE
+    ON DELETE CASCADE,
+  CHECK (number > 0)
 );
 
 CREATE TABLE t_profile (

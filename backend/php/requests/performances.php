@@ -18,7 +18,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
     $performances = [];
 
-    $mysqli = db_connect();
+//    $mysqli = db_connect();
+    $mysqli = db_connect('localhost', 'root', '', 'theater');
 
     $performances = PerformancesDao::get($mysqli);
 

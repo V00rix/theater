@@ -1,0 +1,20 @@
+<div [ngClass]="class" class="dialog-label">
+  <ng-content></ng-content>
+</div>
+<div class="dialog-icons">
+  <svg [ngClass]="class" (click)="onResolve(false)">
+    <g>
+      <circle class="st0" cx="16" cy="16" r="13.5"></circle>
+      <line class="st0" x1="23.1" y1="23.1" x2="8.9" y2="8.9"></line>
+      <line class="st0" x1="8.9" y1="23.1" x2="23.1" y2="8.9"></line>
+    </g>
+  </svg>
+
+  <svg [ngClass]="class" (click)="onResolve(true)">
+    <g>
+      <path class="st0" d="M16,2.5c7.5,0,13.5,6,13.5,13.5s-6,13.5-13.5,13.5S2.5,23.5,2.5,16S8.5,2.5,16,2.5z"></path>
+      <polyline class="st0" points="25.5,9.6 12.7,22.4 6.5,16.2"></polyline>
+    </g>
+  </svg>
+
+</div>

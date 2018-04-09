@@ -11,7 +11,7 @@ export class StatusResponse {
   public selected_performance: number;
   public selected_session: number;
   public selected_seats: SelectedSeat[];
-  public selected_checkout: Checkout;
+  public selected_checkout: string;
   public user: User;
 
   public static map(statusResponse: StatusResponse, performances: Performance[]): ApplicationStatus {
@@ -34,7 +34,7 @@ export class StatusResponse {
       selPerformance,
       selSession,
       statusResponse.selected_seats || [],
-      statusResponse.selected_checkout || Checkout.PAY_BEFORE,
+      Checkout.map(statusResponse.selected_checkout),
       statusResponse.user || {name: null, contact: null});
   }
 }

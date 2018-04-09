@@ -1,0 +1,19 @@
+<div class="container no-footer">
+  <div class="accent header btn-back" [routerLink]="['/home']">
+    <svg class="accent" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve">
+    <g>
+      <polyline points="23.5,31 8.5,16 23.5,1 	"></polyline>
+    </g>
+    </svg>
+    <label>Menu</label>
+  </div>
+  <div class="content">
+    <h2 class="text-center">Sessions</h2>
+
+    <div class="session-list">
+      <p *ngFor="let session of getSessions()" class="accent">{{session.title}} {{session.date}}</p>
+    </div>
+
+  </div>
+</div>

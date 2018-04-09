@@ -21,7 +21,8 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    $mysqli = db_connect();
+//    $mysqli = db_connect();
+    $mysqli = db_connect('localhost', 'root', '', 'theater');
 
     $performances = PerformancesDao::get($mysqli);
 
@@ -29,21 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $selected_session = $_SESSION['selected_session'];
     $selected_seats = $_SESSION['selected_seats'];
     $user = $_SESSION['user'];
-
-    // PHP MAGIC
-    if ($_SESSION['selected_checkout'] === 'delivery') {
-        $selected_checkout =
-            $_SESSION['selected_checkout'] === 'self' ? 'SELF_CHECKOUT'
-                : 'DELIVERY';
-    } else {
-        if ($_SESSION['selected_checkout'] === 'self') {
-            $selected_checkout =
-                'SELF_CHECKOUT';
-        } else {
-            $selected_checkout =
-                'PAY_BEFORE';
-        }
-    }
+    $selected_checkout = $_SESSION['selected_checkout'];
 
     // todo: check for performance, session, user format etc.
 
@@ -115,21 +102,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
          */
         foreach ($selected_seats as $seat) {
 
+//            echo "seat: " . $seat->seat;
+//            echo "row: " . $seat->row;
+//            echo "session " . $performances[$selected_performance]->sessions[$selected_session]->id;
+//            echo "order " . $order_id;
+
             if ($mysqli->query(
-                    "INSERT INTO t_seat (number, row, session, availabillity) 
-                    SELECT {$seat->seat}, id, {$performances[$selected_performance]->sessions[$selected_session]->id}, 'BOOKED'
+                    "INSERT INTO t_seat (number, row, session, availabillity, `order`) 
+                    SELECT {$seat->seat}, id, {$performances[$selected_performance]->sessions[$selected_session]->id}, 'BOOKED', {$order_id}
                     FROM t_row 
                     WHERE number = {$seat->row}") === TRUE) {
                 $seat_id = $mysqli->insert_id;
 
-                if ($mysqli->query("INSERT INTO t_ticket (seat, `order`) VALUES ({$seat_id}, {$order_id})") === TRUE) {
-                    $ticket_id = $mysqli->insert_id;
-                } else {
-                    throw new Exception('Could not create ticket');
-                }
-
             } else {
-                throw new Exception('Could not create seat');
+                throw new Exception(mysqli_error($mysqli));
             }
         }
 

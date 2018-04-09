@@ -1,0 +1,9 @@
+<div class="fader">
+  <div class="fd-top" [ngStyle]="{'height': drawerHeight.top + 'px'}" *ngIf="showFaders" [@fadeIn]
+       (click)="onPanelClosed()"></div>
+  <div class="fd-content">
+    <ng-content></ng-content>
+  </div>
+  <div class="fader fd-bottom" [ngStyle]="{'top': drawerHeight.bottom + 'px'}" *ngIf="showFaders" [@fadeIn]
+       (click)="onPanelClosed()"></div>
+</div>

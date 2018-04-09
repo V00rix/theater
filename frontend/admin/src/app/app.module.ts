@@ -1,18 +1,77 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
 
-import { AppComponent } from './app.component';
+import {AppComponent} from './app.component';
+import {PanelCollapsibleComponent} from './business/components/panel-collapsible/panel-collapsible.component';
+import {AuthorizationComponent} from './pages/authorization/authorization.component';
+import {HomeComponent} from './pages/home/home.component';
+import {ListComponent} from './business/components/list/list.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatInputModule, MatProgressBarModule} from '@angular/material';
+import {AppRoutingModule} from './app-routing.module';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {DataService} from './business/services/data.service';
+import { DrawerComponent } from './business/components/panel-collapsible/drawer/drawer.component';
+import { ContentComponent } from './business/components/panel-collapsible/content/content.component';
+import { DialogComponent } from './business/components/dialog/dialog.component';
 
+/* i18n */
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {registerLocaleData} from '@angular/common';
+import localeRu from '@angular/common/locales/ru';
+import localeEn from '@angular/common/locales/en';
+import { MenuComponent } from './business/components/menu/menu.component';
+import { OverlayComponent } from './business/components/overlay/overlay.component';
+import { SessionsComponent } from './pages/sessions/sessions.component';
+import { MessagesComponent } from './business/components/messages/messages.component';
+
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
+
+registerLocaleData(localeRu, 'ru');
+registerLocaleData(localeEn, 'en');
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PanelCollapsibleComponent,
+    AuthorizationComponent,
+    HomeComponent,
+    ListComponent,
+    DrawerComponent,
+    ContentComponent,
+    DialogComponent,
+    MenuComponent,
+    OverlayComponent,
+    SessionsComponent,
+    MessagesComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatProgressBarModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    AppRoutingModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
+      }
+    })
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

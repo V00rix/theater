@@ -1,0 +1,14 @@
+<ng-content></ng-content>
+<div *ngIf="showMessages" class="container error-container" [@fadeIn]>
+
+  <div class="content text-center">
+    <h3 class="regular">Error</h3>
+
+    <div class="error-message" *ngFor="let message of messages">
+      <h5>{{message.title}}</h5>
+      <p>{{message.description}}</p>
+    </div>
+
+  </div>
+  <button class="footer accent" (click)="dismiss()">Dismiss</button>
+</div>

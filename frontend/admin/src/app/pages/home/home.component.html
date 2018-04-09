@@ -1,0 +1,42 @@
+<div class="container">
+  <button class="header" (click)="menuShown = true">Menu</button>
+
+  <div class="content">
+    <h2 class="text-center">Booking requests</h2>
+    <app-list>
+      <app-panel-collapsible [collapsed]="data.orders.length > 1" *ngFor="let order of data.orders; let id = index">
+        <app-drawer [active]="order.isConfirmed !== true && order.isConfirmed !== false">
+          <label class="order-item light">
+            <span class="oi-id truncate grey">{{id + 1}}</span>
+            <span class="oi-name truncate"
+                  [ngClass]="order.isConfirmed === true ? 'green' : ''">{{order.user.name}}</span>
+            <span class="oi-performance truncate grey">{{order.performance.title}}</span>
+          </label>
+        </app-drawer>
+        <app-content>
+          <div class="user-panel">
+            <div class="section">
+              <div class="light grey">{{order.performance.title}}</div>
+              <div class="light grey">{{order.session.date}}</div>
+            </div>
+            <div class="section">
+              <div class="light">{{order.user.name}}</div>
+              <div class="light">{{order.user.contact}}</div>
+            </div>
+            <div class="section">
+              <div class="text-center grey">{{'checkout.' + order.checkout | translate}}</div>
+              <div class="text-center semibold accent">Code: BK{{order.code}}</div>
+            </div>
+            <app-dialog (resolve)="setOrder(order, true)" (reject)="setOrder(order, false)" [class]="'black'">
+              <label>Confirm?</label>
+            </app-dialog>
+          </div>
+        </app-content>
+      </app-panel-collapsible>
+    </app-list>
+  </div>
+  <button class="footer full-width">Save</button>
+</div>
+<app-overlay *ngIf="menuShown" (close)="menuShown = false">
+  <app-menu></app-menu>
+</app-overlay>

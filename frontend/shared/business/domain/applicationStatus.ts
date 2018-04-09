@@ -8,7 +8,7 @@ export class ApplicationStatus {
   constructor(public selectedPerformance: Performance,
               public selectedSession: Session,
               public selectedSeats: SelectedSeat[],
-              public checkout: Checkout,
+              public checkout: Checkout.Code,
               public user: User) {
   }
 
@@ -17,7 +17,7 @@ export class ApplicationStatus {
       selected_performance: performances.indexOf(this.selectedPerformance),
       selected_session: this.selectedPerformance.sessions.indexOf(this.selectedSession),
       selected_seats: this.selectedSeats,
-      selected_checkout: this.checkout,
+      selected_checkout: Checkout.toBe(this.checkout),
       user: this.user
     };
   }

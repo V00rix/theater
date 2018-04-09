@@ -11,14 +11,14 @@ import {Animations} from '../../../../../shared/animations/animations';
   animations: Animations.animations
 })
 export class CheckoutComponent implements OnInit {
-  public checkoutOptions = Object.keys(Checkout).map(k => Checkout[k]);
+  public checkoutOptions = Object.keys(Checkout.Code).map(k => Checkout.Code[k]);
 
   constructor(public data: DataService, private router: Router) { }
 
   ngOnInit() {
   }
 
-  onCheckoutSelected(option: Checkout) {
+  onCheckoutSelected(option: Checkout.Code) {
     this.data.updateSelection({checkout: this.data.applicationStatus.checkout});
     this.data.applicationStatus.checkout = option;
     this.router.navigate(['/confirmation']);

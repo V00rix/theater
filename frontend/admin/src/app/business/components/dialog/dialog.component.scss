@@ -1,0 +1,17 @@
+:host {
+  left: 0;
+  right: 0;
+  display: block;
+  text-align: center;
+  margin: 30px 0;
+}
+
+.dialog-label {
+  margin: 10px;
+}
+
+.dialog-icons {
+  * {
+    padding: 5px 10px;
+  }
+}

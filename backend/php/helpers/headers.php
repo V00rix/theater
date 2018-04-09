@@ -11,10 +11,11 @@ if (isset($_SERVER['HTTP_ORIGIN'])) {
 
     if ($http_origin == "http://m.grani.elumixor.com"
         || $http_origin == "http://grani.elumixor.com"
+        || $http_origin == "http://localhost:4201"
         || $http_origin == "http://localhost:4200") {
         header("Access-Control-Allow-Origin: $http_origin");
     }
 }
-
+//header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Credentials: true");
-header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+//header("X-Requested-With, Content-Type, Accept");
