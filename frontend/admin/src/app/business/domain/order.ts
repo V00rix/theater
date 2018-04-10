@@ -6,7 +6,7 @@ export class Order {
               public user: { name: string, contact: string },
               public performance: { title: string },
               public session: { date: Date },
-              public seats: { row: number, seat: number }[],
+              public seats: { id: number, row: number, seat: number }[],
               public isConfirmed: boolean) {
   }
 }

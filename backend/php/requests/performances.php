@@ -20,6 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
 //    $mysqli = db_connect();
     $mysqli = db_connect('localhost', 'root', '', 'theater');
+    mysqli_query($mysqli, "SET NAMES UTF8");
 
     $performances = PerformancesDao::get($mysqli);
 

@@ -22,6 +22,7 @@ session_start();
 //if (isset($_SESSION['admin'])) {
 try {
     $mysqli = db_connect('localhost', 'root', '', 'theater');
+    mysqli_query($mysqli, "SET NAMES UTF8");
 
     $performancesResponse = new PerformancesResponse();
     $result = 1;
@@ -35,7 +36,7 @@ try {
             $order->user_name = $row['name'];
             $order->user_contact = $row['email'];
 
-            if ($result2 = $mysqli->query("SELECT t_seat.number as `seat`, row2.number as `row`, timestamp2.date, tp.title
+            if ($result2 = $mysqli->query("SELECT t_seat.id as `id`, t_seat.number as `seat`, row2.number as `row`, timestamp2.date, tp.title
                                                 FROM t_seat
                                                   JOIN t_row row2 ON t_seat.row = row2.id
                                                   JOIN t_session session2 ON t_seat.session = session2.id
@@ -44,6 +45,7 @@ try {
                                                 WHERE t_seat.`order` = {$order->code};")) {
                 while ($row = mysqli_fetch_array($result2, MYSQLI_ASSOC)) {
                     $seat = new Seat();
+                    $seat->id = $row['id'];
                     $seat->row = $row['row'];
                     $seat->seat = $row['seat'];
                     $order->session_date = $row['date'];

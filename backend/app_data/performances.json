@@ -1,0 +1,1792 @@
+[
+  {
+    "title": "\u041f\u0440\u0435\u0434\u043b\u043e\u0436\u0435\u043d\u0438\u0435. \u041c\u0435\u0434\u0432\u0435\u0434\u044c",
+    "description": null,
+    "imageUrl": "http:\/\/elumixor.com\/theater\/assets\/images\/bgPredlojenieMedved.jpg",
+    "sessions": [
+      {
+        "date": 1523646026715,
+        "seats": [
+          [
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            }
+          ],
+          [
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            }
+          ],
+          [
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3,
+              "viewer": null
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            }
+          ],
+          [
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3,
+              "viewer": null
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3,
+              "viewer": null
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 0
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            }
+          ],
+          [
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3,
+              "viewer": null
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            }
+          ],
+          [
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            }
+          ],
+          [
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            }
+          ],
+          [
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            }
+          ],
+          [
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "\u0410\u0441\u044f",
+                "phone": "777291273",
+                "email": "Boriswazup@mail.ru",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "\u0421\u043e\u043d\u044f",
+                "phone": "773892964",
+                "email": "sofirev@mail.ru",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            }
+          ],
+          [
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3,
+              "viewer": null
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "\u0415\u043b\u0435\u043d\u0430",
+                "phone": "776790933",
+                "email": "ms.annkotova@mail.ru",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 1,
+              "viewer": {
+                "name": "Artem Basargin",
+                "phone": "+971501059159",
+                "email": "azazello21@rambler.ru",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            }
+          ],
+          [
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "\u0418\u043d\u0433\u0430 ",
+                "phone": "776790933",
+                "email": "ms.annkotova@mail.ru",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "\u041b\u044e\u0434\u043c\u0438\u043b\u0430",
+                "phone": "776790933",
+                "email": "ms.annkotova@mail.ru",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "\u041b\u0430\u043d\u0434\u0430\u0443",
+                "phone": "222 222 222",
+                "email": "fewf@greg.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "\u041b\u0430\u043d\u0434\u0430\u0443",
+                "phone": "222 222 222",
+                "email": "fewf@greg.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "\u0418\u0440\u043c\u0430",
+                "phone": "776790933",
+                "email": "ms.annkotova@mail.ru",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "\u0418\u0440\u043c\u0430",
+                "phone": "776790933",
+                "email": "ms.annkotova@mail.ru",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 1,
+              "viewer": {
+                "name": "\u041a\u0438\u0440\u0438\u043b\u043b \u041a\u0443\u043b\u0430\u0433\u0438\u043d",
+                "phone": "702945171",
+                "email": "cool.slanets@gmail.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 1,
+              "viewer": {
+                "name": "\u0421\u0432\u0435\u0442\u043b\u0430\u043d\u0430 \u041a\u0443\u043b\u0430\u0433\u0438\u043d\u0430",
+                "phone": "702945171",
+                "email": "cool.slanets@gmail.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            }
+          ],
+          [
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Nad\u011b\u017eda Akimov\u00e1",
+                "phone": "776067965",
+                "email": "angelstearful@mail.ru",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Mikchail Akimov",
+                "phone": "607653708",
+                "email": "angelstearful@mail.ru",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "\u0416\u0438\u0442\u043d\u0438\u043a\u043e\u0432 \u041d\u0438\u043a\u0438\u0442\u0430",
+                "phone": "+420777145919",
+                "email": "19002007@seznam.cz",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "\u0416\u0438\u0442\u043d\u0438\u043a\u043e\u0432 \u041d\u0438\u043a\u0438\u0442\u0430",
+                "phone": "+420777145919",
+                "email": "19002007@seznam.cz",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "\u041f\u043e\u043b\u043a\u043e\u0432\u043d\u0438\u043a \u041a\u0440\u0443\u0433\u0435\u043b\u044c",
+                "phone": "774894410",
+                "email": "ilionesso@gmail.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "\u041a\u0440\u0443\u0433\u0435\u043b\u044c \u041f\u043e\u043b\u043a\u043e\u0432\u043d\u0438\u043a",
+                "phone": "774894410",
+                "email": "ilionesso@gmail.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            }
+          ],
+          [
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "\u0427\u0435\u043b\u043e\u0432\u0435\u043a \u0416",
+                "phone": "776 790 933",
+                "email": "ms.annkotova@mail.ru",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "\u0427\u0435\u043b\u043e\u0432\u0435\u043a \u041c",
+                "phone": "776 790 933",
+                "email": "ms.annkotova@mail.ru",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "\u0421\u0430\u0448\u0430",
+                "phone": "000 000 000",
+                "email": "bebe@bbe.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "\u041b\u0430\u0440\u0438\u043e\u043d\u043e\u0432\u0430",
+                "phone": "608677349",
+                "email": "ms.annkotova@mail.ru",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "\u041b\u0430\u0440\u0438\u043e\u043d\u043e\u0432\u0430",
+                "phone": "608607349",
+                "email": "ms.annkotova@mail.ru",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "\u041b\u0430\u0440\u0438\u043e\u043d\u043e\u0432\u0430",
+                "phone": "608607349",
+                "email": "ms.annkotova@mail.ru",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "\u041b\u0430\u0440\u0438\u043e\u043d\u043e\u0432\u0430",
+                "phone": "608607349",
+                "email": "ms.annkotova@mail.ru",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "\u0410\u043d\u0434\u0440\u0435\u0439 ",
+                "phone": "774 987 601",
+                "email": "Fe@vbdb.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "\u0410\u043d\u0434\u0440\u0435\u0439",
+                "phone": "774 987 601",
+                "email": "Fe@vbdb.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "\u0414\u0438\u043c\u0430",
+                "phone": "702896382",
+                "email": "dimatrolb@gmail.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "\u0421\u043e\u043b\u0434\u0430\u0442\u043e\u0432\u0430 \u0415\u0432\u0433\u0435\u043d\u0438\u044f",
+                "phone": "773 592 283",
+                "email": "fwgw@ver.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Anna",
+                "phone": "608540587",
+                "email": "zubarevauk@hotmail.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Anna",
+                "phone": "608540587",
+                "email": "zubarevauk@hotmail.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "\u0421\u043e\u043b\u0434\u0430\u0442\u043e\u0432\u0430 \u0415\u0432\u0433\u0435\u043d\u0438\u044f",
+                "phone": "000 000 000",
+                "email": "ebet@beht.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            }
+          ],
+          [
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Vadim Krupnov",
+                "phone": "608777119",
+                "email": "krupnov@email.cz",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Daria Glushakova",
+                "phone": "608777119",
+                "email": "krupnov@email.cz",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "\u041f\u0430\u0432\u0435\u043b",
+                "phone": "776438276",
+                "email": "Haydedey@gmail.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "\u0418\u043d\u043d\u0430",
+                "phone": "776438276",
+                "email": "Haydedey@gmail.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 1,
+              "viewer": {
+                "name": "\u0420\u0430\u0445\u043c\u0430\u043d\u043e\u0432\u0430",
+                "phone": "777655867",
+                "email": "ms.annkotova@mail.ru",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Denis Sabanadze",
+                "phone": "777 777 777",
+                "email": "fe@rggr.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Denis Sabanadze",
+                "phone": "777 777 777",
+                "email": "fe@rggr.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Olesia ",
+                "phone": "773615820",
+                "email": "alicearkel88@gmail.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "Olesia",
+                "phone": "773615820",
+                "email": "alicearkel88@gmail.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            }
+          ],
+          [
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "\u042d\u043b\u044c\u0432\u0438\u0440\u0430",
+                "phone": "776790933",
+                "email": "ms.annkotova@mail.ru",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "\u042d\u043b\u044c\u0444\u0438\u0440\u0430",
+                "phone": "776790933",
+                "email": "ms.annkotova@mail.ru",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "\u042d\u043b\u044c\u0432\u0438\u0440\u0430",
+                "phone": "776790933",
+                "email": "ms.annkotova@mail.ru",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "\u042d\u043b\u044c\u0432\u0438\u0440\u0430",
+                "phone": "776790933",
+                "email": "kotovaanya201@gmail.com",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "\u041c\u0435\u0434\u0432\u0435\u0434\u043a\u043e\u0432\u0430",
+                "phone": "608423174",
+                "email": "ms.annkotova@mail.ru",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "\u041c\u0435\u0434\u0432\u0435\u0434\u043a\u043e\u0432\u0430",
+                "phone": "608423174",
+                "email": "ms.annkotova@mail.ru",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "\u041c\u0435\u0434\u0432\u0435\u0434\u043a\u043e\u0432\u0430",
+                "phone": "608423174",
+                "email": "ms.annkotova@mail.ru",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 2,
+              "viewer": {
+                "name": "\u041c\u0435\u0434\u0432\u0435\u0434\u043a\u043e\u0432\u0430",
+                "phone": "608423174",
+                "email": "ms.annkotova@mail.ru",
+                "vk": null,
+                "whatsApp": null,
+                "viber": null,
+                "telegram": null
+              }
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            },
+            {
+              "availability": 3
+            }
+          ]
+        ]
+      }
+    ]
+  }
+]

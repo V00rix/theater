@@ -11,6 +11,7 @@ if (isset($_SERVER['HTTP_ORIGIN'])) {
 
     if ($http_origin == "http://m.grani.elumixor.com"
         || $http_origin == "http://grani.elumixor.com"
+        || $http_origin == "http://localhost:4202"
         || $http_origin == "http://localhost:4201"
         || $http_origin == "http://localhost:4200") {
         header("Access-Control-Allow-Origin: $http_origin");

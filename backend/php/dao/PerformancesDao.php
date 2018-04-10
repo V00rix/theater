@@ -29,6 +29,7 @@ abstract class PerformancesDao
 
         if ($result = $mysqli->query("SELECT id, title, image_url, description FROM t_performance;")) {
             while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+
                 $performance = new Performance();
                 $performance->id = $row['id'];
                 $performance->title = $row['title'];
@@ -41,10 +42,16 @@ abstract class PerformancesDao
             $result->close();
         }
 
+//        print_r($performances);
+
         foreach ($performances as $p) {
-            if ($result = $mysqli->query("SELECT t_session.id, t2.date, hall FROM t_session JOIN t_performance tp ON t_session.performance = 1 JOIN t_timestamp t2 ON t_session.date = t2.id;")) {
+            if ($result = $mysqli->query("SELECT t_session.id, t2.date, hall FROM t_session 
+                                          JOIN t_performance tp ON t_session.performance = {$p->id} 
+                                          JOIN t_timestamp t2 ON t_session.date = t2.id;")) {
 
                 while ($row = mysqli_fetch_array($result)) {
+//                    print_r($row);
+
                     $session = new Session();
                     $session->id = $row['id'];
                     $session->date = $row['date'];
@@ -58,9 +65,9 @@ abstract class PerformancesDao
 
             foreach ($p->sessions as $s) {
                 if ($result2 = $mysqli->query("SELECT number, seat_number
- FROM t_row 
- WHERE hall = {$s->hall} 
- ORDER BY number;"
+                                                 FROM t_row 
+                                                 WHERE hall = {$s->hall} 
+                                                 ORDER BY number;"
                 )) {
 
                     $x = 0;
@@ -75,13 +82,13 @@ abstract class PerformancesDao
                 }
 
                 if ($result3 = $mysqli->query("SELECT
-  t_seat.number as `seat`,
-  row2.number as `row`,
-  availabillity
-FROM t_seat
-  JOIN t_row row2 ON t_seat.row = row2.id
-  WHERE t_seat.session = {$s->id}
-ORDER BY availabillity DESC, session, row, t_seat.number")) {
+                                          t_seat.number as `seat`,
+                                          row2.number as `row`,
+                                          availabillity
+                                        FROM t_seat
+                                          JOIN t_row row2 ON t_seat.row = row2.id
+                                          WHERE t_seat.session = {$s->id}
+                                        ORDER BY availabillity DESC, session, row, t_seat.number")) {
                     while ($row = mysqli_fetch_array($result3, MYSQLI_ASSOC)) {
                         $s->seats[$row['row'] - 1][$row['seat'] - 1] = $row['availabillity'];
                     }

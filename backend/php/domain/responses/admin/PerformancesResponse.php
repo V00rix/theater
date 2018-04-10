@@ -45,6 +45,7 @@ class Order {
 }
 
 class Seat {
+    public $id;
     public $row;
     public $seat;
 }

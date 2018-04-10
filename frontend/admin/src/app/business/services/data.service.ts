@@ -32,7 +32,9 @@ export class DataService {
     return this.http.get('http://localhost/backend/php/requests/admin/orders.admin.php', {withCredentials: true}).map(
       (response: OrderResponse) => {
         console.log('Orders loaded');
+        console.log(response);
         this.orders = OrderResponse.map(response);
+        console.log(this.orders);
       })
       .catch((e: any) => Observable.throw(this.httpErrorHandler(e, propagate)));
   }
@@ -68,6 +70,21 @@ export class DataService {
       })
       .catch((e: any) => {
         return Observable.throw(this.httpErrorHandler(e, propagate));
+      });
+  }
+
+  /**
+   * POST save resolved/rejected requests
+   */
+  saveRequests(propagate = true) {
+    return this.http.post('http://localhost/backend/php/requests/admin/saveRequests.admin.php',
+      this.orders, {headers: {'Content-Type': ['text/plain']}}).subscribe(
+      (res) => {
+        console.log(res);
+        this.orders = null;
+        return this.getOrders().subscribe();
+      }, error => {
+        this.httpErrorHandler(error, propagate);
       });
   }
 

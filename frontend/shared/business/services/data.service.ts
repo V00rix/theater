@@ -57,6 +57,7 @@ export class DataService {
      */
     public getPerformanceData() {
         this.http.get(`${this.baseUrl}performances.php`).subscribe((response: PerformancesResponse) => {
+            console.log(response);
             this.performances = PerformancesResponse.map(response);
             this.maximumSeats = response.maximum_seats;
 

@@ -9,7 +9,7 @@ export class OrderResponse {
     user_contact: string,
     performance_title: string,
     session_date: Date,
-    seats: { row: number, seat: number }[]
+    seats: { id: number, row: number, seat: number }[]
   }[];
 
   public static map(response: OrderResponse): Order[] {

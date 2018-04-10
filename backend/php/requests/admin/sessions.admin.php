@@ -37,6 +37,7 @@ try {
 //    }
 
     $mysqli = db_connect('localhost', 'root', '', 'theater');
+    mysqli_query($mysqli, "SET NAMES UTF8");
 
     $sessionResponse = new SessionResponse();
 
