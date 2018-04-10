@@ -3,14 +3,13 @@ import {
   ContentChildren,
   QueryList,
   AfterContentInit,
-  ViewChild,
-  ViewChildren,
-  ElementRef
+  OnDestroy
 } from '@angular/core';
 import {PanelCollapsibleComponent} from '../panel-collapsible/panel-collapsible.component';
 import {DrawerComponent} from '../panel-collapsible/drawer/drawer.component';
 import {DialogComponent} from '../dialog/dialog.component';
 import {Animations} from '../../../../../../shared/animations/animations';
+import {DataService} from '../../services/data.service';
 
 @Component({
   selector: 'app-list',
@@ -18,20 +17,36 @@ import {Animations} from '../../../../../../shared/animations/animations';
   styleUrls: ['./list.component.scss'],
   animations: Animations.animations
 })
-export class ListComponent implements AfterContentInit {
+export class ListComponent implements AfterContentInit, OnDestroy {
   @ContentChildren(PanelCollapsibleComponent) public panels: QueryList<PanelCollapsibleComponent>;
+
   public drawerHeight: { top: number, bottom: number } = {top: 0, bottom: 0};
   public showFaders = false;
 
-  constructor() {
+  private scrollingFinished = false;
+  private subscription;
+
+  constructor(private data: DataService) {
   }
 
-
   ngAfterContentInit() {
+    if (this.data.dataLoaded) {
+      this.initHandler();
+    }
+    this.subscription = this.data.loadingFinished.subscribe(() => {
+      this.initHandler();
+    });
+  }
 
-    /**
-     * Add handler for panel collapsing/expanding
-     */
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
+  /**
+   * Add handler for panel collapsing/expanding
+   */
+  private initHandler() {
+
     if (this.panels.length) {
       this.panels.forEach(p => {
 
@@ -45,9 +60,16 @@ export class ListComponent implements AfterContentInit {
         const f2 = p.ngAfterViewChecked;
         p.ngAfterViewChecked = () => {
           if (!p.collapsed) {
-            this.drawerHeight.top = p.self.nativeElement.offsetTop - 5;
-            this.drawerHeight.bottom = p.self.nativeElement.offsetHeight + p.self.nativeElement.offsetTop;
-            window.scroll({left: 0, top: this.drawerHeight.top - 50, behavior: 'smooth'});
+            if (!this.scrollingFinished) {
+              this.drawerHeight.top = p.self.nativeElement.offsetTop + 40;
+              this.drawerHeight.bottom = p.self.nativeElement.offsetHeight + p.self.nativeElement.offsetTop;
+              setTimeout(() => {
+                window.scroll({left: 0, top: this.drawerHeight.top - 50, behavior: 'smooth'});
+                this.scrollingFinished = true;
+              }, 300);
+            } else {
+              this.scrollingFinished = false;
+            }
             f2();
           }
         };

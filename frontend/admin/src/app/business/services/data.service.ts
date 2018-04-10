@@ -1,64 +1,99 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/do';
 import {Order} from '../domain/order';
 import {OrderResponse} from '../domain/responces/order-response';
 import {Subject} from 'rxjs/Subject';
+import {Session} from '../domain/session';
+import {SessionResponse} from '../domain/responces/sessionResponse';
+import {Observable} from 'rxjs/Observable';
+import {Router} from '@angular/router';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
+import {Error} from '../domain/error';
+import {forkJoin} from 'rxjs/observable/forkJoin';
 
 @Injectable()
 export class DataService {
   public loadingFinished = new Subject<void>();
+  public errorOccurred = new Subject<Error>();
 
-  public orders: Order[];
+  public orders: Order[] = null;
+  public sessions: Session[] = null;
   public dataLoaded = false;
-  public currentErrors = [];
-  public sessions: Session;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
   }
 
   /**
-   * Http GET
+   * GET orders
    */
-  public getOrders() {
+  public getOrders(propagate = true) {
     return this.http.get('http://localhost/backend/php/requests/admin/orders.admin.php', {withCredentials: true}).map(
       (response: OrderResponse) => {
-        console.log(response);
+        console.log('Orders loaded');
         this.orders = OrderResponse.map(response);
-      }, (error) => {
-        this.currentErrors = [];
-        this.currentErrors.push(error.error.errors);
-      });
+      })
+      .catch((e: any) => Observable.throw(this.httpErrorHandler(e, propagate)));
   }
 
 
   /**
-   * Http GET
+   * GET sessions
    */
-  public getSessions() {
+  public getSessions(propagate = true) {
     return this.http.get('http://localhost/backend/php/requests/admin/sessions.admin.php', {withCredentials: true}).map(
       (response: SessionResponse) => {
-        console.log(response);
+        console.log('Sessions loaded');
         this.sessions = SessionResponse.map(response);
-      }, (error) => {
-        this.currentErrors = [];
-        this.currentErrors.push(error.error.errors);
-      });
+      })
+      .catch((e: any) => Observable.throw(this.httpErrorHandler(e, propagate)));
   }
 
-
-  postSubmit(login: string, password: string) {
+  /**
+   * POST authorization
+   * @param {string} login
+   * @param {string} password
+   * @param {boolean} propagate
+   * @returns {Promise<T | ErrorObservable>}
+   */
+  postSubmit(login: string, password: string, propagate = true) {
     return this.http.post('http://localhost/backend/php/requests/admin/authorization.admin.php', {
       login: login,
       password: password
-    }, {headers: {'Content-Type': ['text/plain']}}).do(
+    }, {headers: {'Content-Type': ['text/plain']}}).map(
       (res) => {
-        console.log('success', res);
-      },
-      (error) => {
-        this.currentErrors = [];
-        this.currentErrors.push(error.error.errors);
+        console.log('logged in', res);
+        return this.getApplicationData();
+      })
+      .catch((e: any) => {
+        return Observable.throw(this.httpErrorHandler(e, propagate));
       });
+  }
+
+  public httpErrorHandler(e, propagate = true) {
+    console.warn('Error in Http!');
+    console.log(e);
+    if (e.status === 401) {
+      console.warn('Unauthorized');
+      this.router.navigate(['/authorization']);
+    }
+    if (propagate) {
+      this.errorOccurred.next(Error.map(e));
+    }
+    return e;
+  }
+
+  public getApplicationData() {
+    console.log('getting application data');
+
+    const ordersRequest = this.getOrders();
+    const sessionsRequest = this.getSessions();
+
+    forkJoin([sessionsRequest, ordersRequest]).subscribe(() => {
+      console.log('Data loaded');
+      this.dataLoaded = true;
+      this.loadingFinished.next();
+    });
   }
 }

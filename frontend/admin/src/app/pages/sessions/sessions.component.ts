@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {DataService} from '../../business/services/data.service';
 
 @Component({
   selector: 'app-sessions',
@@ -6,10 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sessions.component.scss']
 })
 export class SessionsComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
+  constructor(public data: DataService) {
   }
 
+  ngOnInit() {
+    console.log('sessions init');
+  }
 }

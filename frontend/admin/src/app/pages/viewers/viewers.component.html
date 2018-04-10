@@ -1,0 +1,60 @@
+<app-basic-page [menu]="false" [footer]="false" [h]="headers" [back]="{label: 'Sessions', link: '/sessions'}">
+  <app-list>
+    <app-panel-collapsible [collapsed]="true" *ngFor="let order of session.orders; let id = index">
+      <app-drawer [active]="true">
+        <label class="order-item light">
+          <span class="oi-id truncate grey">{{id + 1}}</span>
+          <span class="oi-complete truncate">{{order.user.name}}</span>
+        </label>
+      </app-drawer>
+      <app-content>
+        <div class="user-panel">
+          <div class="section">
+            <div class="text-center semibold accent">Code: BK{{order.id}}</div>
+            <div class="text-center grey">{{'checkout.' + order.checkout | translate}}</div>
+          </div>
+          <div class="section">
+            <div class="light">{{order.user.name}}</div>
+            <div class="light">{{order.user.contact}}</div>
+          </div>
+          <div class="section">
+            <div class="light grey" *ngFor="let seat of order.seats" (click)="changeSeat(seat)">Row {{seat.row}}, Seat
+              {{seat.seat}}
+            </div>
+          </div>
+          <div class="margined text-center red" (click)="deleteViewer(order.user)">Delete viewer</div>
+        </div>
+      </app-content>
+    </app-panel-collapsible>
+    <div *ngIf="session.orders.length < 1" class="text-center margined">No orders</div>
+  </app-list>
+</app-basic-page>
+
+<!-- Seat change -->
+<app-overlay [noClose]="true" class="text-center" *ngIf="selectedSeat">
+  <div class="margined less only-bottom">Change seat</div>
+  <div class="margined less only-bottom">Row {{selectedSeat.row}}, Seat {{selectedSeat.seat}}</div>
+  <mat-form-field>
+    <input matInput placeholder="New row" [(ngModel)]="newSeat.row" type="number" (ngModelChange)="checkConflict()">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="New seat" [(ngModel)]="newSeat.seat" type="number" (ngModelChange)="checkConflict()">
+  </mat-form-field>
+
+  <div *ngIf="conflict">
+    <div class="font-small grey">
+      Seat is already reserved for
+    </div>
+    {{conflict}}
+  </div>
+  <div *ngIf="!conflict" class="small grey"></div>
+
+  <app-dialog [class]="'accent'" (resolve)="changeSeatConfirmed()" (reject)="changeSeatRejected()">
+    {{conflict ? 'Swap?' : 'Change?'}}
+  </app-dialog>
+
+  <div class="red" (click)="deleteSeat()">
+    Delete seat
+  </div>
+</app-overlay>

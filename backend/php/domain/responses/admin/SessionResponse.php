@@ -43,6 +43,7 @@ class Session {
 
 class Order {
     public $id;
+    public $checkout;
     public $user_name;
     public $user_contact;
     public $seats;

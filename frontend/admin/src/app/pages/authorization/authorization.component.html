@@ -1,18 +1,17 @@
 <form (submit)="onSubmit()">
-  <div class="container">
-    <div class="content text-center">
-      <h1 class="regular">Grani</h1>
-      <h3 class="regular grey">Administration</h3>
+  <app-basic-page [menu]="false" [h]="[{label: 'Grani', type: 'h1'}, {label: 'Administration', type: 'h3'}]">
+    <div class="text-center">
+
       <mat-form-field>
         <input matInput placeholder="Login" [formControl]="loginFC" [(ngModel)]="login" type="text">
       </mat-form-field>
       <mat-form-field>
         <input matInput placeholder="Password" [formControl]="passwordFC" [(ngModel)]="password" type="password">
       </mat-form-field>
-      <div *ngIf="data.currentErrors" class="text-center red">
-        <p *ngFor="let error of data.currentErrors">{{error}}</p>
+      <div class="text-center red">
+        <p>{{error}}</p>
       </div>
-      </div>
-      <button class="footer" type="submit">Submit</button>
-  </div>
+    </div>
+    <button class="footer" type="submit">Submit</button>
+  </app-basic-page>
 </form>

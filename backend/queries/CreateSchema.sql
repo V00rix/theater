@@ -136,7 +136,7 @@ CREATE TABLE t_seat (
   FOREIGN KEY (session) REFERENCES t_session (id)
     ON DELETE CASCADE,
   FOREIGN KEY (`order`) REFERENCES t_order (id)
-    ON DELETE CASCADE,
+    ON DELETE SET NULL,
   CHECK (number > 0)
 );
 

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-content',
-  template: `<div class="pc-content"><ng-content></ng-content></div>`,
+  template: `<ng-content></ng-content>`,
   styleUrls: ['../panel-collapsible.component.scss']
 })
 export class ContentComponent implements OnInit {

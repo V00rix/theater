@@ -6,16 +6,18 @@
  * Time: 5:45 PM
  */
 
+use domain\exceptions\UnauthorizedException;
 use domain\responses\admin\Order;
 use domain\responses\admin\Seat;
 use domain\responses\admin\Session;
 use domain\responses\admin\SessionResponse;
 use domain\responses\ErrorResponse;
 
-include '../../helpers/headers.php';
-include '../../domain/responses/admin/SessionResponse.php';
-include '../../domain/responses/ErrorResponse.php';
-include '../../helpers/databaseConnect.php';
+include_once  '../../helpers/headers.php';
+include_once  '../../domain/responses/admin/SessionResponse.php';
+include_once '../../domain/responses/ErrorResponse.php';
+include_once '../../domain/exceptions/UnauthorizedException.php';
+include_once  '../../helpers/databaseConnect.php';
 
 session_start();
 
@@ -28,9 +30,12 @@ class BdoSeat
     public $seat;
 }
 
-// todo
-//if (isset($_SESSION['admin'])) {
 try {
+// todo
+//    if (!isset($_SESSION['admin'])) {
+//        throw new UnauthorizedException("Unauthorized");
+//    }
+
     $mysqli = db_connect('localhost', 'root', '', 'theater');
 
     $sessionResponse = new SessionResponse();
@@ -83,12 +88,13 @@ try {
 
                     array_push($order->seats, $s);
 
-                    if ($result2 = $mysqli->query("SELECT name, email FROM t_order 
+                    if ($result2 = $mysqli->query("SELECT name, email, checkout FROM t_order 
                                                     JOIN t_website_client t ON t_order.website_email = t.email
                                                     WHERE t_order.id = {$seat->order};")) {
                         while ($row = mysqli_fetch_array($result2, MYSQLI_ASSOC)) {
                             $order->user_name = $row['name'];
                             $order->user_contact = $row['email'];
+                            $order->checkout = $row['checkout'];
                         }
                     } else {
                         throw new Exception(mysqli_error($mysqli));
@@ -103,7 +109,9 @@ try {
         throw new Exception(mysqli_error($mysqli));
     }
 
-    print_r($sessionResponse);
+    echo json_encode($sessionResponse);
+} catch (UnauthorizedException $e) {
+    $e->emit();
 } catch (Exception $e) {
     ErrorResponse::emit($e);
 }

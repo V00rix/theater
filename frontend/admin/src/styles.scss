@@ -2,6 +2,60 @@
 //@import "../../node_modules/@angular/material/prebuilt-themes/indigo-pink.css";
 @import "theme";
 
+
+@mixin fw($weight) {
+  @if ($weight == 'light') {
+    font-weight: 300;
+  }
+  @if ($weight == 'regular') {
+    font-weight: 400;
+  }
+  @if ($weight == 'semibold') {
+    font-weight: 600;
+  }
+  @if ($weight == 'bold') {
+    font-weight: 900;
+  }
+}
+
+@mixin c($col) {
+  @if ($col == 'grey') {
+    color: rgba(69, 69, 69, .8);
+  }
+  @if ($col == 'red') {
+    color: rgba(128, 0, 0, .8);
+  }
+  @if ($col == 'black') {
+    color: rgba(0, 0, 0, .8);
+  }
+  @if ($col == 'green') {
+    color: rgba(37, 220, 58, 0.8);
+  }
+  @if ($col == 'white') {
+    color: rgba(255, 255, 255, .8);
+  }
+}
+
+.grey {
+  @include c('grey');
+}
+
+.red {
+  @include c('red');
+}
+
+.black {
+  @include c('black');
+}
+
+.green {
+  @include c('green');
+}
+
+.white {
+  @include c('white');
+}
+
 html {
   min-height: 100%;
 }
@@ -51,6 +105,7 @@ button {
   .footer {
     position: absolute;
     bottom: 0;
+    left: 0;
   }
 
   .content {
@@ -69,16 +124,20 @@ h1 {
 }
 
 h2 {
-  color: rgba(69, 69, 69, .8);
+  @include c('grey');
   margin-bottom: 30px;
 }
 
 h3 {
+  @include fw('light');
+  @include c('grey');
 
 }
 
 h4 {
-
+  margin: 5px 0;
+  @include fw('light');
+  @include c('grey');
 }
 
 svg {
@@ -95,39 +154,19 @@ svg {
 }
 
 .light {
-  font-weight: 300;
+  @include fw('light');
 }
 
 .regular {
-  font-weight: 400;
+  @include fw('regular');
 }
 
 .semibold {
-  font-weight: 600;
+  @include fw('semibold');
 }
 
 .bold {
-  font-weight: 900;
-}
-
-.grey {
-  color: rgba(69, 69, 69, .8);
-}
-
-.red {
-  color: rgba(128, 0, 0, .8);
-}
-
-.black {
-  color: rgba(0, 0, 0, .8);
-}
-
-.green {
-  color: rgba(37, 220, 58, 0.8);
-}
-
-.white {
-  color: rgba(255, 255, 255, .8);
+  @include fw('bold');
 }
 
 .text-center {
@@ -159,6 +198,11 @@ svg {
     display: inline-block;
     max-width: 24%;
   }
+
+  .oi-complete {
+    display: inline-block;
+    max-width: calc(90% - 15px);
+  }
 }
 
 .btn-back {
@@ -167,6 +211,20 @@ svg {
   > svg {
     position: relative;
     float: left;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    padding: 5px;
+  }
+}
+
+.btn-next {
+  padding: 10px 5px;
+  text-align: center;
+
+  > svg {
+    position: relative;
+    float: right;
     width: 20px;
     height: 20px;
     display: inline-block;
@@ -187,4 +245,21 @@ svg {
 
 .deactivated {
   opacity: .3;
+}
+
+.margined {
+  margin: 50px 0;
+
+  &.less {
+    margin: 25px  0;
+  }
+
+  &.only-bottom {
+    margin: auto auto 25px auto;
+  }
+}
+
+.font-small {
+  font-size: .6em;
+  line-height: 1.5em;
 }

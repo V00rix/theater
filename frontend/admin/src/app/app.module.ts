@@ -27,6 +27,8 @@ import { MenuComponent } from './business/components/menu/menu.component';
 import { OverlayComponent } from './business/components/overlay/overlay.component';
 import { SessionsComponent } from './pages/sessions/sessions.component';
 import { MessagesComponent } from './business/components/messages/messages.component';
+import { ViewersComponent } from './pages/viewers/viewers.component';
+import { BasicPageComponent } from './business/components/basic-page/basic-page.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -48,7 +50,9 @@ registerLocaleData(localeEn, 'en');
     MenuComponent,
     OverlayComponent,
     SessionsComponent,
-    MessagesComponent
+    MessagesComponent,
+    ViewersComponent,
+    BasicPageComponent
   ],
   imports: [
     BrowserModule,

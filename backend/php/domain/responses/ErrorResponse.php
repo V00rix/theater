@@ -11,17 +11,17 @@ namespace domain\responses;
 
 class ErrorResponse
 {
-    public $errors;
+    public $error;
 
     function __construct($errors)
     {
-        $this->errors = $errors;
+        $this->error = new \stdClass();
+        $this->error->message = $errors;
     }
 
     public static function emit($e)
     {
         http_response_code(400);
         echo json_encode(new ErrorResponse($e->getMessage()));
-
     }
 }

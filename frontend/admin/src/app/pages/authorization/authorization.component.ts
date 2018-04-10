@@ -1,9 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Optional} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {DataService} from '../../business/services/data.service';
-import {MessagesComponent} from '../../business/components/messages/messages.component';
 
 @Component({
   selector: 'app-authorization',
@@ -16,6 +15,7 @@ export class AuthorizationComponent implements OnInit {
 
   public login: string;
   public password: string;
+  public error: string;
 
   constructor(public data: DataService, private http: HttpClient, private router: Router) {
   }
@@ -24,10 +24,10 @@ export class AuthorizationComponent implements OnInit {
   }
 
   onSubmit() {
-    this.data.postSubmit(this.login, this.password).subscribe(() => {
+    this.data.postSubmit(this.login, this.password, false).subscribe(() => {
       this.router.navigate(['/home']);
-    }, () => {
-      console.log(this.data.currentErrors);
+    }, error => {
+      this.error = error.error.error.message;
     });
   }
 }
