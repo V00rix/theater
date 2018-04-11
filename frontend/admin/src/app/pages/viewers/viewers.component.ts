@@ -28,7 +28,7 @@ export class ViewersComponent implements OnInit {
       this.session = this.data.sessions[id];
       this.paramsRead = true;
       this.headers.push({label: this.session.performance.title, type: 'h4'},
-        {label: this.session.date, type: 'h4'});
+        {label: this.session.date.toLocaleString(), type: 'h4'});
       console.log('can display', this.session);
     });
   }

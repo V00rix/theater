@@ -26,7 +26,7 @@ try {
 
     $jsonPerformances = json_decode(file_get_contents('../../../app_data/performances.json'));
 
-    $mysqli = db_connect('localhost', 'root', '', 'theater');
+    $mysqli = db_connect();
 
     // ... clear
 

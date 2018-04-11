@@ -23,8 +23,8 @@ export class DataService {
     public pages = ['home', 'confirmation', 'contacts', 'performance',
         'performances', 'session', 'sessions', 'success', 'checkout', 'viewer'];
 
-    // private baseUrl = 'http://elumixor.com/grani/backend/requests/';
-    private baseUrl = 'http://localhost/backend/php/requests/';
+    private baseUrl = 'http://elumixor.com/grani/backend/requests/';
+    // private baseUrl = 'http://localhost/backend/php/requests/';
     public dataLoaded = false;
 
     public performances: Performance[];

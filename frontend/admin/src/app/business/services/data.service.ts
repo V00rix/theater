@@ -25,11 +25,13 @@ export class DataService {
   constructor(private http: HttpClient, private router: Router) {
   }
 
+  private baseUrl = 'http://elumixor.com/grani/backend/requests/admin/';
+
   /**
    * GET orders
    */
   public getOrders(propagate = true) {
-    return this.http.get('http://localhost/backend/php/requests/admin/orders.admin.php', {withCredentials: true}).map(
+    return this.http.get(`${this.baseUrl}orders.admin.php`, {withCredentials: true}).map(
       (response: OrderResponse) => {
         console.log('Orders loaded');
         console.log(response);
@@ -44,7 +46,7 @@ export class DataService {
    * GET sessions
    */
   public getSessions(propagate = true) {
-    return this.http.get('http://localhost/backend/php/requests/admin/sessions.admin.php', {withCredentials: true}).map(
+    return this.http.get(`${this.baseUrl}sessions.admin.php`, {withCredentials: true}).map(
       (response: SessionResponse) => {
         console.log('Sessions loaded');
         this.sessions = SessionResponse.map(response);
@@ -60,7 +62,7 @@ export class DataService {
    * @returns {Promise<T | ErrorObservable>}
    */
   postSubmit(login: string, password: string, propagate = true) {
-    return this.http.post('http://localhost/backend/php/requests/admin/authorization.admin.php', {
+    return this.http.post(`${this.baseUrl}authorization.admin.php`, {
       login: login,
       password: password
     }, {headers: {'Content-Type': ['text/plain']}}).map(
@@ -77,7 +79,7 @@ export class DataService {
    * POST save resolved/rejected requests
    */
   saveRequests(propagate = true) {
-    return this.http.post('http://localhost/backend/php/requests/admin/saveRequests.admin.php',
+    return this.http.post(`${this.baseUrl}saveRequests.admin.php`,
       this.orders, {headers: {'Content-Type': ['text/plain']}}).subscribe(
       (res) => {
         console.log(res);

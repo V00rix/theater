@@ -26,7 +26,7 @@ try {
 //    if (!isset($_SESSION['admin'])) {
 //        throw new UnauthorizedException("Unauthorized");
 //    }
-    $mysqli = db_connect('localhost', 'root', '', 'theater');
+    $mysqli = db_connect();
 
     if (!$_SERVER['REQUEST_METHOD'] === 'POST')
         throw new Exception('Only POST is allowed');

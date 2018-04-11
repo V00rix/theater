@@ -8,6 +8,7 @@
             <mapping deploy="/grani/mobile" local="$PROJECT_DIR$/frontend/mobile/dist" web="/" />
             <mapping deploy="/grani/desktop" local="$PROJECT_DIR$/frontend/desktop/dist" web="/" />
             <mapping deploy="/grani/backend" local="$PROJECT_DIR$/backend/php" web="" />
+            <mapping deploy="/grani/admin" local="$PROJECT_DIR$/frontend/admin/dist" />
           </mappings>
           <excludedPaths>
             <excludedPath local="true" path="$PROJECT_DIR$/backend/php/backup" />

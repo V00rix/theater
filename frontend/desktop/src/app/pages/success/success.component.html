@@ -23,7 +23,7 @@
     <label>
       {{'pages.success.success' | translate}}
       <br/>
-      {{'pages.success.bookingCode' | translate}} <em>BK{{data.bookingCode}}</em>
+      {{'pages.success.bookingCode' | translate}} <em>B{{data.bookingCode | uppercase}}</em>
       <br/>
       {{'pages.success.saveIt' | translate}}
     </label>
@@ -31,8 +31,9 @@
     <br/>
 
     <div class="font-hint" (click)="updateStatus()">
-      {{'hints.codeSent' | translate}}
-      <br/>
+      <!--TODO-->
+      <!--{{'hints.codeSent' | translate}}-->
+      <!--<br/>-->
       {{'hints.contactedSoon' | translate}}
     </div>
     <div class="submenu">

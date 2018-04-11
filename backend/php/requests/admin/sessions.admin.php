@@ -36,7 +36,7 @@ try {
 //        throw new UnauthorizedException("Unauthorized");
 //    }
 
-    $mysqli = db_connect('localhost', 'root', '', 'theater');
+    $mysqli = db_connect();
     mysqli_query($mysqli, "SET NAMES UTF8");
 
     $sessionResponse = new SessionResponse();

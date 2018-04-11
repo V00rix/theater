@@ -21,7 +21,7 @@ session_start();
 // todo
 //if (isset($_SESSION['admin'])) {
 try {
-    $mysqli = db_connect('localhost', 'root', '', 'theater');
+    $mysqli = db_connect();
     mysqli_query($mysqli, "SET NAMES UTF8");
 
     $performancesResponse = new PerformancesResponse();

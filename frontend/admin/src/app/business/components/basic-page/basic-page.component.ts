@@ -14,6 +14,8 @@ export class BasicPageComponent implements OnInit {
   @Input() public back: { label: string, link: string };
   @Input() public h: { label: string, type: string }[];
 
+  public menuShown = false;
+
   public headers = {h1: [], h2: [], h3: [], h4: [], h5: []};
 
   constructor(@Optional() public messages: MessagesComponent, public data: DataService,
