@@ -100,6 +100,10 @@ SELECT email
 FROM t_website_client
 WHERE email = 'sadasdasdas';
 
+SELECT *
+FROM t_website_client;
+
+
 SELECT email
 FROM t_registered_user
 WHERE email = 'vladogim97@gmail.com';
@@ -119,20 +123,27 @@ FROM t_ticket
   JOIN t_seat seat ON t_ticket.seat = seat.id
   JOIN t_row row2 ON seat.row = row2.id;
 
-DELETE t_seat.* FROM t_seat JOIN t_order to2 ON t_seat.`order` = to2.id WHERE confirmed = FALSE;
+DELETE t_seat.* FROM t_seat
+  JOIN t_order to2 ON t_seat.`order` = to2.id
+WHERE confirmed = FALSE;
 
-SELECT * FROM t_seat  JOIN t_order to2 ON t_seat.`order` = to2.id
+SELECT *
+FROM t_seat
+  JOIN t_order to2 ON t_seat.`order` = to2.id
 WHERE confirmed = FALSE;
 
 SELECT *
 FROM t_order
   JOIN t_website_client t ON t_order.website_email = t.email;
 
-DELETE FROM t_seat WHERE availabillity != 'HIDDEN';
-SELECT * FROM t_seat;
+DELETE FROM t_seat
+WHERE availabillity != 'HIDDEN';
+SELECT *
+FROM t_seat;
 
 
-SELECT * FROM t_performance;
+SELECT *
+FROM t_performance;
 INSERT INTO t_performance (author, title, image_url, description) VALUES ('выф', 'ывфвыфв', 'test', 'вцвфвыывф');
 
 SELECT
@@ -240,3 +251,7 @@ FROM t_seat
 SELECT *
 FROM t_session
   JOIN t_timestamp t2 ON t_session.date = t2.id;
+
+# The following MySQL function will return the correct utf8 string after double-encoding:
+
+CONVERT(CAST( CONVERT (field USING latin1) AS BINARY ) USING utf8)

@@ -23,7 +23,7 @@ export class PerformancesResponse {
       p =>
         new Performance(p.id, p.title, p.image_url, p.description, p.sessions.map(
           s => {
-            return new Session(s.id, s.date, s.seats.map(
+            return new Session(s.id, new Date(s.date), s.seats.map(
               r => {
                 return r.map(
                   seat => {

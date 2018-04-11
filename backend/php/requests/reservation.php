@@ -22,6 +22,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $mysqli = db_connect();
+    mysqli_query($mysqli, "SET NAMES UTF8");
 //    $mysqli = db_connect('localhost', 'root', '', 'theater');
 
     $performances = PerformancesDao::get($mysqli);
