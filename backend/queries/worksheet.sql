@@ -255,3 +255,4 @@ FROM t_session
 # The following MySQL function will return the correct utf8 string after double-encoding:
 
 CONVERT(CAST( CONVERT (field USING latin1) AS BINARY ) USING utf8)
+
