@@ -34,8 +34,8 @@ export class ViewersComponent implements OnInit {
   }
 
 
-  deleteViewer(viewer: {name: string, contact: string}) {
-    console.log(viewer);
+  deleteViewer(order: number) {
+    this.data.deleteViewer(order);
   }
 
   changeSeat(seat: {id: number, row: number, seat: number}) {
@@ -57,6 +57,5 @@ export class ViewersComponent implements OnInit {
   }
 
   deleteSeat() {
-
   }
 }

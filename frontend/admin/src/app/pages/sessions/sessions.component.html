@@ -1,18 +1,64 @@
 <app-basic-page [back]="{label: 'Home', link: '/home'}" [h]="[{label: 'Sessions', type: 'h2'}]">
   <app-list>
     <app-panel-collapsible [collapsed]="true" *ngFor="let session of data.sessions; let id = index">
-      <app-drawer [active]="true">
+      <app-drawer [active]="true" (collapsed)="resetSession(session, performanceElement, dateElement, timeElement, hallElement)">
         <label class="order-item light">
           <span class="oi-id truncate grey">{{id + 1}}</span>
           <span class="oi-performance grey truncate">{{session.performance.title}}</span>
-          <span class="oi-name truncate ">{{session.date}}</span>
+          <span class="oi-name truncate text-right">{{session.date | date:'EEEEEE dd.LL.yyyy - HH:mm'}}</span>
         </label>
       </app-drawer>
       <app-content>
-        <div class="text-center">
-          <label class="accent" [routerLink]="['./' + id + '/viewers']">Viewers</label>
+        <div class="user-panel text-center">
+          <div class="section">
+            <mat-form-field>
+              <mat-select placeholder="Performance" (change)="performanceChange(session.performance, session)"
+                          #performanceElement>
+                <mat-option *ngFor="let performance of data.performances" [value]="performance">
+                  {{ performance.title }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <div class="form-date">
+
+              <mat-form-field>
+                <input name="sessionDate" matInput [matDatepicker]="picker" placeholder="Date"
+                       [value]="session.date"
+                       (dateChange)="dateChange(dateElement.value, session)" #dateElement>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker startView="year" [startAt]="session.date"></mat-datepicker>
+              </mat-form-field>
+            </div>
+            <div class="form-time">
+              <mat-form-field>
+                <input name="sessionTime" matInput placeholder="Time" [formControl]="timeInput"
+                       (change)="timeChange($event.target.value, session)"
+                       [value]="session.date | date:'HH:mm'" #timeElement>
+              </mat-form-field>
+            </div>
+            <mat-form-field>
+              <mat-select placeholder="Hall" [(value)]="session.hall" disabled #hallElement>
+                <mat-option *ngFor="let hall of [1]" [value]="hall">
+                  {{ hall }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="section">
+            <label class="accent" [routerLink]="['./' + id + '/viewers']">Viewers</label>
+          </div>
+          <div class="section">
+            <app-dialog (resolve)="updateSession(session)"
+                        (reject)="resetSession(session, performanceElement, dateElement, timeElement, hallElement)"
+                        [class]="'black'">
+            </app-dialog>
+          </div>
+          <div class="section">
+            <div class="margined text-center red" (click)="deleteSession(session)">Delete session</div>
+          </div>
         </div>
       </app-content>
     </app-panel-collapsible>
   </app-list>
+  <button class="footer full-width" (click)="newSession()">New session</button>
 </app-basic-page>

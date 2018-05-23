@@ -1,6 +1,0 @@
-<div class="app-input-container">
-  <!-- TODO: make label not clickable on selected -->
-  <!-- TODO: styling -->
-  <label for="{{name}}" class="{{isSelected ? 'selected' : ''}}">{{name}}</label>
-  <input type="text" class="{{isSelected ? 'selected' : ''}}" id="{{name}}" [ngModelOptions]="{standalone: true}" (focus)="selected(true)" (focusout)="selected(false)" [(ngModel)]="value"/>
-</div>

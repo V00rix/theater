@@ -7,7 +7,7 @@ import {Animations} from '../../../../../../shared/animations/animations';
 
 @Component({
   selector: 'app-panel-collapsible',
-  template: `<div class="panel-collapsible" #panel><ng-content select="app-drawer" (click)="toggleView()"></ng-content>
+  template: `<div class="panel-collapsible" #panel><ng-content select="app-drawer"></ng-content>
                 <div class="pc-content" *ngIf="!collapsed" [@fadeIn] [@slideTop]> <ng-content select="app-content" ></ng-content></div>
              </div>`,
   styleUrls: ['./panel-collapsible.component.scss'],

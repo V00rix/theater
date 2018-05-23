@@ -1,7 +1,9 @@
-import {Component, OnInit, Input, Optional} from '@angular/core';
+import {Component, OnInit, Input, Optional, Inject} from '@angular/core';
 import {Router} from '@angular/router';
 import {DataService} from '../../services/data.service';
 import {MessagesComponent} from '../messages/messages.component';
+import {Subject} from 'rxjs/Subject';
+import {AppComponent} from '../../../app.component';
 
 @Component({
   selector: 'app-basic-page',
@@ -14,11 +16,13 @@ export class BasicPageComponent implements OnInit {
   @Input() public back: { label: string, link: string };
   @Input() public h: { label: string, type: string }[];
 
+
   public menuShown = false;
 
   public headers = {h1: [], h2: [], h3: [], h4: [], h5: []};
 
   constructor(@Optional() public messages: MessagesComponent, public data: DataService,
+              @Inject(AppComponent) public app: AppComponent,
               private router: Router) {
   }
 
@@ -42,6 +46,7 @@ export class BasicPageComponent implements OnInit {
           break;
       }
     });
+    console.log('baseComp');
   }
 
   navigate(to: string) {

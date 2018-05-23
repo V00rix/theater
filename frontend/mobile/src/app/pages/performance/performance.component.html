@@ -18,9 +18,9 @@
       <div *ngFor="let session of this.data.applicationStatus.selectedPerformance.sessions; let id = index"
            class="session-m action"
            (click)="showSession(id)">
-        <div class="session-time">{{session.date | date:'HH:mm':'+0100'}}</div>
+        <div class="session-time">{{session.date | date:'HH:mm':'+0200'}}</div>
         <hr>
-        <div class="session-day">{{session.date | date:'dd/MM':'+0100'}}</div>
+        <div class="session-day">{{session.date | date:'dd/LL':'+0200'}}</div>
       </div>
     </div>
   </div>

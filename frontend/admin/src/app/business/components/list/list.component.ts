@@ -19,12 +19,12 @@ import {DataService} from '../../services/data.service';
 })
 export class ListComponent implements AfterContentInit, OnDestroy {
   @ContentChildren(PanelCollapsibleComponent) public panels: QueryList<PanelCollapsibleComponent>;
-
   public drawerHeight: { top: number, bottom: number } = {top: 0, bottom: 0};
   public showFaders = false;
 
   private scrollingFinished = false;
-  private subscription;
+  private subscriptionLoaded;
+  private subscriptionUpdate;
 
   constructor(private data: DataService) {
   }
@@ -33,19 +33,25 @@ export class ListComponent implements AfterContentInit, OnDestroy {
     if (this.data.dataLoaded) {
       this.initHandler();
     }
-    this.subscription = this.data.loadingFinished.subscribe(() => {
+    this.subscriptionLoaded = this.data.loadingFinished.subscribe(() => {
+      this.initHandler();
+    });
+    this.subscriptionUpdate = this.data.dataUpdated.subscribe(() => {
       this.initHandler();
     });
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.subscriptionLoaded.unsubscribe();
+    this.subscriptionUpdate.unsubscribe();
   }
 
   /**
    * Add handler for panel collapsing/expanding
    */
-  private initHandler() {
+  public initHandler() {
+
+    console.log(this.panels.length);
 
     if (this.panels.length) {
       this.panels.forEach(p => {
@@ -81,6 +87,7 @@ export class ListComponent implements AfterContentInit, OnDestroy {
     this.panels.forEach(p => {
       if (!p.collapsed) {
         p.drawer.hideContent();
+        p.drawer.collapsed.emit();
       }
     });
   }

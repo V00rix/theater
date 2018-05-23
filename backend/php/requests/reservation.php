@@ -18,12 +18,11 @@ use domain\responses\PerformancesResponse;
 if (session_status() !== PHP_SESSION_ACTIVE) {
     session_start();
 }
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
+try {
     $mysqli = db_connect();
-    mysqli_query($mysqli, "SET NAMES UTF8");
-//    $mysqli = db_connect('localhost', 'root', '', 'theater');
+
+    if (!$_SERVER['REQUEST_METHOD'] === 'POST')
+        throw new Exception('Only POST is allowed');
 
     $performances = PerformancesDao::get($mysqli);
 
@@ -51,81 +50,79 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $seat_id = null;
     $ticket_id = null;
 
-    try {
 
-        /**
-         * Create timestamp
-         */
-        if ($mysqli->query("INSERT INTO t_timestamp (date) VALUES (NOW())") === TRUE) {
-            $timestamp_id = $mysqli->insert_id;
-        } else {
-            throw new Exception('Could not create timestamp');
+    /**
+     * Create timestamp
+     */
+    if ($mysqli->query("INSERT INTO t_timestamp (date) VALUES (NOW())") === TRUE) {
+        $timestamp_id = $mysqli->insert_id;
+    } else {
+        throw new Exception(mysqli_error($mysqli));
+    }
+
+    /**
+     * Get website client email
+     */
+    if (($result = $mysqli->query("SELECT email FROM t_website_client WHERE email = '{$user->contact}';")) && $result->num_rows > 0) {
+        $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+        $client_email = $row['email'];
+    } /**
+     * Create client email
+     */
+    else {
+        $client_email = $user->contact;
+        if (!($result = $mysqli->query("INSERT INTO t_website_client (email, name) VALUES ('{$user->contact}', '{$user->name}');") === TRUE)) {
+            throw new Exception(mysqli_error($mysqli));
         }
 
-        /**
-         * Get website client email
-         */
-        if (($result = $mysqli->query("SELECT email FROM t_website_client WHERE email = '{$user->contact}';")) && $result->num_rows > 0) {
-            $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-            $client_email = $row['email'];
-        } /**
-         * Create client email
-         */
-        else {
-            $client_email = $user->contact;
-            if (!($result = $mysqli->query("INSERT INTO t_website_client (email, name) VALUES ('{$user->contact}', '{$user->name}');") === TRUE)) {
-                throw new Exception('Could not create email');
-            }
+    }
 
-        }
+    /**
+     * Reference registered user if exists
+     */
+    if ($result = $mysqli->query("SELECT email FROM t_registered_user WHERE email = {$user->contact}") === TRUE) {
+        $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+        $registered_email = $row['email'];
+    }
 
-        /**
-         * Reference registered user if exists
-         */
-        if ($result = $mysqli->query("SELECT email FROM t_registered_user WHERE email = {$user->contact}") === TRUE) {
-            $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-            $registered_email = $row['email'];
-        }
-
-        /**
-         * Create order
-         */
-        if ($result = $mysqli->query("INSERT INTO t_order (date, registered_email, website_email, checkout)
-          VALUES ({$timestamp_id}, " . ($registered_email ? $registered_email : "null") . ", '{$client_email}', 'SELF_CHECKOUT');") === TRUE) {
-            $order_id = $mysqli->insert_id;
-        } else {
-            throw new Exception('Could not create order');
-        }
+    /**
+     * Create order
+     */
+    if ($result = $mysqli->query("INSERT INTO t_order (date, registered_email, website_email, checkout)
+          VALUES ({$timestamp_id}, " . ($registered_email ? $registered_email : "null") . ", '{$client_email}', '{$selected_checkout}');") === TRUE) {
+        $order_id = $mysqli->insert_id;
+    } else {
+        throw new Exception(mysqli_error($mysqli));
+    }
 
 
-        /**
-         * Create seat
-         */
-        foreach ($selected_seats as $seat) {
+    /**
+     * Create seat
+     */
+    foreach ($selected_seats as $seat) {
 
 //            echo "seat: " . $seat->seat;
 //            echo "row: " . $seat->row;
 //            echo "session " . $performances[$selected_performance]->sessions[$selected_session]->id;
 //            echo "order " . $order_id;
 
-            if ($mysqli->query(
-                    "INSERT INTO t_seat (number, row, session, availabillity, `order`) 
+        if ($mysqli->query(
+                "INSERT INTO t_seat (number, row, session, availabillity, `order`) 
                     SELECT {$seat->seat}, id, {$performances[$selected_performance]->sessions[$selected_session]->id}, 'BOOKED', {$order_id}
                     FROM t_row 
                     WHERE number = {$seat->row}") === TRUE) {
-                $seat_id = $mysqli->insert_id;
+            $seat_id = $mysqli->insert_id;
 
-            } else {
-                throw new Exception(mysqli_error($mysqli));
-            }
+        } else {
+            throw new Exception(mysqli_error($mysqli));
         }
-
-        $_SESSION['selected_seats'] = [];
-
-        echo json_encode(dechex($order_id));
-
-    } catch (Exception $e) {
-        header("400");
-        echo $e->getMessage();
     }
+
+    $_SESSION['selected_seats'] = [];
+
+    echo json_encode(dechex($order_id));
+
+} catch (Exception $e) {
+    header("400");
+    echo $e->getMessage();
 }

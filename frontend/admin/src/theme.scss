@@ -23,16 +23,22 @@ $admin-app-theme: mat-light-theme($admin-app-primary, $admin-app-accent, $admin-
 // that you are using.
 @include angular-material-theme($admin-app-theme);
 
+$white: rgba(255, 255, 255, .8);
+
 mat-form-field {
   width: 80%;
   margin: 10px 0;
-  color: rgba(255, 255, 255, .8);
+  color: $white;
 }
 
 .mat-form-field-label {
-  color: rgba(255, 255, 255, .8);
+  color: $white;
+}
+
+.mat-select-value {
+  color: $white;
 }
 
 .mat-form-field-underline {
-  background-color: rgba(255, 255, 255, .8);
+  background-color: $white;
 }

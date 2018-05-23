@@ -20,20 +20,20 @@ SELECT *
 FROM t_website_client;
 
 DELETE FROM t_registered_user;
-# INSERT INTO t_registered_user (email, login, name, password) SELECT
+# INSERT INTO t_registered_user (email, login, firstName, password) SELECT
 #                                                                email,
 #                                                                'v00rix',
-#                                                                name,
+#                                                                firstName,
 #                                                                'password'
 #                                                              FROM t_website_client
 #                                                              WHERE email = 'vladogim97@gmail.com';
-# INSERT INTO t_registered_user (email, login, name, password) VALUES
+# INSERT INTO t_registered_user (email, login, firstName, password) VALUES
 #   ('my@mail.com', 'JUST_A_FRIEND', 'hello', 'heslo');
 SELECT *
 FROM t_registered_user;
 
 DELETE FROM t_phone_client;
-# INSERT INTO t_phone_client (phone, name) VALUES
+# INSERT INTO t_phone_client (phone, firstName) VALUES
 #   ('123123123', 'TEST_PHONE_CLIENT'),
 #   ('776558334', 'Vlad');
 SELECT *

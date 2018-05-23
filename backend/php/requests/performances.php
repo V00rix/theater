@@ -19,7 +19,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $performances = [];
 
     $mysqli = db_connect();
-    mysqli_query($mysqli, "SET NAMES UTF8");
 
     $performances = PerformancesDao::get($mysqli);
 

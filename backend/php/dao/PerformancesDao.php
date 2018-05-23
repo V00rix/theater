@@ -46,8 +46,9 @@ abstract class PerformancesDao
 
         foreach ($performances as $p) {
             if ($result = $mysqli->query("SELECT t_session.id, t2.date, hall FROM t_session 
-                                          JOIN t_performance tp ON t_session.performance = {$p->id} 
-                                          JOIN t_timestamp t2 ON t_session.date = t2.id;")) {
+                                          JOIN t_performance tp ON t_session.performance = tp.id 
+                                          JOIN t_timestamp t2 ON t_session.date = t2.id
+                                          WHERE tp.id = {$p->id};")) {
 
                 while ($row = mysqli_fetch_array($result)) {
 //                    print_r($row);

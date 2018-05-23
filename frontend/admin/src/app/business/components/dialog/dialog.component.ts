@@ -1,5 +1,6 @@
 import {Component, OnInit, Output, Input, EventEmitter, Optional} from '@angular/core';
 import {PanelCollapsibleComponent} from '../panel-collapsible/panel-collapsible.component';
+import {OverlayComponent} from '../overlay/overlay.component';
 
 @Component({
   selector: 'app-dialog',
@@ -11,8 +12,8 @@ export class DialogComponent implements OnInit {
   @Output() public resolve = new EventEmitter<void>();
   @Input() public class: string;
 
-  constructor(@Optional() private parent: PanelCollapsibleComponent) {
-    this.parent = parent;
+  constructor(@Optional() private panel: PanelCollapsibleComponent, @Optional() private overlay: OverlayComponent) {
+    this.panel = panel;
   }
 
   ngOnInit() {
@@ -24,8 +25,15 @@ export class DialogComponent implements OnInit {
     } else {
       this.reject.emit();
     }
-    if (this.parent) {
-      this.parent.drawer.hideContent();
+    if (this.panel) {
+      this.panel.drawer.hideContent();
+    }
+    if (this.overlay) {
+      if (state) {
+        this.overlay.close.emit();
+      } else {
+        this.overlay.reject.emit();
+      }
     }
   }
 }

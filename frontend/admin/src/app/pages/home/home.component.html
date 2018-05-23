@@ -16,6 +16,11 @@
                 <div class="light grey">{{order.session.date}}</div>
               </div>
               <div class="section">
+                <div class="light grey" *ngFor="let seat of order.seats" (click)="changeSeat(seat)">Row {{seat.row}}, Seat
+                  {{seat.seat}}
+                </div>
+              </div>
+              <div class="section">
                 <div class="light">{{order.user.name}}</div>
                 <div class="light">{{order.user.contact}}</div>
               </div>

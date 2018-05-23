@@ -1,4 +1,4 @@
-import {Component, OnInit, HostListener, Input} from '@angular/core';
+import {Component, OnInit, Output, HostListener, EventEmitter, Input} from '@angular/core';
 
 @Component({
   selector: 'app-drawer',
@@ -7,6 +7,7 @@ import {Component, OnInit, HostListener, Input} from '@angular/core';
 })
 export class DrawerComponent implements OnInit {
   @Input() active = false;
+  @Output() collapsed = new EventEmitter<void>();
 
   constructor() {
   }
@@ -15,5 +16,11 @@ export class DrawerComponent implements OnInit {
   }
 
   @HostListener('click')
-  hideContent() {}
+  collapsing() {
+    this.collapsed.emit();
+  }
+
+  @HostListener('click')
+  hideContent() {
+  }
 }

@@ -134,7 +134,7 @@ try {
                 $now = $mysqli->insert_id;
 
                 if (!$mysqli->query("INSERT INTO t_website_client (email, name)
-                                VALUES ('{$contact}', '{$data->name}');")) {
+                                VALUES ('{$contact}', f{$data->name}irstName);")) {
                     throw new Exception(mysqli_error($mysqli));
                 }
 

@@ -23,8 +23,16 @@ export class DataService {
     public pages = ['home', 'confirmation', 'contacts', 'performance',
         'performances', 'session', 'sessions', 'success', 'checkout', 'viewer'];
 
-    private baseUrl = 'http://elumixor.com/grani/backend/requests/';
+    // private baseUrl = 'http://elumixor.com/grani/backend/requests/';
     // private baseUrl = 'http://localhost/backend/php/requests/';
+    private baseUrl = 'http://localhost:8080/api/';
+
+    // public assetsUrl = 'http://elumixor.com/grani/performanceBackgrounds/';
+    public assetsUrl = 'http://localhost:8080/resources/performanceBackgrounds/';
+
+    // private extension = '.php';
+    private extension = '';
+
     public dataLoaded = false;
 
     public performances: Performance[];
@@ -45,6 +53,7 @@ export class DataService {
     constructor(private http: HttpClient) {
         this.getPerformanceData();
         this.onResize();
+        this.http.get(`${this.baseUrl}test`).subscribe(r => console.log(r));
     }
 
     public onResize() {
@@ -56,7 +65,7 @@ export class DataService {
      * Http GET
      */
     public getPerformanceData() {
-        this.http.get(`${this.baseUrl}performances.php`).subscribe((response: PerformancesResponse) => {
+        this.http.get(`${this.baseUrl}performances${this.extension}`).subscribe((response: PerformancesResponse) => {
             console.log(response);
             this.performances = PerformancesResponse.map(response);
             this.maximumSeats = response.maximum_seats;
@@ -72,7 +81,7 @@ export class DataService {
      * Post application status
      */
     public postStatus() {
-        this.http.post(`${this.baseUrl}status.php`, this.applicationStatus.transform(this.performances),
+        this.http.post(`${this.baseUrl}status${this.extension}`, this.applicationStatus.transform(this.performances),
             {withCredentials: true, headers: {'Content-Type': ['text/plain']}}).subscribe();
     }
 
@@ -81,7 +90,7 @@ export class DataService {
      * @returns {Observable<void>}
      */
     public getStatus(): Observable<void> {
-        return this.http.get(`${this.baseUrl}status.php`, {
+        return this.http.get(`${this.baseUrl}status${this.extension}`, {
             withCredentials: true,
             headers: {'Content-Type': ['text/plain']}
         }).map((response: StatusResponse) => {
@@ -114,7 +123,7 @@ export class DataService {
      * Post booking request
      */
     public postBooking() {
-        this.http.post(`${this.baseUrl}reservation.php`, null, {withCredentials: true}).subscribe((response: string) => {
+        this.http.post(`${this.baseUrl}reservation${this.extension}`, null, {withCredentials: true}).subscribe((response: string) => {
             this.bookingCode = response;
             return this.getPerformanceData();
         });

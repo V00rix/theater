@@ -27,8 +27,10 @@ class SessionResponse
 class Session {
     public $id;
     public $performance_title;
+    public $performance_id;
     public $date;
     public $orders;
+    public $hall;
 
     function __construct()
     {

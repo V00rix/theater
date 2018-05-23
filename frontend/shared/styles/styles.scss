@@ -1,5 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
 @import '../../node_modules/bootstrap/scss/bootstrap';
 @import 'variables/colors';
 @import 'variables/transitions';
@@ -20,3 +19,7 @@
 @import 'elements/overlay';
 @import 'elements/seat';
 @import 'elements/session';
+
+.dark {
+  text-shadow: 5px 0 10px 15px #000;
+}

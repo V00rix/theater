@@ -14,6 +14,7 @@ import {Component, OnInit, Output, Input, EventEmitter} from '@angular/core';
 })
 export class OverlayComponent implements OnInit {
   @Output() close = new EventEmitter<void>();
+  @Output() reject = new EventEmitter<void>();
   @Input() noClose: boolean;
 
   constructor() {

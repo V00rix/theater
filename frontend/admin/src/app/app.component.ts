@@ -11,10 +11,22 @@ import {DataService} from './business/services/data.service';
               <app-authorization *ngIf="authorization">
               </app-authorization>
               <router-outlet *ngIf="!authorization && data.dataLoaded"></router-outlet>
-            </app-messages>`
+            </app-messages>
+            <!-- Confirmation -->
+            <app-overlay *ngIf="showConfirmation" [noClose]="true" class="text-center" (close)="onConfirm()" (reject)="onReject()">
+              <app-dialog [class]="'accent'">
+                <label *ngIf="!confirmMessage">Confirm?</label>
+                <label *ngIf="confirmMessage">{{confirmMessage}}</label>
+              </app-dialog>
+            </app-overlay>
+`
 })
 export class AppComponent implements OnInit {
   public authorization = false;
+
+  private actionToConfirm: (...any) => any;
+  public showConfirmation = false;
+  public confirmMessage: string = null;
 
   constructor(private translate: TranslateService, private http: HttpClient, public data: DataService, private route: ActivatedRoute) {
     // this language will be used as a fallback when a translation isn't found in the current language
@@ -26,22 +38,35 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     console.log('app init');
+    this.data.loadingFinished.subscribe(() => {
+      this.authorization = false;
+    });
+
+    this.data.unauthorized.subscribe((message) => {
+      this.authorization = true;
+    });
+
     if (window.location.pathname === '/authorization') {
       this.authorization = true;
     } else {
       this.data.getApplicationData();
     }
+  }
 
-    // const sessionsRequest = this.data.getSessions().subscribe(
-    //   () => {
-    //     this.data.dataLoaded = true;
-    //   },
-    //   (error) => {
-    //     console.log(this.messages);
-    //     if (error.status === 401) {
-    //       console.warn('Unauthorized');
-    //       this.router.navigate(['/authorization']);
-    //     }
-    //   });
+  public confirm(action: () => any, message: string) {
+    this.showConfirmation = true;
+    this.actionToConfirm = action;
+    this.confirmMessage = message;
+  }
+
+  public onConfirm() {
+    this.showConfirmation = false;
+    this.actionToConfirm();
+    this.confirmMessage = null;
+  }
+
+  public onReject() {
+    this.showConfirmation = false;
+    this.confirmMessage = null;
   }
 }

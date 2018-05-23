@@ -16,16 +16,14 @@ use domain\responses\ErrorResponse;
 include_once '../../helpers/headers.php';
 include_once '../../domain/responses/admin/SessionResponse.php';
 include_once '../../domain/responses/ErrorResponse.php';
-include_once '../../domain/exceptions/UnauthorizedException.php';
 include_once '../../helpers/databaseConnect.php';
+include_once '../../helpers/permissions.php';
 
 session_start();
 
 try {
-// todo
-//    if (!isset($_SESSION['admin'])) {
-//        throw new UnauthorizedException("Unauthorized");
-//    }
+    restricted();
+
     $mysqli = db_connect();
 
     if (!$_SERVER['REQUEST_METHOD'] === 'POST')
@@ -56,8 +54,6 @@ try {
     }
 
     echo json_encode($params);
-} catch (UnauthorizedException $e) {
-    $e->emit();
 } catch (Exception $e) {
     ErrorResponse::emit($e);
 }

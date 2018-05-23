@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
 import {MessagesComponent} from '../messages/messages.component';
 import { HttpErrorResponse } from '@angular/common/http';
+import {DataService} from '../../services/data.service';
 
 @Component({
   selector: 'app-menu',
@@ -14,7 +15,9 @@ export class MenuComponent implements OnInit {
   @HostBinding('class.overlay') showOverlay = true;
 
   constructor(@Optional() private overlay: OverlayComponent,
-              @Optional() private messages: MessagesComponent, private router: Router,
+              @Optional() private messages: MessagesComponent,
+              private data: DataService,
+              private router: Router,
               private http: HttpClient) {
   }
 
@@ -22,11 +25,11 @@ export class MenuComponent implements OnInit {
   }
 
   logout() {
-    this.http.post('http://localhost/backend/php/requests/admin/logout.admin.php', null,
-      {headers: {'Content-Type': ['text/plain']}}).subscribe(
+    this.data.logout().subscribe(
       (res) => {
         this.navigate('authorization');
       }, (error: HttpErrorResponse) => {
+        console.log(error);
         if (this.messages) {
           this.messages.showMessage({title: error.name, description: error.error.error.message, error});
         }

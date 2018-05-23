@@ -15,14 +15,14 @@ include '../../helpers/headers.php';
 include '../../domain/responses/admin/PerformancesResponse.php';
 include '../../domain/responses/ErrorResponse.php';
 include '../../helpers/databaseConnect.php';
+include '../../helpers/permissions.php';
 
 session_start();
 
-// todo
-//if (isset($_SESSION['admin'])) {
 try {
+    restricted();
+
     $mysqli = db_connect();
-    mysqli_query($mysqli, "SET NAMES UTF8");
 
     $performancesResponse = new PerformancesResponse();
     $result = 1;

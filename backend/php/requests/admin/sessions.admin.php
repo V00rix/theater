@@ -13,11 +13,11 @@ use domain\responses\admin\Session;
 use domain\responses\admin\SessionResponse;
 use domain\responses\ErrorResponse;
 
-include_once  '../../helpers/headers.php';
-include_once  '../../domain/responses/admin/SessionResponse.php';
+include_once '../../helpers/headers.php';
+include_once '../../domain/responses/admin/SessionResponse.php';
 include_once '../../domain/responses/ErrorResponse.php';
-include_once '../../domain/exceptions/UnauthorizedException.php';
-include_once  '../../helpers/databaseConnect.php';
+include_once '../../helpers/databaseConnect.php';
+include_once '../../helpers/permissions.php';
 
 session_start();
 
@@ -31,17 +31,13 @@ class BdoSeat
 }
 
 try {
-// todo
-//    if (!isset($_SESSION['admin'])) {
-//        throw new UnauthorizedException("Unauthorized");
-//    }
+    restricted();
 
     $mysqli = db_connect();
-    mysqli_query($mysqli, "SET NAMES UTF8");
 
     $sessionResponse = new SessionResponse();
 
-    if ($result = $mysqli->query("SELECT s.id AS `id`, t2.date AS `date`, tp.title AS `title`, t2.id AS `date_id` FROM t_session s
+    if ($result = $mysqli->query("SELECT s.id AS `id`, t2.date AS `date`, tp.title AS `title`, t2.id AS `date_id`, tp.id AS `performance_id` FROM t_session s
                                         JOIN t_timestamp t2 ON s.date = t2.id
                                         JOIN t_performance tp ON s.performance = tp.id;")) {
         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
@@ -50,12 +46,17 @@ try {
             $session->id = $row['id'];
             $session->date = $row['date'];
             $session->performance_title = $row['title'];
+            $session->performance_id = $row['performance_id'];
 
             $seats = [];
 
             if ($result2 = $mysqli->query("SELECT t_seat.id as `id`, t_seat.number AS `seat`, row2.number AS `row`, t_seat.`order` AS `order_id` FROM t_seat 
                                                         JOIN t_row row2 ON t_seat.row = row2.id
-                                                        WHERE session = {$session->id} AND t_seat.availabillity = 'BOOKED' ORDER BY `order`;")) {
+                                                        JOIN t_order to2 ON t_seat.`order` = to2.id
+                                                        WHERE session = {$session->id} 
+                                                        AND to2.confirmed = TRUE
+                                                        AND t_seat.availabillity = 'BOOKED'
+                                                         ORDER BY `order`;")) {
                 while ($row = mysqli_fetch_array($result2, MYSQLI_ASSOC)) {
                     $seat = new BdoSeat();
                     $seat->id = $row['id'];
@@ -111,8 +112,6 @@ try {
     }
 
     echo json_encode($sessionResponse);
-} catch (UnauthorizedException $e) {
-    $e->emit();
 } catch (Exception $e) {
     ErrorResponse::emit($e);
 }

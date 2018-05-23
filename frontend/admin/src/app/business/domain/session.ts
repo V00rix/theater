@@ -2,8 +2,9 @@ import {Checkout} from '../../../../../shared/business/domain/enumeration/checko
 
 export class Session {
   constructor(public id: number,
-              public performance: { title: string },
+              public performance: { title: string, id: number },
               public date: Date,
+              public hall: number,
               public orders: {
                 id: number,
                 checkout: Checkout.Code,
