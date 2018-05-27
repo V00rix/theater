@@ -82,7 +82,7 @@ FROM t_session;
 
 DELETE FROM t_seat;
 
-INSERT INTO t_seat (number, row, session, availabillity) SELECT
+INSERT INTO t_seat (number, row, session, availability) SELECT
                                                            4        AS "seat",
                                                            r.id     AS row_id,
                                                            s.id     AS "session_id",
@@ -90,7 +90,7 @@ INSERT INTO t_seat (number, row, session, availabillity) SELECT
                                                          FROM t_row r
                                                            JOIN t_session s ON 1 = 1
                                                          WHERE r.number = 14 OR r.number = 13 OR r.number = 12;
-INSERT INTO t_seat (number, row, session, availabillity) SELECT
+INSERT INTO t_seat (number, row, session, availability) SELECT
                                                            5        AS "seat",
                                                            r.id     AS row_id,
                                                            s.id     AS "session_id",
@@ -98,7 +98,7 @@ INSERT INTO t_seat (number, row, session, availabillity) SELECT
                                                          FROM t_row r
                                                            JOIN t_session s ON 1 = 1
                                                          WHERE r.number = 14 OR r.number = 13 OR r.number = 12;
-INSERT INTO t_seat (number, row, session, availabillity) SELECT
+INSERT INTO t_seat (number, row, session, availability) SELECT
                                                            6        AS "seat",
                                                            r.id     AS row_id,
                                                            s.id     AS "session_id",
@@ -106,7 +106,7 @@ INSERT INTO t_seat (number, row, session, availabillity) SELECT
                                                          FROM t_row r
                                                            JOIN t_session s ON 1 = 1
                                                          WHERE r.number = 14 OR r.number = 13 OR r.number = 12;
-INSERT INTO t_seat (number, row, session, availabillity) SELECT
+INSERT INTO t_seat (number, row, session, availability) SELECT
                                                            7        AS "seat",
                                                            r.id     AS row_id,
                                                            s.id     AS "session_id",
@@ -114,7 +114,7 @@ INSERT INTO t_seat (number, row, session, availabillity) SELECT
                                                          FROM t_row r
                                                            JOIN t_session s ON 1 = 1
                                                          WHERE r.number = 14 OR r.number = 13 OR r.number = 12;
-INSERT INTO t_seat (number, row, session, availabillity) SELECT
+INSERT INTO t_seat (number, row, session, availability) SELECT
                                                            34       AS "seat",
                                                            r.id     AS row_id,
                                                            s.id     AS "session_id",
@@ -122,7 +122,7 @@ INSERT INTO t_seat (number, row, session, availabillity) SELECT
                                                          FROM t_row r
                                                            JOIN t_session s ON 1 = 1
                                                          WHERE r.number = 14 OR r.number = 13 OR r.number = 12;
-INSERT INTO t_seat (number, row, session, availabillity) SELECT
+INSERT INTO t_seat (number, row, session, availability) SELECT
                                                            35       AS "seat",
                                                            r.id     AS row_id,
                                                            s.id     AS "session_id",
@@ -130,7 +130,7 @@ INSERT INTO t_seat (number, row, session, availabillity) SELECT
                                                          FROM t_row r
                                                            JOIN t_session s ON 1 = 1
                                                          WHERE r.number = 14 OR r.number = 13 OR r.number = 12;
-INSERT INTO t_seat (number, row, session, availabillity) SELECT
+INSERT INTO t_seat (number, row, session, availability) SELECT
                                                            36       AS "seat",
                                                            r.id     AS row_id,
                                                            s.id     AS "session_id",
@@ -138,7 +138,7 @@ INSERT INTO t_seat (number, row, session, availabillity) SELECT
                                                          FROM t_row r
                                                            JOIN t_session s ON 1 = 1
                                                          WHERE r.number = 14 OR r.number = 13 OR r.number = 12;
-INSERT INTO t_seat (number, row, session, availabillity) SELECT
+INSERT INTO t_seat (number, row, session, availability) SELECT
                                                            37       AS "seat",
                                                            r.id     AS row_id,
                                                            s.id     AS "session_id",
@@ -146,7 +146,7 @@ INSERT INTO t_seat (number, row, session, availabillity) SELECT
                                                          FROM t_row r
                                                            JOIN t_session s ON 1 = 1
                                                          WHERE r.number = 14 OR r.number = 13 OR r.number = 12;
--- INSERT INTO t_seat (id, number,row, session, availabillity)
+-- INSERT INTO t_seat (id, number,row, session, availability)
 --   SELECT 1101, 12 as "seat", r.id as "row_id", s.id "session_id", 'BOOKED' FROM t_row r JOIN t_session s WHERE r.number = 7 AND s.date = 1;
 
 SELECT *

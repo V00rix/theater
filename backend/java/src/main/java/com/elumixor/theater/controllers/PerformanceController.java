@@ -20,4 +20,5 @@ public class PerformanceController {
     public PerformanceResponse getAllPerformances() {
         return new PerformanceResponse(this.performanceRepository.findAll());
     }
+
 }

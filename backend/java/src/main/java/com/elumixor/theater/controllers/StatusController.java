@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/status")
 public class StatusController {
 
-
     // Get All Notes
     @GetMapping("")
     public StatusResponse getStatus() {

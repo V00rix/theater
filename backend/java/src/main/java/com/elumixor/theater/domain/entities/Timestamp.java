@@ -12,13 +12,8 @@ public class Timestamp implements Serializable  {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "date")
     private java.sql.Timestamp date;
 
-//    @OneToOne(fetch = FetchType.LAZY,
-//            cascade =  CascadeType.ALL,
-//            mappedBy = "date")
-//    public Timestamp date;
     @Override
     public String toString() {
         return format.format(this.date);

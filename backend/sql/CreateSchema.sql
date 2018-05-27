@@ -2,11 +2,6 @@
 CREATE SCHEMA IF NOT EXISTS theater;
 SET search_path TO theater;
 
-DROP TYPE IF EXISTS CHECKOUT;
-CREATE TYPE CHECKOUT AS ENUM ('DELIVERY', 'SELF_CHECKOUT', 'PAY_BEFORE');
-DROP TYPE IF EXISTS AVAILABILITY;
-CREATE TYPE AVAILABILITY AS ENUM ('FREE', 'BOOKED', 'HIDDEN');
-
 /* Drop tables */
 DROP TABLE IF EXISTS t_review;
 DROP TABLE IF EXISTS t_friendship;
@@ -24,6 +19,12 @@ DROP TABLE IF EXISTS t_registered_user;
 DROP TABLE IF EXISTS t_timestamp;
 DROP TABLE IF EXISTS t_performance;
 DROP TABLE IF EXISTS t_address;
+
+/* Drop types */
+DROP TYPE IF EXISTS CHECKOUT;
+CREATE TYPE CHECKOUT AS ENUM ('DELIVERY', 'SELF_CHECKOUT', 'PAY_BEFORE');
+DROP TYPE IF EXISTS AVAILABILITY;
+CREATE TYPE AVAILABILITY AS ENUM ('FREE', 'BOOKED', 'HIDDEN');
 
 CREATE TABLE t_performance (
   id          INT UNIQUE NOT NULL,
@@ -134,7 +135,7 @@ CREATE TABLE t_seat (
   row           INT,
   "order"       INT,  -- seat may be marked as 'HIDDEN', thus not linking to any order
   session       INT,
-  availabillity AVAILABILITY NOT NULL DEFAULT 'FREE',
+  availability AVAILABILITY NOT NULL DEFAULT 'FREE',
   PRIMARY KEY (number, row, session),
   FOREIGN KEY (row) REFERENCES t_row (id)
     ON DELETE CASCADE,
@@ -143,7 +144,7 @@ CREATE TABLE t_seat (
   FOREIGN KEY ("order") REFERENCES t_order (id)
     ON DELETE SET NULL,
   CHECK (number > 0),
-  CHECK ("order" IS NOT NULL OR availabillity = 'HIDDEN')
+  CHECK ("order" IS NOT NULL OR availability = 'HIDDEN')
 );
 
 CREATE TABLE t_profile (

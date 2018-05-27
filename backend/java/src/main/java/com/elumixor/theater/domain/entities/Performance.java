@@ -2,7 +2,6 @@ package com.elumixor.theater.domain.entities;
 
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -17,16 +16,12 @@ public class Performance implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
 
-    @NotBlank
     public String author;
 
-    @NotBlank
     public String title;
 
-    @NotBlank
     public String image_url;
 
-    @NotBlank
     public String description;
 
     @OneToMany(cascade = CascadeType.ALL,

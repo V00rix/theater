@@ -1,4 +1,5 @@
 package com.elumixor.theater.domain.enumeration;
 
-public enum Availabillity {
+public enum Availability {
+    FREE, BOOKED, HIDDEN
 }
