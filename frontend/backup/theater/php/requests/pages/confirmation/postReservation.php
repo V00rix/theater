@@ -59,7 +59,7 @@ try {
 
     $session = $performance->sessions[$selectedSessionId];
 
-    // TODO: validate personal data
+    // TODO: validate personal entities
 //    print_r($personalData);
     foreach ($personalData->pData as $seatRequest) {
 

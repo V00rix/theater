@@ -29,7 +29,7 @@ class badArgumentException extends baseException {
         header("HTTP/1.1 400 Bad Request Parameters");
     }
 }
-// when expected to receive arguments (e.g. as data from Http Request)
+// when expected to receive arguments (e.g. as entities from http Request)
 class argumentMissingException extends badArgumentException {
     public function header() {
         header("HTTP/1.1 400 Request Parameters Missing");

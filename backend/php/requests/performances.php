@@ -10,7 +10,7 @@ use domain\responses\PerformancesResponse;
 
 
 /**
- * Get performances data
+ * Get performances entities
  */
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 

@@ -19,7 +19,7 @@ export class ConfirmationComponent implements OnInit {
   onConfirm() {
     // todo: validation
     // http, get order code
-    // this.data.bookingCode = 'F74';
+    // this.entities.bookingCode = 'F74';
     this.router.navigate(['/success']);
     this.data.postBooking();
   }

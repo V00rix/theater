@@ -1,4 +1,4 @@
-package com.elumixor.theater.domain;
+package com.elumixor.theater.domain.entities;
 
 
 import javax.persistence.*;
@@ -15,7 +15,7 @@ import java.util.Set;
 public class Performance implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    public Long id;
 
     @NotBlank
     public String author;
@@ -28,11 +28,6 @@ public class Performance implements Serializable {
 
     @NotBlank
     public String description;
-
-//    @OneToMany(cascade = CascadeType.ALL,
-//            fetch = FetchType.LAZY,
-//            mappedBy = "t_session")
-//    public Set<Session> sessions = new HashSet<>();
 
     @OneToMany(cascade = CascadeType.ALL,
             fetch = FetchType.LAZY,

@@ -53,7 +53,6 @@ export class DataService {
     constructor(private http: HttpClient) {
         this.getPerformanceData();
         this.onResize();
-        this.http.get(`${this.baseUrl}test`).subscribe(r => console.log(r));
     }
 
     public onResize() {
@@ -62,7 +61,7 @@ export class DataService {
     }
 
     /**
-     * Http GET
+     * http GET
      */
     public getPerformanceData() {
         this.http.get(`${this.baseUrl}performances${this.extension}`).subscribe((response: PerformancesResponse) => {
@@ -82,7 +81,8 @@ export class DataService {
      */
     public postStatus() {
         this.http.post(`${this.baseUrl}status${this.extension}`, this.applicationStatus.transform(this.performances),
-            {withCredentials: true, headers: {'Content-Type': ['text/plain']}}).subscribe();
+            // {withCredentials: true, headers: {'Content-Type': ['text/plain']}}
+        ).subscribe();
     }
 
     /**
@@ -90,10 +90,12 @@ export class DataService {
      * @returns {Observable<void>}
      */
     public getStatus(): Observable<void> {
-        return this.http.get(`${this.baseUrl}status${this.extension}`, {
-            withCredentials: true,
-            headers: {'Content-Type': ['text/plain']}
-        }).map((response: StatusResponse) => {
+        return this.http.get(`${this.baseUrl}status${this.extension}`,
+            // {
+            //     withCredentials: true,
+            //     headers: {'Content-Type': ['text/plain']}
+            // }
+        ).map((response: StatusResponse) => {
             console.log(response);
             this.applicationStatus = StatusResponse.map(response, this.performances);
         });

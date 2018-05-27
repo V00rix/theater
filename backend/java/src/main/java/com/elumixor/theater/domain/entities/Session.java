@@ -1,11 +1,10 @@
-package com.elumixor.theater.domain;
+package com.elumixor.theater.domain.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Entity
@@ -13,10 +12,14 @@ import java.io.Serializable;
 public class Session implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    public Long id;
 
-    @NotNull
-    public String date;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "date", nullable = false)
+    private Timestamp date;
+
+//    @NotNull
+//    public String date;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "performance", nullable = false)
@@ -27,4 +30,8 @@ public class Session implements Serializable {
 //    @ManyToOne(fetch = FetchType.LAZY)
 //    @JoinColumn(name = "performance", nullable = false)
 //    public Performance performance;
+
+    public String getDate() {
+        return date.toString();
+    }
 }

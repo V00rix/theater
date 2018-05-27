@@ -12,4 +12,4 @@ describe('DataService', function () {
         expect(service).toBeTruthy();
     }));
 });
-//# sourceMappingURL=data.service.spec.js.map
+//# sourceMappingURL=entities.service.spec.js.map

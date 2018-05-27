@@ -43,12 +43,12 @@ export class DataService {
   // private baseUrl = `http://localhost/backend/php/requests/admin/`;
   private baseUrl = 'http://elumixor.com/grani/backend/requests/admin/';
 
-  // region Get init data
+  // region Get init entities
   /**
-   * Initialization function  to get all application data
+   * Initialization function  to get all application entities
    */
   public getApplicationData() {
-    console.log('getting application data');
+    console.log('getting application entities');
 
     const ordersRequest = this.getOrders();
     const sessionsRequest = this.getSessions();
@@ -243,7 +243,7 @@ export class DataService {
    * @returns {any} Error
    */
   private httpErrorHandler(e, propagate = true) {
-    console.warn('Error in Http!');
+    console.warn('Error in http!');
     console.log(e);
     if (e.status === 401) {
       console.warn('Unauthorized');
