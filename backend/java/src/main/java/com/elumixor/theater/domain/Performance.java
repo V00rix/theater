@@ -1,20 +1,21 @@
 package com.elumixor.theater.domain;
 
 
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "t_performance")
-@EntityListeners(AuditingEntityListener.class)
+//@EntityListeners(AuditingEntityListener.class)
 //@JsonIgnoreProperties(value = {"createdAt", "updatedAt"},
 //        allowGetters = true)
-public class Performance {
+public class Performance implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @NotBlank
     public String author;
@@ -27,4 +28,14 @@ public class Performance {
 
     @NotBlank
     public String description;
+
+//    @OneToMany(cascade = CascadeType.ALL,
+//            fetch = FetchType.LAZY,
+//            mappedBy = "t_session")
+//    public Set<Session> sessions = new HashSet<>();
+
+    @OneToMany(cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY,
+            mappedBy = "performance")
+    public Set<Session> sessions = new HashSet<>();
 }
