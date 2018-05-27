@@ -77,3 +77,18 @@ hs_err_pid*
 
 *.iml
 */node_modules
+backend/java/src/main/resources/templates/
+backend/scala/project/target/config-classes/$31ea2a8c7a530d04e854.cache
+backend/scala/project/target/config-classes/$5d9893aef52ea6719170.cache
+backend/scala/project/target/config-classes/$62390ebaa287ef39fcae.cache
+backend/scala/project/target/config-classes/$8d414c1c6bc55da933eb.cache
+backend/scala/project/target/scala-2.12/
+backend/scala/project/target/streams/
+backend/scala/target/
+backend/src/main/resources/
+backend/src/test/
+dist/
+frontend/package-lock.json
+frontend/shared/business/components/dev/
+frontend/shared/business/pipes/
+src/app/
