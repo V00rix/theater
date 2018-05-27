@@ -1,7 +1,11 @@
 /* Database creation */
-# DROP DATABASE Theater;
-CREATE DATABASE IF NOT EXISTS Theater;
-USE Theater;
+CREATE SCHEMA IF NOT EXISTS theater;
+SET search_path TO theater;
+
+DROP TYPE IF EXISTS CHECKOUT;
+CREATE TYPE CHECKOUT AS ENUM ('DELIVERY', 'SELF_CHECKOUT', 'PAY_BEFORE');
+DROP TYPE IF EXISTS AVAILABILITY;
+CREATE TYPE AVAILABILITY AS ENUM ('FREE', 'BOOKED', 'HIDDEN');
 
 /* Drop tables */
 DROP TABLE IF EXISTS t_review;
@@ -22,53 +26,53 @@ DROP TABLE IF EXISTS t_performance;
 DROP TABLE IF EXISTS t_address;
 
 CREATE TABLE t_performance (
-  id          INT AUTO_INCREMENT UNIQUE NOT NULL,
-  author      NVARCHAR(155),
-  title       NVARCHAR(155),
-  image_url   NVARCHAR(155),
+  id          INT UNIQUE NOT NULL,
+  author      VARCHAR(155),
+  title       VARCHAR(155),
+  image_url   VARCHAR(155),
   description TEXT,
   PRIMARY KEY (author, title)
 );
 
 CREATE TABLE t_timestamp (
-  id   INT AUTO_INCREMENT UNIQUE NOT NULL,
+  id   SERIAL UNIQUE,
   date TIMESTAMP PRIMARY KEY
 );
 
 CREATE TABLE t_registered_user (
-  email    NVARCHAR(155) PRIMARY KEY,
-  login    NVARCHAR(155) NOT NULL UNIQUE,
-  name     NVARCHAR(155) NOT NULL,
-  password NVARCHAR(155) NOT NULL
+  email    VARCHAR(155) PRIMARY KEY,
+  login    VARCHAR(155) NOT NULL UNIQUE,
+  name     VARCHAR(155) NOT NULL,
+  password VARCHAR(155) NOT NULL
 );
 
 CREATE TABLE t_website_client (
-  email NVARCHAR(155) PRIMARY KEY,
-  name  NVARCHAR(155) NOT NULL
+  email VARCHAR(155) PRIMARY KEY,
+  name  VARCHAR(155) NOT NULL
 );
 
 CREATE TABLE t_phone_client (
-  phone NVARCHAR(155) PRIMARY KEY,
-  name  NVARCHAR(155) NOT NULL
+  phone VARCHAR(155) PRIMARY KEY,
+  name  VARCHAR(155) NOT NULL
 );
 
 CREATE TABLE t_theater (
-  id            INT AUTO_INCREMENT UNIQUE NOT NULL,
-  country       NVARCHAR(155),
-  city          NVARCHAR(155),
-  street        NVARCHAR(155),
-  house         NVARCHAR(55),
-  post_code     NVARCHAR(55),
-  city_part     NVARCHAR(155),
-  name          NVARCHAR(155),
+  id            SERIAL UNIQUE,
+  country       VARCHAR(155),
+  city          VARCHAR(155),
+  street        VARCHAR(155),
+  house         VARCHAR(55),
+  post_code     VARCHAR(55),
+  city_part     VARCHAR(155),
+  name          VARCHAR(155),
   maximum_seats INT                       NOT NULL,
   PRIMARY KEY (country, city, street, house, name),
   CHECK (maximum_seats > 0)
 );
 
 CREATE TABLE t_hall (
-  id      INT AUTO_INCREMENT UNIQUE NOT NULL,
-  name    NVARCHAR(155),
+  id      SERIAL UNIQUE,
+  name    VARCHAR(155),
   theater INT,
   FOREIGN KEY (theater) REFERENCES t_theater (id)
     ON DELETE CASCADE,
@@ -76,7 +80,7 @@ CREATE TABLE t_hall (
 );
 
 CREATE TABLE t_row (
-  id          INT AUTO_INCREMENT UNIQUE NOT NULL,
+  id          SERIAL UNIQUE,
   hall        INT,
   number      INT,
   seat_number INT                       NOT NULL,
@@ -88,7 +92,7 @@ CREATE TABLE t_row (
 );
 
 CREATE TABLE t_session (
-  id          INT AUTO_INCREMENT UNIQUE NOT NULL,
+  id          SERIAL UNIQUE,
   date        INT,
   hall        INT,
   performance INT,
@@ -103,14 +107,14 @@ CREATE TABLE t_session (
 
 
 CREATE TABLE t_order (
-  id               INT  AUTO_INCREMENT UNIQUE                                   NOT NULL,
+  id               SERIAL UNIQUE,
   date             INT PRIMARY KEY,
-  registered_email NVARCHAR(155),
-  website_email    NVARCHAR(155),
-  phone_number     NVARCHAR(155),
+  registered_email VARCHAR(155),
+  website_email    VARCHAR(155),
+  phone_number     VARCHAR(155),
   is_digital       BOOL DEFAULT TRUE                                            NOT NULL,
   is_purchase      BOOL DEFAULT FALSE                                           NOT NULL,
-  checkout         ENUM ('DELIVERY', 'SELF_CHECKOUT', 'PAY_BEFORE')             NOT NULL,
+  checkout         CHECKOUT             NOT NULL,
   confirmed        BOOL DEFAULT NULL,
   FOREIGN KEY (date) REFERENCES t_timestamp (id)
     ON DELETE CASCADE,
@@ -125,36 +129,36 @@ CREATE TABLE t_order (
 
 
 CREATE TABLE t_seat (
-  id            INT AUTO_INCREMENT UNIQUE         NOT NULL,
+  id            SERIAL UNIQUE,
   number        INT,
   row           INT,
-  `order`       INT,  # seat may be marked as 'HIDDEN', thus not linking to any order
+  "order"       INT,  -- seat may be marked as 'HIDDEN', thus not linking to any order
   session       INT,
-  availabillity ENUM ('FREE', 'BOOKED', 'HIDDEN') NOT NULL DEFAULT 'FREE',
+  availabillity AVAILABILITY NOT NULL DEFAULT 'FREE',
   PRIMARY KEY (number, row, session),
   FOREIGN KEY (row) REFERENCES t_row (id)
     ON DELETE CASCADE,
   FOREIGN KEY (session) REFERENCES t_session (id)
     ON DELETE CASCADE,
-  FOREIGN KEY (`order`) REFERENCES t_order (id)
-    ON DELETE SET NULL
+  FOREIGN KEY ("order") REFERENCES t_order (id)
+    ON DELETE SET NULL,
   CHECK (number > 0),
-  CHECK (`order` IS NOT NULL OR availabillity = 'HIDDEN')
+  CHECK ("order" IS NOT NULL OR availabillity = 'HIDDEN')
 );
 
 CREATE TABLE t_profile (
-  email     NVARCHAR(155) PRIMARY KEY,
-  image_url NVARCHAR(155),
-  facebook  NVARCHAR(155),
-  google    NVARCHAR(155),
-  twitter   NVARCHAR(155),
+  email     VARCHAR(155) PRIMARY KEY,
+  image_url VARCHAR(155),
+  facebook  VARCHAR(155),
+  google    VARCHAR(155),
+  twitter   VARCHAR(155),
   FOREIGN KEY (email) REFERENCES t_registered_user (email)
     ON DELETE CASCADE
 );
 
 CREATE TABLE t_friendship (
-  email_1 NVARCHAR(155),
-  email_2 NVARCHAR(155),
+  email_1 VARCHAR(155),
+  email_2 VARCHAR(155),
   PRIMARY KEY (email_1, email_2),
   FOREIGN KEY (email_1) REFERENCES t_registered_user (email)
     ON DELETE CASCADE,
@@ -165,7 +169,7 @@ CREATE TABLE t_friendship (
 
 CREATE TABLE t_review (
   date        INT,
-  email       NVARCHAR(155),
+  email       VARCHAR(155),
   performance INT,
   PRIMARY KEY (date, email, performance),
   FOREIGN KEY (performance) REFERENCES t_performance (id)
