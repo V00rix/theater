@@ -68,4 +68,10 @@ public class Session implements Serializable {
 
         return rows;
     }
+
+    public Session() {}
+
+    public void print() {
+        System.out.println(date);
+    }
 }

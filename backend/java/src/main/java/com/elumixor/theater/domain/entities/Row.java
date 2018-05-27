@@ -21,4 +21,11 @@ public class Row implements Serializable {
     @JoinColumn(name = "hall", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Hall hall;
+
+    public void print() {
+        System.out.println("--Row--");
+        System.out.println(id);
+        System.out.println(number);
+        System.out.println(seat_number);
+    }
 }

@@ -17,25 +17,44 @@ public class Seat implements Serializable {
 
     public int number;
 
-
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
     @JoinColumn(name = "row", nullable = false)
     @JsonIgnore
     public Row rowRef;
 
-//    private int row;
-
     @Enumerated(EnumType.STRING)
     public Availability availability;
 
-    // TODO: 27-May-18 ORDER
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
+    @JoinColumn(name = "\"order\"", nullable = false)
+    @JsonIgnore
+    public Order order;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
     @JoinColumn(name = "session", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Session session;
 
+    public Seat() {}
+    public Seat(Order order, Row rowRef, Session session, int number) {
+        this(order, rowRef, session, number, Availability.BOOKED);
+    }
+    public Seat(Order order, Row rowRef, Session session, int number, Availability availability) {
+        this.order = order;
+        this.rowRef = rowRef;
+        this.session = session;
+        this.number = number;
+        this.availability = availability;
+    }
+
     public int getRow() {
         return rowRef.number;
+    }
+
+    public void print() {
+        rowRef.print();
+        order.print();
+        session.print();
+        System.out.println(this.availability);
     }
 }

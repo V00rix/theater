@@ -84,12 +84,12 @@ FROM t_seat
   JOIN t_order to2 ON t_seat.`order` = to2.id
 WHERE availabillity = 'BOOKED';
 
-INSERT INTO t_order (date, registered_email, website_email, checkout)
+INSERT INTO t_order (date, registered_email, email, checkout)
 VALUES (146, NULL, 'sadasdasdas', 'SELF_CHECKOUT');
 
 INSERT INTO t_timestamp (date) VALUES (NOW());
 
-INSERT INTO t_order (date, registered_email, website_email, checkout)
+INSERT INTO t_order (date, registered_email, email, checkout)
 VALUES ('143', 'sadasdasdas', NULL, 'SELF_CHECKOUT');
 
 INSERT INTO t_website_client (email, name) VALUES ('sadasdasdas', 'Vsaldas');
@@ -134,7 +134,7 @@ WHERE confirmed = FALSE;
 
 SELECT *
 FROM t_order
-  JOIN t_website_client t ON t_order.website_email = t.email;
+  JOIN t_website_client t ON t_order.email = t.email;
 
 DELETE FROM t_seat
 WHERE availabillity != 'HIDDEN';
@@ -167,7 +167,7 @@ SELECT
   t.email,
   t.name
 FROM t_order
-  JOIN t_website_client t ON t_order.website_email = t.email
+  JOIN t_website_client t ON t_order.email = t.email
   JOIN t_session s ON;
 SELECT *
 FROM t_seat;
@@ -233,7 +233,7 @@ FROM t_session;
 
 SELECT *
 FROM t_order;
-JOIN t_website_client t ON t_order.website_email = t.email;
+JOIN t_website_client t ON t_order.email = t.email;
 # where date id  = ...
 
 SELECT *

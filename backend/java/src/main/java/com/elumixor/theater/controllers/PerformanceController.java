@@ -10,10 +10,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/performances")
-public class PerformanceController {
+public class PerformanceController extends ControllerBase {
+
+    private final
+    PerformanceRepository performanceRepository;
 
     @Autowired
-    PerformanceRepository performanceRepository;
+    public PerformanceController(PerformanceRepository performanceRepository) {
+        this.performanceRepository = performanceRepository;
+    }
 
     @GetMapping("")
     public PerformanceResponse getAllPerformances() {

@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/status")
-public class StatusController {
+public class StatusController extends ControllerBase {
 
 
     @GetMapping("")

@@ -21,10 +21,10 @@ DROP TABLE IF EXISTS t_performance;
 DROP TABLE IF EXISTS t_address;
 
 /* Drop types */
-DROP TYPE IF EXISTS CHECKOUT;
-CREATE TYPE CHECKOUT AS ENUM ('DELIVERY', 'SELF_CHECKOUT', 'PAY_BEFORE');
-DROP TYPE IF EXISTS AVAILABILITY;
-CREATE TYPE AVAILABILITY AS ENUM ('FREE', 'BOOKED', 'HIDDEN');
+-- DROP TYPE IF EXISTS CHECKOUT;
+-- CREATE TYPE CHECKOUT AS ENUM ('DELIVERY', 'SELF_CHECKOUT', 'PAY_BEFORE');
+-- DROP TYPE IF EXISTS AVAILABILITY;
+-- CREATE TYPE AVAILABILITY AS ENUM ('FREE', 'BOOKED', 'HIDDEN');
 
 CREATE TABLE t_performance (
   id          INT UNIQUE NOT NULL,
@@ -111,21 +111,21 @@ CREATE TABLE t_order (
   id               SERIAL UNIQUE,
   date             INT PRIMARY KEY,
   registered_email VARCHAR(155),
-  website_email    VARCHAR(155),
+  email    VARCHAR(155),
   phone_number     VARCHAR(155),
   is_digital       BOOL DEFAULT TRUE                                            NOT NULL,
   is_purchase      BOOL DEFAULT FALSE                                           NOT NULL,
-  checkout         CHECKOUT             NOT NULL,
+  checkout         VARCHAR(155)             NOT NULL,
   confirmed        BOOL DEFAULT NULL,
   FOREIGN KEY (date) REFERENCES t_timestamp (id)
     ON DELETE CASCADE,
   FOREIGN KEY (registered_email) REFERENCES t_registered_user (email)
     ON DELETE SET NULL,
-  FOREIGN KEY (website_email) REFERENCES t_website_client (email)
+  FOREIGN KEY (email) REFERENCES t_website_client (email)
     ON DELETE SET NULL,
   FOREIGN KEY (phone_number) REFERENCES t_phone_client (phone)
     ON DELETE SET NULL,
-  CHECK (registered_email IS NOT NULL OR website_email IS NOT NULL OR phone_number IS NOT NULL)
+  CHECK (registered_email IS NOT NULL OR email IS NOT NULL OR phone_number IS NOT NULL)
 );
 
 
@@ -135,7 +135,7 @@ CREATE TABLE t_seat (
   row           INT,
   "order"       INT,  -- seat may be marked as 'HIDDEN', thus not linking to any order
   session       INT,
-  availability AVAILABILITY NOT NULL DEFAULT 'FREE',
+  availability VARCHAR(155) NOT NULL DEFAULT 'FREE',
   PRIMARY KEY (number, row, session),
   FOREIGN KEY (row) REFERENCES t_row (id)
     ON DELETE CASCADE,

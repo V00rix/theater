@@ -125,8 +125,12 @@ export class DataService {
      * Post booking request
      */
     public postBooking() {
-        this.http.post(`${this.baseUrl}reservation${this.extension}`, null, {withCredentials: true}).subscribe((response: string) => {
-            this.bookingCode = response;
+        this.http.post(`${this.baseUrl}reservation${this.extension}`, null,
+            // {withCredentials: true}
+            {responseType: 'text'}
+            ).subscribe((response: string) => {
+                console.log(response);
+            this.bookingCode = '' + response;
             return this.getPerformanceData();
         });
     }
