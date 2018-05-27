@@ -15,7 +15,6 @@ public class PerformanceController {
     @Autowired
     PerformanceRepository performanceRepository;
 
-    // Get All Notes
     @GetMapping("")
     public PerformanceResponse getAllPerformances() {
         return new PerformanceResponse(this.performanceRepository.findAll());

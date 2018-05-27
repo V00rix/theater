@@ -77,6 +77,7 @@ export class SessionComponent implements OnInit {
   }
 
   switchSeatSelection(seat) {
+    console.log(seat, this.data.maximumSeats, this.selectedSeatsCount);
     if (this.isWide) {
       if (seat.status === SeatStatus.FREE) {
         if (this.selectedSeatsCount < this.data.maximumSeats) {
