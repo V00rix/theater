@@ -5,17 +5,22 @@ export class OrderResponse {
   public orders: {
     code: number,
     checkout: string,
-    user_name: string,
-    user_contact: string,
-    performance_title: string,
-    session_date: Date,
+    client: {
+      name: string,
+      email: string,
+    }
+    session: {
+      performance: string,
+      date: Date
+    },
     seats: { id: number, row: number, seat: number }[]
   }[];
 
   public static map(response: OrderResponse): Order[] {
+    console.log(response);
     return response.orders.map(o => new Order(o.code, Checkout.map(o.checkout), {
-      name: o.user_name,
-      contact: o.user_contact
-    }, {title: o.performance_title}, {date: new Date(o.session_date)}, o.seats, null));
+      name: o.client.name,
+      contact: o.client.email
+    }, {title: o.session.performance}, {date: new Date(o.session.date)}, o.seats, null));
   }
 }

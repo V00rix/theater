@@ -30,10 +30,11 @@ public class Seat implements Serializable {
     @JsonIgnore
     public Order order;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
     @JoinColumn(name = "session", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    private Session session;
+    @JsonIgnore
+    public Session session;
 
     public Seat() {}
     public Seat(Order order, Row rowRef, Session session, int number) {
@@ -45,6 +46,12 @@ public class Seat implements Serializable {
         this.session = session;
         this.number = number;
         this.availability = availability;
+    }
+
+    @JsonIgnore
+    @Transient
+    public Order getOrder() {
+        return this.order;
     }
 
     public int getRow() {

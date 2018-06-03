@@ -38,10 +38,14 @@ export class DataService {
 
   // endregion
 
-  // private hostUrl = 'http://localhost:4200';
-  private hostUrl = 'http://admin.grani.elumixor.com';
-  // private baseUrl = `http://localhost/backend/php/requests/admin/`;
-  private baseUrl = 'http://elumixor.com/grani/backend/requests/admin/';
+  private hostUrl = 'http://localhost:8080';
+  // private hostUrl = 'http://admin.grani.elumixor.com';
+  private baseUrl = `http://localhost:8080/api/`;
+  // private baseUrl = 'http://elumixor.com/grani/backend/requests/admin/';
+
+
+  // private extension = '.admin.php';
+  private extension = '';
 
   // region Get init entities
   /**
@@ -65,7 +69,9 @@ export class DataService {
    * GET orders
    */
   public getOrders(propagate = true) {
-    return this.http.get(`${this.baseUrl}orders.admin.php`, {withCredentials: true}).map(
+    return this.http.get(`${this.baseUrl}orders${this.extension}`,
+      // {withCredentials: true}
+    ).map(
       (response: OrderResponse) => {
         console.log('Orders loaded');
         console.log(response);
@@ -78,7 +84,9 @@ export class DataService {
    * GET sessions
    */
   public getSessions(propagate = true) {
-    return this.http.get(`${this.baseUrl}sessions.admin.php`, {withCredentials: true}).map(
+    return this.http.get(`${this.baseUrl}sessions${this.extension}`,
+      // {withCredentials: true}
+    ).map(
       (response: SessionResponse) => {
         console.log('Sessions loaded');
         console.log(response);
@@ -91,7 +99,9 @@ export class DataService {
    * GET performances
    */
   public getPerformances(propagate = true) {
-    return this.http.get(`${this.baseUrl}performances.admin.php`, {withCredentials: true}).map(
+    return this.http.get(`${this.baseUrl}performances${this.extension}`,
+      // {withCredentials: true}
+    ).map(
       (response: { performances: { id: number, title: string, author: string, description: string, imageUrl: string }[] }) => {
         console.log('Performances loaded');
         console.log(response);
@@ -99,6 +109,7 @@ export class DataService {
       })
       .catch((e: any) => Observable.throw(this.httpErrorHandler(e, propagate)));
   }
+
   // endregion
 
   // region Post/update requests
@@ -110,7 +121,7 @@ export class DataService {
    * @returns {Promise<T | ErrorObservable>}
    */
   postSubmit(login: string, password: string, propagate = true) {
-    return this.http.post(`${this.baseUrl}authorization.admin.php`, {
+    return this.http.post(`${this.baseUrl}authorization${this.extension}`, {
       login: login,
       password: password
     }, {headers: {'Content-Type': ['text/plain']}, withCredentials: true}).map(
@@ -128,7 +139,7 @@ export class DataService {
    * @returns {Observable<Object>}
    */
   public logout() {
-    return this.http.post(`${this.baseUrl}/logout.admin.php`, null,
+    return this.http.post(`${this.baseUrl}/logout${this.extension}`, null,
       {headers: {'Content-Type': ['text/plain']}, withCredentials: true});
   }
 
@@ -136,7 +147,7 @@ export class DataService {
    * POST save resolved/rejected requests
    */
   saveRequests(propagate = true) {
-    return this.http.post(`${this.baseUrl}saveRequests.admin.php`,
+    return this.http.post(`${this.baseUrl}saveRequests${this.extension}`,
       this.orders, {headers: {'Content-Type': ['text/plain']}, withCredentials: true}).subscribe(
       (res) => {
         console.log(res);
@@ -153,7 +164,7 @@ export class DataService {
    * @param {boolean} propagate
    */
   deleteViewer(order: number, propagate = true) {
-    this.http.post(`${this.baseUrl}deleteUser.admin.php`,
+    this.http.post(`${this.baseUrl}deleteUser${this.extension}`,
       {order: order}, {headers: {'Content-Type': ['text/plain']}, withCredentials: true}).subscribe(
       (res) => {
         console.log(res);
@@ -168,7 +179,7 @@ export class DataService {
    * POST request to create new session
    */
   createSession(propagate = true) {
-    return this.http.post(`${this.baseUrl}newSession.admin.php`, null, {
+    return this.http.post(`${this.baseUrl}newSession${this.extension}`, null, {
       headers: {'Content-Type': ['text/plain']},
       withCredentials: true
     }).subscribe(
@@ -187,7 +198,7 @@ export class DataService {
    * @param {boolean} propagate
    */
   deleteSession(session: Session, propagate = true) {
-    return this.http.post(`${this.baseUrl}deleteSession.admin.php`, {sessionId: session.id}, {
+    return this.http.post(`${this.baseUrl}deleteSession${this.extension}`, {sessionId: session.id}, {
       headers: {'Content-Type': ['text/plain']},
       withCredentials: true
     }).subscribe(
@@ -209,13 +220,15 @@ export class DataService {
   updateSession(session: Session, propagate = true) {
     console.log(session.date);
     console.log(this.transformDate(session.date));
-    return this.http.post(`${this.baseUrl}updateSession.admin.php`,
+    return this.http.post(`${this.baseUrl}updateSession${this.extension}`,
       {
         id: session.id,
         performanceId: session.performance.id,
         date: this.transformDate(session.date),
         hall: session.hall
-      }, {headers: {'Content-Type': ['text/plain']}, withCredentials: true}).subscribe(
+      },
+      // {headers: {'Content-Type': ['text/plain']}, withCredentials: true}
+    ).subscribe(
       (res) => {
         console.log('Session updated', res);
         this.dataUpdated.next();
@@ -223,6 +236,7 @@ export class DataService {
         this.httpErrorHandler(error, propagate);
       });
   }
+
   // endregion
 
   // region Helpers
@@ -254,5 +268,6 @@ export class DataService {
     }
     return e;
   }
+
   // endregion
 }

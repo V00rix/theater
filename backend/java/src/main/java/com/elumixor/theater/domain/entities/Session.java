@@ -7,10 +7,8 @@ import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "t_session")
@@ -33,7 +31,7 @@ public class Session implements Serializable {
     @JoinColumn(name = "performance", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
-    private Performance performance;
+    public Performance performance;
 
     @OneToMany(cascade = CascadeType.ALL,
             fetch = FetchType.LAZY,
@@ -70,6 +68,24 @@ public class Session implements Serializable {
     }
 
     public Session() {}
+
+    @Transient
+    public String getPerformance_id() {
+        return this.performance.id.toString();
+    }
+    @Transient
+    public String getPerformance_title() {
+        return this.performance.title.toString();
+    }
+
+    @Transient
+    public List<Order> getOrders() {
+
+        var k = new ArrayList<Order>();
+        this.seatsRef.stream().collect(Collectors.groupingBy(seat -> seat.order, Collectors.toList())).forEach(((order, seats) -> k.add(order)));
+
+        return k;
+    }
 
     public void print() {
         System.out.println(date);

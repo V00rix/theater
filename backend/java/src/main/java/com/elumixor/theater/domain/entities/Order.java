@@ -1,14 +1,19 @@
 package com.elumixor.theater.domain.entities;
 
 import com.elumixor.theater.domain.enumeration.Checkout;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "t_order")
-public class Order {
+public class Order implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonProperty(value = "code")
     public Long id;
 
     @OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
@@ -24,6 +29,11 @@ public class Order {
     public boolean is_digital;
 
     public boolean confirmed;
+
+    @OneToMany(cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY,
+            mappedBy = "order")
+    public Set<Seat> seats = new HashSet<>();
 
     public Order() {
         this.date = new Timestamp();
@@ -49,5 +59,26 @@ public class Order {
         System.out.println(id);
         date.print();
         client.print();
+    }
+
+    @Transient
+    public Session getSession() {
+        var seat = this.seats.stream().findFirst();
+        return seat.map(s -> {
+            var session = s.session;
+            return new Session(session.performance.title, session.getDate());
+        }).orElse(null);
+    }
+
+    private class Session {
+        @Transient
+        public String performance;
+        @Transient
+        public String date;
+
+        Session(String performance, String date) {
+            this.performance = performance;
+            this.date = date;
+        }
     }
 }

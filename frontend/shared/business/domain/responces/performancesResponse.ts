@@ -13,7 +13,7 @@ export class PerformancesResponse extends DateMapper{
         sessions: {
             id: number,
             date: string,
-            hall, number,
+            hall: number,
             seats: string[][]
         }[]
     }[];

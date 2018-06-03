@@ -2,6 +2,7 @@ package com.elumixor.theater.domain.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 @Entity
@@ -18,6 +19,14 @@ public class Timestamp implements Serializable  {
     public Timestamp() {
         this.date = new java.sql.Timestamp(System.currentTimeMillis());
     }
+
+//    public Timestamp(String date) {
+//        try {
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
+//        this.date = new java.sql.Timestamp();
+//    }
 
     @Override
     public String toString() {

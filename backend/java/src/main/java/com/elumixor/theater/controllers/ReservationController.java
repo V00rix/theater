@@ -5,6 +5,7 @@ import com.elumixor.theater.domain.entities.*;
 import com.elumixor.theater.domain.enumeration.Checkout;
 import com.elumixor.theater.domain.http.Status;
 import com.elumixor.theater.repositories.*;
+import com.elumixor.theater.repositories.PerformanceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
