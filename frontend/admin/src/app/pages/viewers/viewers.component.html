@@ -19,7 +19,7 @@
           </div>
           <div class="section">
             <div class="light grey" *ngFor="let seat of order.seats" (click)="changeSeat(seat)">Row {{seat.row}}, Seat
-              {{seat.seat}}
+              {{seat.number}}
             </div>
           </div>
           <div class="margined text-center red" (click)="deleteViewer(order.id)">Delete viewer</div>

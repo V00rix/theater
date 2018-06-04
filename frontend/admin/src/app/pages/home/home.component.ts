@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
     console.log('home init');
   }
 
-  setOrder(order: Order, status: boolean) {
-    order.isConfirmed = status;
+  public setOrder(order: Order, status: boolean) {
+    order.confirmed = status;
   }
 }

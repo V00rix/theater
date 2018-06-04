@@ -7,6 +7,6 @@ export class Order {
               public performance: { title: string },
               public session: { date: Date },
               public seats: { id: number, row: number, seat: number }[],
-              public isConfirmed: boolean) {
+              public confirmed: boolean) {
   }
 }

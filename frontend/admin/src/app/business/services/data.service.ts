@@ -16,6 +16,7 @@ import 'rxjs/add/observable/throw';
 import {Error} from '../domain/error';
 import {forkJoin} from 'rxjs/observable/forkJoin';
 import {DatePipe} from '@angular/common';
+import {Checkout} from "../../../../../shared/business/domain/enumeration/checkout";
 
 @Injectable()
 export class DataService {
@@ -109,10 +110,10 @@ export class DataService {
       })
       .catch((e: any) => Observable.throw(this.httpErrorHandler(e, propagate)));
   }
-
   // endregion
 
   // region Post/update requests
+  //region Ignored for the moment
   /**
    * POST authorization
    * @param {string} login
@@ -142,13 +143,17 @@ export class DataService {
     return this.http.post(`${this.baseUrl}/logout${this.extension}`, null,
       {headers: {'Content-Type': ['text/plain']}, withCredentials: true});
   }
+  //endregion
 
   /**
    * POST save resolved/rejected requests
    */
+  // todo
   saveRequests(propagate = true) {
     return this.http.post(`${this.baseUrl}saveRequests${this.extension}`,
-      this.orders, {headers: {'Content-Type': ['text/plain']}, withCredentials: true}).subscribe(
+      this.orders,
+      // {headers: {'Content-Type': ['text/plain']}, withCredentials: true}
+      ).subscribe(
       (res) => {
         console.log(res);
         this.orders = null;
@@ -163,6 +168,7 @@ export class DataService {
    * @param {number} order
    * @param {boolean} propagate
    */
+  // todo
   deleteViewer(order: number, propagate = true) {
     this.http.post(`${this.baseUrl}deleteUser${this.extension}`,
       {order: order}, {headers: {'Content-Type': ['text/plain']}, withCredentials: true}).subscribe(
@@ -178,6 +184,7 @@ export class DataService {
   /**
    * POST request to create new session
    */
+  // todo
   createSession(propagate = true) {
     return this.http.post(`${this.baseUrl}newSession${this.extension}`, null, {
       headers: {'Content-Type': ['text/plain']},
@@ -197,6 +204,7 @@ export class DataService {
    * @param {Session} session
    * @param {boolean} propagate
    */
+  // todo
   deleteSession(session: Session, propagate = true) {
     return this.http.post(`${this.baseUrl}deleteSession${this.extension}`, {sessionId: session.id}, {
       headers: {'Content-Type': ['text/plain']},
@@ -217,6 +225,7 @@ export class DataService {
    * @param {Session} session
    * @param {boolean} propagate
    */
+  // todo
   updateSession(session: Session, propagate = true) {
     console.log(session.date);
     console.log(this.transformDate(session.date));

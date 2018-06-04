@@ -1,7 +1,7 @@
 {
   "checkout": {
-    "delivery": "Delivery",
-    "self": "Self-checkout",
-    "payBefore": "Pay before performance"
+    "DELIVERY": "Delivery",
+    "SELF_CHECKOUT": "Self-checkout",
+    "PAY_BEFORE": "Pay before performance"
   }
 }

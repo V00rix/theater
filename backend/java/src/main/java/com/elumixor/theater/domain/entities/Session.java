@@ -1,13 +1,17 @@
 package com.elumixor.theater.domain.entities;
 
 import com.elumixor.theater.domain.enumeration.Availability;
+import com.elumixor.theater.domain.enumeration.Checkout;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Entity
@@ -27,7 +31,7 @@ public class Session implements Serializable {
     @JsonIgnore
     public Hall hall;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "performance", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
@@ -67,12 +71,14 @@ public class Session implements Serializable {
         return rows;
     }
 
-    public Session() {}
+    public Session() {
+    }
 
     @Transient
     public String getPerformance_id() {
         return this.performance.id.toString();
     }
+
     @Transient
     public String getPerformance_title() {
         return this.performance.title.toString();
@@ -80,11 +86,24 @@ public class Session implements Serializable {
 
     @Transient
     public List<Order> getOrders() {
-
         var k = new ArrayList<Order>();
-        this.seatsRef.stream().collect(Collectors.groupingBy(seat -> seat.order, Collectors.toList())).forEach(((order, seats) -> k.add(order)));
+        this.seatsRef.stream().collect(Collectors.groupingBy(seat -> seat.order, Collectors.toList()))
+                .forEach(((order, seats) -> k.add(order)));
 
-        return k;
+        var t = new ArrayList<Order>();
+        k.stream().collect(Collectors.groupingBy(o -> o.client, Collectors.toList()))
+                .forEach(((client, orders) -> {
+                    var ord = orders.stream().reduce(
+                            orders.stream().findFirst().orElse(new Order(client, Checkout.SELF_CHECKOUT)),
+                            (o1, o2) -> {
+                                o1.seats.addAll(o2.seats);
+                                o1.checkout = o2.checkout;
+                                return o1;
+                            });
+                    t.add(ord);
+                }));
+
+        return t;
     }
 
     public void print() {

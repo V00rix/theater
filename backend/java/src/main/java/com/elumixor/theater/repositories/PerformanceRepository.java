@@ -1,12 +1,9 @@
 package com.elumixor.theater.repositories;
 
 import com.elumixor.theater.domain.entities.Performance;
-import com.elumixor.theater.domain.entities.Session;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-
+@Repository
 public interface PerformanceRepository extends JpaRepository<Performance, Long> {
 }

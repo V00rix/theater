@@ -78,8 +78,6 @@ public class ReservationController extends ControllerBase {
             seats.add(new Seat(order, row, finalSession, s.seat));
         });
 
-//        seats.forEach(Seat::print);
-
         seatRepository.saveAll(seats);
 
         status.selected_seats = new ArrayList<>();

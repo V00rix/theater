@@ -28,7 +28,7 @@ public class Order implements Serializable {
 
     public boolean is_digital;
 
-    public boolean confirmed;
+    public Boolean confirmed;
 
     @OneToMany(cascade = CascadeType.ALL,
             fetch = FetchType.LAZY,
@@ -58,7 +58,8 @@ public class Order implements Serializable {
         System.out.println("--Order--");
         System.out.println(id);
         date.print();
-        client.print();
+        seats.forEach(Seat::print);
+//        client.print();
     }
 
     @Transient
@@ -70,7 +71,7 @@ public class Order implements Serializable {
         }).orElse(null);
     }
 
-    private class Session {
+    public class Session {
         @Transient
         public String performance;
         @Transient
@@ -79,6 +80,22 @@ public class Order implements Serializable {
         Session(String performance, String date) {
             this.performance = performance;
             this.date = date;
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (obj == this) return true;
+            if (!(obj instanceof Session)) return false;
+            var s = (Session)obj;
+            return s.performance.equals(this.performance) && s.date.equals(this.date);
+        }
+
+        @Override
+        public int hashCode() {
+            int result = 17;
+            result = 31 * result + performance.hashCode();
+            result = 31 * result + date.hashCode();
+            return result;
         }
     }
 }

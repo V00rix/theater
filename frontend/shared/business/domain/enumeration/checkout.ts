@@ -1,8 +1,8 @@
 export namespace Checkout {
     export enum Code {
-        DELIVERY = 'delivery',
-        SELF = 'self',
-        PAY_BEFORE = 'payBefore'
+        DELIVERY = 'DELIVERY',
+        SELF = 'SELF_CHECKOUT',
+        PAY_BEFORE = 'PAY_BEFORE'
     }
 
     export function map(checkout: string) {

@@ -60,8 +60,8 @@ public class Seat implements Serializable {
 
     public void print() {
         rowRef.print();
-        order.print();
-        session.print();
-        System.out.println(this.availability);
+//        order.print();
+//        session.print();
+//        System.out.println(this.availability);
     }
 }

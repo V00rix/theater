@@ -3,6 +3,7 @@ package com.elumixor.theater.controllers;
 
 import com.elumixor.theater.domain.entities.Order;
 import com.elumixor.theater.domain.entities.Session;
+import com.elumixor.theater.domain.enumeration.Checkout;
 import com.elumixor.theater.domain.http.OrderResponse;
 import com.elumixor.theater.domain.http.PerformanceResponse;
 import com.elumixor.theater.domain.http.SessionResponse;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api")
@@ -40,7 +41,32 @@ public class PerformanceController extends ControllerBase {
 
     @GetMapping("/orders")
     public OrderResponse getAllOrders() {
-        return new OrderResponse(new ArrayList<Order>(this.orderRepository.findAll()));
+        var ordersByClients = new ArrayList<Order>();
+        var orders = new ArrayList<Order>(this.orderRepository.findAll());
+
+        var allOrdersWithSameClientPerSession = new ArrayList<Order>();
+
+        orders.stream().collect(Collectors.groupingBy(Order::getSession))
+                .forEach(((session, orders1) -> {
+                    orders1.stream().collect(Collectors.groupingBy(ord -> ord.client))
+                            .forEach((client, orders2) -> {
+                                client.print();
+                                var ord = orders2.stream().reduce(
+                                        orders2.stream().findFirst().orElse(new Order(client, Checkout.SELF_CHECKOUT)),
+                                        (o1, o2) -> {
+                                            o1.seats.addAll(o2.seats);
+                                            o1.checkout = o2.checkout;
+                                            if (o1.confirmed == null || o2.confirmed == null) {
+                                                o1.confirmed = null;
+                                            }
+                                            return o1;
+                                        });
+                                if (ord.confirmed == null) {
+                                    allOrdersWithSameClientPerSession.add(ord);
+                                }
+                            });
+                }));
+        return new OrderResponse(allOrdersWithSameClientPerSession);
     }
 
     @GetMapping("/sessions")
