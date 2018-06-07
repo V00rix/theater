@@ -21,7 +21,6 @@ public class PerformanceRepositoryTest {
     @Autowired
     private PerformanceRepository performanceRepository;
 
-    // write test cases here
     @Test
     public void readPerformances() {
         readAndSout();

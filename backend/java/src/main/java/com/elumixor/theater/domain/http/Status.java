@@ -19,7 +19,7 @@ public class Status {
     @JsonIgnore
     public static Status status = new Status();
 
-    Status() {
+    public Status() {
         this.selected_seats = new ArrayList<>();
     }
 
