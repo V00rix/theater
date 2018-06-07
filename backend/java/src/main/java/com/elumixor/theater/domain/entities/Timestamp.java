@@ -2,7 +2,6 @@ package com.elumixor.theater.domain.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 @Entity
