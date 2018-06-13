@@ -1,8 +1,6 @@
-package theater.repositories;
+package theater.repositories.simpleCrud;
 
-import org.junit.Test;
-
-public interface CRUDTests {
+public interface CRUDTest {
     public void create();
     public void read();
     public void update();

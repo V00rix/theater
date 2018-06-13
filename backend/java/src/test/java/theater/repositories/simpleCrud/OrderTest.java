@@ -13,7 +13,7 @@ import theater.utility.Dummy;
 import theater.utility.EntityTestBase;
 import theater.utility.JpaTestBase;
 
-public class OrderTest extends JpaTestBase implements CRUDTests {
+public class OrderTest extends JpaTestBase implements CRUDTest {
 
     //region Autowired
     @Autowired

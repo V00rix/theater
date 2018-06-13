@@ -4,13 +4,12 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import theater.domain.exceptions.NotImplementedException;
-import theater.repositories.CRUDTests;
 import theater.repositories.ClientsRepository;
 import theater.utility.Dummy;
 import theater.utility.EntityTestBase;
 import theater.utility.JpaTestBase;
 
-public class ClientTest extends JpaTestBase implements CRUDTests {
+public class ClientTest extends JpaTestBase implements CRUDTest {
 
     //region Autowired
     @Autowired

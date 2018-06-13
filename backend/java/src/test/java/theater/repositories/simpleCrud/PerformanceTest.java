@@ -3,12 +3,11 @@ package theater.repositories.simpleCrud;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import theater.domain.exceptions.NotImplementedException;
-import theater.repositories.CRUDTests;
 import theater.repositories.PerformanceRepository;
 import theater.utility.Dummy;
 import theater.utility.JpaTestBase;
 
-public class PerformanceTest extends JpaTestBase implements CRUDTests {
+public class PerformanceTest extends JpaTestBase implements CRUDTest {
     @Autowired
     PerformanceRepository performanceRepository;
 
@@ -23,21 +22,18 @@ public class PerformanceTest extends JpaTestBase implements CRUDTests {
     @Override
     @Test
     public void read() {
-
         throw new NotImplementedException();
     }
 
     @Override
     @Test
     public void update() {
-
         throw new NotImplementedException();
     }
 
     @Override
     @Test
     public void delete() {
-
         throw new NotImplementedException();
     }
 

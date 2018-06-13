@@ -13,6 +13,4 @@ public class SpringApplicationTest {
     @Test
     public void contextLoads() throws Exception {
     }
-
-	// more Spring run testing
 }

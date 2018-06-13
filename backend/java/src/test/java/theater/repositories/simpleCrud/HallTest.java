@@ -5,7 +5,6 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import theater.domain.entities.Hall;
 import theater.domain.exceptions.NotImplementedException;
-import theater.repositories.CRUDTests;
 import theater.repositories.HallRepository;
 import theater.repositories.SeatRepository;
 import theater.utility.Dummy;
@@ -14,7 +13,7 @@ import theater.utility.JpaTestBase;
 
 import static org.junit.Assert.assertEquals;
 
-public class HallTest extends JpaTestBase implements CRUDTests {
+public class HallTest extends JpaTestBase implements CRUDTest {
     @Autowired
     HallRepository hallRepository;
     @Autowired

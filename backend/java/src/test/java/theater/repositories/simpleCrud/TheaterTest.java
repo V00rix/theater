@@ -6,11 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import theater.domain.entities.Theater;
 import theater.domain.exceptions.NotImplementedException;
-import theater.repositories.CRUDTests;
 import theater.repositories.TheaterRepository;
 import theater.utility.JpaTestBase;
 
-public class TheaterTest extends JpaTestBase implements CRUDTests {
+public class TheaterTest extends JpaTestBase implements CRUDTest {
 
     //region Helpers
     private static Theater theater(int seats) {
