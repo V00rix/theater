@@ -1,5 +1,7 @@
 package theater.domain.entities;
 
+import theater.domain.EntityBase;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -7,7 +9,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "t_hall")
-public class Hall implements Serializable {
+public class Hall implements Serializable, EntityBase<Hall> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
@@ -42,8 +44,19 @@ public class Hall implements Serializable {
         this.name = name;
     }
 
+    @Override
+    public void print() {
+        System.out.println("Hall " + name + " (" + name + "). Seats count " + seats.size());
+    }
+
+    @Override
+    public boolean equals(Hall another) {
+        return name.equals(another.name);
+    }
+
     @Entity
     @Table(name = "t_seat")
+    @IdClass(Seat.class)
     public static class Seat implements Serializable {
         @Id
         public int x;

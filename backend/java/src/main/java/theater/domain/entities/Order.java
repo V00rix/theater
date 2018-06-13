@@ -1,98 +1,92 @@
 package theater.domain.entities;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import theater.domain.EntityBase;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "t_order")
-public class Order implements Serializable {
+//@TypeDef(name="myEnumConverter", typeClass=MyEnumConverter.class)
+public class Order implements Serializable, EntityBase<Order> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonProperty(value = "code")
     public Long id;
-//
-//    @OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
-//    @JoinColumn(name = "date", nullable = false)
-//    private Timestamp date;
-//
-//    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
-//    @JoinColumn(name = "email", nullable = false)
-//    public Client client;
-//
-//    public boolean is_purchase;
-//
-//    public boolean is_digital;
-//
-//    public Boolean confirmed;
-//
-//    @OneToMany(cascade = CascadeType.ALL,
-//            fetch = FetchType.LAZY,
-//            mappedBy = "order")
-//    public Set<Seat> seats = new HashSet<>();
-//
-//    public Order() {
-//        this.date = new Timestamp();
-//        this.is_digital = true;
-//        this.is_purchase = false;
-//    }
-//
-//    public Order(Client client, Checkout checkout) {
-//        this();
-//        this.client = client;
-//        this.checkout = checkout;
-//    }
-//
-//    @Enumerated(EnumType.STRING)
-//    public Checkout checkout;
-//
-//    public String getDate() {
-//        return date.toString();
-//    }
-//
-//    public void print() {
-//        System.out.println("--Order--");
-//        System.out.println(id);
-//        date.print();
-////        seats.forEach(Seat::print);
-////        client.print();
-//    }
-//
-////    @Transient
-////    public Session getSession() {
-////        var seat = this.seats.stream().findFirst();
-////        return seat.map(s -> {
-////            var session = s.session;
-////            return new Session(session.performance.title, session.getDate());
-////        }).orElse(null);
-////    }
-//
-//    public class Session {
-//        @Transient
-//        public String performance;
-//        @Transient
-//        public String date;
-//
-//        Session(String performance, String date) {
-//            this.performance = performance;
-//            this.date = date;
-//        }
-//
-//        @Override
-//        public boolean equals(Object obj) {
-//            if (obj == this) return true;
-//            if (!(obj instanceof Session)) return false;
-//            var s = (Session)obj;
-//            return s.performance.equals(this.performance) && s.date.equals(this.date);
-//        }
-//
-//        @Override
-//        public int hashCode() {
-//            int result = 17;
-//            result = 31 * result + performance.hashCode();
-//            result = 31 * result + date.hashCode();
-//            return result;
-//        }
-//    }
+
+    public Boolean confirmed;
+
+    @Enumerated(EnumType.STRING)
+    public Checkout checkout;
+
+    @Column(name = "created_on", nullable = false)
+    public Timestamp createdOn;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "session", nullable = false)
+    public Session session;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "client", nullable = false)
+    public Client client;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    @JoinColumn(name = "order")
+    public List<Seat> seats = new ArrayList<>();
+
+    private Order() {
+        this.createdOn = new Timestamp(System.currentTimeMillis());
+    }
+
+    public Order(Session session, Client client, Checkout checkout) {
+        this();
+        this.session = session;
+        this.client = client;
+        this.checkout = checkout;
+    }
+
+    @Override
+    public void print() {
+        System.out.println("Order (" + id + "). Created on " + createdOn
+                + ". Checkout: " + checkout + ". Confirmed: " + confirmed);
+        client.print();
+        session.print();
+    }
+
+    @Override
+    public boolean equals(Order another) {
+        var confirmedEqual = false;
+        if (confirmed == null) {
+            confirmedEqual = another.confirmed == null;
+        } else {
+            confirmedEqual = confirmed.equals(another.confirmed);
+        }
+
+        return confirmedEqual && checkout.equals(another.checkout)
+                && createdOn.equals(another.createdOn) && session.equals(another.session)
+                && client.equals(another.client);
+    }
+
+    public static enum Checkout {
+        DELIVERY, SELF_CHECKOUT, PAY_BEFORE
+    }
+
+    @Entity
+    @Table(name = "t_order_seat")
+    public static class Seat implements Serializable {
+        @Id
+        public int row;
+        @Id
+        public int seat;
+
+        @Override
+        public String toString() {
+            return "Row " + this.row + ". Seat " + this.seat;
+        }
+    }
 }
+

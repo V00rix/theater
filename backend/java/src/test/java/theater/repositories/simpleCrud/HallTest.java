@@ -3,72 +3,83 @@ package theater.repositories.simpleCrud;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.annotation.Commit;
-import theater.common.JpaTestBase;
 import theater.domain.entities.Hall;
+import theater.domain.exceptions.NotImplementedException;
+import theater.repositories.CRUDTests;
 import theater.repositories.HallRepository;
+import theater.repositories.SeatRepository;
+import theater.utility.Dummy;
+import theater.utility.EntityTestBase;
+import theater.utility.JpaTestBase;
 
 import static org.junit.Assert.assertEquals;
 
-public class HallTest extends JpaTestBase {
+public class HallTest extends JpaTestBase implements CRUDTests {
     @Autowired
     HallRepository hallRepository;
+    @Autowired
+    SeatRepository seatRepository;
 
-    // TODO: 13-Jun-18 delete later -> use TestNG
     @Before
-    @Commit
-    public void deleteAll() {
+    public void setUp() {
         hallRepository.deleteAll();
     }
 
+    @Override
     @Test
-    public void getHalls() {
-        var halls = hallRepository.findAll();
-        var size = halls.size();
-
-        if (size == 0) {
-            System.out.println("No halls created yet.");
-        } else {
-            System.out.println("Retrieved " + size + " hall(-s).");
-            halls.forEach(hall -> {
-                System.out.println("Hall " + hall.id);
-                System.out.println("Hall contains " + hall.seats.size() + " seats.");
-                hall.seats.forEach(System.out::println);
-            });
-        }
+    public void create() {
+        setUp();
+        var hall = Dummy.hall();
+        hallRepository.save(hall);
     }
 
     @Test
-    public void createEmptyHall() {
-        hallRepository.deleteAll();
+    public void createEmpty() {
+        setUp();
         var hall = new Hall("Name");
         hallRepository.save(hall);
     }
 
+    @Override
     @Test
-    public void createSimpleHall() {
-        hallRepository.deleteAll();
-        var hall = new Hall("Name", 10, 10);
-        hallRepository.save(hall);
+    public void read() {
+        EntityTestBase.findAllAndPrint(hallRepository);
     }
 
+    @Override
     @Test
-    @Commit
+    public void update() {
+        throw new NotImplementedException();
+    }
+
+    @Override
+    @Test
+    public void delete() {
+        throw new NotImplementedException();
+    }
+
+    @Override
+    @Test
     public void createAndRead() {
+        setUp();
         var height = 5;
         var width = 5;
 
-        hallRepository.deleteAll();
         var hall = new Hall("Name", height, width);
         hallRepository.save(hall);
 
-        var halls = hallRepository.findAll();
+        var halls = EntityTestBase.findAllAndPrint(hallRepository);
+
+        var seats = seatRepository.findAll();
+
+        assertEquals(height * width, seats.size());
+
         assertEquals(1, halls.size());
+        assert "Name".equals(halls.get(0).name);
 
         var totalSeats = 0;
         for (Hall h : halls) {
             totalSeats += h.seats.size();
-            h.seats.forEach(System.out::println);
         }
         assertEquals(height * width, totalSeats);
     }

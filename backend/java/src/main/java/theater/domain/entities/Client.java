@@ -1,39 +1,50 @@
 package theater.domain.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
+import theater.domain.EntityBase;
+
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
 @Table(name = "t_client")
-public class Client implements Serializable {
+public class Client implements Serializable, EntityBase<Client> {
     @Id
-    @NotNull
-    @Column(name = "email")
-    public String email;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public Long id;
 
-//    public String name;
-//
-//    public Client() {
-//    }
-//
-//    public Client(String name, String email) {
-//        this.name = name;
-//        this.email = email;
-//    }
-//
-//    @OneToMany(cascade = CascadeType.ALL,
-//            fetch = FetchType.LAZY,
-//            mappedBy = "client")
-//    @JsonIgnore
-//    public Set<Order> orders = new HashSet<>();
-//
-//    public void print() {
-//        System.out.println("--Client");
-//        System.out.println(name);
-//        System.out.println(email);
-//    }
+    @Column(unique = true, nullable = false)
+    public String contact;
+
+    public String name;
+
+    public Client() {
+    }
+
+    public Client(String contact, String name) {
+        this.contact = contact;
+        this.name = name;
+    }
+
+    @Override
+    public void print() {
+        System.out.println("Client " + name + " (" + contact + ")");
+    }
+
+    @Override
+    public boolean equals(Client another) {
+        return contact.equals(another.contact) && name.equals(another.name);
+    }
+    //    }
+    //
+    //    @OneToMany(cascade = CascadeType.ALL,
+    //            fetch = FetchType.LAZY,
+    //            mappedBy = "client")
+    //    @JsonIgnore
+    //    public Set<Order> orders = new HashSet<>();
+    //
+    //    public void print() {
+    //        System.out.println("--Client");
+    //        System.out.println(name);
+    //        System.out.println(email);
+    //    }
 }

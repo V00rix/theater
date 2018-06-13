@@ -40,7 +40,7 @@ CREATE TABLE t_client (
   id      SERIAL PRIMARY KEY,
   contact VARCHAR(155) NOT NULL UNIQUE,
   name    VARCHAR(155) NOT NULL
-  );
+);
 
 CREATE TABLE t_theater (
   id            SERIAL UNIQUE,
@@ -62,10 +62,9 @@ CREATE TABLE t_hall (
 );
 
 CREATE TABLE t_seat (
-  y  INT,
-  x INT,
+  y    INT,
+  x    INT,
   hall INT,
---   primary key (y, x, hall),
   foreign key (hall) references t_hall (id)
   on delete cascade
 );
@@ -87,18 +86,19 @@ CREATE TABLE t_order (
   id         SERIAL UNIQUE,
   created_on TIMESTAMP PRIMARY KEY,
   client     INT      NOT NULL,
+  session    INT      NOT NULL,
   --   is_digital       BOOL DEFAULT TRUE                                            NOT NULL,
   --   is_purchase      BOOL DEFAULT FALSE                                           NOT NULL,
   checkout   checkout NOT NULL,
   confirmed  BOOL DEFAULT NULL,
-  FOREIGN KEY (client) REFERENCES t_client (id) ON DELETE CASCADE
+  FOREIGN KEY (client) REFERENCES t_client (id) ON DELETE CASCADE,
+  FOREIGN KEY (session) REFERENCES t_session (id) ON DELETE SET NULL
 );
 
 CREATE TABLE t_order_seat (
   row     INT,
   seat    INT,
   "order" INT,
-  primary key (row, seat, "order"),
   foreign key ("order") references t_order (id)
   on delete cascade
 );

@@ -3,7 +3,7 @@ package theater.environment;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
-import theater.common.JpaTestBase;
+import theater.utility.JpaTestBase;
 import theater.repositories.*;
 
 /**

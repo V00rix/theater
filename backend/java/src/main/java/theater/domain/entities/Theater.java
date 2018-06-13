@@ -1,10 +1,13 @@
 package theater.domain.entities;
 
+import theater.domain.EntityBase;
+
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "t_theater")
-public class Theater {
+public class Theater implements Serializable, EntityBase<Theater> {
 
     //region Fields
     @Id
@@ -49,6 +52,16 @@ public class Theater {
     public Theater(String country, String city, String street, String house, String name, int maximumSeats) {
         this(country, city, street, house, name);
         this.maximumSeats = maximumSeats;
+    }
+
+    @Override
+    public void print() {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public boolean equals(Theater another) {
+        throw new UnsupportedOperationException();
     }
     //endregion
 }

@@ -3,33 +3,40 @@ package theater.repositories.simpleCrud;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import theater.domain.entities.Client;
 import theater.domain.entities.Hall;
 import theater.domain.entities.Performance;
+import theater.domain.entities.Session;
 import theater.domain.exceptions.NotImplementedException;
-import theater.repositories.CRUDTests;
-import theater.repositories.HallRepository;
-import theater.repositories.PerformanceRepository;
-import theater.repositories.SessionRepository;
+import theater.repositories.*;
 import theater.utility.Dummy;
 import theater.utility.EntityTestBase;
 import theater.utility.JpaTestBase;
 
-public class SessionTest extends JpaTestBase implements CRUDTests {
+public class OrderTest extends JpaTestBase implements CRUDTests {
 
     //region Autowired
     @Autowired
     PerformanceRepository performanceRepository;
 
     @Autowired
+    OrderRepository orderRepository;
+
+    @Autowired
     HallRepository hallRepository;
 
     @Autowired
     SessionRepository sessionRepository;
+
+    @Autowired
+    ClientsRepository clientsRepository;
     //endregion
 
     //region Fields
     private Performance performance;
+    private Session session;
     private Hall hall;
+    private Client client;
     //endregion
 
     @Before
@@ -37,25 +44,26 @@ public class SessionTest extends JpaTestBase implements CRUDTests {
         performance = Dummy.find(performanceRepository).orElse(Dummy.performance());
         performanceRepository.save(performance);
         hall = Dummy.find(hallRepository).orElse(Dummy.hall());
-        System.out.println("BEFORE SAVE");
         hallRepository.save(hall);
-        System.out.println("AFTER SAVE");
-        sessionRepository.deleteAll();
-    }
-
-    @Override
-    @Test
-    public void create() {
-        sessionRepository.deleteAll();
-        var session = Dummy.session(hall, performance);
-        hall.print();
+        session = Dummy.find(sessionRepository).orElse(Dummy.session(hall, performance));
         sessionRepository.save(session);
+        client = Dummy.find(clientsRepository).orElse(Dummy.client());
+        clientsRepository.save(client);
+        orderRepository.deleteAll();
     }
 
     @Override
     @Test
     public void read() {
-        EntityTestBase.findAllAndPrint(sessionRepository);
+        EntityTestBase.findAllAndPrint(orderRepository);
+    }
+
+    @Override
+    @Test
+    public void create() {
+        orderRepository.deleteAll();
+        var order = Dummy.order(session, client);
+        sessionRepository.save(session);
     }
 
     @Override
@@ -75,11 +83,11 @@ public class SessionTest extends JpaTestBase implements CRUDTests {
     @Override
     @Test
     public void createAndRead() {
-        sessionRepository.deleteAll();
-        var session = Dummy.session(hall, performance);
-        sessionRepository.save(session);
-        var found = EntityTestBase.findAllAndPrint(sessionRepository);
-        assert session.equals(found.get(0));
+        orderRepository.deleteAll();
+        var order = Dummy.order(session, client);
+        orderRepository.save(order);
+        var found = EntityTestBase.findAllAndPrint(orderRepository);
+        assert order.equals(found.get(0));
     }
 
 }

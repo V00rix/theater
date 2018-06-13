@@ -1,6 +1,8 @@
 package theater.domain.entities;
 
 
+import theater.domain.EntityBase;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -9,7 +11,7 @@ import java.io.Serializable;
 //@EntityListeners(AuditingEntityListener.class)
 //@JsonIgnoreProperties(value = {"createdAt", "updatedAt"},
 //        allowGetters = true)
-public class Performance implements Serializable {
+public class Performance implements Serializable, EntityBase<Performance> {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public Long id;
@@ -31,6 +33,16 @@ public class Performance implements Serializable {
     public Performance(String author, String title) {
         this.author = author;
         this.title = title;
+    }
+
+    @Override
+    public void print() {
+        System.out.println("Performance " + title + " by " + author + " (" + id + ")");
+    }
+
+    @Override
+    public boolean equals(Performance another) {
+        return title.equals(another.title) && author.equals(another.author);
     }
 
     //
