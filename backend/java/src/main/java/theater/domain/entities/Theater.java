@@ -1,9 +1,11 @@
 package theater.domain.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import theater.domain.EntityBase;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "t_theater")
@@ -12,56 +14,50 @@ public class Theater implements Serializable, EntityBase<Theater> {
     //region Fields
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonIgnore
     private Long id;
 
     @Column(nullable = false)
-    public String country;
-
-    @Column(nullable = false)
-    public String city;
-
-    @Column(nullable = false)
-    public String street;
-
-    @Column(nullable = false)
-    public String house;
-
-    @Column(name = "post_code")
-    public String postCode;
-    @Column(name = "city_part")
-    public String cityPart;
-
-    @Column(nullable = false)
     public String name;
+
+    @Column(nullable = false)
+    public String address;
+
+    @Column(name = "ticket_price")
+    public BigDecimal ticketPrice;
+
+    @Column(name = "open_time")
+    public String openTime;
 
     @Column(name = "maximum_seats")
     public int maximumSeats;
     //endregion
 
     //region Constructors
-    public Theater() {};
+    public Theater() {
 
-    public Theater(String country, String city, String street, String house, String name) {
-        this.country = country;
-        this.city = city;
-        this.street = street;
-        this.house = house;
+    }
+
+    public Theater(String address, String name) {
+        this.address = address;
         this.name = name;
     }
 
-    public Theater(String country, String city, String street, String house, String name, int maximumSeats) {
-        this(country, city, street, house, name);
+    public Theater(String address, String name, BigDecimal ticketPrice, String openTime, int maximumSeats) {
+        this(address, name);
+        this.ticketPrice = ticketPrice;
+        this.openTime = openTime;
         this.maximumSeats = maximumSeats;
     }
 
     @Override
     public void print() {
-        throw new UnsupportedOperationException();
+        System.out.println("Theater " + name + ". Address: " + address + " (" + id + ")");
     }
 
     @Override
     public boolean equals(Theater another) {
-        throw new UnsupportedOperationException();
+        return name.equals(another.name) && address.equals(another.address);
     }
     //endregion
 }

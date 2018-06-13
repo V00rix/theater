@@ -3,6 +3,7 @@ package theater.utility;
 import org.springframework.data.jpa.repository.JpaRepository;
 import theater.domain.entities.*;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.Optional;
 
@@ -12,7 +13,7 @@ import java.util.Optional;
 public abstract class Dummy {
 
     public static Theater theater() {
-        return new Theater("Country", "City", "Street", "House", "Name", 5);
+        return new Theater("Address", "Theater Name", new BigDecimal(100), "Every Tuesday, Wednesday and Friday from 10:00 to 16:00", 5);
     }
 
     public static Hall hall() {

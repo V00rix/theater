@@ -9,15 +9,18 @@ import theater.domain.exceptions.NotImplementedException;
 import theater.repositories.TheaterRepository;
 import theater.utility.JpaTestBase;
 
+import java.math.BigDecimal;
+
 public class TheaterTest extends JpaTestBase implements CRUDTest {
 
     //region Helpers
     private static Theater theater(int seats) {
-        return new Theater("Country", "City", "Street", "House", "Name", seats);
+        return new Theater("Address", "Theater Name", new BigDecimal(100), "Every Tuesday, Wednesday and Friday from 10:00 to 16:00", seats);
+
     }
 
     private static Theater theater() {
-        return new Theater("Country", "City", "Street", "House", "Name");
+        return new Theater("Address", "Theater Name");
     }
     //endregion
 
@@ -25,7 +28,6 @@ public class TheaterTest extends JpaTestBase implements CRUDTest {
     @Autowired
     TheaterRepository theaterRepository;
     //endregion
-
 
     @Before
     public void setUp() {
@@ -54,6 +56,7 @@ public class TheaterTest extends JpaTestBase implements CRUDTest {
     }
 
     @Override
+    @Test
     public void create() {
         setUp();
         var theater = theater(1);
@@ -61,24 +64,28 @@ public class TheaterTest extends JpaTestBase implements CRUDTest {
     }
 
     @Override
+    @Test
     public void read() {
 
         throw new NotImplementedException();
     }
 
     @Override
+    @Test
     public void update() {
 
         throw new NotImplementedException();
     }
 
     @Override
+    @Test
     public void delete() {
 
         throw new NotImplementedException();
     }
 
     @Override
+    @Test
     public void createAndRead() {
 
         throw new NotImplementedException();

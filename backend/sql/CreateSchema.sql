@@ -44,15 +44,12 @@ CREATE TABLE t_client (
 
 CREATE TABLE t_theater (
   id            SERIAL UNIQUE,
-  country       VARCHAR(155),
-  city          VARCHAR(155),
-  street        VARCHAR(155),
-  house         VARCHAR(55),
-  post_code     VARCHAR(55),
-  city_part     VARCHAR(155),
   name          VARCHAR(155),
+  address       VARCHAR(155),
+  ticket_price  NUMERIC(10, 3),
+  open_time     VARCHAR(155),
   maximum_seats INT NOT NULL,
-  PRIMARY KEY (country, city, street, house, name),
+  PRIMARY KEY (address, name),
   CHECK (maximum_seats > 0)
 );
 
