@@ -1,14 +1,12 @@
 package theater.domain.entities;
 
-import theater.domain.EntityBase;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
 @Entity
 @Table(name = "t_session")
-public class Session implements Serializable, EntityBase<Session> {
+public class Session extends EntityBase<Session> implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

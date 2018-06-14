@@ -1,13 +1,11 @@
 package theater.domain.entities;
 
-import theater.domain.EntityBase;
-
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
 @Table(name = "t_client")
-public class Client implements Serializable, EntityBase<Client> {
+public class Client extends EntityBase<Client> implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public Long id;

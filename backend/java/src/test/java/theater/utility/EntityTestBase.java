@@ -1,7 +1,7 @@
 package theater.utility;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import theater.domain.EntityBase;
+import theater.domain.entities.EntityBase;
 
 import java.util.List;
 

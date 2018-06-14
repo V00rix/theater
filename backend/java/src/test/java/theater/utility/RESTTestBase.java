@@ -12,7 +12,7 @@ import org.springframework.test.web.servlet.MockMvc;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
 public abstract class RESTTestBase {
-    protected ObjectMapper mapper = new ObjectMapper();
+    ObjectMapper mapper = new ObjectMapper();
     @Autowired
     protected MockMvc mockMvc;
 }

@@ -1,7 +1,6 @@
 package theater.domain.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import theater.domain.EntityBase;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -9,7 +8,7 @@ import java.math.BigDecimal;
 
 @Entity
 @Table(name = "t_theater")
-public class Theater implements Serializable, EntityBase<Theater> {
+public class Theater extends EntityBase<Theater> implements Serializable {
 
     //region Fields
     @Id

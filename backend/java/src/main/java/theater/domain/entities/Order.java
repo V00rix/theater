@@ -1,7 +1,6 @@
 package theater.domain.entities;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import theater.domain.EntityBase;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -12,7 +11,7 @@ import java.util.List;
 @Entity
 @Table(name = "t_order")
 //@TypeDef(name="myEnumConverter", typeClass=MyEnumConverter.class)
-public class Order implements Serializable, EntityBase<Order> {
+public class Order extends EntityBase<Order> implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonProperty(value = "code")

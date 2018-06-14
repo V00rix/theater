@@ -1,8 +1,6 @@
 package theater.domain.entities;
 
 
-import theater.domain.EntityBase;
-
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -11,7 +9,7 @@ import java.io.Serializable;
 //@EntityListeners(AuditingEntityListener.class)
 //@JsonIgnoreProperties(value = {"createdAt", "updatedAt"},
 //        allowGetters = true)
-public class Performance implements Serializable, EntityBase<Performance> {
+public class Performance extends EntityBase<Performance> implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public Long id;

@@ -8,7 +8,7 @@ import theater.TheaterApplication;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = TheaterApplication.class)
-public class SpringApplicationTest {
+public class ApplicationSmokeTest {
 
     @Test
     public void contextLoads() throws Exception {

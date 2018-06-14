@@ -1,38 +1,63 @@
 package theater.controllers;
 
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.domain.Sort;
+import org.springframework.web.bind.annotation.*;
+import theater.domain.entities.Hall;
+import theater.domain.exceptions.BaseHttpException;
+import theater.repositories.HallRepository;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/hall")
 public class HallController extends ControllerBase {
+    // FIXME: 14-Jun-18 Mocking the behaviour of hall creation for now
+    private final
+    HallRepository hallRepository;
 
-    //    private final
-    //    PerformanceRepository performanceRepository;
-    //
-    //    @Autowired
-    //    public HallController(PerformanceRepository performanceRepository, OrderRepository orderRepository) {
-    //        this.performanceRepository = performanceRepository;
-    //    }
-    //
-    //    @GetMapping("/performances")
-    //    public PerformanceResponse getAllPerformances() {
-    //        return new PerformanceResponse(this.performanceRepository.findAll());
-    //    }
-    //
-    //    @GetMapping("/sessions")
-    //    public SessionResponse getAllSessions() {
-    ////        return new SessionResponse(new ArrayList<Session>(this.performanceRepository.findAll().stream().map(x -> x.sessions).reduce((x, y) -> {
-    //////            x.addAll(y);
-    ////            return x;
-    ////        }).orElse(new HashSet<>())));
-    //        return null;
-    //    }
-    @RequestMapping("/")
+    public HallController(HallRepository hallRepository) {
+        this.hallRepository = hallRepository;
+    }
+
+    @RequestMapping(value = "/names", method = RequestMethod.GET, produces = "application/json")
     public @ResponseBody
-    String greeting() {
-        return "Hello World";
+    Map<Integer, String> getNames() {
+        var results = hallRepository.findAll(new Sort(Sort.Direction.ASC, "id"));
+        var response = new HashMap<Integer, String>();
+
+        results.forEach(r -> response.put(r.id.intValue(), r.name));
+
+        return response;
+    }
+
+    @RequestMapping(value = "/{hallId}", method = RequestMethod.GET, produces = "application/json")
+    public @ResponseBody
+    Hall getHall(@PathVariable String hallId) {
+        return hallRepository.findById(Long.parseLong(hallId)).orElse(null);
+    }
+
+    // TODO: 14-Jun-18 Change this after FE implementation: i.e. most likely won't be receiving Hall object
+    @RequestMapping(value = "/{hallId}", method = RequestMethod.POST, produces = "application/json")
+    public @ResponseBody
+    void setHall(@RequestBody Hall hallData, @PathVariable String hallId) {
+        var hall = hallRepository.findById(Long.parseLong(hallId)).orElseThrow();
+
+        hallData.id = hall.id;
+        hall = hallData;
+
+        hallRepository.save(hall);
+    }
+
+    @RequestMapping(value = "/new", method = RequestMethod.POST, produces = "application/json")
+    public @ResponseBody
+    Hall createNewHall(@RequestBody String name) {
+        if (name == null || name.isEmpty()) {
+            throw new BaseHttpException("Hall name was not present in request.");
+        }
+        var hall = new Hall(name);
+        hallRepository.save(hall);
+        return hall;
     }
 }

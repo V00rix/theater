@@ -1,7 +1,5 @@
 package theater.domain.entities;
 
-import theater.domain.EntityBase;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -9,7 +7,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "t_hall")
-public class Hall implements Serializable, EntityBase<Hall> {
+public class Hall extends EntityBase<Hall> implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
