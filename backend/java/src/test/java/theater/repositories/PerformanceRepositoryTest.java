@@ -62,7 +62,7 @@ public class PerformanceRepositoryTest {
         var p = new Performance();
         p.author = author;
         p.title = title;
-        System.out.println(p.id);
+        System.out.println(p.getId());
         return p;
     }
 
@@ -70,7 +70,7 @@ public class PerformanceRepositoryTest {
         var performances = performanceRepository.findAll();
 
         performances.forEach(value -> {
-            System.out.println(value.id);
+            System.out.println(value.getId());
         });
     }
     //endregion

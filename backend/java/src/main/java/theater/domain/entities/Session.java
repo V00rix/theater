@@ -10,17 +10,37 @@ public class Session extends EntityBase<Session> implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
+    private Long id;
+
+    public Long getId() {
+        return id;
+    }
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "hall", nullable = false)
     public Hall hall;
 
+//    @Transactional
+    public Long getHall() {
+        return hall.getId();
+    }
+
+//    @Transactional
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "performance", nullable = false)
+//    @JsonProperty("pRef")
+//    @JsonIgnore
     public Performance performance;
 
+    public Long getPerformance() {
+        return performance.getId();
+    }
+    //    @JsonProperty
+
     public Timestamp date;
+
+    public Session() {
+    }
 
     public Session(Hall hall, Performance performance, Timestamp date) {
         this.hall = hall;
@@ -38,6 +58,13 @@ public class Session extends EntityBase<Session> implements Serializable {
     @Override
     public boolean equals(Session another) {
         return hall.equals(another.hall) && performance.equals(another.performance) && date.equals(another.date);
+    }
+
+    @Override
+    public void copy(Session another) {
+        hall.copy(another.hall);
+        performance.copy(another.performance);
+        date = another.date;
     }
 
     //    @OneToOne(fetch = FetchType.LAZY)

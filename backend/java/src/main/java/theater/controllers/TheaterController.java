@@ -45,11 +45,8 @@ public class TheaterController extends ControllerBase {
         if (theaters.size() < 1) {
             createTheaterData(theaterData);
         } else {
-
             var theater = theaters.get(0);
-            theaterData.id = theater.id;
-            theater = theaterData;
-
+            theater .copy(theaterData);
             theaterRepository.save(theater);
         }
     }

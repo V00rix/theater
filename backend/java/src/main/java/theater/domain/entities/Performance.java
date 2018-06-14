@@ -12,7 +12,7 @@ import java.io.Serializable;
 public class Performance extends EntityBase<Performance> implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    public Long id;
+    private Long id;
 
     @Column(nullable = false)
     public String author;
@@ -41,6 +41,18 @@ public class Performance extends EntityBase<Performance> implements Serializable
     @Override
     public boolean equals(Performance another) {
         return title.equals(another.title) && author.equals(another.author);
+    }
+
+    @Override
+    public void copy(Performance another) {
+        author = another.author;
+        title = another.title;
+        image = another.image;
+        description = another.description;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     //

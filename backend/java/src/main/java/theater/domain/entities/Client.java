@@ -8,7 +8,11 @@ import java.io.Serializable;
 public class Client extends EntityBase<Client> implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    public Long id;
+    private Long id;
+
+    public Long getId() {
+        return id;
+    }
 
     @Column(unique = true, nullable = false)
     public String contact;
@@ -31,6 +35,12 @@ public class Client extends EntityBase<Client> implements Serializable {
     @Override
     public boolean equals(Client another) {
         return contact.equals(another.contact) && name.equals(another.name);
+    }
+
+    @Override
+    public void copy(Client another) {
+        contact = another.contact;
+        name = another.name;
     }
     //    }
     //

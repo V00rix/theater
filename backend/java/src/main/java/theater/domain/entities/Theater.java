@@ -10,11 +10,14 @@ import java.math.BigDecimal;
 @Table(name = "t_theater")
 public class Theater extends EntityBase<Theater> implements Serializable {
 
-    //region Fields
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonIgnore
-    public Long id;
+    private Long id;
+
+    public Long getId() {
+        return id;
+    }
 
     @Column(nullable = false)
     public String name;
@@ -30,9 +33,7 @@ public class Theater extends EntityBase<Theater> implements Serializable {
 
     @Column(name = "maximum_seats")
     public int maximumSeats;
-    //endregion
 
-    //region Constructors
     public Theater() {
 
     }
@@ -58,5 +59,13 @@ public class Theater extends EntityBase<Theater> implements Serializable {
     public boolean equals(Theater another) {
         return name.equals(another.name) && address.equals(another.address);
     }
-    //endregion
+
+    @Override
+    public void copy(Theater another) {
+        name = another.name;
+        address = another.address;
+        ticketPrice = another.ticketPrice;
+        openTime = another.openTime;
+        maximumSeats = another.maximumSeats;
+    }
 }

@@ -15,7 +15,11 @@ public class Order extends EntityBase<Order> implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonProperty(value = "code")
-    public Long id;
+    private Long id;
+
+    public Long getId() {
+        return id;
+    }
 
     public Boolean confirmed;
 
@@ -70,6 +74,23 @@ public class Order extends EntityBase<Order> implements Serializable {
                 && client.equals(another.client);
     }
 
+    @Override
+    public void copy(Order another) {
+        confirmed = another.confirmed;
+        checkout = another.checkout;
+        createdOn = another.createdOn;
+        client.copy(another.client);
+        session.copy(another.session);
+        seats = new ArrayList<>();
+        try {
+            for (Seat s : another.seats) {
+                seats.add(s.clone());
+            }
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static enum Checkout {
         DELIVERY, SELF_CHECKOUT, PAY_BEFORE
     }
@@ -85,6 +106,15 @@ public class Order extends EntityBase<Order> implements Serializable {
         @Override
         public String toString() {
             return "Row " + this.row + ". Seat " + this.seat;
+        }
+
+        @Override
+        protected Seat clone() throws CloneNotSupportedException {
+            super.clone();
+            var s = new Seat();
+            s.row = row;
+            s.seat = seat;
+            return s;
         }
     }
 }

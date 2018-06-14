@@ -27,7 +27,7 @@ public class HallController extends ControllerBase {
         var results = hallRepository.findAll(new Sort(Sort.Direction.ASC, "id"));
         var response = new HashMap<Integer, String>();
 
-        results.forEach(r -> response.put(r.id.intValue(), r.name));
+        results.forEach(r -> response.put(r.getId().intValue(), r.name));
 
         return response;
     }
@@ -44,10 +44,7 @@ public class HallController extends ControllerBase {
     public @ResponseBody
     void setHall(@RequestBody Hall hallData, @PathVariable String hallId) {
         var hall = hallRepository.findById(Long.parseLong(hallId)).orElseThrow();
-
-        hallData.id = hall.id;
-        hall = hallData;
-
+        hall.copy(hallData);
         hallRepository.save(hall);
     }
 

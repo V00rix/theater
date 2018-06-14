@@ -28,7 +28,7 @@ public class PerformanceController extends ControllerBase {
         var response  = new HashMap<String, String>();
 
         for (var performance : performances) {
-            response.put(performance.id.toString(), performance.title + " - " + performance.author);
+            response.put(performance.getId().toString(), performance.title + " - " + performance.author);
         }
 
         return response;
@@ -52,8 +52,7 @@ public class PerformanceController extends ControllerBase {
     void updatePerformance(@RequestBody Performance performance, @PathVariable String performanceId) {
         var found = performanceRepository.findById(Long.parseLong(performanceId)).orElseThrow();
 
-        performance.id = found.id;
-        found = performance;
+        found.copy(performance);
 
         performanceRepository.save(found);
     }

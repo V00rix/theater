@@ -10,7 +10,7 @@ import java.util.List;
 public class Hall extends EntityBase<Hall> implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
+    private Long id;
 
     @Column(nullable = false, unique = true)
     public String name;
@@ -44,12 +44,29 @@ public class Hall extends EntityBase<Hall> implements Serializable {
 
     @Override
     public void print() {
-        System.out.println("Hall " + name + " (" + name + "). Seats count " + seats.size());
+        System.out.println("Hall " + name + " (" + id + "). Seats count " + seats.size());
     }
 
     @Override
     public boolean equals(Hall another) {
         return name.equals(another.name);
+    }
+
+    @Override
+    public void copy(Hall another) {
+        name = another.name;
+        seats = new ArrayList<>();
+        try {
+            for (Seat s : another.seats) {
+                seats.add(s.clone());
+            }
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public Long getId() {
+        return id;
     }
 
     @Entity
@@ -64,6 +81,15 @@ public class Hall extends EntityBase<Hall> implements Serializable {
         @Override
         public String toString() {
             return "Row " + this.y + ". Seat " + this.x;
+        }
+
+        @Override
+        protected Seat clone() throws CloneNotSupportedException {
+            super.clone();
+            var s = new Seat();
+            s.x = x;
+            s.y = y;
+            return s;
         }
     }
 }

@@ -42,7 +42,7 @@ public class PerformanceControllerTest extends RESTTestBase implements RESTTest 
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON));
 
         for (var p : performances) {
-            res.andExpect(jsonPath("$." + p.id, is(p.title + " - " + p.author)));
+            res.andExpect(jsonPath("$." + p.getId(), is(p.title + " - " + p.author)));
         }
     }
 
@@ -59,7 +59,7 @@ public class PerformanceControllerTest extends RESTTestBase implements RESTTest 
         for (var performance : performances) {
             performanceRepository.save(performance);
 
-            var res = mockMvc.perform(get(url + performance.id.toString())).andDo(print())
+            var res = mockMvc.perform(get(url + performance.getId().toString())).andDo(print())
                     .andExpect(status().isOk())
                     .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
                     .andExpect(content().json(mapper.writeValueAsString(performance)));
@@ -86,7 +86,7 @@ public class PerformanceControllerTest extends RESTTestBase implements RESTTest 
         var entitySecond = new Performance("new author", "new title");
 
         // Perform request
-        mockMvc.perform(post(url + entityFirst.id)
+        mockMvc.perform(post(url + entityFirst.getId())
                 .content(mapper.writeValueAsString(entitySecond))
                 .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
@@ -108,7 +108,7 @@ public class PerformanceControllerTest extends RESTTestBase implements RESTTest 
         performanceRepository.save(entityFirst);
 
         // Perform request
-        mockMvc.perform(delete(url + entityFirst.id)
+        mockMvc.perform(delete(url + entityFirst.getId())
                 .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isOk());
