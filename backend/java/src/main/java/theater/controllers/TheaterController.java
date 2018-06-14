@@ -18,7 +18,7 @@ public class TheaterController extends ControllerBase {
         this.theaterRepository = theaterRepository;
     }
 
-    @GetMapping("/")
+    @RequestMapping(value = "/", method = RequestMethod.GET, produces = "application/json")
     public @ResponseBody
     Theater getTheaterData() {
         var theaters = theaterRepository.findAll();
@@ -32,10 +32,10 @@ public class TheaterController extends ControllerBase {
         }
     }
 
-    @PostMapping("/")
+    @RequestMapping(value = "/", method = RequestMethod.POST, produces = "application/json")
     public @ResponseBody
     void setTheaterData(@RequestBody Theater theaterData) {
-        theaterData.print();
+        theaterRepository.save(theaterData);
     }
 
     @GetMapping("/greeting")

@@ -9,6 +9,7 @@ import theater.utility.RESTTestBase;
 
 import static org.hamcrest.Matchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -43,7 +44,25 @@ public class TheaterControllerTest extends RESTTestBase implements RESTTest {
 
     @Override
     @Test
-    public void postTest() {
+    public void postTest() throws Exception {
+        // Create theater
+        theaterRepository.deleteAll();
+        var theater = Dummy.theater();
 
+        // Perform request
+        this.mockMvc.perform(post(url)
+                .content(mapper.writeValueAsString(theater))
+                .contentType(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk());
+
+        // Check
+        var created = theaterRepository.findAll().get(0);
+
+        assert created != null;
+
+        created.print();
+
+        assert created.equals(theater);
     }
 }
