@@ -7,6 +7,7 @@ import org.springframework.http.MediaType;
 import theater.domain.entities.Hall;
 import theater.domain.entities.Performance;
 import theater.domain.entities.Session;
+import theater.domain.exceptions.NotImplementedException;
 import theater.repositories.HallRepository;
 import theater.repositories.PerformanceRepository;
 import theater.repositories.SessionRepository;
@@ -93,29 +94,16 @@ public class SessionControllerTest extends RESTTestBase implements RESTTest {
     }
 
     @Test
-    public void getSpecificPerformanceTest() throws Exception {
-//        sessionRepository.deleteAll();
-//        var performances = new Performance[]{
-//                new Performance("author 1", "title 1"),
-//                new Performance("author 1TWO", "title 1"),
-//                new Performance("author 1", "title THREE"),
-//                new Performance("author Four", "Fourth"),
-//        };
-//
-//        for (var performance : performances) {
-//            sessionRepository.save(performance);
-//
-//            var res = mockMvc.perform(get(url + performance.id.toString())).andDo(print())
-//                    .andExpect(status().isOk())
-//                    .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-//                    .andExpect(content().json(mapper.writeValueAsString(performance)));
-//        }
+    public void getSpecificSessionTest() throws Exception {
+        throw new NotImplementedException();
     }
 
     @Override
     @Test
     public void postTest() throws Exception {
-//        RESTTest.defaultPostTest(sessionRepository, Dummy::performance, mockMvc, url + "new");
+        RESTTest.defaultPostTest(sessionRepository, () -> {
+            return Dummy.session(hall, performances[0]);
+        }, mockMvc, url + "new");
     }
 
     @Test
@@ -142,8 +130,8 @@ public class SessionControllerTest extends RESTTestBase implements RESTTest {
 //        var created = sessionRepository.findAll().get(0);
 //
 //        assert created != null;
-//        assert !created.equals(entityFirst);
-//        assert created.equals(entitySecond);
+//        assert !created.equalz(entityFirst);
+//        assert created.equalz(entitySecond);
 //    }
 //
 //    @Test

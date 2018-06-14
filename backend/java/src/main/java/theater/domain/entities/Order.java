@@ -61,7 +61,7 @@ public class Order extends EntityBase<Order> implements Serializable {
     }
 
     @Override
-    public boolean equals(Order another) {
+    public boolean equalz(Order another) {
         var confirmedEqual = false;
         if (confirmed == null) {
             confirmedEqual = another.confirmed == null;
@@ -70,8 +70,8 @@ public class Order extends EntityBase<Order> implements Serializable {
         }
 
         return confirmedEqual && checkout.equals(another.checkout)
-                && createdOn.equals(another.createdOn) && session.equals(another.session)
-                && client.equals(another.client);
+                && createdOn.equals(another.createdOn) && session.equalz(another.session)
+                && client.equalz(another.client);
     }
 
     @Override
@@ -97,7 +97,7 @@ public class Order extends EntityBase<Order> implements Serializable {
 
     @Entity
     @Table(name = "t_order_seat")
-    public static class Seat implements Serializable {
+    public static class Seat implements Serializable, Cloneable {
         @Id
         public int row;
         @Id

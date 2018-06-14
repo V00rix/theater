@@ -41,7 +41,7 @@ public interface RESTTest {
     }
 
     /**
-     * Logic for basic get testing
+     * Logic for basic post testing
      */
     static <R extends EntityBase, T extends JpaRepository<R, Long>>
     void defaultPostTest(T repository, Supplier<R> supplier, MockMvc mvc, String url) throws Exception {
@@ -57,15 +57,15 @@ public interface RESTTest {
                 .andDo(print())
                 .andExpect(status().isOk());
 
+
         // Check
         var created = repository.findAll().get(0);
-
         assert created != null;
-        assert created.equals(entity);
+        assert created.equalz(entity);
     }
 
     /**
-     * Logic for basic get testing
+     * Logic for basic update testing
      */
     static <R extends EntityBase, T extends JpaRepository<R, Long>>
     void defaultUpdateTest(T repository, Supplier<R> first, Supplier<R> second, MockMvc mvc, String url) throws Exception {
@@ -91,7 +91,7 @@ public interface RESTTest {
         var created = repository.findAll().get(0);
 
         assert created != null;
-        assert !created.equals(entityFirst);
-        assert created.equals(entitySecond);
+        assert !created.equalz(entityFirst);
+        assert created.equalz(entitySecond);
     }
 }

@@ -11,7 +11,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/performance")
-public class PerformanceController extends ControllerBase {
+public class PerformanceController extends ControllerBase<Performance, PerformanceRepository> {
 
     private final
     PerformanceRepository performanceRepository;
@@ -32,13 +32,6 @@ public class PerformanceController extends ControllerBase {
         }
 
         return response;
-    }
-
-    @RequestMapping(value = "/new", method = RequestMethod.POST, produces = "application/json")
-    public @ResponseBody
-    Performance newPerformance(@RequestBody Performance performance) {
-        performanceRepository.save(performance);
-        return performance;
     }
 
     @RequestMapping(value = "/{performanceId}", method = RequestMethod.GET, produces = "application/json")
@@ -63,4 +56,8 @@ public class PerformanceController extends ControllerBase {
         performanceRepository.delete(performanceRepository.findById(Long.parseLong(performanceId)).orElseThrow());
     }
 
+    @Override
+    public PerformanceRepository repository() {
+        return performanceRepository;
+    }
 }

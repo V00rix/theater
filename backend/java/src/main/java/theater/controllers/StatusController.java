@@ -6,7 +6,7 @@ import theater.domain.http.Status;
 
 @RestController
 @RequestMapping("/api/status")
-public class StatusController extends ControllerBase {
+public class StatusController {
 
 
     @GetMapping("")

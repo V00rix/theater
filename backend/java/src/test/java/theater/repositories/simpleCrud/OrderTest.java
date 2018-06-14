@@ -87,7 +87,7 @@ public class OrderTest extends JpaTestBase implements CRUDTest {
         var order = Dummy.order(session, client);
         orderRepository.save(order);
         var found = EntityTestBase.findAllAndPrint(orderRepository);
-        assert order.equals(found.get(0));
+        assert order.equalz(found.get(0));
     }
 
 }

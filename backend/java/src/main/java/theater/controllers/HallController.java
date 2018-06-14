@@ -12,7 +12,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/hall")
-public class HallController extends ControllerBase {
+public class HallController extends ControllerBase<Hall, HallRepository> {
     // FIXME: 14-Jun-18 Mocking the behaviour of hall creation for now
     private final
     HallRepository hallRepository;
@@ -48,9 +48,10 @@ public class HallController extends ControllerBase {
         hallRepository.save(hall);
     }
 
-    @RequestMapping(value = "/new", method = RequestMethod.POST, produces = "application/json")
+
+    @RequestMapping(value = "/create", method = RequestMethod.POST, produces = "application/json")
     public @ResponseBody
-    Hall createNewHall(@RequestBody String name) {
+    Hall createActualNew(@RequestBody String name) {
         if (name == null || name.isEmpty()) {
             throw new BaseHttpException("Hall name was not present in request.");
         }
@@ -59,9 +60,19 @@ public class HallController extends ControllerBase {
         return hall;
     }
 
+    @Override
+    public Hall createNew(Hall entity) {
+        return null;
+    }
+
     @RequestMapping(value = "/{hallId}", method = RequestMethod.DELETE, produces = "application/json")
     public @ResponseBody
     void deleteHall(@PathVariable String hallId) {
         hallRepository.delete(hallRepository.findById(Long.parseLong(hallId)).orElseThrow());
+    }
+
+    @Override
+    public HallRepository repository() {
+        return hallRepository;
     }
 }

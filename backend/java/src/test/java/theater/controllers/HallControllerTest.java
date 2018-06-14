@@ -75,7 +75,7 @@ public class HallControllerTest extends RESTTestBase implements RESTTest {
         var hallName = "test new hall name";
 
         // Perform request
-        mockMvc.perform(post(url + "new")
+        mockMvc.perform(post(url + "create")
                 .content(hallName)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
@@ -113,8 +113,8 @@ public class HallControllerTest extends RESTTestBase implements RESTTest {
         var created = hallRepository.findAll().get(0);
 
         assert created != null;
-        assert !created.equals(entityFirst);
-        assert created.equals(entitySecond);
+        assert !created.equalz(entityFirst);
+        assert created.equalz(entitySecond);
     }
 
     @Test

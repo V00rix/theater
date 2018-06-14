@@ -4,11 +4,10 @@ package theater.controllers;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import theater.domain.entities.Session;
+import theater.repositories.HallRepository;
+import theater.repositories.PerformanceRepository;
 import theater.repositories.SessionRepository;
 
 import java.util.HashMap;
@@ -16,14 +15,20 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/session")
-public class SessionController extends ControllerBase {
+public class SessionController extends ControllerBase<Session, SessionRepository> {
 
     private final
     SessionRepository sessionRepository;
+    private final
+    HallRepository hallRepository;
+    private final
+    PerformanceRepository performanceRepository;
 
     @Autowired
-    public SessionController(SessionRepository sessionRepository) {
+    public SessionController(SessionRepository sessionRepository, HallRepository hallRepository, PerformanceRepository performanceRepository) {
         this.sessionRepository = sessionRepository;
+        this.hallRepository = hallRepository;
+        this.performanceRepository = performanceRepository;
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET, produces = "application/json")
@@ -33,31 +38,34 @@ public class SessionController extends ControllerBase {
         var sessions = this.sessionRepository.findAll();
         var response = new HashMap<String, Session>();
 
-        //        var mapper = new ObjectMapper();
-
         for (var session : sessions) {
-//            session.print();
-//            System.out.println(session.hall.getId());
-//            System.out.println(session.performance.getId());
-            //            System.out.println(mapper.writeValueAsString(session));
             response.put(session.getId().toString(), session);
         }
-
-
-        //        var s = new Session(new Hall("hall name", 3, 3), new Performance("authoer", "title"),
-        //                new Timestamp(System.currentTimeMillis()));
-        //
-        //        s.print();
-
         return response;
     }
-    //
-    //    @RequestMapping(value = "/new", method = RequestMethod.POST, produces = "application/json")
-    //    public @ResponseBody
-    //    Performance newPerformance(@RequestBody Performance performance) {
-    //        performanceRepository.save(performance);
-    //        return performance;
-    //    }
+
+//    @RequestMapping(value = "/new", method = RequestMethod.POST, produces = "application/json")
+//    public @ResponseBody
+//    Session newPerformance(@RequestBody Session session) {
+//        sessionRepository.save(session);
+//        return session;
+//    }
+
+
+    @Override
+    public Session createNew(@RequestBody Session entity) {
+        System.out.println(entity);
+        entity.hall = hallRepository.findById(entity.hall.getId()).orElseThrow();
+        entity.performance = performanceRepository.findById(entity.performance.getId()).orElseThrow();
+        entity.print();
+        return super.createNew(entity);
+//        return null;
+    }
+
+    @Override
+    public SessionRepository repository() {
+        return sessionRepository;
+    }
     //
     //    @RequestMapping(value = "/{performanceId}", method = RequestMethod.GET, produces = "application/json")
     //    public @ResponseBody

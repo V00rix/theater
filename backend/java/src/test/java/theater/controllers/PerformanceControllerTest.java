@@ -96,8 +96,8 @@ public class PerformanceControllerTest extends RESTTestBase implements RESTTest 
         var created = performanceRepository.findAll().get(0);
 
         assert created != null;
-        assert !created.equals(entityFirst);
-        assert created.equals(entitySecond);
+        assert !created.equalz(entityFirst);
+        assert created.equalz(entitySecond);
     }
 
     @Test

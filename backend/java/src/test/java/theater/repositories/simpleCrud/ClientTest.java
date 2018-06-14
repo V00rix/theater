@@ -54,7 +54,7 @@ public class ClientTest extends JpaTestBase implements CRUDTest {
         var client = Dummy.client();
         clientsRepository.save(client);
         var found = EntityTestBase.findAllAndPrint(clientsRepository);
-        assert client.equals(found.get(0));
+        assert client.equalz(found.get(0));
     }
 
 }

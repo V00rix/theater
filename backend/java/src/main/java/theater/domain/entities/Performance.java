@@ -10,9 +10,19 @@ import java.io.Serializable;
 //@JsonIgnoreProperties(value = {"createdAt", "updatedAt"},
 //        allowGetters = true)
 public class Performance extends EntityBase<Performance> implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+//        @Id
+//        @GeneratedValue(strategy = GenerationType.AUTO)
+////        @GenericGenerator(name="seq_id", strategy="theater.domain.DynamicGenerator")
+//        private Long id;
+//
+//
+//    public Long getId() {
+//        return id;
+//    }
+//
+//    public void setId(Integer performance) {
+//        id = performance.longValue();
+//    }
 
     @Column(nullable = false)
     public String author;
@@ -39,7 +49,7 @@ public class Performance extends EntityBase<Performance> implements Serializable
     }
 
     @Override
-    public boolean equals(Performance another) {
+    public boolean equalz(Performance another) {
         return title.equals(another.title) && author.equals(another.author);
     }
 
@@ -49,10 +59,6 @@ public class Performance extends EntityBase<Performance> implements Serializable
         title = another.title;
         image = another.image;
         description = another.description;
-    }
-
-    public Long getId() {
-        return id;
     }
 
     //

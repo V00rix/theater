@@ -78,7 +78,7 @@ public class SessionTest extends JpaTestBase implements CRUDTest {
         var session = Dummy.session(hall, performance);
         sessionRepository.save(session);
         var found = EntityTestBase.findAllAndPrint(sessionRepository);
-        assert session.equals(found.get(0));
+        assert session.equalz(found.get(0));
     }
 
 }

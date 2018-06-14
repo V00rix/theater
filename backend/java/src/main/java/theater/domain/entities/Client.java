@@ -33,7 +33,7 @@ public class Client extends EntityBase<Client> implements Serializable {
     }
 
     @Override
-    public boolean equals(Client another) {
+    public boolean equalz(Client another) {
         return contact.equals(another.contact) && name.equals(another.name);
     }
 

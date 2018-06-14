@@ -2,6 +2,7 @@ package theater.controllers;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.web.bind.annotation.*;
 import theater.domain.entities.Theater;
 import theater.repositories.TheaterRepository;
@@ -32,18 +33,18 @@ public class TheaterController extends ControllerBase {
         }
     }
 
-    @RequestMapping(value = "/new", method = RequestMethod.POST, produces = "application/json")
-    public @ResponseBody
-    void createTheaterData(@RequestBody Theater theaterData) {
-        theaterRepository.save(theaterData);
-    }
+//    @RequestMapping(value = "/new", method = RequestMethod.POST, produces = "application/json")
+//    public @ResponseBody
+//    void createTheaterData(@RequestBody Theater theaterData) {
+//        theaterRepository.save(theaterData);
+//    }
 
     @RequestMapping(value = "/", method = RequestMethod.POST, produces = "application/json")
     public @ResponseBody
     void updateTheaterData(@RequestBody Theater theaterData) {
         var theaters = theaterRepository.findAll();
         if (theaters.size() < 1) {
-            createTheaterData(theaterData);
+//            createTheaterData(theaterData);
         } else {
             var theater = theaters.get(0);
             theater .copy(theaterData);
@@ -51,4 +52,8 @@ public class TheaterController extends ControllerBase {
         }
     }
 
+    @Override
+    public JpaRepository repository() {
+        return theaterRepository;
+    }
 }

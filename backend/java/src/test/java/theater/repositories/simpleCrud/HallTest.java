@@ -84,7 +84,7 @@ public class HallTest extends JpaTestBase implements CRUDTest {
 
         var totalSeats = 0;
         for (Hall h : halls) {
-            totalSeats += h.seats.size();
+            totalSeats += h.getSeats().size();
         }
         assertEquals(height * width, totalSeats);
     }

@@ -7,17 +7,34 @@ import java.util.List;
 
 @Entity
 @Table(name = "t_hall")
+//@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type", visible = true)
 public class Hall extends EntityBase<Hall> implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private Long id;
+//
+//    public Long getId() {
+//        return id;
+//    }
+//
+//    public void setId(Integer hall) {
+//        id = hall.longValue();
+//    }
+
 
     @Column(nullable = false, unique = true)
     public String name;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "hall")
-    public List<Seat> seats = new ArrayList<>();
+    protected List<Seat> seats = new ArrayList<>();
+
+    public List<Seat> getSeats() {
+        seats.size();
+        System.out.println(seats);
+        return seats;
+    }
+
 
     private Hall(int height, int width) {
         for (int i = 0; i < height; i++) {
@@ -48,7 +65,7 @@ public class Hall extends EntityBase<Hall> implements Serializable {
     }
 
     @Override
-    public boolean equals(Hall another) {
+    public boolean equalz(Hall another) {
         return name.equals(another.name);
     }
 
@@ -65,14 +82,10 @@ public class Hall extends EntityBase<Hall> implements Serializable {
         }
     }
 
-    public Long getId() {
-        return id;
-    }
-
     @Entity
     @Table(name = "t_seat")
     @IdClass(Seat.class)
-    public static class Seat implements Serializable {
+    public static class Seat implements Serializable, Cloneable {
         @Id
         public int x;
         @Id
@@ -85,7 +98,11 @@ public class Hall extends EntityBase<Hall> implements Serializable {
 
         @Override
         protected Seat clone() throws CloneNotSupportedException {
-            super.clone();
+//            try {
+                super.clone();
+//            } catch (CloneNotSupportedException e) {
+//                e.printStackTrace();
+//            }
             var s = new Seat();
             s.x = x;
             s.y = y;

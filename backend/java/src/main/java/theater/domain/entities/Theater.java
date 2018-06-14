@@ -56,7 +56,7 @@ public class Theater extends EntityBase<Theater> implements Serializable {
     }
 
     @Override
-    public boolean equals(Theater another) {
+    public boolean equalz(Theater another) {
         return name.equals(another.name) && address.equals(another.address);
     }
 
