@@ -39,6 +39,12 @@ public class HallTest extends JpaTestBase implements CRUDTest {
         hallRepository.save(hall);
     }
 
+    @Test
+    public void createMultiple() {
+        // TODO: 14-Jun-18 Implement -> will fail due to bad JPA mappings!
+        throw new NotImplementedException();
+    }
+
     @Override
     @Test
     public void read() {

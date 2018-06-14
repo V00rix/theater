@@ -35,7 +35,7 @@ public class HallController extends ControllerBase {
     @RequestMapping(value = "/{hallId}", method = RequestMethod.GET, produces = "application/json")
     public @ResponseBody
     Hall getHall(@PathVariable String hallId) {
-        return hallRepository.findById(Long.parseLong(hallId)).orElse(null);
+        return hallRepository.findById(Long.parseLong(hallId)).orElseThrow();
     }
 
     // TODO: 14-Jun-18 Change this after FE implementation
@@ -60,5 +60,11 @@ public class HallController extends ControllerBase {
         var hall = new Hall(name);
         hallRepository.save(hall);
         return hall;
+    }
+
+    @RequestMapping(value = "/{hallId}", method = RequestMethod.DELETE, produces = "application/json")
+    public @ResponseBody
+    void deleteHall(@PathVariable String hallId) {
+        hallRepository.delete(hallRepository.findById(Long.parseLong(hallId)).orElseThrow());
     }
 }
