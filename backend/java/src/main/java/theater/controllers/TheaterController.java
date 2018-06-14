@@ -32,14 +32,26 @@ public class TheaterController extends ControllerBase {
         }
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.POST, produces = "application/json")
+    @RequestMapping(value = "/new", method = RequestMethod.POST, produces = "application/json")
     public @ResponseBody
-    void setTheaterData(@RequestBody Theater theaterData) {
+    void createTheaterData(@RequestBody Theater theaterData) {
         theaterRepository.save(theaterData);
     }
 
-    @GetMapping("/greeting")
-    public @ResponseBody String greeting() {
-        return "Hello Mock";
+    @RequestMapping(value = "/", method = RequestMethod.POST, produces = "application/json")
+    public @ResponseBody
+    void updateTheaterData(@RequestBody Theater theaterData) {
+        var theaters = theaterRepository.findAll();
+        if (theaters.size() < 1) {
+            createTheaterData(theaterData);
+        } else {
+
+            var theater = theaters.get(0);
+            theaterData.id = theater.id;
+            theater = theaterData;
+
+            theaterRepository.save(theater);
+        }
     }
+
 }

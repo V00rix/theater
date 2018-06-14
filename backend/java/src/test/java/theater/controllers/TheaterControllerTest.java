@@ -7,7 +7,6 @@ import theater.repositories.TheaterRepository;
 import theater.utility.Dummy;
 import theater.utility.RESTTestBase;
 
-import static org.hamcrest.Matchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -19,13 +18,6 @@ public class TheaterControllerTest extends RESTTestBase implements RESTTest {
 
     @Autowired
     TheaterRepository theaterRepository;
-
-    @Test
-    public void greetingShouldReturnMessageFromService() throws Exception {
-        this.mockMvc.perform(get(url + "greeting")).andDo(print()).andExpect(status().isOk())
-                .andExpect(content().string(containsString("Hello Mock")));
-    }
-
 
     @Override
     @Test
@@ -50,7 +42,7 @@ public class TheaterControllerTest extends RESTTestBase implements RESTTest {
         var theater = Dummy.theater();
 
         // Perform request
-        this.mockMvc.perform(post(url)
+        this.mockMvc.perform(post(url + "new")
                 .content(mapper.writeValueAsString(theater))
                 .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
@@ -60,9 +52,36 @@ public class TheaterControllerTest extends RESTTestBase implements RESTTest {
         var created = theaterRepository.findAll().get(0);
 
         assert created != null;
-
-        created.print();
-
         assert created.equals(theater);
+    }
+
+    @Test
+    public void updateTest() throws Exception {
+
+        // Create theater
+        theaterRepository.deleteAll();
+        var theater = Dummy.theater();
+
+        // Save
+        theaterRepository.save(theater);
+
+        // Change
+        var newTheater = Dummy.theater();
+        newTheater.name = "Second Name";
+        newTheater.address = "1 Box 2 Left 10 Above the Skies";
+
+        // Perform request
+        this.mockMvc.perform(post(url)
+                .content(mapper.writeValueAsString(newTheater))
+                .contentType(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk());
+
+        // Check
+        var created = theaterRepository.findAll().get(0);
+
+        assert created != null;
+        assert !created.equals(theater);
+        assert created.equals(newTheater);
     }
 }

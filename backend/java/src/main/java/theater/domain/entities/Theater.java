@@ -15,7 +15,7 @@ public class Theater implements Serializable, EntityBase<Theater> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonIgnore
-    private Long id;
+    public Long id;
 
     @Column(nullable = false)
     public String name;
