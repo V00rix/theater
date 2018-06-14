@@ -38,7 +38,8 @@ public class HallController extends ControllerBase {
         return hallRepository.findById(Long.parseLong(hallId)).orElse(null);
     }
 
-    // TODO: 14-Jun-18 Change this after FE implementation: i.e. most likely won't be receiving Hall object
+    // TODO: 14-Jun-18 Change this after FE implementation
+    // i.e. most likely won't be receiving Hall object
     @RequestMapping(value = "/{hallId}", method = RequestMethod.POST, produces = "application/json")
     public @ResponseBody
     void setHall(@RequestBody Hall hallData, @PathVariable String hallId) {
