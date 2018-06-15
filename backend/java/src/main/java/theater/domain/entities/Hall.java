@@ -43,7 +43,7 @@ public class Hall extends EntityBase<Hall> implements Serializable {
     //endregion
 
     public List<Seat> getSeats() {
-        seats.size(); // ??todo
+//        seats.size(); // ??todo
         return seats;
     }
 

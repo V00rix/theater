@@ -83,7 +83,7 @@ CREATE TABLE t_order (
   id         SERIAL UNIQUE,
   created_on TIMESTAMP PRIMARY KEY,
   client     INT      NOT NULL,
-  session    INT      NOT NULL,
+  session    INT,
   --   is_digital       BOOL DEFAULT TRUE                                            NOT NULL,
   --   is_purchase      BOOL DEFAULT FALSE                                           NOT NULL,
   checkout   checkout NOT NULL,

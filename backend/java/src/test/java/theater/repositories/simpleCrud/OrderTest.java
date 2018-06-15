@@ -63,7 +63,7 @@ public class OrderTest extends JpaTestBase implements CRUDTest {
     public void create() {
         orderRepository.deleteAll();
         var order = Dummy.order(session, client);
-        sessionRepository.save(session);
+        orderRepository.save(order);
     }
 
     @Override

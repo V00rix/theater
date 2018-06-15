@@ -81,4 +81,6 @@ public class SessionTest extends JpaTestBase implements CRUDTest {
         assert session.equalz(found.get(0));
     }
 
+    // TODO: 15-Jun-18 Write test for cascade delete: delete session -> expected order.session set null
+
 }

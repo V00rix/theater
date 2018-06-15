@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class ControllerBase<R extends EntityBase, T extends JpaRepository<R, Long>> {
+public abstract class ControllerBase<E extends EntityBase, T extends JpaRepository<E, Long>> {
 
     protected abstract T repository();
 
@@ -28,9 +28,9 @@ public abstract class ControllerBase<R extends EntityBase, T extends JpaReposito
     @RequestMapping(value = "/", method = RequestMethod.GET, produces = "application/json")
     public @ResponseBody
     @Transactional
-    Map<String, R> getAll() {
+    Map<String, E> getAll() {
         var entities = repository().findAll();
-        var response = new HashMap<String, R>();
+        var response = new HashMap<String, E>();
 
         for (var entity : entities) {
             response.put(entity.getId().toString(), entity);
@@ -40,13 +40,13 @@ public abstract class ControllerBase<R extends EntityBase, T extends JpaReposito
 
     @RequestMapping(value = "/first", method = RequestMethod.GET, produces = "application/json")
     public @ResponseBody
-    R getFirst() {
+    E getFirst() {
         return repository().findAll().get(0);
     }
 
     @RequestMapping(value = "/", method = RequestMethod.POST, produces = "application/json")
     public @ResponseBody
-    void updateFirst(@RequestBody R newEntity) {
+    void updateFirst(@RequestBody E newEntity) {
         var entities = repository().findAll();
         if (entities.isEmpty()) {
             create(newEntity);
@@ -63,14 +63,14 @@ public abstract class ControllerBase<R extends EntityBase, T extends JpaReposito
         var results = repository().findAll(new Sort(Sort.Direction.ASC, "id"));
         var response = new HashMap<Integer, String>();
 
-        results.forEach(r -> response.put(r.getId().intValue(), r.stringValue()));
+        results.forEach(e -> response.put(e.getId().intValue(), e.stringValue()));
 
         return response;
     }
 
     @RequestMapping(value = "/new", method = RequestMethod.POST, produces = "application/json")
     public @ResponseBody
-    R create(@RequestBody R entity) {
+    E create(@RequestBody E entity) {
         repository().save(entity);
         return entity;
     }
@@ -83,13 +83,13 @@ public abstract class ControllerBase<R extends EntityBase, T extends JpaReposito
 
     @RequestMapping(value = "/id/{entityId}", method = RequestMethod.GET, produces = "application/json")
     public @ResponseBody
-    R getSpecific(@PathVariable String entityId) {
+    E getSpecific(@PathVariable String entityId) {
         return repository().findById(Long.parseLong(entityId)).orElseThrow();
     }
 
     @RequestMapping(value = "/id/{entityId}", method = RequestMethod.POST, produces = "application/json")
     public @ResponseBody
-    void update(@RequestBody R newEntity, @PathVariable String entityId) {
+    void update(@RequestBody E newEntity, @PathVariable String entityId) {
         var old = repository().findById(Long.parseLong(entityId)).orElseThrow();
         old.update(newEntity);
         repository().save(old);

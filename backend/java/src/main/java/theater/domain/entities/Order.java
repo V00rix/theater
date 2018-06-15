@@ -1,7 +1,5 @@
 package theater.domain.entities;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
@@ -21,21 +19,35 @@ public class Order extends EntityBase<Order> implements Serializable {
     public Timestamp createdOn;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "session", nullable = false)
+    @JoinColumn(name = "session")
     public Session session;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "client", nullable = false)
     public Client client;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     @JoinColumn(name = "order")
     public List<Seat> seats = new ArrayList<>();
+    //endregion
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonProperty(value = "code")
-    private Long id;
+    //region Get/setters for correct lazy json
+    public Long getClient() {
+        return client.getId();
+    }
+
+    public void setClient(Integer client) {
+        this.client = new Client();
+        this.client.setId(client.longValue());
+    }
+    public Long getSession() {
+        return session.getId();
+    }
+
+    public void setSession(Integer session) {
+        this.session = new Session();
+        this.session.setId(session.longValue());
+    }
     //endregion
 
     //region Constructors
