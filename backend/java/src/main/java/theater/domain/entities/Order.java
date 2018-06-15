@@ -10,17 +10,8 @@ import java.util.List;
 
 @Entity
 @Table(name = "t_order")
-//@TypeDef(name="myEnumConverter", typeClass=MyEnumConverter.class)
 public class Order extends EntityBase<Order> implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonProperty(value = "code")
-    private Long id;
-
-    public Long getId() {
-        return id;
-    }
-
+    //region Fields
     public Boolean confirmed;
 
     @Enumerated(EnumType.STRING)
@@ -41,16 +32,24 @@ public class Order extends EntityBase<Order> implements Serializable {
     @JoinColumn(name = "order")
     public List<Seat> seats = new ArrayList<>();
 
-    private Order() {
-        this.createdOn = new Timestamp(System.currentTimeMillis());
-    }
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonProperty(value = "code")
+    private Long id;
+    //endregion
 
+    //region Constructors
     public Order(Session session, Client client, Checkout checkout) {
         this();
         this.session = session;
         this.client = client;
         this.checkout = checkout;
     }
+
+    private Order() {
+        this.createdOn = new Timestamp(System.currentTimeMillis());
+    }
+    //endregion
 
     @Override
     public void print() {
@@ -100,13 +99,9 @@ public class Order extends EntityBase<Order> implements Serializable {
     public static class Seat implements Serializable, Cloneable {
         @Id
         public int row;
+
         @Id
         public int seat;
-
-        @Override
-        public String toString() {
-            return "Row " + this.row + ". Seat " + this.seat;
-        }
 
         @Override
         protected Seat clone() throws CloneNotSupportedException {
@@ -115,6 +110,11 @@ public class Order extends EntityBase<Order> implements Serializable {
             s.row = row;
             s.seat = seat;
             return s;
+        }
+
+        @Override
+        public String toString() {
+            return "Row " + this.row + ". Seat " + this.seat;
         }
     }
 }

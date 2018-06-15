@@ -1,24 +1,21 @@
 package theater.domain.entities;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.io.Serializable;
 
 @Entity
 @Table(name = "t_client")
 public class Client extends EntityBase<Client> implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
-    public Long getId() {
-        return id;
-    }
-
+    //region Fields
     @Column(unique = true, nullable = false)
     public String contact;
 
     public String name;
+    //endregion
 
+    //region Constructors
     public Client() {
     }
 
@@ -26,6 +23,7 @@ public class Client extends EntityBase<Client> implements Serializable {
         this.contact = contact;
         this.name = name;
     }
+    //endregion
 
     @Override
     public void print() {
@@ -42,17 +40,4 @@ public class Client extends EntityBase<Client> implements Serializable {
         contact = another.contact;
         name = another.name;
     }
-    //    }
-    //
-    //    @OneToMany(cascade = CascadeType.ALL,
-    //            fetch = FetchType.LAZY,
-    //            mappedBy = "client")
-    //    @JsonIgnore
-    //    public Set<Order> orders = new HashSet<>();
-    //
-    //    public void print() {
-    //        System.out.println("--Client");
-    //        System.out.println(name);
-    //        System.out.println(email);
-    //    }
 }

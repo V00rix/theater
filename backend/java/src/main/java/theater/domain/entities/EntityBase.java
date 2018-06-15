@@ -26,8 +26,10 @@ import java.io.Serializable;
 public abstract class EntityBase<T extends EntityBase> implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
-//    @GenericGenerator(name="seq_id", strategy="theater.domain.DynamicGenerator")
     public Long id;
+
+    public EntityBase() {
+    }
 
     public Long getId() {
         return id;
@@ -35,9 +37,6 @@ public abstract class EntityBase<T extends EntityBase> implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public EntityBase() {
     }
 
     public abstract void print();

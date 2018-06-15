@@ -1,29 +1,15 @@
 package theater.domain.entities;
 
-
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.io.Serializable;
 
 @Entity
 @Table(name = "t_performance")
-//@EntityListeners(AuditingEntityListener.class)
-//@JsonIgnoreProperties(value = {"createdAt", "updatedAt"},
-//        allowGetters = true)
 public class Performance extends EntityBase<Performance> implements Serializable {
-//        @Id
-//        @GeneratedValue(strategy = GenerationType.AUTO)
-////        @GenericGenerator(name="seq_id", strategy="theater.domain.DynamicGenerator")
-//        private Long id;
-//
-//
-//    public Long getId() {
-//        return id;
-//    }
-//
-//    public void setId(Integer performance) {
-//        id = performance.longValue();
-//    }
 
+    //region Fields
     @Column(nullable = false)
     public String author;
 
@@ -34,7 +20,9 @@ public class Performance extends EntityBase<Performance> implements Serializable
     public String image;
 
     public String description;
+    //endregion
 
+    //region Constructors
     public Performance() {
     }
 
@@ -42,6 +30,7 @@ public class Performance extends EntityBase<Performance> implements Serializable
         this.author = author;
         this.title = title;
     }
+    //endregion
 
     @Override
     public void print() {
@@ -60,10 +49,4 @@ public class Performance extends EntityBase<Performance> implements Serializable
         image = another.image;
         description = another.description;
     }
-
-    //
-    //    @OneToMany(cascade = CascadeType.ALL,
-    //            fetch = FetchType.LAZY,
-    //            mappedBy = "performance")
-    //    public Set<Session> sessions = new HashSet<>();
 }

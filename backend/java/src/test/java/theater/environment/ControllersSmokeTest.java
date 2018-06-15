@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.test.context.junit4.SpringRunner;
+import theater.TestBase;
 import theater.TheaterApplication;
 import theater.controllers.HallController;
 import theater.controllers.PerformanceController;
@@ -17,7 +18,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = TheaterApplication.class)
 @ComponentScan("theater.controllers")
-public class ControllersSmokeTest {
+public class ControllersSmokeTest extends TestBase {
 
     @Autowired
     private StatusController statusController;

@@ -9,50 +9,47 @@ import theater.domain.exceptions.NotImplementedException;
 import theater.repositories.TheaterRepository;
 import theater.utility.JpaTestBase;
 
+import javax.validation.ConstraintViolationException;
 import java.math.BigDecimal;
 
 public class TheaterTest extends JpaTestBase implements CRUDTest {
 
-    //region Helpers
-    private static Theater theater(int seats) {
-        return new Theater("Address", "Theater Name", new BigDecimal(100), "Every Tuesday, Wednesday and Friday from 10:00 to 16:00", seats);
-
-    }
-
-    private static Theater theater() {
-        return new Theater("Address", "Theater Name");
-    }
-    //endregion
-
-    //region Autowired
     @Autowired
     TheaterRepository theaterRepository;
-    //endregion
+
+    @Test(expected = ConstraintViolationException.class)
+    public void failOnCreateEmpty() {
+        setUp();
+        var theater = new Theater();
+        theaterRepository.saveAndFlush(theater);
+    }
 
     @Before
     public void setUp() {
         theaterRepository.deleteAll();
     }
 
-    @Test(expected = DataIntegrityViolationException.class)
-    public void failOnCreateEmpty() {
-        setUp();
-        var theater = new Theater();
-        theaterRepository.save(theater);
-    }
-
-    @Test(expected = DataIntegrityViolationException.class)
+    @Test(expected = ConstraintViolationException.class)
     public void failOnNoMaximumSeats() {
         setUp();
         var theater = theater();
-        theaterRepository.save(theater);
+        System.out.println(theater.maximumSeats);
+        theaterRepository.saveAndFlush(theater);
     }
 
-    @Test(expected = DataIntegrityViolationException.class)
+    private static Theater theater() {
+        return new Theater("Address", "Theater Name");
+    }
+
+    @Test(expected = ConstraintViolationException.class)
     public void failOnSmallMaximumSeats() {
         setUp();
         var theater = theater(0);
-        theaterRepository.save(theater);
+        theaterRepository.saveAndFlush(theater);
+    }
+
+    private static Theater theater(int seats) {
+        return new Theater("Address", "Theater Name", new BigDecimal(100), "Every Tuesday, Wednesday and Friday from 10:00 to 16:00", seats);
     }
 
     @Override
@@ -96,6 +93,6 @@ public class TheaterTest extends JpaTestBase implements CRUDTest {
         var theater = theater(1);
         var theater2 = theater(312);
         theaterRepository.save(theater);
-        theaterRepository.save(theater2);
+        theaterRepository.saveAndFlush(theater2);
     }
 }

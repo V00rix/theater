@@ -7,34 +7,28 @@ import java.util.List;
 
 @Entity
 @Table(name = "t_hall")
-//@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type", visible = true)
 public class Hall extends EntityBase<Hall> implements Serializable {
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    private Long id;
-//
-//    public Long getId() {
-//        return id;
-//    }
-//
-//    public void setId(Integer hall) {
-//        id = hall.longValue();
-//    }
-
-
+    //region Fields
     @Column(nullable = false, unique = true)
     public String name;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "hall")
     protected List<Seat> seats = new ArrayList<>();
+    //endregion
 
-    public List<Seat> getSeats() {
-        seats.size();
-        System.out.println(seats);
-        return seats;
+    //region Constructors
+    public Hall() {
     }
 
+    public Hall(String name) {
+        this.name = name;
+    }
+
+    public Hall(String name, int height, int width) {
+        this(height, width);
+        this.name = name;
+    }
 
     private Hall(int height, int width) {
         for (int i = 0; i < height; i++) {
@@ -46,17 +40,11 @@ public class Hall extends EntityBase<Hall> implements Serializable {
             }
         }
     }
+    //endregion
 
-    public Hall() {
-    }
-
-    public Hall(String name) {
-        this.name = name;
-    }
-
-    public Hall(String name, int height, int width) {
-        this(height, width);
-        this.name = name;
+    public List<Seat> getSeats() {
+        seats.size(); // ??todo
+        return seats;
     }
 
     @Override
@@ -88,25 +76,22 @@ public class Hall extends EntityBase<Hall> implements Serializable {
     public static class Seat implements Serializable, Cloneable {
         @Id
         public int x;
+
         @Id
         public int y;
 
         @Override
-        public String toString() {
-            return "Row " + this.y + ". Seat " + this.x;
-        }
-
-        @Override
         protected Seat clone() throws CloneNotSupportedException {
-//            try {
-                super.clone();
-//            } catch (CloneNotSupportedException e) {
-//                e.printStackTrace();
-//            }
+            super.clone();
             var s = new Seat();
             s.x = x;
             s.y = y;
             return s;
+        }
+
+        @Override
+        public String toString() {
+            return "Row " + this.y + ". Seat " + this.x;
         }
     }
 }

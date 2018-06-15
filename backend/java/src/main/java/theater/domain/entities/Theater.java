@@ -1,24 +1,16 @@
 package theater.domain.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.validation.constraints.Min;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
 @Entity
 @Table(name = "t_theater")
 public class Theater extends EntityBase<Theater> implements Serializable {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonIgnore
-    private Long id;
-
-    public Long getId() {
-        return id;
-    }
-
+    //region Fields
     @Column(nullable = false)
     public String name;
 
@@ -32,15 +24,13 @@ public class Theater extends EntityBase<Theater> implements Serializable {
     public String openTime;
 
     @Column(name = "maximum_seats")
+    @Min(1)
     public int maximumSeats;
+    //endregion
 
+    //region Constructors
     public Theater() {
 
-    }
-
-    public Theater(String address, String name) {
-        this.address = address;
-        this.name = name;
     }
 
     public Theater(String address, String name, BigDecimal ticketPrice, String openTime, int maximumSeats) {
@@ -49,6 +39,12 @@ public class Theater extends EntityBase<Theater> implements Serializable {
         this.openTime = openTime;
         this.maximumSeats = maximumSeats;
     }
+
+    public Theater(String address, String name) {
+        this.address = address;
+        this.name = name;
+    }
+    //endregion
 
     @Override
     public void print() {

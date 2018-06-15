@@ -26,7 +26,7 @@ public class HallControllerTest extends RESTTestBase implements RESTTest {
     @Test
     public void getTest() throws Exception {
         hallRepository.deleteAll();
-        var hallNames = new String[]{"hall one", "hall two", "hall name three"};
+        var hallNames = new String[] {"hall one", "hall two", "hall name three"};
         var map = new ArrayList<Pair<Integer, String>>();
         for (var name : hallNames) {
             var entity = new Hall(name);
@@ -40,30 +40,6 @@ public class HallControllerTest extends RESTTestBase implements RESTTest {
 
         for (var p : map) {
             res.andExpect(jsonPath("$." + p.getKey(), is(p.getValue())));
-        }
-    }
-
-    // FIXME: 14-Jun-18 Failing because of bad JPA 'seat -> hall' relation (fix jpa mappings!)
-    @Test
-//    @Ignore
-    public void getSpecificHallTest() throws Exception {
-        hallRepository.deleteAll();
-        var halls = new Hall[]{
-                new Hall("hall one", 3, 5),
-//                new Hall("hall two", 10, 10),
-//                new Hall("hall name three", 5, 30),
-//                Dummy.hall()
-        };
-
-        for (var hall : halls) {
-            hallRepository.save(hall);
-        }
-
-        for (var hall : halls) {
-            var res = mockMvc.perform(get(url + hall.getId().toString())).andDo(print())
-                    .andExpect(status().isOk())
-                    .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-                    .andExpect(content().json(mapper.writeValueAsString(hall)));
         }
     }
 
@@ -86,6 +62,30 @@ public class HallControllerTest extends RESTTestBase implements RESTTest {
         assert halls.size() == 1;
         var hall = halls.get(0);
         assert hall.name.equals(hallName);
+    }
+
+    // FIXME: 14-Jun-18 Failing because of bad JPA 'seat -> hall' relation (fix jpa mappings!)
+    @Test
+    //    @Ignore
+    public void getSpecificHallTest() throws Exception {
+        hallRepository.deleteAll();
+        var halls = new Hall[] {
+                new Hall("hall one", 3, 5),
+                //                new Hall("hall two", 10, 10),
+                //                new Hall("hall name three", 5, 30),
+                //                Dummy.hall()
+        };
+
+        for (var hall : halls) {
+            hallRepository.save(hall);
+        }
+
+        for (var hall : halls) {
+            var res = mockMvc.perform(get(url + hall.getId().toString())).andDo(print())
+                    .andExpect(status().isOk())
+                    .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                    .andExpect(content().json(mapper.writeValueAsString(hall)));
+        }
     }
 
     @Test
