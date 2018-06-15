@@ -58,7 +58,7 @@ public class Hall extends EntityBase<Hall> implements Serializable {
     }
 
     @Override
-    public void copy(Hall another) {
+    public void update(Hall another) {
         name = another.name;
         seats = new ArrayList<>();
         try {
@@ -68,6 +68,11 @@ public class Hall extends EntityBase<Hall> implements Serializable {
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public String stringValue() {
+        return name;
     }
 
     @Entity

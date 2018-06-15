@@ -5,7 +5,6 @@ import org.springframework.stereotype.Repository;
 import theater.domain.entities.Client;
 
 @Repository
-public interface ClientsRepository extends JpaRepository<Client, Long> {
+public interface ClientRepository extends JpaRepository<Client, Long> {
 
-//    Optional<Client> findByEmail(String email);
 }

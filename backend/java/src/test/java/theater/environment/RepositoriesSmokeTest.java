@@ -17,7 +17,7 @@ public class RepositoriesSmokeTest extends JpaTestBase {
     private TestEntityManager entityManager;
 
     @Autowired
-    private ClientsRepository clientsRepository;
+    private ClientRepository clientRepository;
 
     @Autowired
     private HallRepository hallRepository;
@@ -38,7 +38,7 @@ public class RepositoriesSmokeTest extends JpaTestBase {
 
     @Test
     public void contextLoads() throws Exception {
-        assertThat(clientsRepository).isNotNull();
+        assertThat(clientRepository).isNotNull();
         assertThat(hallRepository).isNotNull();
         assertThat(orderRepository).isNotNull();
         assertThat(performanceRepository).isNotNull();

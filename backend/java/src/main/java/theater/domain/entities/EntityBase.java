@@ -24,11 +24,26 @@ import java.io.Serializable;
 })
 @MappedSuperclass
 public abstract class EntityBase<T extends EntityBase> implements Serializable {
+    private static final char delimiter = ':';
+
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     public Long id;
 
     public EntityBase() {
+    }
+
+    String fieldsToString(String... valuesAsString) {
+        var r = new StringBuilder();
+        var length = valuesAsString.length;
+        for (int i = 0; i < length; i++) {
+            String v = valuesAsString[i];
+            r.append(v);
+            if (i < length - 1) {
+                r.append(delimiter);
+            }
+        }
+        return r.toString();
     }
 
     public Long getId() {
@@ -43,5 +58,9 @@ public abstract class EntityBase<T extends EntityBase> implements Serializable {
 
     public abstract boolean equalz(T another);
 
-    public abstract void copy(T another);
+    public abstract void update(T another);
+
+    public String stringValue() {
+        return this.toString();
+    }
 }

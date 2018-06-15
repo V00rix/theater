@@ -36,8 +36,13 @@ public class Client extends EntityBase<Client> implements Serializable {
     }
 
     @Override
-    public void copy(Client another) {
+    public void update(Client another) {
         contact = another.contact;
         name = another.name;
+    }
+
+    @Override
+    public String stringValue() {
+        return fieldsToString(name, contact);
     }
 }

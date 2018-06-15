@@ -29,7 +29,7 @@ public class OrderTest extends JpaTestBase implements CRUDTest {
     SessionRepository sessionRepository;
 
     @Autowired
-    ClientsRepository clientsRepository;
+    ClientRepository clientRepository;
     //endregion
 
     //region Fields
@@ -47,8 +47,8 @@ public class OrderTest extends JpaTestBase implements CRUDTest {
         hallRepository.save(hall);
         session = Dummy.find(sessionRepository).orElse(Dummy.session(hall, performance));
         sessionRepository.save(session);
-        client = Dummy.find(clientsRepository).orElse(Dummy.client());
-        clientsRepository.save(client);
+        client = Dummy.find(clientRepository).orElse(Dummy.client());
+        clientRepository.save(client);
         orderRepository.deleteAll();
     }
 

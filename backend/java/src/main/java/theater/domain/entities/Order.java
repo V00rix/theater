@@ -74,12 +74,12 @@ public class Order extends EntityBase<Order> implements Serializable {
     }
 
     @Override
-    public void copy(Order another) {
+    public void update(Order another) {
         confirmed = another.confirmed;
         checkout = another.checkout;
         createdOn = another.createdOn;
-        client.copy(another.client);
-        session.copy(another.session);
+        client.update(another.client);
+        session.update(another.session);
         seats = new ArrayList<>();
         try {
             for (Seat s : another.seats) {

@@ -57,11 +57,16 @@ public class Theater extends EntityBase<Theater> implements Serializable {
     }
 
     @Override
-    public void copy(Theater another) {
+    public void update(Theater another) {
         name = another.name;
         address = another.address;
         ticketPrice = another.ticketPrice;
         openTime = another.openTime;
         maximumSeats = another.maximumSeats;
+    }
+
+    @Override
+    public String stringValue() {
+        return fieldsToString(name, address);
     }
 }

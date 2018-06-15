@@ -4,7 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import theater.domain.exceptions.NotImplementedException;
-import theater.repositories.ClientsRepository;
+import theater.repositories.ClientRepository;
 import theater.utility.Dummy;
 import theater.utility.EntityTestBase;
 import theater.utility.JpaTestBase;
@@ -13,12 +13,12 @@ public class ClientTest extends JpaTestBase implements CRUDTest {
 
     //region Autowired
     @Autowired
-    ClientsRepository clientsRepository;
+    ClientRepository clientRepository;
     //endregion
 
     @Before
     public void setUp() {
-        clientsRepository.deleteAll();
+        clientRepository.deleteAll();
     }
 
     @Override
@@ -26,13 +26,13 @@ public class ClientTest extends JpaTestBase implements CRUDTest {
     public void create() {
         setUp();
         var client = Dummy.client();
-        clientsRepository.save(client);
+        clientRepository.save(client);
     }
 
     @Override
     @Test
     public void read() {
-        EntityTestBase.findAllAndPrint(clientsRepository);
+        EntityTestBase.findAllAndPrint(clientRepository);
     }
 
     @Override
@@ -50,10 +50,10 @@ public class ClientTest extends JpaTestBase implements CRUDTest {
     @Override
     @Test
     public void createAndRead() {
-        clientsRepository.deleteAll();
+        clientRepository.deleteAll();
         var client = Dummy.client();
-        clientsRepository.save(client);
-        var found = EntityTestBase.findAllAndPrint(clientsRepository);
+        clientRepository.save(client);
+        var found = EntityTestBase.findAllAndPrint(clientRepository);
         assert client.equalz(found.get(0));
     }
 

@@ -6,9 +6,6 @@ import org.springframework.web.bind.annotation.*;
 import theater.domain.entities.Performance;
 import theater.repositories.PerformanceRepository;
 
-import java.util.HashMap;
-import java.util.Map;
-
 @RestController
 @RequestMapping("/api/performance")
 public class PerformanceController extends ControllerBase<Performance, PerformanceRepository> {
@@ -19,41 +16,6 @@ public class PerformanceController extends ControllerBase<Performance, Performan
     @Autowired
     public PerformanceController(PerformanceRepository performanceRepository) {
         this.performanceRepository = performanceRepository;
-    }
-
-    @RequestMapping(value = "/names", method = RequestMethod.GET, produces = "application/json")
-    public @ResponseBody
-    Map<String, String> getAllPerformances() {
-        var performances = this.performanceRepository.findAll();
-        var response  = new HashMap<String, String>();
-
-        for (var performance : performances) {
-            response.put(performance.getId().toString(), performance.title + " - " + performance.author);
-        }
-
-        return response;
-    }
-
-    @RequestMapping(value = "/{performanceId}", method = RequestMethod.GET, produces = "application/json")
-    public @ResponseBody
-    Performance getPerformance(@PathVariable String performanceId) {
-        return performanceRepository.findById(Long.parseLong(performanceId)).orElseThrow();
-    }
-
-    @RequestMapping(value = "/{performanceId}", method = RequestMethod.POST, produces = "application/json")
-    public @ResponseBody
-    void updatePerformance(@RequestBody Performance performance, @PathVariable String performanceId) {
-        var found = performanceRepository.findById(Long.parseLong(performanceId)).orElseThrow();
-
-        found.copy(performance);
-
-        performanceRepository.save(found);
-    }
-
-    @RequestMapping(value = "/{performanceId}", method = RequestMethod.DELETE, produces = "application/json")
-    public @ResponseBody
-    void deletePerformance(@PathVariable String performanceId) {
-        performanceRepository.delete(performanceRepository.findById(Long.parseLong(performanceId)).orElseThrow());
     }
 
     @Override

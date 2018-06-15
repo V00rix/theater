@@ -67,9 +67,9 @@ public class Session extends EntityBase<Session> implements Serializable {
     }
 
     @Override
-    public void copy(Session another) {
-        hall.copy(another.hall);
-        performance.copy(another.performance);
+    public void update(Session another) {
+        hall.update(another.hall);
+        performance.update(another.performance);
         date = another.date;
     }
 }

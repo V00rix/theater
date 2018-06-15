@@ -43,10 +43,15 @@ public class Performance extends EntityBase<Performance> implements Serializable
     }
 
     @Override
-    public void copy(Performance another) {
+    public void update(Performance another) {
         author = another.author;
         title = another.title;
         image = another.image;
         description = another.description;
+    }
+
+    @Override
+    public String stringValue() {
+        return fieldsToString(title, author);
     }
 }
