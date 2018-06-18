@@ -17,7 +17,7 @@ export class ZoomedComponent implements OnInit {
   private selectedSeatsCount: number;
   public containerWidth = 500;
 
-  constructor(@Inject(SessionComponent) private parent: SessionComponent , public data: DataService) {
+  constructor(@Inject(SessionComponent) public parent: SessionComponent , public data: DataService) {
   }
 
   ngOnInit() {

@@ -53,17 +53,17 @@ public class UserFlowController {
     }
 
     // TODO: 17-Jun-18  
-//    @RequestMapping(value = "/orders", method = RequestMethod.GET, produces = "application/json")
-//    public @ResponseBody
-//    Map<Integer, OrderResponse> getOrders() {
-//        var maximumSeats = theaterRepository.findAll().get(0).maximumSeats;
-//        var response = new PerformanceResponse(new HashMap<>(), maximumSeats);
-//
-//        var performances = performanceRepository.findAll();
-//        performances.forEach(p -> response.performances.put(p.id.intValue(), p));
-//
-//        return response;
-//    }
+    @RequestMapping(value = "/orders", method = RequestMethod.GET, produces = "application/json")
+    public @ResponseBody
+    void getOrders() {
+        //        var maximumSeats = theaterRepository.findAll().get(0).maximumSeats;
+        //        var response = new PerformanceResponse(new HashMap<>(), maximumSeats);
+        //
+        //        var performances = performanceRepository.findAll();
+        //        performances.forEach(p -> response.performances.put(p.id.intValue(), p));
+        //
+        //        return response;
+    }
 
     @RequestMapping(value = "/session/{sessionId}", method = RequestMethod.GET, produces = "application/json")
     public @ResponseBody

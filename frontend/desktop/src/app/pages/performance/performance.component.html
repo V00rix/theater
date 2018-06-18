@@ -10,7 +10,7 @@
 
   <div class="content-container text-center">
     <h2>{{'pages.performance.title' | translate}}</h2>
-    <h3>{{data.applicationStatus.selectedPerformance.title}}</h3>
+    <h3>{{data.performances[data.applicationStatus.selectedPerformance].title}}</h3>
     <div class="offset">
       <div *ngFor="let session of this.sessions"
            class="session action"

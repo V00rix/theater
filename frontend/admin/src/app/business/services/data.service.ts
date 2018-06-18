@@ -79,10 +79,10 @@ export class DataService {
       // {withCredentials: true}
     ).map(
       (response) => {
-        console.log('Orders loaded');
-        console.log(response);
-        this.orders = response;
-        this.ordersIds = Object.keys(this.orders);
+        // console.log('Orders loaded');
+        // console.log(response);
+        // this.orders = response;
+        // this.ordersIds = Object.keys(this.orders);
       })
       .catch((e: any) => Observable.throw(this.httpErrorHandler(e, propagate)));
   }
