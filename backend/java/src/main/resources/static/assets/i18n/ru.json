@@ -1,0 +1,7 @@
+{
+  "checkout": {
+    "DELIVERY": "Доставка",
+    "SELF_CHECKOUT": "Самовывоз",
+    "PAY_BEFORE": "Оплата перед спектаклем"
+  }
+}
