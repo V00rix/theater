@@ -10,7 +10,6 @@ import theater.TestBase;
 import theater.TheaterApplication;
 import theater.controllers.HallController;
 import theater.controllers.PerformanceController;
-import theater.controllers.StatusController;
 import theater.controllers.TheaterController;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -19,9 +18,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest(classes = TheaterApplication.class)
 @ComponentScan("theater.controllers")
 public class ControllersSmokeTest extends TestBase {
-
-    @Autowired
-    private StatusController statusController;
 
     @Autowired
     private PerformanceController performanceController;
@@ -34,7 +30,6 @@ public class ControllersSmokeTest extends TestBase {
 
     @Test
     public void contextLoads() throws Exception {
-        assertThat(statusController).isNotNull();
         assertThat(performanceController).isNotNull();
         assertThat(theaterController).isNotNull();
         assertThat(hallController).isNotNull();

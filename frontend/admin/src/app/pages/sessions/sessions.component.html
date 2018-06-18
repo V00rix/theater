@@ -1,21 +1,21 @@
 <app-basic-page [back]="{label: 'Home', link: '/home'}" [h]="[{label: 'Sessions', type: 'h2'}]">
   <app-list>
-    <app-panel-collapsible [collapsed]="true" *ngFor="let session of data.sessions; let id = index">
+    <app-panel-collapsible [collapsed]="true" *ngFor="let key of data.sessions | keys; let id = index">
       <app-drawer [active]="true" (collapsed)="resetSession(session, performanceElement, dateElement, timeElement, hallElement)">
         <label class="order-item light">
           <span class="oi-id truncate grey">{{id + 1}}</span>
-          <span class="oi-performance grey truncate">{{session.performance.title}}</span>
-          <span class="oi-name truncate text-right">{{session.date | date:'EEEEEE dd.LL.yyyy - HH:mm'}}</span>
+          <span class="oi-performance grey truncate">{{data.performances[data.sessions[key].performance].title}}</span>
+          <span class="oi-name truncate text-right">{{data.sessions[key].date | date:'EEEEEE dd.LL.yyyy - HH:mm'}}</span>
         </label>
       </app-drawer>
       <app-content>
         <div class="user-panel text-center">
           <div class="section">
             <mat-form-field>
-              <mat-select placeholder="Performance" (change)="performanceChange(session.performance, session)"
+              <mat-select placeholder="Performance" (change)="performanceChange(perfKey, data.sessions[key])"
                           #performanceElement>
-                <mat-option *ngFor="let performance of data.performances" [value]="performance">
-                  {{ performance.title }}
+                <mat-option *ngFor="let perfKey of data.performances | keys" [value]="perfKey">
+                  {{ data.performances[perfKey].title }}
                 </mat-option>
               </mat-select>
             </mat-form-field>
@@ -23,21 +23,21 @@
 
               <mat-form-field>
                 <input name="sessionDate" matInput [matDatepicker]="picker" placeholder="Date"
-                       [value]="session.date"
-                       (dateChange)="dateChange(dateElement.value, session)" #dateElement>
+                       [value]="data.sessions[key].date"
+                       (dateChange)="dateChange(dateElement.value, data.sessions[key])" #dateElement>
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker startView="year" [startAt]="session.date"></mat-datepicker>
+                <mat-datepicker #picker startView="year" [startAt]="data.sessions[key].date"></mat-datepicker>
               </mat-form-field>
             </div>
             <div class="form-time">
               <mat-form-field>
                 <input name="sessionTime" matInput placeholder="Time" [formControl]="timeInput"
                        (change)="timeChange($event.target.value, session)"
-                       [value]="session.date | date:'HH:mm'" #timeElement>
+                       [value]="data.sessions[key].date | date:'HH:mm'" #timeElement>
               </mat-form-field>
             </div>
             <mat-form-field>
-              <mat-select placeholder="Hall" [(value)]="session.hall" disabled #hallElement>
+              <mat-select placeholder="Hall" [(value)]="data.sessions[key].hall" disabled #hallElement>
                 <mat-option *ngFor="let hall of [1]" [value]="hall">
                   {{ hall }}
                 </mat-option>
@@ -54,7 +54,7 @@
             </app-dialog>
           </div>
           <div class="section">
-            <div class="margined text-center red" (click)="deleteSession(session)">Delete session</div>
+            <div class="margined text-center red" (click)="deleteSession(key)">Delete session</div>
           </div>
         </div>
       </app-content>

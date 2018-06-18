@@ -15,18 +15,20 @@
          'left': ' calc((50vw - ' + containerWidth + 'px)/2)',
          'top': ' calc((50vh - ' + containerHeight + 'px)/2)',
          'transform': 'scale(' + scaleValue + ')'}">
-      <div *ngFor="let row of data.applicationStatus.selectedSession.seats; let rowId = index">
+      <div *ngFor="let row of session.seats; let rowId = index">
       <span class="session-row">
-        {{'global.row' | translate}}<em>{{data.applicationStatus.selectedSession.seats.length - rowId}}</em>
+        {{'global.row' | translate}}<em>{{session.seats.length - rowId}}</em>
       </span>
-      <span *ngFor="let seat of row; let seatId = index" class="seat {{seat.status}}" (click)="switchSeatSelection(seat)">{{seatId + 1}}</span>
+        <span *ngFor="let seat of row; let seatId = index" class="seat {{seat.status}}"
+              (click)="switchSeatSelection(seat)">{{seatId + 1}}</span>
       </div>
     </div>
   </div>
 
 
   <app-button-back (click)="resetSeats()"></app-button-back>
-  <label class="action button-next {{selectedSeatsCount > 0 ? '' : 'disabled'}}" (click)="onConfirm()">{{'global.confirm' | translate}}</label>
+  <label class="action button-next {{selectedSeatsCount > 0 ? '' : 'disabled'}}" (click)="onConfirm()">{{'global.confirm'
+    | translate}}</label>
 </div>
 <div *ngIf="isZoomed" class="z-blocker-content fullscreen">
   <app-zoomed [constraints]="constraints" (onHide)="hideZoomed()"></app-zoomed>

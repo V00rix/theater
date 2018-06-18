@@ -1,8 +1,9 @@
-import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
-import {SeatStatus} from '../../../../../../shared/business/domain/enumeration/seatStatus.enum';
+import {Component, OnInit, Input, Output, EventEmitter, Inject} from '@angular/core';
+import {Availability} from '../../../../../../shared/business/domain/enumeration/availability';
 import {DataService} from '../../../../../../shared/business/services/data.service';
 import {Animations} from '../../../../../../shared/animations/animations';
 import {Square} from '../../../../../../shared/business/domain/square';
+import {SessionComponent} from "../session.component";
 
 @Component({
   selector: 'app-zoomed',
@@ -16,12 +17,13 @@ export class ZoomedComponent implements OnInit {
   private selectedSeatsCount: number;
   public containerWidth = 500;
 
-  constructor(public data: DataService) {
+  constructor(@Inject(SessionComponent) private parent: SessionComponent , public data: DataService) {
   }
 
   ngOnInit() {
     let seatsNumber = 0;
-    for (const row of this.data.applicationStatus.selectedSession.seats) {
+    console.log(this.parent.session);
+    for (const row of this.parent.session.seats) {
       seatsNumber = seatsNumber < row.length ? row.length : seatsNumber;
     }
     this.containerWidth = seatsNumber * 29 + 50;
@@ -34,14 +36,14 @@ export class ZoomedComponent implements OnInit {
     });
   }
 
-  switchSeatSelection(seat) {
-    if (seat.status === SeatStatus.FREE) {
+  switchSeatSelection(seat: Availability) {
+    if (seat == Availability.FREE) {
       if (this.selectedSeatsCount < this.data.maximumSeats) {
-        seat.status = SeatStatus.SELECTED;
+        seat = Availability.SELECTED;
         this.selectedSeatsCount++;
       }
     } else {
-      seat.status = SeatStatus.FREE;
+      seat = Availability.FREE;
       this.selectedSeatsCount--;
     }
   }

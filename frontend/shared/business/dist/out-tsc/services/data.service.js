@@ -72,7 +72,7 @@ var DataService = /** @class */ (function () {
     /**
      * Post booking request
      */
-    DataService.prototype.postBooking = function () {
+    DataService.prototype.createOrder = function () {
         var _this = this;
         this.http.post(this.baseUrl + "/backend/php/requests/reservation.php", null, { withCredentials: true }).subscribe(function (response) {
             _this.bookingCode = response;

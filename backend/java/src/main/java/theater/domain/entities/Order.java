@@ -27,7 +27,7 @@ public class Order extends EntityBase<Order> implements Serializable {
     public Client client;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
-    @JoinColumn(name = "order")
+    @JoinColumn(name = "\"order\"")
     public List<Seat> seats = new ArrayList<>();
     //endregion
 
@@ -40,6 +40,7 @@ public class Order extends EntityBase<Order> implements Serializable {
         this.client = new Client();
         this.client.setId(client.longValue());
     }
+
     public Long getSession() {
         return session.getId();
     }
@@ -56,6 +57,12 @@ public class Order extends EntityBase<Order> implements Serializable {
         this.session = session;
         this.client = client;
         this.checkout = checkout;
+    }
+
+    public Order(Checkout checkout, Session session, Client client, List<Seat> seats) {
+        this(session, client, checkout);
+        this.seats = seats;
+        System.out.println(this.seats.size());
     }
 
     private Order() {
@@ -103,7 +110,9 @@ public class Order extends EntityBase<Order> implements Serializable {
     }
 
     public static enum Checkout {
-        DELIVERY, SELF_CHECKOUT, PAY_BEFORE
+        DELIVERY,
+        SELF_CHECKOUT,
+        PAY_BEFORE
     }
 
     @Entity
@@ -127,6 +136,10 @@ public class Order extends EntityBase<Order> implements Serializable {
         @Override
         public String toString() {
             return "Row " + this.row + ". Seat " + this.seat;
+        }
+
+        public enum Availability {
+            FREE, BOOKED, SELECTED, HIDDEN
         }
     }
 }

@@ -17,6 +17,7 @@ public class Session extends EntityBase<Session> implements Serializable {
     public Performance performance;
 
     public Timestamp date;
+
     //endregion
 
     //region Constructors

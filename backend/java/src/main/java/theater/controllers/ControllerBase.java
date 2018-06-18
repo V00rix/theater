@@ -25,7 +25,7 @@ public abstract class ControllerBase<E extends EntityBase, T extends JpaReposito
         return mav;
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = "", method = RequestMethod.GET, produces = "application/json")
     public @ResponseBody
     @Transactional
     Map<String, E> getAll() {
@@ -44,7 +44,7 @@ public abstract class ControllerBase<E extends EntityBase, T extends JpaReposito
         return repository().findAll().get(0);
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.POST, produces = "application/json")
+    @RequestMapping(value = "", method = RequestMethod.POST, produces = "application/json")
     public @ResponseBody
     void updateFirst(@RequestBody E newEntity) {
         var entities = repository().findAll();
@@ -75,7 +75,7 @@ public abstract class ControllerBase<E extends EntityBase, T extends JpaReposito
         return entity;
     }
 
-    @RequestMapping(value = "/id/{entityId}", method = RequestMethod.DELETE, produces = "application/json")
+    @RequestMapping(value = "/delete/{entityId}", method = RequestMethod.POST, produces = "application/json")
     public @ResponseBody
     void delete(@PathVariable String entityId) {
         repository().delete(repository().findById(Long.parseLong(entityId)).orElseThrow());

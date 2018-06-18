@@ -3,7 +3,7 @@ import {Checkout} from '../../../../../shared/business/domain/enumeration/checko
 export class Order {
   constructor(public code: number,
               public checkout: Checkout.Code,
-              public user: { name: string, contact: string },
+              public client: { contact: string, name: string },
               public performance: { title: string },
               public session: { date: Date },
               public seats: { id: number, row: number, seat: number }[],

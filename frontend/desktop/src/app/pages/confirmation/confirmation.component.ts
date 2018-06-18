@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {DataService} from '../../../../../shared/business/services/data.service';
 import {Router} from '@angular/router';
 import {Animations} from '../../../../../shared/animations/animations';
+import {Session} from "../../../../../shared/business/domain/session";
 
 @Component({
   selector: 'app-confirmation',
@@ -10,10 +11,15 @@ import {Animations} from '../../../../../shared/animations/animations';
   animations: Animations.animations
 })
 export class ConfirmationComponent implements OnInit {
+  public session: Session = new Session(0,0,0, null, []);
 
-  constructor(public data: DataService, private router: Router) { }
+  constructor(public data: DataService, private router: Router) {
+  }
 
   ngOnInit() {
+    this.data.getSession(this.data.applicationStatus.selectedSession).subscribe((session) => {
+      this.session = session;
+    });
   }
 
   onConfirm() {
@@ -21,6 +27,6 @@ export class ConfirmationComponent implements OnInit {
     // http, get order code
     // this.entities.bookingCode = 'F74';
     this.router.navigate(['/success']);
-    this.data.postBooking();
+    this.data.createOrder();
   }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import {SeatStatus} from '../../../../../../shared/business/domain/enumeration/seatStatus.enum';
+import {Availability} from '../../../../../../shared/business/domain/enumeration/seatStatus.enum';
 import {DataService} from '../../../../../../shared/business/services/data.service';
 import {Animations} from '../../../../../../shared/animations/animations';
 
@@ -28,13 +28,13 @@ export class ZoomedComponent implements OnInit {
   }
 
   switchSeatSelection(seat) {
-    if (seat.status === SeatStatus.FREE) {
+    if (seat.status === Availability.FREE) {
       if (this.selectedSeatsCount < this.data.maximumSeats) {
-        seat.status = SeatStatus.SELECTED;
+        seat.status = Availability.SELECTED;
         this.selectedSeatsCount++;
       }
     } else {
-      seat.status = SeatStatus.FREE;
+      seat.status = Availability.FREE;
       this.selectedSeatsCount--;
     }
   }

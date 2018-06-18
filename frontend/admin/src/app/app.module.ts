@@ -39,6 +39,7 @@ import {SessionsComponent} from './pages/sessions/sessions.component';
 import {MessagesComponent} from './business/components/messages/messages.component';
 import {ViewersComponent} from './pages/viewers/viewers.component';
 import {BasicPageComponent} from './business/components/basic-page/basic-page.component';
+import {KeysPipe} from "./business/pipes/keysPipe";
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -62,7 +63,8 @@ registerLocaleData(localeEn, 'en');
     SessionsComponent,
     MessagesComponent,
     ViewersComponent,
-    BasicPageComponent
+    BasicPageComponent,
+    KeysPipe
   ],
   imports: [
     BrowserModule,

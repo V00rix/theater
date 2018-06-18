@@ -2,12 +2,12 @@
 <div class="z-main session-container text-center" [@fadeIn] [@fadeOut]>
   <div class="centered relative">
 
-    <div *ngFor="let row of data.applicationStatus.selectedSession.seats; let rowId = index"
+    <div *ngFor="let row of parent.session.seats; let rowId = index"
          [ngStyle]="{'width':  containerWidth + 'px'}">
       <span class="session-row">
-        {{'R' | translate}}<em>{{data.applicationStatus.selectedSession.seats.length - rowId}}</em>
+        {{'R' | translate}}<em>{{parent.session.seats.length - rowId}}</em>
       </span>
-      <span *ngFor="let seat of row; let seatId = index" class="seat {{seat.status}}"
+      <span *ngFor="let seat of row; let seatId = index" class="seat {{seat}}"
             (click)="switchSeatSelection(seat)">{{seatId + 1}}</span>
     </div>
   </div>

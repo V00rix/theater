@@ -19,8 +19,8 @@ export class CheckoutComponent implements OnInit {
   }
 
   onCheckoutSelected(option: Checkout.Code) {
-    this.data.updateSelection({checkout: this.data.applicationStatus.checkout});
     this.data.applicationStatus.checkout = option;
+    this.data.updateSelection({checkout: this.data.applicationStatus.checkout});
     this.router.navigate(['/confirmation']);
   }
 }

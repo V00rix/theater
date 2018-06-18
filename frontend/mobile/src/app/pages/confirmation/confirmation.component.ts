@@ -21,6 +21,6 @@ export class ConfirmationComponent implements OnInit {
     // http, get order code
     // this.entities.bookingCode = 'F74';
     this.router.navigate(['/success']);
-    this.data.postBooking();
+    this.data.createOrder();
   }
 }

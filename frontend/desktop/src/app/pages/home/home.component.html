@@ -1,4 +1,4 @@
-<div class="z-main cursor-pointer" [@fadeInLong] [@fadeOut]  (click)="showPerformance()">
+<div class="z-main cursor-pointer" [@fadeInLong] [@fadeOut] >
 
   <div class="fader-top"></div>
 
@@ -10,16 +10,16 @@
     <!--</div>-->
   </div>
 
-  <div class="content-container">
-    <h1 class="text-center">{{data.applicationStatus.selectedPerformance.title |
+  <div class="content-container" >
+    <h1 class="text-center" (click)="showPerformance()">{{data.performances[data.applicationStatus.selectedPerformance].title |
       uppercase}}</h1>
   </div>
 
-  <div *ngIf="data.performances.length &gt; 1" class="layout-center-6">
+  <div *ngIf="data.performancesIds.length &gt; 1" class="layout-center-6">
     <div class="sequence">
-      <div *ngFor="let p of data.performances; let id = index"
-           (click)="data.applicationStatus.selectedPerformance = data.performances[id]"
-           class="sequence-сircle {{data.applicationStatus.selectedPerformance === data.performances[id] ? 'selected' : ''}}"></div>
+      <div *ngFor="let p of data.performancesIds; let id = index"
+           (click)="data.applicationStatus.selectedPerformance = data.performancesIds[id]"
+           class="sequence-сircle {{data.applicationStatus.selectedPerformance === data.performancesIds[id] ? 'selected' : ''}}"></div>
     </div>
   </div>
 </div>

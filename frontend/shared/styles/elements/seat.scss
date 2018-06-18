@@ -12,26 +12,26 @@
   font-size: 14px;
   cursor: default;
 
-  &.free {
+  &.FREE {
     cursor: pointer;
     &:hover {
       @include rgba(bg, $color-accent, .42);
     }
   }
 
-  &.selected {
+  &.SELECTED {
     background-color: $color-accent;
     &:hover {
     }
   }
 
-  &.booked {
+  &.BOOKED {
     color: rgba(0, 0, 0, 0.85);
     background-color: rgba(255, 255, 255, 0.68);
     pointer-events: none;
   }
 
-  &.hidden {
+  &.HIDDEN {
     opacity: 0;
     pointer-events: none;
   }

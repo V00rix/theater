@@ -1,6 +1,6 @@
 <app-basic-page [menu]="true" [h]="[{label: 'Booking requests', type: 'h2'}]">
   <app-list>
-    <app-panel-collapsible [collapsed]="data.orders.length > 1" *ngFor="let order of data.orders; let id = index">
+    <app-panel-collapsible [collapsed]="data.ordersIds.length > 1" *ngFor="let order of data.orders | keys; let id = index">
       <app-drawer [active]="order.confirmed !== true && order.confirmed !== false">
         <label class="order-item light">
           <span class="oi-id truncate grey">{{id + 1}}</span>

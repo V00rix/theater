@@ -1,7 +1,7 @@
-import {Injectable, Inject} from '@angular/core';
+import {Inject, Injectable} from '@angular/core';
 
-import {DOCUMENT} from '@angular/common';
-import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {DatePipe, DOCUMENT} from '@angular/common';
+import {HttpClient} from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import {Order} from '../domain/order';
 import {OrderResponse} from '../domain/responces/orderResponse';
@@ -15,8 +15,8 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 import {Error} from '../domain/error';
 import {forkJoin} from 'rxjs/observable/forkJoin';
-import {DatePipe} from '@angular/common';
-import {Checkout} from "../../../../../shared/business/domain/enumeration/checkout";
+import {Hall} from "../domain/hall";
+import {Theater} from "../domain/theater";
 
 @Injectable()
 export class DataService {
@@ -26,9 +26,12 @@ export class DataService {
   public errorOccurred = new Subject<Error>();
   public unauthorized = new Subject<string>();
 
-  public orders: Order[] = null;
-  public sessions: Session[] = null;
-  public performances: Performance[] = null;
+  public orders = {};
+  public ordersIds = [];
+  public sessions = {};
+  public performances = {};
+  public halls = {};
+  public theater = null;
   public dataLoaded = false;
   // endregion
 
@@ -57,9 +60,11 @@ export class DataService {
 
     const ordersRequest = this.getOrders();
     const sessionsRequest = this.getSessions();
+    const hallRequest = this.getHall();
+    const theaterRequest = this.getTheater();
     const performancesRequest = this.getPerformances();
 
-    forkJoin([sessionsRequest, ordersRequest, performancesRequest]).subscribe(() => {
+    forkJoin([sessionsRequest, ordersRequest, hallRequest, theaterRequest, performancesRequest]).subscribe(() => {
       console.log('Data loaded');
       this.dataLoaded = true;
       this.loadingFinished.next();
@@ -70,13 +75,14 @@ export class DataService {
    * GET orders
    */
   public getOrders(propagate = true) {
-    return this.http.get(`${this.baseUrl}orders${this.extension}`,
+    return this.http.get(`${this.baseUrl}complex/orders${this.extension}`,
       // {withCredentials: true}
     ).map(
-      (response: OrderResponse) => {
+      (response) => {
         console.log('Orders loaded');
         console.log(response);
-        this.orders = OrderResponse.map(response);
+        this.orders = response;
+        this.ordersIds = Object.keys(this.orders);
       })
       .catch((e: any) => Observable.throw(this.httpErrorHandler(e, propagate)));
   }
@@ -85,13 +91,37 @@ export class DataService {
    * GET sessions
    */
   public getSessions(propagate = true) {
-    return this.http.get(`${this.baseUrl}sessions${this.extension}`,
+    return this.http.get(`${this.baseUrl}session${this.extension}`,
       // {withCredentials: true}
     ).map(
-      (response: SessionResponse) => {
+      (response) => {
         console.log('Sessions loaded');
         console.log(response);
-        this.sessions = SessionResponse.map(response);
+        this.sessions = response;
+      })
+      .catch((e: any) => Observable.throw(this.httpErrorHandler(e, propagate)));
+  }
+
+  public getHall(propagate = true) {
+    return this.http.get(`${this.baseUrl}hall${this.extension}`,
+      // {withCredentials: true}
+    ).map(
+      (response) => {
+        console.log('Sessions loaded');
+        console.log(response);
+        this.halls = response;
+      })
+      .catch((e: any) => Observable.throw(this.httpErrorHandler(e, propagate)));
+  }
+
+  public getTheater(propagate = true) {
+    return this.http.get(`${this.baseUrl}theater/first${this.extension}`,
+      // {withCredentials: true}
+    ).map(
+      (response: Theater) => {
+        console.log('Sessions loaded');
+        console.log(response);
+        this.theater = response;
       })
       .catch((e: any) => Observable.throw(this.httpErrorHandler(e, propagate)));
   }
@@ -100,13 +130,13 @@ export class DataService {
    * GET performances
    */
   public getPerformances(propagate = true) {
-    return this.http.get(`${this.baseUrl}performances${this.extension}`,
+    return this.http.get(`${this.baseUrl}performance${this.extension}`,
       // {withCredentials: true}
     ).map(
       (response: { performances: { id: number, title: string, author: string, description: string, imageUrl: string }[] }) => {
         console.log('Performances loaded');
         console.log(response);
-        this.performances = response.performances;
+        this.performances = response;
       })
       .catch((e: any) => Observable.throw(this.httpErrorHandler(e, propagate)));
   }
@@ -143,17 +173,17 @@ export class DataService {
     return this.http.post(`${this.baseUrl}/logout${this.extension}`, null,
       {headers: {'Content-Type': ['text/plain']}, withCredentials: true});
   }
+
   //endregion
 
   /**
    * POST save resolved/rejected requests
    */
-  // todo
   saveRequests(propagate = true) {
     return this.http.post(`${this.baseUrl}saveRequests${this.extension}`,
       this.orders,
       // {headers: {'Content-Type': ['text/plain']}, withCredentials: true}
-      ).subscribe(
+    ).subscribe(
       (res) => {
         console.log(res);
         this.orders = null;
@@ -184,15 +214,15 @@ export class DataService {
   /**
    * POST request to create new session
    */
-  // todo
   createSession(propagate = true) {
-    return this.http.post(`${this.baseUrl}newSession${this.extension}`, null, {
-      headers: {'Content-Type': ['text/plain']},
-      withCredentials: true
-    }).subscribe(
-      (res: SessionResponse) => {
+    let hall = this.halls[Object.keys(this.halls)[0]];
+    let performance = this.performances[Object.keys(this.performances)[0]];
+    return this.http.post(`${this.baseUrl}/session/new${this.extension}`, new Session(null, hall, performance, new Date())
+    // {headers: {'Content-Type': ['text/plain']},withCredentials: true}
+    ).subscribe(
+      (res: Session) => {
         console.log('New session created', res);
-        this.sessions = this.sessions.concat(SessionResponse.map(res));
+        this.sessions[res.id] = res;
         this.dataUpdated.next();
       }, error => {
         this.httpErrorHandler(error, propagate);
@@ -204,12 +234,13 @@ export class DataService {
    * @param {Session} session
    * @param {boolean} propagate
    */
-  // todo
-  deleteSession(session: Session, propagate = true) {
-    return this.http.post(`${this.baseUrl}deleteSession${this.extension}`, {sessionId: session.id}, {
-      headers: {'Content-Type': ['text/plain']},
-      withCredentials: true
-    }).subscribe(
+  deleteSession(session: number, propagate = true) {
+    return this.http.post(`${this.baseUrl}session/delete/${session}${this.extension}`, null
+      // {
+      // headers: {'Content-Type': ['text/plain']},
+      // withCredentials: true
+    // }
+    ).subscribe(
       (res) => {
         console.log('Session deleted', res);
         this.getSessions().subscribe(() => {
@@ -232,7 +263,7 @@ export class DataService {
     return this.http.post(`${this.baseUrl}updateSession${this.extension}`,
       {
         id: session.id,
-        performanceId: session.performance.id,
+        // performanceId: session.performance.id,
         date: this.transformDate(session.date),
         hall: session.hall
       },

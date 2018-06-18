@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    if (this.data.performances.length < 2) {
+    if (this.data.performancesIds.length < 2) {
       this.timeOut = setTimeout(() => {
         this.showPerformance();
       }, 1500);

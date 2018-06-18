@@ -1,5 +1,9 @@
 package theater.domain.entities;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -7,6 +11,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "t_client")
+@JsonPropertyOrder({"contact", "name"})
 public class Client extends EntityBase<Client> implements Serializable {
     //region Fields
     @Column(unique = true, nullable = false)
@@ -19,7 +24,8 @@ public class Client extends EntityBase<Client> implements Serializable {
     public Client() {
     }
 
-    public Client(String contact, String name) {
+    @JsonCreator
+    public Client(@JsonProperty("contact") String contact, @JsonProperty("name") String name) {
         this.contact = contact;
         this.name = name;
     }

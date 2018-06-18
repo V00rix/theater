@@ -16,7 +16,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 public interface RESTTest {
 
-    ObjectMapper mapper = new ObjectMapper();
+    public ObjectMapper mapper = new ObjectMapper();
 
     void getTest() throws Exception;
 

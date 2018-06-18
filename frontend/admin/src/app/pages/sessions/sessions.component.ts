@@ -13,7 +13,7 @@ import {AppComponent} from '../../app.component';
 export class SessionsComponent implements OnInit {
   public timeInput = new FormControl('');
 
-  public temporarySession: Session = null;
+  public temporarySession = null;
 
   constructor(@Inject(AppComponent) private base: AppComponent, public data: DataService) {
   }
@@ -57,12 +57,12 @@ export class SessionsComponent implements OnInit {
     console.log(this.temporarySession.date);
   }
 
-  performanceChange(performance, session: Session) {
+  performanceChange(performance, session) {
     this.temporarySession = this.temporarySession ? this.temporarySession : {...session};
 
     console.log('performance change', performance, session);
 
-    this.temporarySession.performance = {...performance};
+    this.temporarySession.performance = performance;
   }
 
   updateSession(session: Session) {
@@ -106,7 +106,7 @@ export class SessionsComponent implements OnInit {
     }
   }
 
-  deleteSession(session: Session) {
+  deleteSession(session: number) {
     this.base.confirm(() => this.data.deleteSession(session),
       'You are about to delete session. This action is not reversible. Confirm?');
   }

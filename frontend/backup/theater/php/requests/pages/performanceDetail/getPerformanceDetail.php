@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Vladyslav Yazykov
+ * Client: Vladyslav Yazykov
  * Date: 1/20/2018
  * Time: 2:25 AM
  */
@@ -15,7 +15,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/theater/php/helpers/transformExceptio
 require_once $_SERVER['DOCUMENT_ROOT'] . "/theater/php/validations/serverMethod.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/theater/php/models/Exceptions.php";
 
-/* Get performance title, description imageUrl and sessions */
+/* Get performance title, description image and sessions */
 
 class Response
 {

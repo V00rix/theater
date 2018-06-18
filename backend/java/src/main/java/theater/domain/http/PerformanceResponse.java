@@ -3,16 +3,19 @@ package theater.domain.http;
 
 import theater.domain.entities.Performance;
 
-import java.util.List;
+import java.util.Map;
 
 public class PerformanceResponse {
-    public List<Performance> performances;
+    public Map<Integer, Performance> performances;
 
-    public int maximum_seats = 5;
+    public int maximumSeats = 5;
 
-    public PerformanceResponse(List<Performance> performances) {
+    public PerformanceResponse(Map<Integer, Performance> performances) {
         this.performances = performances;
     }
 
-
+    public PerformanceResponse(Map<Integer, Performance> performances, int maximum_seats) {
+        this.performances = performances;
+        this.maximumSeats = maximum_seats;
+    }
 }

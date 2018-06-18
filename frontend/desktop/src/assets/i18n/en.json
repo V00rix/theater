@@ -30,15 +30,15 @@
     "checkout": {
       "title": "Checkout method",
       "options": {
-        "delivery": {
+        "DELIVERY": {
           "title": "Delivery",
           "description": "We deliver a ticket to you for 100 czk"
         },
-        "self": {
+        "SELF_CHECKOUT": {
           "title": "Self-checkout",
           "description": "Na Zátorce 1048/16 Praha 6-Bubeneč every Tuesday or Thursday from 18:00 to 19:30"
         },
-        "payBefore": {
+        "PAY_BEFORE": {
           "title": "Pay before performance",
           "description": "At longest 30 minutes before start"
         }

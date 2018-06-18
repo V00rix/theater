@@ -69,11 +69,12 @@ public class HallControllerTest extends RESTTestBase implements RESTTest {
     //    @Ignore
     public void getSpecificHallTest() throws Exception {
         hallRepository.deleteAll();
+        hallRepository.flush();
         var halls = new Hall[] {
                 new Hall("hall one", 3, 5),
-                //                new Hall("hall two", 10, 10),
-                //                new Hall("hall name three", 5, 30),
-                //                Dummy.hall()
+                                new Hall("hall two", 10, 10),
+                                new Hall("hall name three", 5, 30),
+                                Dummy.hall()
         };
 
         for (var hall : halls) {
@@ -84,13 +85,14 @@ public class HallControllerTest extends RESTTestBase implements RESTTest {
             var res = mockMvc.perform(get(url + hall.getId().toString())).andDo(print())
                     .andExpect(status().isOk())
                     .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-                    .andExpect(content().json(mapper.writeValueAsString(hall)));
+                    .andExpect(content().json(this.mapper.writeValueAsString(hall)));
         }
     }
 
     @Test
     public void updateTest() throws Exception {
         hallRepository.deleteAll();
+        hallRepository.flush();
         var entityFirst = Dummy.hall();
 
         // Save

@@ -12,9 +12,9 @@
     <h2>{{'pages.performance.title' | translate}}</h2>
     <h3>{{data.applicationStatus.selectedPerformance.title}}</h3>
     <div class="offset">
-      <div *ngFor="let session of this.data.applicationStatus.selectedPerformance.sessions; let id = index"
+      <div *ngFor="let session of this.sessions"
            class="session action"
-           (click)="showSession(id)">
+           (click)="showSession(session.id)">
         <div class="session-time">{{session.date | date:'HH:mm':'+0200'}}</div>
         <hr>
         <div class="session-day">{{session.date | date:'dd/LL':'+0200'}}</div>

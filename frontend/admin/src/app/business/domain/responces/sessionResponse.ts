@@ -21,15 +21,16 @@ export class SessionResponse extends DateMapper {
   }[];
 
   public static map(response: SessionResponse): Session[] {
-    console.log(response);
-    return response.sessions.map(s => new Session(s.id, {title: s.performance_title, id: s.performance_id}, DateMapper.mapDate(s.date), 1,
-      s.orders.map(o => {
-        return {
-          id: o.code,
-          checkout: Checkout.map(o.checkout),
-          user: {name: o.client.name, contact: o.client.email},
-          seats: o.seats
-        };
-      })));
+    // console.log(response);
+    // return response.sessions.map(s => new Session(s.id, {title: s.performance_title, id: s.performance_id}, DateMapper.mapDate(s.date), 1,
+    //   s.orders.map(o => {
+    //     return {
+    //       id: o.code,
+    //       checkout: Checkout.map(o.checkout),
+    //       user: {name: o.client.name, contact: o.client.email},
+    //       seats: o.seats
+    //     };
+    //   })));
+    return null;
   }
 }

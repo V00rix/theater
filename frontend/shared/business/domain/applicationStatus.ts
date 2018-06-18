@@ -1,24 +1,14 @@
-import {User} from './user';
+import {Client} from './client';
 import {SelectedSeat} from './selectedSeat';
 import {Checkout} from './enumeration/checkout';
 import {Performance} from './performance';
 import {Session} from './session';
 
 export class ApplicationStatus {
-  constructor(public selectedPerformance: Performance,
-              public selectedSession: Session,
+  constructor(public selectedPerformance: number,
+              public selectedSession: number,
               public selectedSeats: SelectedSeat[],
               public checkout: Checkout.Code,
-              public user: User) {
-  }
-
-  public transform(performances: Performance[]) {
-    return {
-      selected_performance: performances.indexOf(this.selectedPerformance),
-      selected_session: this.selectedPerformance.sessions.indexOf(this.selectedSession),
-      selected_seats: this.selectedSeats,
-      selected_checkout: Checkout.toBe(this.checkout),
-      user: this.user
-    };
+              public client: Client) {
   }
 }
