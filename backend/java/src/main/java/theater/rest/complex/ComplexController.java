@@ -110,7 +110,7 @@ public class ComplexController {
 
         seats.forEach(s1 -> response.seats.get(s1.row).set(s1.seat, Availability.FREE));
 
-        var orders = orderRepository.findAll().stream().filter(order -> order.session.getId().equals(sessionId));
+        var orders = orderRepository.findAll().stream().filter(order -> order.session != null && order.session.getId().equals(sessionId));
         orders.forEach(o -> o.getSeats().forEach(s1 -> response.seats.get(s1.row).set(s1.seat, Availability.BOOKED)));
 
         Collections.reverse(response.seats);
@@ -129,14 +129,13 @@ public class ComplexController {
         status.client.setId(null);
 
         var client = clientRepository.findOptionalByContact(status.client.contact);
-        if (!client.isPresent()) {
-            clientRepository.save(status.client);
-        } else {
+
+        if (client.isPresent()) {
             var name = status.client.name;
-            status.client.update(client.get());
+            status.client = client.get();
             status.client.name = name;
-            clientRepository.save(status.client);
         }
+        clientRepository.saveAndFlush(status.client);
 
         status.selectedSeats.forEach(s -> {
             s.row -= 1;
