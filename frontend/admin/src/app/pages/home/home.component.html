@@ -1,29 +1,29 @@
 <app-basic-page [menu]="true" [h]="[{label: 'Booking requests', type: 'h2'}]">
   <app-list>
-    <app-panel-collapsible [collapsed]="data.ordersIds.length > 1" *ngFor="let order of data.orders | keys; let id = index">
+    <app-panel-collapsible [collapsed]="data.orders.length > 1" *ngFor="let order of data.orders; let id = index">
       <app-drawer [active]="order.confirmed !== true && order.confirmed !== false">
         <label class="order-item light">
           <span class="oi-id truncate grey">{{id + 1}}</span>
           <span class="oi-name truncate"
-                [ngClass]="order.confirmed === true ? 'green' : ''">{{order.user.name}}</span>
-          <span class="oi-performance truncate grey">{{order.performance.title}}
-            <span class="white">{{order.session.date | date:'dd.MM HH:mm'}}</span></span>
+                [ngClass]="order.confirmed === true ? 'green' : ''">{{order.client.name}} ({{order.client.contact}})</span>
+          <span class="oi-performance truncate grey">{{data.orders.performance}}
+            <span class="white">{{order.session | date:'dd.MM HH:mm'}}</span></span>
         </label>
       </app-drawer>
       <app-content>
         <div class="user-panel">
           <div class="section">
-            <div class="light">{{order.performance.title}}</div>
-            <div class="light">{{order.session.date | date:'dd.MM HH:mm'}}</div>
+            <div class="light">{{order.performance}}</div>
+            <div class="light">{{order.session | date:'dd.MM HH:mm'}}</div>
           </div>
           <div class="section">
-            <div class="light" *ngFor="let seat of order.seats" (click)="changeSeat(seat)">Row {{seat.row}}, Seat
-              {{seat.number}}
+            <div class="light" *ngFor="let seat of order.seats" (click)="changeSeat(seat)">Row {{seat.row + 1}}, Seat
+              {{seat.seat + 1}}
             </div>
           </div>
           <div class="section">
-            <div class="light">{{order.user.name}}</div>
-            <div class="light">{{order.user.contact}}</div>
+            <div class="light">{{order.client.name}}</div>
+            <div class="light">{{order.client.contact}}</div>
           </div>
           <div class="section">
             <div class="text-center grey">{{'checkout.' + order.checkout | translate}}</div>

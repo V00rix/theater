@@ -3,20 +3,16 @@ import {Inject, Injectable} from '@angular/core';
 import {DatePipe, DOCUMENT} from '@angular/common';
 import {HttpClient} from '@angular/common/http';
 import 'rxjs/add/operator/map';
-import {Order} from '../domain/order';
-import {OrderResponse} from '../domain/responces/orderResponse';
 import {Subject} from 'rxjs/Subject';
 import {Session} from '../domain/session';
-import {Performance} from '../domain/performance';
-import {SessionResponse} from '../domain/responces/sessionResponse';
 import {Observable} from 'rxjs/Observable';
 import {Router} from '@angular/router';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 import {Error} from '../domain/error';
 import {forkJoin} from 'rxjs/observable/forkJoin';
-import {Hall} from "../domain/hall";
 import {Theater} from "../domain/theater";
+import {OrderResponse} from "../domain/responces/orderResponse";
 
 @Injectable()
 export class DataService {
@@ -26,8 +22,7 @@ export class DataService {
   public errorOccurred = new Subject<Error>();
   public unauthorized = new Subject<string>();
 
-  public orders = {};
-  public ordersIds = [];
+  public orders: OrderResponse[] = [];
   public sessions = {};
   public performances = {};
   public halls = {};
@@ -78,11 +73,10 @@ export class DataService {
     return this.http.get(`${this.baseUrl}complex/orders${this.extension}`,
       // {withCredentials: true}
     ).map(
-      (response) => {
-        // console.log('Orders loaded');
-        // console.log(response);
-        // this.orders = response;
-        // this.ordersIds = Object.keys(this.orders);
+      (response: OrderResponse[]) => {
+        console.log('Orders loaded');
+        this.orders = response;
+        console.log(this.orders);
       })
       .catch((e: any) => Observable.throw(this.httpErrorHandler(e, propagate)));
   }
@@ -140,6 +134,7 @@ export class DataService {
       })
       .catch((e: any) => Observable.throw(this.httpErrorHandler(e, propagate)));
   }
+
   // endregion
 
   // region Post/update requests
@@ -170,7 +165,7 @@ export class DataService {
    * @returns {Observable<Object>}
    */
   public logout() {
-    return this.http.post(`${this.baseUrl}/logout${this.extension}`, null,
+    return this.http.post(`${this.baseUrl}logout${this.extension}`, null,
       {headers: {'Content-Type': ['text/plain']}, withCredentials: true});
   }
 
@@ -180,13 +175,15 @@ export class DataService {
    * POST save resolved/rejected requests
    */
   saveRequests(propagate = true) {
-    return this.http.post(`${this.baseUrl}saveRequests${this.extension}`,
-      this.orders,
+    let request = {};
+    this.orders.forEach(o => {
+      request[o.id] = o.confirmed;
+    });
+    return this.http.post(`${this.baseUrl}complex/orders${this.extension}`,
+      request,
       // {headers: {'Content-Type': ['text/plain']}, withCredentials: true}
     ).subscribe(
-      (res) => {
-        console.log(res);
-        this.orders = null;
+      () => {
         return this.getOrders().subscribe();
       }, error => {
         this.httpErrorHandler(error, propagate);
@@ -198,7 +195,6 @@ export class DataService {
    * @param {number} order
    * @param {boolean} propagate
    */
-  // todo
   deleteViewer(order: number, propagate = true) {
     this.http.post(`${this.baseUrl}deleteUser${this.extension}`,
       {order: order}, {headers: {'Content-Type': ['text/plain']}, withCredentials: true}).subscribe(
@@ -218,7 +214,7 @@ export class DataService {
     let hall = this.halls[Object.keys(this.halls)[0]];
     let performance = this.performances[Object.keys(this.performances)[0]];
     return this.http.post(`${this.baseUrl}/session/new${this.extension}`, new Session(null, hall, performance, new Date())
-    // {headers: {'Content-Type': ['text/plain']},withCredentials: true}
+      // {headers: {'Content-Type': ['text/plain']},withCredentials: true}
     ).subscribe(
       (res: Session) => {
         console.log('New session created', res);
@@ -239,7 +235,7 @@ export class DataService {
       // {
       // headers: {'Content-Type': ['text/plain']},
       // withCredentials: true
-    // }
+      // }
     ).subscribe(
       (res) => {
         console.log('Session deleted', res);
@@ -256,7 +252,6 @@ export class DataService {
    * @param {Session} session
    * @param {boolean} propagate
    */
-  // todo
   updateSession(session: Session, propagate = true) {
     console.log(session.date);
     console.log(this.transformDate(session.date));

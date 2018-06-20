@@ -1,10 +1,10 @@
 package theater.domain.http;
 
 import theater.domain.entities.Session;
+import theater.domain.enumeration.Availability;
 
 import java.util.List;
 
-import static theater.domain.entities.Order.Seat.Availability;
 
 public class SessionResponse {
     public Session session;

@@ -30,6 +30,18 @@ public class Performance extends EntityBase<Performance> implements Serializable
         this.author = author;
         this.title = title;
     }
+
+    public Performance(String author, String title, String image) {
+        this(author, title);
+        this.image = image;
+    }
+
+    public Performance(String author, String title, String image, String description) {
+        this(author, title);
+        this.image = image;
+        this.description = description;
+    }
+
     //endregion
 
     //region Implementation

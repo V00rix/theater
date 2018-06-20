@@ -1,5 +1,7 @@
 package theater.domain.entities;
 
+import theater.domain.Seat;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
@@ -10,7 +12,7 @@ import java.util.List;
 @Table(name = "t_order")
 public class Order extends EntityBase<Order> implements Serializable {
     //region Fields
-    public Boolean confirmed;
+    public boolean confirmed = false;
 
     @Enumerated(EnumType.STRING)
     public Checkout checkout;
@@ -18,17 +20,29 @@ public class Order extends EntityBase<Order> implements Serializable {
     @Column(name = "created_on", nullable = false)
     public Timestamp createdOn;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "session")
     public Session session;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "client", nullable = false)
     public Client client;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
-    @JoinColumn(name = "\"order\"")
-    public List<Seat> seats = new ArrayList<>();
+    @Transient
+    private List<theater.domain.Seat> seats = new ArrayList<>();
+
+    @Lob
+    @Column(name = "seats")
+    private byte[] seatsBytes = new byte[0];
+
+    public List<theater.domain.Seat> getSeats() {
+        return seats = theater.domain.Seat.fromBytes(seatsBytes);
+    }
+
+    public void setSeats(List<theater.domain.Seat> seats) {
+        this.seats = seats;
+        seatsBytes = theater.domain.Seat.toBytes(this.seats);
+    }
     //endregion
 
     //region Get/setters
@@ -45,9 +59,9 @@ public class Order extends EntityBase<Order> implements Serializable {
         return session.getId();
     }
 
-    public void setSession(Integer session) {
+    public void setSession(Long session) {
         this.session = new Session();
-        this.session.setId(session.longValue());
+        this.session.setId(session);
     }
     //endregion
 
@@ -61,8 +75,12 @@ public class Order extends EntityBase<Order> implements Serializable {
 
     public Order(Checkout checkout, Session session, Client client, List<Seat> seats) {
         this(session, client, checkout);
-        this.seats = seats;
-        System.out.println(this.seats.size());
+        this.setSeats(seats);
+    }
+
+    public Order(Checkout checkout, Session session, Client client, List<Seat> seats, Boolean confirmed) {
+        this(checkout, session, client, seats);
+        this.confirmed = confirmed;
     }
 
     private Order() {
@@ -82,11 +100,7 @@ public class Order extends EntityBase<Order> implements Serializable {
     @Override
     public boolean equalz(Order another) {
         var confirmedEqual = false;
-        if (confirmed == null) {
-            confirmedEqual = another.confirmed == null;
-        } else {
-            confirmedEqual = confirmed.equals(another.confirmed);
-        }
+        confirmedEqual = confirmed == another.confirmed;
 
         return confirmedEqual && checkout.equals(another.checkout)
                 && createdOn.equals(another.createdOn) && session.equalz(another.session)
@@ -115,34 +129,6 @@ public class Order extends EntityBase<Order> implements Serializable {
         DELIVERY,
         SELF_CHECKOUT,
         PAY_BEFORE
-    }
-
-    @Entity
-    @Table(name = "t_order_seat")
-    public static class Seat implements Serializable, Cloneable {
-        @Id
-        public int row;
-
-        @Id
-        public int seat;
-
-        @Override
-        protected Seat clone() throws CloneNotSupportedException {
-            super.clone();
-            var s = new Seat();
-            s.row = row;
-            s.seat = seat;
-            return s;
-        }
-
-        @Override
-        public String toString() {
-            return "Row " + this.row + ". Seat " + this.seat;
-        }
-
-        public enum Availability {
-            FREE, BOOKED, SELECTED, HIDDEN
-        }
     }
 }
 

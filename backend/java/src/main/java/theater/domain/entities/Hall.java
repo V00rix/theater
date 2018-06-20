@@ -3,7 +3,7 @@ package theater.domain.entities;
 import theater.domain.Seat;
 
 import javax.persistence.*;
-import java.io.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,12 +19,8 @@ public class Hall extends EntityBase<Hall> implements Serializable {
 
     @Lob
     @Column(name = "seats")
-    private byte[] seatsBytes = "".getBytes();
-
-    @PostLoad
-    public void postLoad() {
-        this.seats.forEach(Seat::print);
-    }
+    @Basic(fetch = FetchType.EAGER)
+    private byte[] seatsBytes = new byte[0];
 
     public List<Seat> getSeats() {
         return seats = Seat.fromBytes(seatsBytes);
@@ -34,7 +30,6 @@ public class Hall extends EntityBase<Hall> implements Serializable {
         this.seats = seats;
         seatsBytes = Seat.toBytes(seats);
     }
-
     //endregion
 
     //region Implementation
@@ -85,8 +80,8 @@ public class Hall extends EntityBase<Hall> implements Serializable {
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
                 var s = new Seat();
-                s.x = j;
-                s.y = i;
+                s.seat = j;
+                s.row = i;
                 seats.add(s);
             }
         }

@@ -1,5 +1,6 @@
+<div class="bg z-ground background" ></div>
 <div *ngIf="data.dataLoaded" (window:resize)="onResize($event)">
-  <img src="{{data.assetsUrl + data.performances[data.applicationStatus.selectedPerformance].image}}" class="background z-ground" alt="Performance background"/>
+  <img [src]="getImageUrl()" class="background z-ground" alt="Performance background"/>
   <!--<app-slide-panel>-->
   <!--<app-navigation></app-navigation>-->
   <!--</app-slide-panel>-->

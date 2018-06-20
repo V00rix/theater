@@ -41,8 +41,6 @@ public class HallController extends ControllerBase<Hall, HallRepository> {
 
         for (var entity : entities) {
             response.put(entity.getId().toString(), entity);
-            entity.print();
-            entity.getSeats().forEach(Seat::print);
         }
         return response;
     }

@@ -1,4 +1,4 @@
-import {Component, OnInit, Inject} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {DOCUMENT} from '@angular/common';
 import {TranslateService} from '@ngx-translate/core';
 import {DataService} from '../../../shared/business/services/data.service';
@@ -33,5 +33,12 @@ export class AppComponent implements OnInit {
 
   onResize() {
     this.data.onResize();
+  }
+
+  getImageUrl() {
+    const img = this.data.performances[this.data.applicationStatus.selectedPerformance].image;
+    if (img)
+      return this.data.assetsUrl + img;
+    return "";
   }
 }

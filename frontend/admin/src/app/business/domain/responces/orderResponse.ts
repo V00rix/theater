@@ -1,26 +1,12 @@
-import {Order} from '../order';
-import {Checkout} from '../../../../../../shared/business/domain/enumeration/checkout';
+import {Checkout} from "../checkout";
 
 export class OrderResponse {
-  public orders: {
-    code: number,
-    checkout: string,
-    client: {
-      name: string,
-      email: string,
-    }
-    session: {
-      performance: string,
-      date: Date
-    },
-    seats: { id: number, row: number, seat: number }[]
-  }[];
-
-  public static map(response: OrderResponse): Order[] {
-    console.log(response);
-    return response.orders.map(o => new Order(o.code, Checkout.map(o.checkout), {
-      name: o.client.name,
-      contact: o.client.email
-    }, {title: o.session.performance}, {date: new Date(o.session.date)}, o.seats, null));
+  constructor(public id: number,
+              public code: string,
+              public checkout: Checkout.Code,
+              public client: { name: string, contact: string },
+              public performance: string,
+              public confirmed: boolean,
+              public seats: { row: number, seat: number }[]) {
   }
 }

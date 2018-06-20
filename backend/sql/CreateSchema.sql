@@ -9,10 +9,8 @@ SET search_path TO theater;
 DROP TABLE IF EXISTS t_hall CASCADE;
 DROP TABLE IF EXISTS t_theater CASCADE;
 DROP TABLE IF EXISTS t_client CASCADE;
-DROP TABLE IF EXISTS t_seat CASCADE;
 DROP TABLE IF EXISTS t_session CASCADE;
 DROP TABLE IF EXISTS t_order CASCADE;
-DROP TABLE IF EXISTS t_order_seat CASCADE;
 -- DROP TABLE IF EXISTS t_registered;
 DROP TABLE IF EXISTS t_performance CASCADE;
 
@@ -54,14 +52,14 @@ CREATE TABLE t_theater (
 );
 
 CREATE TABLE t_hall (
-  id   SERIAL UNIQUE PRIMARY KEY,
-  name VARCHAR UNIQUE NOT NULL,
+  id    SERIAL UNIQUE PRIMARY KEY,
+  name  VARCHAR UNIQUE NOT NULL,
   seats OID
 );
 --
 -- CREATE TABLE t_seat (
---   y    INT,
---   x    INT,
+--   row    INT,
+--   seat    INT,
 --   hall INT,
 --   foreign key (hall) references t_hall (id)
 --   on delete cascade
@@ -85,20 +83,13 @@ CREATE TABLE t_order (
   created_on TIMESTAMP PRIMARY KEY,
   client     INT      NOT NULL,
   session    INT,
+  seats      OID,
   --   is_digital       BOOL DEFAULT TRUE                                            NOT NULL,
   --   is_purchase      BOOL DEFAULT FALSE                                           NOT NULL,
   checkout   checkout NOT NULL,
-  confirmed  BOOL DEFAULT NULL,
+  confirmed  boolean DEFAULT FALSE,
   FOREIGN KEY (client) REFERENCES t_client (id) ON DELETE CASCADE,
   FOREIGN KEY (session) REFERENCES t_session (id) ON DELETE SET NULL
-);
-
-CREATE TABLE t_order_seat (
-  row     INT,
-  seat    INT,
-  "order" INT,
-  foreign key ("order") references t_order (id)
-  on delete cascade
 );
 -- CREATE TABLE t_profile (
 --   email     VARCHAR(155) PRIMARY KEY,

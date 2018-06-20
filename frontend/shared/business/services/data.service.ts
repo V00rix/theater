@@ -77,9 +77,10 @@ export class DataService {
     public getSessionsByPerformance(performanceId: number): Session[] {
         const res = [];
 
+        console.log(this.sessionsIds);
         this.sessionsIds.forEach(id => {
             let session = this.sessions[id];
-            if (session.performance === performanceId) {
+            if (session.performance == performanceId) {
                 res.push(session)
             }
         });
@@ -124,6 +125,14 @@ export class DataService {
             }
             console.log(response);
             this.applicationStatus = response;
+            if (this.performances[this.applicationStatus.selectedPerformance] == null) {
+                this.applicationStatus.selectedPerformance = this.performancesIds[0];
+            }
+            if (this.sessions[this.applicationStatus.selectedSession] == null) {
+                this.applicationStatus.selectedSession = this.sessionsIds[0];
+
+            }
+
             this.applicationStatus.client = this.applicationStatus.client ? this.applicationStatus.client : new Client(null, null);
         });
     }

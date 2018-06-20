@@ -1,5 +1,6 @@
 package theater.suites.shared;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -22,6 +23,8 @@ import java.util.function.Supplier;
 public abstract class SpringTestBase extends TestBase {
     @Autowired
     protected MockMvc mockMvc;
+
+    protected ObjectMapper mapper = new ObjectMapper();
 
     protected <E> E eraseAndCreate(JpaRepository<E, Long> repository, Supplier<E> supplier) {
         repository.deleteAll();

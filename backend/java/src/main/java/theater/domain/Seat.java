@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Seat implements Serializable {
+public class Seat implements Serializable, Cloneable {
     private static ByteArrayOutputStream bos;
     private static ObjectOutputStream oos;
 
@@ -17,22 +17,22 @@ public class Seat implements Serializable {
         }
     }
 
-    public int x;
+    public int seat;
 
-    public int y;
+    public int row;
 
     @Override
     public Seat clone() throws CloneNotSupportedException {
         super.clone();
         var s = new Seat();
-        s.x = x;
-        s.y = y;
+        s.seat = seat;
+        s.row = row;
         return s;
     }
 
     @Override
     public String toString() {
-        return "Row " + this.y + ". Seat " + this.x;
+        return "Row " + this.row + ". Seat " + this.seat;
     }
 
     public void print() {
@@ -55,6 +55,8 @@ public class Seat implements Serializable {
     public static byte[] toBytes(List<Seat> seats) {
         byte[] seatsBytes;
         try {
+            bos = new ByteArrayOutputStream();
+            oos = new ObjectOutputStream(bos);
             oos.writeObject(seats);
             oos.flush();
             seatsBytes = bos.toByteArray();
@@ -66,9 +68,9 @@ public class Seat implements Serializable {
         return seatsBytes;
     }
 
-    public Seat(int x, int y) {
-        this.x = x;
-        this.y = y;
+    public Seat(int seat, int row) {
+        this.seat = seat;
+        this.row = row;
     }
 
     public Seat() {

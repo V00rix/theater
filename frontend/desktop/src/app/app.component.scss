@@ -1,7 +1,15 @@
 @import '../../../shared/styles/mixins/fullscreen.scss';
 
+img[src=""] {
+  visibility: hidden;
+}
+
 .background {
   @include fullscreen;
   object-fit: cover;
 }
 
+
+.bg {
+  background: linear-gradient(-128deg, #0c184e, #2c103c);
+}

@@ -1,6 +1,5 @@
 package theater.suites.rest;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.ResultActions;
@@ -20,8 +19,6 @@ import static org.testng.Assert.fail;
 
 @SuppressWarnings("unchecked")
 public abstract class ControllerTestBase<E extends EntityBase> extends GenericTestBase<E> {
-    protected ObjectMapper mapper = new ObjectMapper();
-
     private String url;
 
     @Override
