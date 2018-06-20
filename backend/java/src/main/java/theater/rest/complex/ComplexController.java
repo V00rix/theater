@@ -54,10 +54,12 @@ public class ComplexController {
 
         for (var order : orders) {
             var session = order.session;
-            var performance = session.performance.stringValue();
+            if (order.session != null) {
+                var performance = session.performance.stringValue();
 
-            res.add(new OrderResponse(order.getId(), Long.toHexString(order.getId()),
-                    order.checkout, order.client, performance, session.date, order.getSeats()));
+                res.add(new OrderResponse(order.getId(), Long.toHexString(order.getId()),
+                        order.checkout, order.client, performance, session.date, order.getSeats()));
+            }
         }
 
         return res;
