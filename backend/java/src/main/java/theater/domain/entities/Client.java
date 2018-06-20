@@ -31,6 +31,7 @@ public class Client extends EntityBase<Client> implements Serializable {
     }
     //endregion
 
+    //region Implementation
     @Override
     public void print() {
         System.out.println("Client " + name + " (" + contact + ")");
@@ -51,4 +52,5 @@ public class Client extends EntityBase<Client> implements Serializable {
     public String stringValue() {
         return fieldsToString(name, contact);
     }
+    //endregion
 }

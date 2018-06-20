@@ -2,9 +2,9 @@ package theater.suites;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
-import theater.environment.ApplicationSmokeTest;
-import theater.environment.ControllersSmokeTest;
-import theater.environment.RepositoriesSmokeTest;
+import theater.suites.environment.ApplicationSmokeTest;
+import theater.suites.environment.ControllersSmokeTest;
+import theater.suites.environment.RepositoriesSmokeTest;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({

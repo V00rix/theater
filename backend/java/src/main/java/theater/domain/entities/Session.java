@@ -31,7 +31,7 @@ public class Session extends EntityBase<Session> implements Serializable {
     }
     //endregion
 
-    //region Get/setters for correct lazy json
+    //region Get/setters
     public Long getHall() {
         return hall.getId();
     }
@@ -55,6 +55,7 @@ public class Session extends EntityBase<Session> implements Serializable {
     }
     //endregion
 
+    //region Implementation
     @Override
     public void print() {
         System.out.println("Session " + id + " on (" + date.toString() + ").");
@@ -73,4 +74,5 @@ public class Session extends EntityBase<Session> implements Serializable {
         performance.update(another.performance);
         date = another.date;
     }
+    //endregion
 }

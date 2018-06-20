@@ -55,16 +55,17 @@ CREATE TABLE t_theater (
 
 CREATE TABLE t_hall (
   id   SERIAL UNIQUE PRIMARY KEY,
-  name VARCHAR UNIQUE NOT NULL
+  name VARCHAR UNIQUE NOT NULL,
+  seats OID
 );
-
-CREATE TABLE t_seat (
-  y    INT,
-  x    INT,
-  hall INT,
-  foreign key (hall) references t_hall (id)
-  on delete cascade
-);
+--
+-- CREATE TABLE t_seat (
+--   y    INT,
+--   x    INT,
+--   hall INT,
+--   foreign key (hall) references t_hall (id)
+--   on delete cascade
+-- );
 
 
 CREATE TABLE t_session (

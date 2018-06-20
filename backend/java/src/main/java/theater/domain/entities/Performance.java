@@ -32,6 +32,7 @@ public class Performance extends EntityBase<Performance> implements Serializable
     }
     //endregion
 
+    //region Implementation
     @Override
     public void print() {
         System.out.println("Performance " + title + " by " + author + " (" + id + ")");
@@ -54,4 +55,5 @@ public class Performance extends EntityBase<Performance> implements Serializable
     public String stringValue() {
         return fieldsToString(title, author);
     }
+    //endregion
 }

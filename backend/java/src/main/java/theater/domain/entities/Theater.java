@@ -46,6 +46,7 @@ public class Theater extends EntityBase<Theater> implements Serializable {
     }
     //endregion
 
+    //region Description
     @Override
     public void print() {
         System.out.println("Theater " + name + ". Address: " + address + " (" + id + ")");
@@ -69,4 +70,5 @@ public class Theater extends EntityBase<Theater> implements Serializable {
     public String stringValue() {
         return fieldsToString(name, address);
     }
+    //endregion
 }

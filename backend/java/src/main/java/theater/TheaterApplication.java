@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 @SpringBootApplication
 @EnableJpaAuditing
-@ComponentScan({"theater.config", "theater.controllers", "theater.repositories", "theater.domain.entities"})
+@ComponentScan({"theater.config", "theater.rest", "theater.repositories", "theater.domain.entities"})
 
 public class TheaterApplication {
 

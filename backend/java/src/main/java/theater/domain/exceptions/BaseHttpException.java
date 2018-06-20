@@ -17,13 +17,16 @@ public class BaseHttpException extends BaseRuntimeException {
     }
 
     public BaseHttpException() {
+        super("BaseHttpException has occurred.");
     }
 
     public BaseHttpException(Exception innerException) {
+        this();
         this.innerException = innerException;
     }
 
     public BaseHttpException(String message) {
+        super(message);
     }
 
     @Override

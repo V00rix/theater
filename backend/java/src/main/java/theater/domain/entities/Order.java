@@ -31,7 +31,7 @@ public class Order extends EntityBase<Order> implements Serializable {
     public List<Seat> seats = new ArrayList<>();
     //endregion
 
-    //region Get/setters for correct lazy json
+    //region Get/setters
     public Long getClient() {
         return client.getId();
     }
@@ -70,6 +70,7 @@ public class Order extends EntityBase<Order> implements Serializable {
     }
     //endregion
 
+    //region Implementation
     @Override
     public void print() {
         System.out.println("Order (" + id + "). Created on " + createdOn
@@ -108,6 +109,7 @@ public class Order extends EntityBase<Order> implements Serializable {
             e.printStackTrace();
         }
     }
+    //endregion
 
     public static enum Checkout {
         DELIVERY,
