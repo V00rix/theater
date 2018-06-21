@@ -32,4 +32,11 @@ export class PanelCollapsibleComponent implements OnInit, AfterViewChecked {
 
   ngAfterViewChecked() {
   }
+
+  async loaded() {
+    return this.waitFor();
+  }
+
+  @Input()
+  public waitFor: () => Promise<void>;
 }

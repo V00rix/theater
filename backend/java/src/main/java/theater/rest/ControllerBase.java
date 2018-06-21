@@ -2,7 +2,6 @@ package theater.rest;
 
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import theater.domain.entities.EntityBase;
@@ -51,7 +50,7 @@ public abstract class ControllerBase<E extends EntityBase, T extends JpaReposito
     Long createOrUpdateFirst(@RequestBody E newEntity) {
         var entities = repository.findAll();
         if (entities.isEmpty()) {
-            create(newEntity);
+            saveOrUpdate(newEntity);
             return newEntity.getId();
         } else {
             var entity = entities.get(0);
@@ -74,7 +73,7 @@ public abstract class ControllerBase<E extends EntityBase, T extends JpaReposito
 
     @RequestMapping(value = "/new", method = RequestMethod.POST, produces = "application/json")
     public @ResponseBody
-    E create(@RequestBody E entity) {
+    E saveOrUpdate(@RequestBody E entity) {
         repository.save(entity);
         return entity;
     }

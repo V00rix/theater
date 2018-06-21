@@ -1,13 +1,5 @@
-import {
-  Component,
-  ContentChildren,
-  QueryList,
-  AfterContentInit,
-  OnDestroy
-} from '@angular/core';
+import {AfterContentInit, Component, ContentChildren, OnDestroy, QueryList} from '@angular/core';
 import {PanelCollapsibleComponent} from '../panel-collapsible/panel-collapsible.component';
-import {DrawerComponent} from '../panel-collapsible/drawer/drawer.component';
-import {DialogComponent} from '../dialog/dialog.component';
 import {Animations} from '../../../../../../shared/animations/animations';
 import {DataService} from '../../services/data.service';
 
@@ -57,28 +49,35 @@ export class ListComponent implements AfterContentInit, OnDestroy {
       this.panels.forEach(p => {
 
         const f = p.drawer.hideContent;
-        p.drawer.hideContent = () => {
+        p.drawer.hideContent = async () => {
+          // await p.waitFor();
+          console.log("hide ciontent");
           this.drawerHeight = {top: 0, bottom: 0};
           f();
-          this.showFaders = !p.collapsed;
+          // this.drawerHeight.top = p.self.nativeElement.offsetTop + 40;
+          // this.drawerHeight.bottom = p.self.nativeElement.offsetHeight + p.self.nativeElement.offsetTop;
+          // this.showFaders = !p.collapsed;
+          console.log(this.showFaders);
         };
-
-        const f2 = p.ngAfterViewChecked;
-        p.ngAfterViewChecked = () => {
-          if (!p.collapsed) {
-            if (!this.scrollingFinished) {
-              this.drawerHeight.top = p.self.nativeElement.offsetTop + 40;
-              this.drawerHeight.bottom = p.self.nativeElement.offsetHeight + p.self.nativeElement.offsetTop;
-              setTimeout(() => {
-                window.scroll({left: 0, top: this.drawerHeight.top - 50, behavior: 'smooth'});
-                this.scrollingFinished = true;
-              }, 300);
-            } else {
-              this.scrollingFinished = false;
-            }
-            f2();
-          }
-        };
+        //
+        // // const f2 = p.ngAfterViewChecked;
+        // p.ngAfterViewChecked = async () => {
+        //   console.log("after view chacheekc");
+        // //   // await p.waitFor();
+        // //   if (!p.collapsed) {
+        // //     // if (!this.scrollingFinished) {
+        //     this.drawerHeight.top = p.self.nativeElement.offsetTop + 40;
+        //     this.drawerHeight.bottom = p.self.nativeElement.offsetHeight + p.self.nativeElement.offsetTop;
+        // //     // setTimeout(() => {
+        // //     window.scroll({left: 0, top: this.drawerHeight.top - 50});
+        // //     // this.scrollingFinished = true;
+        // //     // }, 300);
+        // //     // } else {
+        // //     //   this.scrollingFinished = false;
+        // //     // }
+        // //     f2();
+        // //   }
+        // };
       });
     }
   }
@@ -92,3 +91,4 @@ export class ListComponent implements AfterContentInit, OnDestroy {
     });
   }
 }
+

@@ -23,4 +23,20 @@ export class DrawerComponent implements OnInit {
   @HostListener('click')
   hideContent() {
   }
+
+
+// // async function always returns a Promise
+//   async function dramaticWelcome(): Promise<void> {
+//     console.log("Hello");
+//
+//     for (let i = 0; i < 5; i++) {
+//       // await is converting Promise<number> into number
+//       const count:number = await delay(500, i);
+//       console.log(count);
+//     }
+//
+//     console.log("World!");
+//   }
+
+  // dramaticWelcome();
 }

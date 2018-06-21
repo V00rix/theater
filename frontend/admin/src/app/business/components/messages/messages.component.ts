@@ -27,9 +27,9 @@ export class MessagesComponent implements OnInit {
     console.log('messaging');
     this.messages = messages.map(m => {
       if (m.error) {
-        console.log(m.error);
+        console.log(m.error.error.message);
       }
-      return {title: m.title, description: m.description};
+      return {title: m.title, description: m.error.error.message};
     });
     this.showMessages = true;
   }

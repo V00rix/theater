@@ -1,7 +1,6 @@
-import {Component, OnInit, ElementRef, Inject} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {DataService} from '../../business/services/data.service';
-import {FormControl, Validators} from '@angular/forms';
-import {MatDatepickerInputEvent} from '@angular/material/datepicker';
+import {FormControl} from '@angular/forms';
 import {Session} from '../../business/domain/session';
 import {AppComponent} from '../../app.component';
 
@@ -11,9 +10,14 @@ import {AppComponent} from '../../app.component';
   styleUrls: ['./sessions.component.scss']
 })
 export class SessionsComponent implements OnInit {
+
   public timeInput = new FormControl('');
 
-  public temporarySession = null;
+  public selected = '123123';
+
+  public temporarySession: Session = null;
+  public temporarySession$: Promise<Session> = null;
+  private resolve: Function | null = null;
 
   constructor(@Inject(AppComponent) private base: AppComponent, public data: DataService) {
   }
@@ -22,11 +26,7 @@ export class SessionsComponent implements OnInit {
     console.log('sessions init');
   }
 
-  dateChange(newDate: string, session: Session) {
-    console.log('date change');
-
-    this.temporarySession = this.temporarySession ? this.temporarySession : {...session};
-
+  dateChange(newDate: string) {
     const split = newDate.split(/[./,]+/);
     const day = parseInt(split[0], 10);
     const month = parseInt(split[1], 10) - 1;
@@ -37,13 +37,11 @@ export class SessionsComponent implements OnInit {
     if (!isNaN(nd.getMinutes())) {
       this.temporarySession.date = nd;
     }
-    console.log(this.temporarySession.date);
   }
 
   timeChange(newTime, session: Session) {
     console.log('time change');
 
-    this.temporarySession = this.temporarySession ? this.temporarySession : {...session};
 
     const split = newTime.split(/[./,:]+/);
     const hours = split[0];
@@ -57,53 +55,59 @@ export class SessionsComponent implements OnInit {
     console.log(this.temporarySession.date);
   }
 
-  performanceChange(performance, session) {
-    this.temporarySession = this.temporarySession ? this.temporarySession : {...session};
-
-    console.log('performance change', performance, session);
-
-    this.temporarySession.performance = performance;
-  }
-
-  updateSession(session: Session) {
+  updateSession(session: number) {
     console.log('saving session', this.temporarySession);
 
-    if (this.temporarySession) {
-      session.date = this.temporarySession.date;
-      session.performance = {...this.temporarySession.performance};
-      session.hall = this.temporarySession.hall;
-    }
-
+    this.data.sessions[session] = {...this.temporarySession};
     this.temporarySession = null;
+    // if (this.temporarySession) {
+    //   session.date = this.temporarySession.date;
+    //   session.performance = {...this.temporarySession.performance};
+    //   session.hall = this.temporarySession.hall;
+    // }
+    //
+    // this.temporarySession = null;
     console.log(session);
-
-    this.data.updateSession(session);
+    this.data.updateSession(this.data.sessions[session]);
   }
 
-  resetSession(session: Session, performanceElement, dateElement, timeElement, hallElement) {
+  resetSession(session: number) {
+    this.temporarySession = {...this.data.sessions[session]};
     console.log('resetting session');
 
-    if (session) {
+    // if (session) {
+    //
+    //   const getDate = (date: Date) => {
+    //     return date.getDate() + '.' + date.getMonth() + '.' + date.getFullYear();
+    //   };
+    //   const getTime = (date: Date) => {
+    //     return date.getHours() + ':' + date.getMinutes();
+    //   };
+    //
+    //   if (performanceElement) {
+    //     performanceElement.value = session.performance;
+    //   }
+    //   dateElement.value = getDate(session.date);
+    //   timeElement.value = getTime(session.date);
+    //
+    //   if (hallElement) {
+    //     hallElement.value = session.hall;
+    //   }
+    //
+    //   this.temporarySession = null;
+    // }
+  }
 
-      const getDate = (date: Date) => {
-        return date.getDate() + '.' + date.getMonth() + '.' + date.getFullYear();
-      };
-      const getTime = (date: Date) => {
-        return date.getHours() + ':' + date.getMinutes();
-      };
+  public createTemporary(session: Session) {
 
-      if (performanceElement) {
-        performanceElement.value = session.performance;
-      }
-      dateElement.value = getDate(session.date);
-      timeElement.value = getTime(session.date);
+    this.temporarySession$ = new Promise<Session>((resolve, reject) => {
+      this.resolve = resolve;
+    });
 
-      if (hallElement) {
-        hallElement.value = session.hall;
-      }
-
-      this.temporarySession = null;
-    }
+    this.temporarySession = {...session};
+    console.log(this.temporarySession);
+    console.log(this.data.performances[this.temporarySession.performance].title);
+    this.resolve !(this.temporarySession);
   }
 
   deleteSession(session: number) {
@@ -113,5 +117,21 @@ export class SessionsComponent implements OnInit {
 
   newSession() {
     this.data.createSession();
+  }
+
+  //
+  waitForTemporary = async () => {
+    // return this.temporarySession$;
+    // this.resolve !(this.temporarySession);
+    return (resolve => {
+      // this.temporaryCreated.subscribe(() => {
+      //   console.log("temporary created");
+      //   resolve();
+      // })
+      //
+      setTimeout(() => {
+        resolve(4);
+      }, 2000);
+    });
   }
 }

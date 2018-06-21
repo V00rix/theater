@@ -92,6 +92,10 @@ export class DataService {
         console.log('Sessions loaded');
         console.log(response);
         this.sessions = response;
+        Object.keys(this.sessions).forEach(x => {
+          const d = this.sessions[x].date;
+          this.sessions[x].date = new Date(d)
+        })
       })
       .catch((e: any) => Observable.throw(this.httpErrorHandler(e, propagate)));
   }
@@ -211,9 +215,11 @@ export class DataService {
    * POST request to create new session
    */
   createSession(propagate = true) {
-    let hall = this.halls[Object.keys(this.halls)[0]];
-    let performance = this.performances[Object.keys(this.performances)[0]];
-    return this.http.post(`${this.baseUrl}/session/new${this.extension}`, new Session(null, hall, performance, new Date())
+    const hall = this.halls[Object.keys(this.halls)[0]];
+    const performance = this.performances[Object.keys(this.performances)[0]];
+    const session = new Session(null, performance.id, hall.id, new Date());
+    console.log(session);
+    return this.http.post(`${this.baseUrl}session/new${this.extension}`, session
       // {headers: {'Content-Type': ['text/plain']},withCredentials: true}
     ).subscribe(
       (res: Session) => {
@@ -253,19 +259,20 @@ export class DataService {
    * @param {boolean} propagate
    */
   updateSession(session: Session, propagate = true) {
-    console.log(session.date);
-    console.log(this.transformDate(session.date));
-    return this.http.post(`${this.baseUrl}updateSession${this.extension}`,
+    console.log(session);
+    // console.log(session.date);
+    // console.log(this.transformDate(session.date));
+    return this.http.post(`${this.baseUrl}session/id/${session.id}${this.extension}`,
       {
-        id: session.id,
-        // performanceId: session.performance.id,
-        date: this.transformDate(session.date),
+        type: 'session',
+        performance: session.performance,
+        date: session.date,
         hall: session.hall
       },
       // {headers: {'Content-Type': ['text/plain']}, withCredentials: true}
     ).subscribe(
-      (res) => {
-        console.log('Session updated', res);
+      () => {
+        console.log('Session updated');
         this.dataUpdated.next();
       }, error => {
         this.httpErrorHandler(error, propagate);

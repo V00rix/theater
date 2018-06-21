@@ -18,7 +18,7 @@ public class HallController extends ControllerBase<Hall, HallRepository> {
     }
 
     @Override
-    public Hall create(@RequestBody Hall hall) {
+    public Hall saveOrUpdate(@RequestBody Hall hall) {
         return createActualNew(hall.name);
     }
 
