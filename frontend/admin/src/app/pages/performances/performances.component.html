@@ -1,0 +1,46 @@
+<app-basic-page [back]="{label: 'Home', link: '/home'}" [h]="[{label: 'Performances', type: 'h2'}]">
+  <app-list>
+    <app-panel-collapsible [collapsed]="true" *ngFor="let key of data.performances | keys; let id = index">
+      <app-drawer [active]="true" (collapsed)="resetPerformance(data.performances[key])"
+                  (click)="createTemporary(data.performances[key])">
+        <label class="order-item light">
+          <span class="oi-id truncate grey">{{id + 1}}</span>
+          <span class="oi-performance grey truncate">{{data.performances[key].author}}</span>
+          <span
+            class="oi-name truncate text-right">{{data.performances[key].title}}</span>
+        </label>
+      </app-drawer>
+      <app-content>
+        <div class="user-panel text-center">
+          <div class="section" *ngIf="temporaryPerformance$|async as temporaryPerformance ">
+
+            <div class="form-date">
+              <mat-form-field>
+                <input name="performanceTitle" matInput placeholder="Title" [formControl]="titleInput"
+                       [(ngModel)]="temporaryPerformance.title">
+              </mat-form-field>
+            </div>
+
+            <div class="form-time">
+              <mat-form-field>
+                <input name="performanceAuthor" matInput placeholder="Author" [formControl]="authorInput"
+                       [(ngModel)]="temporaryPerformance.author">
+              </mat-form-field>
+            </div>
+
+          </div>
+          <div class="section">
+            <app-dialog (resolve)="updatePerformance(key)"
+                        (reject)="resetPerformance(key)"
+                        [class]="'black'">
+            </app-dialog>
+          </div>
+          <div class="section">
+            <div class="margined text-center red" (click)="deletePerformance(key)">Delete performance</div>
+          </div>
+        </div>
+      </app-content>
+    </app-panel-collapsible>
+  </app-list>
+  <button class="footer full-width" (click)="newPerformance()">New performance</button>
+</app-basic-page>

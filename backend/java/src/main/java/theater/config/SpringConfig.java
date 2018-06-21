@@ -36,7 +36,6 @@ public class SpringConfig implements WebMvcConfigurer {
                                                    Resource location) throws IOException {
                         var requestedResource = location.createRelative(resourcePath);
                         var root = resourcePath.split("/")[0];
-                        System.out.println(root);
                         return requestedResource.exists() && requestedResource.isReadable() ? requestedResource
                                 : new ClassPathResource("/static/" + root + "/index.html");
                     }
