@@ -4,13 +4,16 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.hibernate5.Hibernate5Module;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.Ordered;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.resource.PathResourceResolver;
 
+import java.io.IOException;
 import java.util.List;
 
 @Configuration
@@ -22,39 +25,37 @@ public class SpringConfig implements WebMvcConfigurer {
     }
 
     @Override
-    public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/admin").setViewName("forward:/admin/index.html");
-        registry.addViewController("/admin/").setViewName("forward:/admin/index.html");
-        registry.addViewController("/desktop").setViewName("forward:/desktop/index.html");
-        registry.addViewController("/desktop/").setViewName("forward:/desktop/index.html");
-        registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+
+        registry.addResourceHandler("/**/*")
+                .addResourceLocations("classpath:/static/")
+                .resourceChain(true)
+                .addResolver(new PathResourceResolver() {
+                    @Override
+                    protected Resource getResource(String resourcePath,
+                                                   Resource location) throws IOException {
+                        var requestedResource = location.createRelative(resourcePath);
+                        var root = resourcePath.split("/")[0];
+                        System.out.println(root);
+                        return requestedResource.exists() && requestedResource.isReadable() ? requestedResource
+                                : new ClassPathResource("/static/" + root + "/index.html");
+                    }
+                });
     }
 
-//    @Override
-//    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-//        registry
-//                .addResourceHandler("/admin/**", "/desktop/**")
-//                .addResourceLocations("/admin/", "/desktop/");
-//    }
-
-    public MappingJackson2HttpMessageConverter jacksonMessageConverter(){
+    public MappingJackson2HttpMessageConverter jacksonMessageConverter() {
         MappingJackson2HttpMessageConverter messageConverter = new MappingJackson2HttpMessageConverter();
 
         ObjectMapper mapper = new ObjectMapper();
-        //Registering Hibernate4Module to support lazy objects
         mapper.registerModule(new Hibernate5Module());
 
         messageConverter.setObjectMapper(mapper);
         return messageConverter;
-
     }
 
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
-        //Here we add our custom-configured HttpMessageConverter
         converters.add(jacksonMessageConverter());
-
-//      configureMessageConverters(converters);
     }
 
     @Bean
