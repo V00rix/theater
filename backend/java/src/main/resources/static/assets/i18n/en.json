@@ -3,5 +3,70 @@
     "DELIVERY": "Delivery",
     "SELF_CHECKOUT": "Self-checkout",
     "PAY_BEFORE": "Pay before performance"
+  },
+
+  "global": {
+    "back": "Back",
+    "next": "Next",
+    "confirm": "Confirm",
+    "home": "Return home",
+    "row": "R",
+    "seat": "S"
+  },
+  "hints": {
+    "clickForTicket": "Click to get a ticket",
+    "hoverForMenu": "Hover to show menu",
+    "scrollForPerformances": "Scroll down for more performances",
+    "touchOrPinchToZoom": "Touch to zoom",
+    "codeSent": "Code has also been sent to your email",
+    "contactedSoon": "We will contact you for confirmation soon",
+    "scrollForDescription": "Scroll for performance details"
+  },
+  "pages": {
+    "home": {
+    },
+    "performance": {
+      "title": "Sessions"
+    },
+    "viewer": {
+      "title": "Your information",
+      "useAccountData": "Use account data",
+      "loginForAccountData": "Login to use account data"
+    },
+    "checkout": {
+      "title": "Checkout method",
+      "options": {
+        "DELIVERY": {
+          "title": "Delivery",
+          "description": "We deliver a ticket to you for 100 czk"
+        },
+        "SELF_CHECKOUT": {
+          "title": "Self-checkout",
+          "description": "[Address will be here some day] every Tuesday or Thursday from 18:00 to 19:30"
+        },
+        "PAY_BEFORE": {
+          "title": "Pay before performance",
+          "description": "At longest 30 minutes before start"
+        }
+      }
+    },
+    "confirmation": {
+      "title": "Confirmation"
+    },
+    "success": {
+      "success": "Success!",
+      "bookingCode": "Your booking code is: ",
+      "saveIt": "Save it to get a ticket"
+    },
+    "session": {
+      "title": "Select seats",
+      "scene": "Scene"
+    }
+  },
+  "forms": {
+    "labels": {
+      "name": "Name",
+      "contact": "Email or Phone number"
+    }
   }
 }
