@@ -5,11 +5,13 @@ import {AuthorizationComponent} from './pages/authorization/authorization.compon
 import {HomeComponent} from './pages/home/home.component';
 import {SessionsComponent} from './pages/sessions/sessions.component';
 import {ViewersComponent} from './pages/viewers/viewers.component';
+import {PerformancesComponent} from "./pages/performances/performances.component";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'authorization', component: AuthorizationComponent},
   {path: 'sessions', component: SessionsComponent},
+  {path: 'performances', component: PerformancesComponent},
   {path: 'sessions/:id/viewers', component: ViewersComponent},
   {path: '**', component: HomeComponent}
 ];

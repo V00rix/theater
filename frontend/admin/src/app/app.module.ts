@@ -40,6 +40,7 @@ import {MessagesComponent} from './business/components/messages/messages.compone
 import {ViewersComponent} from './pages/viewers/viewers.component';
 import {BasicPageComponent} from './business/components/basic-page/basic-page.component';
 import {KeysPipe} from "./business/pipes/keysPipe";
+import { PerformancesComponent } from './pages/performances/performances.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -64,7 +65,8 @@ registerLocaleData(localeEn, 'en');
     MessagesComponent,
     ViewersComponent,
     BasicPageComponent,
-    KeysPipe
+    KeysPipe,
+    PerformancesComponent
   ],
   imports: [
     BrowserModule,

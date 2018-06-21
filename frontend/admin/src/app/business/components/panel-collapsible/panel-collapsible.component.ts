@@ -36,7 +36,4 @@ export class PanelCollapsibleComponent implements OnInit, AfterViewChecked {
   async loaded() {
     return this.waitFor();
   }
-
-  @Input()
-  public waitFor: () => Promise<void>;
 }

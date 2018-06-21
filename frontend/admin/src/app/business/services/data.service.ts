@@ -5,6 +5,7 @@ import {HttpClient} from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import {Subject} from 'rxjs/Subject';
 import {Session} from '../domain/session';
+import {Performance} from '../domain/performance';
 import {Observable} from 'rxjs/Observable';
 import {Router} from '@angular/router';
 import 'rxjs/add/operator/catch';
@@ -225,7 +226,37 @@ export class DataService {
       (res: Session) => {
         console.log('New session created', res);
         this.sessions[res.id] = res;
-        this.dataUpdated.next();
+        this.getPerformances().subscribe(() => {
+          this.dataUpdated.next();
+        });
+      }, error => {
+        this.httpErrorHandler(error, propagate);
+      });
+  }
+
+  /**
+   * POST request to update session
+   * @param {Session} session
+   * @param {boolean} propagate
+   */
+  updateSession(session: Session, propagate = true) {
+    console.log(session);
+    // console.log(session.date);
+    // console.log(this.transformDate(session.date));
+    return this.http.post(`${this.baseUrl}session/id/${session.id}${this.extension}`,
+      {
+        type: 'session',
+        performance: session.performance,
+        date: session.date,
+        hall: session.hall
+      },
+      // {headers: {'Content-Type': ['text/plain']}, withCredentials: true}
+    ).subscribe(
+      () => {
+        console.log('Session updated');
+        this.getPerformances().subscribe(() => {
+          this.dataUpdated.next();
+        });
       }, error => {
         this.httpErrorHandler(error, propagate);
       });
@@ -254,26 +285,68 @@ export class DataService {
   }
 
   /**
-   * POST request to update session
-   * @param {Session} session
+   * POST request to create new performance
+   */
+  createPerformance(propagate = true) {
+    return this.http.post(`${this.baseUrl}performance/new${this.extension}`, new Performance(null, '[author_name]', '[title]', null, null)
+
+
+      // {headers: {'Content-Type': ['text/plain']},withCredentials: true}
+    ).subscribe(
+      (res: Performance) => {
+        console.log('New performance created', res);
+        this.performances[res.id] = res;
+        this.getPerformances().subscribe(() => {
+          this.dataUpdated.next();
+        });
+      }, error => {
+        this.httpErrorHandler(error, propagate);
+      });
+  }
+
+
+  /**
+   * POST request to update performance
+   * @param {Performance} performance
    * @param {boolean} propagate
    */
-  updateSession(session: Session, propagate = true) {
-    console.log(session);
-    // console.log(session.date);
-    // console.log(this.transformDate(session.date));
-    return this.http.post(`${this.baseUrl}session/id/${session.id}${this.extension}`,
+  updatePerformance(performance: Performance, propagate = true) {
+    console.log(performance);
+    return this.http.post(`${this.baseUrl}performance/id/${performance.id}${this.extension}`,
       {
-        type: 'session',
-        performance: session.performance,
-        date: session.date,
-        hall: session.hall
+        type: 'performance',
+        title: performance.title,
+        author: performance.author
       },
       // {headers: {'Content-Type': ['text/plain']}, withCredentials: true}
     ).subscribe(
       () => {
-        console.log('Session updated');
-        this.dataUpdated.next();
+        console.log('Performance updated');
+        this.getPerformances().subscribe(() => {
+          this.dataUpdated.next();
+        });
+      }, error => {
+        this.httpErrorHandler(error, propagate);
+      });
+  }
+
+  /**
+   * POST request to delete performance
+   * @param {Performance} performance
+   * @param {boolean} propagate
+   */
+  deletePerformance(performance: number, propagate = true) {
+    return this.http.post(`${this.baseUrl}performance/delete/${performance}${this.extension}`, null
+      // {
+      // headers: {'Content-Type': ['text/plain']},
+      // withCredentials: true
+      // }
+    ).subscribe(
+      (res) => {
+        console.log('Performance deleted', res);
+        this.getPerformances().subscribe(() => {
+          this.dataUpdated.next();
+        });
       }, error => {
         this.httpErrorHandler(error, propagate);
       });

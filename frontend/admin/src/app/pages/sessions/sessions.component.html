@@ -1,7 +1,6 @@
 <app-basic-page [back]="{label: 'Home', link: '/home'}" [h]="[{label: 'Sessions', type: 'h2'}]">
   <app-list>
-    <app-panel-collapsible [collapsed]="true" *ngFor="let key of data.sessions | keys; let id = index"
-                           [waitFor]="waitForTemporary">
+    <app-panel-collapsible [collapsed]="true" *ngFor="let key of data.sessions | keys; let id = index">
       <app-drawer [active]="true" (collapsed)="resetSession(data.sessions[key])"
                   (click)="createTemporary(data.sessions[key])">
         <label class="order-item light">
@@ -52,9 +51,9 @@
 
           </div>
 
-          <div class="section">
-            <label class="accent" [routerLink]="['./' + id + '/viewers']">Viewers</label>
-          </div>
+          <!--<div class="section">-->
+            <!--<label class="accent" [routerLink]="['./' + id + '/viewers']">Viewers</label>-->
+          <!--</div>-->
           <div class="section">
             <app-dialog (resolve)="updateSession(key)"
                         (reject)="resetSession(key)"
